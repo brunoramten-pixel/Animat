@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación de la Hemoglobina</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #B22222 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 25px 70px rgba(139, 0, 0, 0.4);
+            max-width: 1400px;
+            width: 100%;
+            padding: 40px;
+            border: 3px solid #8B0000;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #8B0000;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 14px 28px;
+            font-size: 16px;
+            border: 2px solid #8B0000;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+            background: linear-gradient(135deg, #A00000 0%, #FF1744 100%);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8B0000;
+        }
+        
+        .btn-secondary:hover {
+            background: #FFF5F5;
+        }
+        
+        #canvas-container {
+            position: relative;
+            width: 100%;
+            height: 650px;
+            background: linear-gradient(to bottom, #FFF5F5 0%, #FFE4E4 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 2px solid #FFB3B3;
+        }
+        
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .info-panel {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE4E4 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 2px solid #DC143C;
+        }
+        
+        .info-title {
+            font-size: 1.4em;
+            color: #8B0000;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border-bottom: 3px solid #DC143C;
+            padding-bottom: 8px;
+        }
+        
+        .info-text {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .stage-indicator {
+            text-align: center;
+            font-size: 1.3em;
+            color: #8B0000;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #FFF5F5;
+            border-radius: 8px;
+            border: 2px solid #DC143C;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+            color: #333;
+        }
+        
+        .legend-color {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩸 BIOSÍNTESIS DE LA HEMOGLOBINA</h1>
+        <div class="subtitle">Proceso molecular desde pirroles hasta el complejo tetramérico funcional</div>
+        
+        <div class="controls">
+            <button class="btn-primary" onclick="startAnimation()">▶ Iniciar Síntesis</button>
+            <button class="btn-secondary" onclick="resetAnimation()">↻ Reiniciar Proceso</button>
+            <button class="btn-secondary" onclick="pauseAnimation()">⏸ Pausar</button>
+        </div>
+        
+        <div class="stage-indicator" id="stage-indicator">
+            Sistema preparado para iniciar la biosíntesis
+        </div>
+        
+        <div id="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #DC143C;"></div>
+                <span>Anillo de Pirrol (C₄H₄NH)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #FF6B35;"></div>
+                <span>Ion Fe²⁺ (Ferroso)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #7B68EE;"></div>
+                <span>Ferroquelatasa</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4A90E2;"></div>
+                <span>Subunidades α-globina</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #5E72E4;"></div>
+                <span>Subunidades β-globina</span>
+            </div>
+        </div>
+        
+        <div class="info-panel">
+            <div class="info-title" id="info-title">Introducción al Proceso</div>
+            <div class="info-text" id="info-text">
+                La hemoglobina es una metaloproteína que contiene hierro y es responsable del transporte de oxígeno en los eritrocitos. Su síntesis involucra la formación del grupo prostético hemo y su posterior unión a cadenas polipeptídicas de globina. Presione "Iniciar Síntesis" para observar el proceso molecular completo.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            const container = document.getElementById('canvas-container');
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        let animationState = 0;
+        let animationFrame = 0;
+        let isPaused = false;
+        let animationId = null;
+        let transitionProgress = 0;
+        
+        const stageInfo = {
+            0: {
+                title: "Etapa 1: Moléculas de Pirrol (C₄H₄NH)",
+                text: "El pirrol es un compuesto heterocíclico aromático pentagonal constituido por cuatro átomos de carbono y un átomo de nitrógeno. Estos anillos son las unidades estructurales fundamentales para la síntesis de porfirinas. Cada pirrol presenta un sistema π conjugado que le confiere estabilidad aromática. En la biosíntesis, estas unidades derivan del ácido δ-aminolevulínico (ALA)."
+            },
+            1: {
+                title: "Etapa 2: Formación del Anillo Tetrapirrólico",
+                text: "Cuatro moléculas de pirrol se condensan mediante puentes de meteno (-CH=) para formar un macrociclo tetrapirrólico. Este proceso ocurre mediante reacciones de condensación enzimática. Los cuatro nitrógenos de los anillos pirrólicos quedan orientados hacia el centro del macrociclo, creando un sitio de coordinación. Esta estructura es la base de la protoporfirina IX."
+            },
+            2: {
+                title: "Etapa 3: Quelación del Ion Hierro (Fe²⁺) - Ferroquelatasa",
+                text: "La enzima ferroquelatasa (EC 4.99.1.1) cataliza la inserción de un ion de hierro ferroso (Fe²⁺) en el centro de la protoporfirina IX. El hierro establece enlaces de coordinación con los cuatro átomos de nitrógeno de los anillos pirrólicos, adoptando una geometría de coordinación octaédrica. Las dos posiciones axiales quedan disponibles para la unión del oxígeno y la histidina proximal de la globina."
+            },
+            3: {
+                title: "Etapa 4: Grupo Hemo (Ferroprotoporfirina IX)",
+                text: "El complejo resultante Fe-protoporfirina IX se denomina grupo hemo o hem. Este es el grupo prostético responsable de la unión reversible al oxígeno molecular (O₂). El estado de oxidación del hierro (Fe²⁺) es crítico: debe permanecer en estado ferroso para mantener la capacidad de transporte de oxígeno. La oxidación a Fe³⁺ produce metahemoglobina, que es no funcional."
+            },
+            4: {
+                title: "Etapa 5: Unión del Grupo Hemo a las Cadenas de Globina",
+                text: "Cada grupo hemo se inserta en el bolsillo hidrofóbico de una cadena de globina. El átomo de Fe²⁺ se coordina con la histidina proximal (His F8) de la globina mediante un enlace covalente coordinado. Esta interacción es crucial para estabilizar el grupo hemo dentro de la proteína y permitir la unión reversible del oxígeno."
+            },
+            5: {
+                title: "Etapa 6: Hemoglobina Tetramérica Completa (α₂β₂)",
+                text: "La hemoglobina madura es un tetrámero compuesto por dos cadenas α-globina (141 aminoácidos cada una) y dos cadenas β-globina (146 aminoácidos cada una). Cada subunidad contiene un grupo hemo en su sitio activo. La estructura cuaternaria permite la cooperatividad alostérica en la unión del oxígeno. El peso molecular total es aproximadamente 64.5 kDa. Esta configuración (α₂β₂) se denomina hemoglobina A (HbA), que constituye el 97% de la hemoglobina adulta."
+            }
+        };
+        
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+        
+        class Pyrrole {
+            constructor(x, y, index) {
+                this.x = x;
+                this.y = y;
+                this.targetX = x;
+                this.targetY = y;
+                this.index = index;
+                this.angle = 0;
+                this.targetAngle = 0;
+                this.scale = 1;
+                this.opacity = 0;
+                this.targetOpacity = 1;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.scale(this.scale, this.scale);
+                
+                // Anillo pentagonal del pirrol más químicamente exacto
+                const vertices = [];
+                for (let i = 0; i < 5; i++) {
+                    const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+                    vertices.push({
+                        x: Math.cos(angle) * 35,
+                        y: Math.sin(angle) * 35
+                    });
+                }
+                
+                // Dibujar el anillo
+                ctx.beginPath();
+                vertices.forEach((v, i) => {
+                    if (i === 0) ctx.moveTo(v.x, v.y);
+                    else ctx.lineTo(v.x, v.y);
+                });
+                ctx.closePath();
+                
+                const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 35);
+                gradient.addColorStop(0, '#DC143C');
+                gradient.addColorStop(1, '#8B0000');
+                ctx.fillStyle = gradient;
+                ctx.fill();
+                ctx.strokeStyle = '#5C0000';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // Enlaces dobles alternados (sistema aromático)
+                ctx.strokeStyle = '#5C0000';
+                ctx.lineWidth = 2.5;
+                
+                // Enlace doble entre C1-C2
+                this.drawDoubleBond(vertices[1], vertices[2], 0.3);
+                // Enlace doble entre C3-C4
+                this.drawDoubleBond(vertices[3], vertices[4], 0.3);
+                
+                // Nitrógeno en posición superior
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 20px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('N', 0, -8);
+                
+                // Hidrógenos en posiciones específicas
+                ctx.font = '12px Arial';
+                ctx.fillStyle = '#5C0000';
+                
+                // H en el nitrógeno (arriba)
+                ctx.fillText('H', 0, -25);
+                
+                // H en carbonos (pequeños)
+                ctx.font = '10px Arial';
+                ctx.fillText('H', vertices[1].x * 0.7, vertices[1].y * 0.7);
+                ctx.fillText('H', vertices[2].x * 0.7, vertices[2].y * 0.7);
+                ctx.fillText('H', vertices[3].x * 0.7, vertices[3].y * 0.7);
+                ctx.fillText('H', vertices[4].x * 0.7, vertices[4].y * 0.7);
+                
+                // Etiqueta de fórmula
+                ctx.fillStyle = '#5C0000';
+                ctx.font = '13px Arial';
+                ctx.fillText('C₄H₄NH', 0, 52);
+                
+                ctx.restore();
+            }
+            
+            drawDoubleBond(v1, v2, offset) {
+                const dx = v2.x - v1.x;
+                const dy = v2.y - v1.y;
+                const len = Math.sqrt(dx * dx + dy * dy);
+                const perpX = -dy / len * 5;
+                const perpY = dx / len * 5;
+                
+                // Primera línea
+                ctx.beginPath();
+                ctx.moveTo(v1.x + perpX * offset, v1.y + perpY * offset);
+                ctx.lineTo(v2.x + perpX * offset, v2.y + perpY * offset);
+                ctx.stroke();
+                
+                // Segunda línea
+                ctx.beginPath();
+                ctx.moveTo(v1.x - perpX * offset, v1.y - perpY * offset);
+                ctx.lineTo(v2.x - perpX * offset, v2.y - perpY * offset);
+                ctx.stroke();
+            }
+            
+            update() {
+                this.x += (this.targetX - this.x) * 0.03;
+                this.y += (this.targetY - this.y) * 0.03;
+                this.angle += (this.targetAngle - this.angle) * 0.03;
+                this.opacity += (this.targetOpacity - this.opacity) * 0.03;
+            }
+        }
+        
+        class Porphyrin {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.scale = 0;
+                this.targetScale = 1;
+                this.rotation = 0;
+                this.bridgeProgress = 0;
+                this.opacity = 1;
+                this.targetOpacity = 1;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.scale(this.scale, this.scale);
+                
+                const radius = 85;
+                
+                // Puentes de meteno
+                if (this.bridgeProgress > 0) {
+                    ctx.strokeStyle = '#5C0000';
+                    ctx.lineWidth = 4;
+                    for (let i = 0; i < 4; i++) {
+                        const angle1 = (i * Math.PI / 2) - Math.PI / 4;
+                        const angle2 = ((i + 1) * Math.PI / 2) - Math.PI / 4;
+                        const px1 = Math.cos(angle1) * radius;
+                        const py1 = Math.sin(angle1) * radius;
+                        const px2 = Math.cos(angle2) * radius;
+                        const py2 = Math.sin(angle2) * radius;
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(px1, py1);
+                        const progress = Math.min(1, this.bridgeProgress);
+                        ctx.lineTo(px1 + (px2 - px1) * progress, py1 + (py2 - py1) * progress);
+                        ctx.stroke();
+                        
+                        if (progress > 0.8) {
+                            const midX = (px1 + px2) / 2;
+                            const midY = (py1 + py2) / 2;
+                            ctx.save();
+                            ctx.translate(midX, midY);
+                            ctx.rotate(-this.rotation);
+                            ctx.fillStyle = '#5C0000';
+                            ctx.font = 'bold 11px Arial';
+                            ctx.textAlign = 'center';
+                            ctx.fillText('CH', 0, -8);
+                            ctx.restore();
+                        }
+                    }
+                }
+                
+                // Pirroles
+                for (let i = 0; i < 4; i++) {
+                    const angle = (i * Math.PI / 2) - Math.PI / 4;
+                    const px = Math.cos(angle) * radius;
+                    const py = Math.sin(angle) * radius;
+                    
+                    ctx.save();
+                    ctx.translate(px, py);
+                    ctx.rotate(angle + Math.PI / 4);
+                    
+                    // Pentágono del pirrol
+                    ctx.beginPath();
+                    for (let j = 0; j < 5; j++) {
+                        const a = (j * 2 * Math.PI / 5) - Math.PI / 2;
+                        const x = Math.cos(a) * 30;
+                        const y = Math.sin(a) * 30;
+                        if (j === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.closePath();
+                    
+                    const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 30);
+                    gradient.addColorStop(0, '#DC143C');
+                    gradient.addColorStop(1, '#8B0000');
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+                    ctx.strokeStyle = '#5C0000';
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 16px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('N', 0, -5);
+                    
+                    ctx.restore();
+                }
+                
+                ctx.save();
+                ctx.rotate(-this.rotation);
+                ctx.fillStyle = '#5C0000';
+                ctx.font = 'bold 14px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Protoporfirina IX', 0, 130);
+                ctx.restore();
+                
+                ctx.restore();
+            }
+            
+            update() {
+                this.scale += (this.targetScale - this.scale) * 0.03;
+                this.opacity += (this.targetOpacity - this.opacity) * 0.03;
+                this.rotation += 0.002;
+                if (this.scale > 0.5) {
+                    this.bridgeProgress += 0.015;
+                    if (this.bridgeProgress > 1) this.bridgeProgress = 1;
+                }
+            }
+        }
+        
+        class Heme {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.targetX = x;
+                this.targetY = y;
+                this.ironScale = 0;
+                this.targetIronScale = 1;
+                this.glow = 0;
+                this.glowPhase = 0;
+                this.opacity = 1;
+                this.targetOpacity = 1;
+                this.scale = 1;
+                this.targetScale = 1;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.scale(this.scale, this.scale);
+                
+                const radius = 85;
+                
+                for (let i = 0; i < 4; i++) {
+                    const angle = (i * Math.PI / 2) - Math.PI / 4;
+                    const px = Math.cos(angle) * radius;
+                    const py = Math.sin(angle) * radius;
+                    
+                    ctx.save();
+                    ctx.translate(px, py);
+                    ctx.rotate(angle + Math.PI / 4);
+                    
+                    ctx.beginPath();
+                    for (let j = 0; j < 5; j++) {
+                        const a = (j * 2 * Math.PI / 5) - Math.PI / 2;
+                        const x = Math.cos(a) * 30;
+                        const y = Math.sin(a) * 30;
+                        if (j === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.closePath();
+                    
+                    const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 30);
+                    gradient.addColorStop(0, '#DC143C');
+                    gradient.addColorStop(1, '#8B0000');
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+                    ctx.strokeStyle = '#5C0000';
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 16px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('N', 0, -5);
+                    
+                    ctx.restore();
+                }
+                
+                ctx.strokeStyle = '#5C0000';
+                ctx.lineWidth = 4;
+                for (let i = 0; i < 4; i++) {
+                    const angle1 = (i * Math.PI / 2) - Math.PI / 4;
+                    const angle2 = ((i + 1) * Math.PI / 2) - Math.PI / 4;
+                    const px1 = Math.cos(angle1) * radius;
+                    const py1 = Math.sin(angle1) * radius;
+                    const px2 = Math.cos(angle2) * radius;
+                    const py2 = Math.sin(angle2) * radius;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(px1, py1);
+                    ctx.lineTo(px2, py2);
+                    ctx.stroke();
+                }
+                
+                if (this.ironScale > 0) {
+                    ctx.save();
+                    ctx.scale(this.ironScale, this.ironScale);
+                    
+                    if (this.ironScale > 0.5) {
+                        ctx.strokeStyle = 'rgba(255, 140, 0, 0.6)';
+                        ctx.lineWidth = 2;
+                        ctx.setLineDash([5, 3]);
+                        for (let i = 0; i < 4; i++) {
+                            const angle = (i * Math.PI / 2) - Math.PI / 4;
+                            const px = Math.cos(angle) * 85;
+                            const py = Math.sin(angle) * 85;
+                            ctx.beginPath();
+                            ctx.moveTo(0, 0);
+                            ctx.lineTo(px, py);
+                            ctx.stroke();
+                        }
+                        ctx.setLineDash([]);
+                    }
+                    
+                    const glowIntensity = Math.sin(this.glowPhase) * 0.3 + 0.5;
+                    const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 50);
+                    gradient.addColorStop(0, `rgba(255, 140, 0, ${glowIntensity * 0.4})`);
+                    gradient.addColorStop(1, 'rgba(255, 140, 0, 0)');
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 50, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 28, 0, Math.PI * 2);
+                    const ironGradient = ctx.createRadialGradient(-8, -8, 0, 0, 0, 28);
+                    ironGradient.addColorStop(0, '#FF8C00');
+                    ironGradient.addColorStop(1, '#D2691E');
+                    ctx.fillStyle = ironGradient;
+                    ctx.fill();
+                    ctx.strokeStyle = '#8B4513';
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 18px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('Fe²⁺', 0, 0);
+                    
+                    ctx.restore();
+                }
+                
+                ctx.fillStyle = '#5C0000';
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Grupo Hemo', 0, 140);
+                ctx.font = '13px Arial';
+                ctx.fillText('(Ferroprotoporfirina IX)', 0, 160);
+                
+                ctx.restore();
+            }
+            
+            update() {
+                this.x += (this.targetX - this.x) * 0.03;
+                this.y += (this.targetY - this.y) * 0.03;
+                this.ironScale += (this.targetIronScale - this.ironScale) * 0.015;
+                this.opacity += (this.targetOpacity - this.opacity) * 0.03;
+                this.scale += (this.targetScale - this.scale) * 0.03;
+                this.glowPhase += 0.03;
+            }
+        }
+        
+        class Globin {
+            constructor(x, y, label, color) {
+                this.x = x;
+                this.y = y;
+                this.targetX = x;
+                this.targetY = y;
+                this.label = label;
+                this.color = color;
+                this.scale = 0;
+                this.targetScale = 1;
+                this.opacity = 0;
+                this.targetOpacity = 1;
+                this.hemeAttached = false;
+                this.heme = null;
+            }
+            
+            attachHeme(heme) {
+                this.heme = heme;
+                this.hemeAttached = true;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.scale(this.scale, this.scale);
+                
+                // Globina
+                ctx.beginPath();
+                ctx.ellipse(0, 0, 55, 42, 0, 0, Math.PI * 2);
+                
+                const gradient = ctx.createRadialGradient(-15, -15, 0, 0, 0, 55);
+                gradient.addColorStop(0, this.color + 'CC');
+                gradient.addColorStop(1, this.color + '66');
+                ctx.fillStyle = gradient;
+                ctx.fill();
+                ctx.strokeStyle = this.color;
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // Estructura secundaria
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 2;
+                for (let i = 0; i < 3; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(-35 + i * 15, -20);
+                    ctx.lineTo(-35 + i * 15, 20);
+                    ctx.stroke();
+                }
+                
+                // Grupo hemo si está attached
+                if (this.hemeAttached && this.heme) {
+                    const hemeRadius = 18;
+                    const hemePositions = [
+                        {angle: 0}, {angle: Math.PI/2}, {angle: Math.PI}, {angle: 3*Math.PI/2}
+                    ];
+                    
+                    hemePositions.forEach(h => {
+                        const px = Math.cos(h.angle) * hemeRadius;
+                        const py = Math.sin(h.angle) * hemeRadius;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 4, 0, Math.PI * 2);
+                        ctx.fillStyle = '#DC143C';
+                        ctx.fill();
+                    });
+                    
+                    // Fe central
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 7, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FF8C00';
+                    ctx.fill();
+                    ctx.strokeStyle = '#8B4513';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                    
+                    // Enlace con histidina (His F8)
+                    ctx.strokeStyle = 'rgba(100, 100, 255, 0.6)';
+                    ctx.lineWidth = 3;
+                    ctx.setLineDash([3, 3]);
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(0, 25);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    
+                    ctx.fillStyle = 'rgba(100, 100, 255, 0.8)';
+                    ctx.font = '9px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('His F8', 0, 20);
+                }
+                
+                // Etiqueta de subunidad
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.label, 0, 30);
+                
+                ctx.restore();
+            }
+            
+            update() {
+                this.x += (this.targetX - this.x) * 0.03;
+                this.y += (this.targetY - this.y) * 0.03;
+                this.scale += (this.targetScale - this.scale) * 0.03;
+                this.opacity += (this.targetOpacity - this.opacity) * 0.03;
+            }
+        }
+        
+        class Hemoglobin {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.scale = 0;
+                this.targetScale = 1;
+                this.opacity = 1;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.scale(this.scale, this.scale);
+                
+                const positions = [
+                    {x: -90, y: -60, label: 'α₁', color: '#4A90E2'},
+                    {x: 90, y: -60, label: 'α₂', color: '#4A90E2'},
+                    {x: -90, y: 60, label: 'β₁', color: '#5E72E4'},
+                    {x: 90, y: 60, label: 'β₂', color: '#5E72E4'}
+                ];
+                
+                // Líneas de interacción
+                ctx.strokeStyle = 'rgba(100, 100, 100, 0.2)';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(positions[0].x, positions[0].y);
+                ctx.lineTo(positions[1].x, positions[1].y);
+                ctx.moveTo(positions[2].x, positions[2].y);
+                ctx.lineTo(positions[3].x, positions[3].y);
+                ctx.moveTo(positions[0].x, positions[0].y);
+                ctx.lineTo(positions[2].x, positions[2].y);
+                ctx.moveTo(positions[1].x, positions[1].y);
+                ctx.lineTo(positions[3].x, positions[3].y);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                positions.forEach((pos, idx) => {
+                    ctx.save();
+                    ctx.translate(pos.x, pos.y);
+                    
+                    // Subunidad
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, 55, 42, 0, 0, Math.PI * 2);
+                    
+                    const gradient = ctx.createRadialGradient(-15, -15, 0, 0, 0, 55);
+                    gradient.addColorStop(0, pos.color + 'CC');
+                    gradient.addColorStop(1, pos.color + '66');
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+                    ctx.strokeStyle = pos.color;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    
+                    // Estructura secundaria
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                    ctx.lineWidth = 2;
+                    for (let i = 0; i < 3; i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(-35 + i * 15, -20);
+                        ctx.lineTo(-35 + i * 15, 20);
+                        ctx.stroke();
+                    }
+                    
+                    // Grupo hemo
+                    const hemeRadius = 18;
+                    const hemePositions = [
+                        {angle: 0}, {angle: Math.PI/2}, {angle: Math.PI}, {angle: 3*Math.PI/2}
+                    ];
+                    
+                    hemePositions.forEach(h => {
+                        const px = Math.cos(h.angle) * hemeRadius;
+                        const py = Math.sin(h.angle) * hemeRadius;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 4, 0, Math.PI * 2);
+                        ctx.fillStyle = '#DC143C';
+                        ctx.fill();
+                    });
+                    
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 7, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FF8C00';
+                    ctx.fill();
+                    ctx.strokeStyle = '#8B4513';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 16px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(pos.label, 0, 30);
+                    
+                    ctx.restore();
+                });
+                
+                // Título
+                ctx.fillStyle = '#8B0000';
+                ctx.font = 'bold 22px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('Hemoglobina (Hb)', 0, -160);
+                
+                ctx.font = '16px Arial';
+                ctx.fillStyle = '#5C0000';
+                ctx.fillText('Estructura Cuaternaria: α₂β₂', 0, -135);
+                ctx.font = '13px Arial';
+                ctx.fillText('PM ≈ 64.5 kDa  |  4 grupos hemo', 0, -115);
+                
+                ctx.restore();
+            }
+            
+            update() {
+                this.scale += (this.targetScale - this.scale) * 0.015;
+            }
+        }
+        
+        let pyrroles = [];
+        let porphyrin = null;
+        let heme = null;
+        let hemes = [];
+        let globins = [];
+        let hemoglobin = null;
+        let ferrochelatase = null;
+        
+        function initAnimation() {
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            const positions = [
+                {x: centerX - 200, y: centerY - 150},
+                {x: centerX + 200, y: centerY - 150},
+                {x: centerX - 200, y: centerY + 150},
+                {x: centerX + 200, y: centerY + 150}
+            ];
+            
+            pyrroles = positions.map((pos, i) => new Pyrrole(pos.x, pos.y, i));
+        }
+        
+        function updateInfo() {
+            try {
+                const info = stageInfo[animationState];
+                if (info && info.title && info.text) {
+                    document.getElementById('info-title').textContent = info.title;
+                    document.getElementById('info-text').textContent = info.text;
+                    document.getElementById('stage-indicator').textContent = info.title;
+                }
+            } catch (error) {
+                console.log('Info update skipped');
+            }
+        }
+        
+        function animate() {
+            if (isPaused) return;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            animationFrame++;
+            
+            // Etapa 0: Pirroles individuales
+            if (animationState === 0) {
+                pyrroles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                
+                if (animationFrame > 300) {
+                    animationState = 1;
+                    animationFrame = 0;
+                    transitionProgress = 0;
+                    updateInfo();
+                    
+                    const radius = 85;
+                    pyrroles.forEach((p, i) => {
+                        const angle = (i * Math.PI / 2) - Math.PI / 4;
+                        p.targetX = centerX + Math.cos(angle) * radius;
+                        p.targetY = centerY + Math.sin(angle) * radius;
+                        p.targetAngle = angle + Math.PI / 4;
+                    });
+                }
+            }
+            
+            // Etapa 1: Unir pirroles
+            else if (animationState === 1) {
+                pyrroles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                
+                if (animationFrame > 200) {
+                    const progress = Math.min(1, (animationFrame - 200) / 100);
+                    ctx.strokeStyle = `rgba(92, 0, 0, ${progress})`;
+                    ctx.lineWidth = 3;
+                    ctx.setLineDash([5, 5]);
+                    
+                    for (let i = 0; i < 4; i++) {
+                        const p1 = pyrroles[i];
+                        const p2 = pyrroles[(i + 1) % 4];
+                        
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        const endX = p1.x + (p2.x - p1.x) * progress;
+                        const endY = p1.y + (p2.y - p1.y) * progress;
+                        ctx.lineTo(endX, endY);
+                        ctx.stroke();
+                    }
+                    ctx.setLineDash([]);
+                }
+                
+                if (animationFrame > 450) {
+                    transitionProgress = 0;
+                    porphyrin = new Porphyrin(centerX, centerY);
+                    
+                    if (animationFrame > 500) {
+                        pyrroles.forEach(p => p.targetOpacity = 0);
+                    }
+                    
+                    if (animationFrame > 550) {
+                        animationState = 2;
+                        animationFrame = 0;
+                        updateInfo();
+                        pyrroles = [];
+                    }
+                }
+            }
+            
+            // Etapa 2: Formar porfirina
+            else if (animationState === 2) {
+                if (porphyrin) {
+                    porphyrin.update();
+                    porphyrin.draw();
+                }
+                
+                if (animationFrame > 400) {
+                    transitionProgress = Math.min(1, (animationFrame - 400) / 50);
+                    if (porphyrin) {
+                        porphyrin.targetOpacity = 1 - transitionProgress;
+                    }
+                    
+                    if (transitionProgress >= 1 && !heme) {
+                        heme = new Heme(centerX, centerY);
+                        heme.opacity = 0;
+                        porphyrin = null;
+                    }
+                    
+                    if (heme) {
+                        heme.targetOpacity = transitionProgress;
+                        heme.update();
+                        heme.draw();
+                    }
+                }
+                
+                if (animationFrame > 500) {
+                    animationState = 3;
+                    animationFrame = 0;
+                    updateInfo();
+                }
+            }
+            
+            // Etapa 3: Ferroquelatasa e inserción de hierro
+            else if (animationState === 3) {
+                if (heme) {
+                    heme.update();
+                    heme.draw();
+                    
+                    // Fase 1: Porfirina sola (0-100 frames)
+                    if (animationFrame < 100) {
+                        ctx.save();
+                        ctx.fillStyle = '#5C0000';
+                        ctx.font = '15px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('Protoporfirina IX esperando quelación...', centerX, centerY + 200);
+                        ctx.restore();
+                    }
+                    
+                    // Fase 2: Enzima aparece desde la izquierda (100-200 frames)
+                    if (animationFrame >= 100 && animationFrame < 400) {
+                        const enzymeProgress = animationFrame >= 100 && animationFrame < 200 ? 
+                            easeInOutCubic((animationFrame - 100) / 100) : 1;
+                        const enzymeX = centerX - 300 + (480 * enzymeProgress);
+                        const enzymeY = centerY - 150;
+                        const enzymeAlpha = enzymeProgress;
+                        
+                        ctx.save();
+                        ctx.globalAlpha = enzymeAlpha;
+                        ctx.translate(enzymeX, enzymeY);
+                        
+                        // Enzima con forma más detallada
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, 75, 55, Math.PI / 6, 0, Math.PI * 2);
+                        const enzymeGradient = ctx.createRadialGradient(-20, -15, 0, 0, 0, 75);
+                        enzymeGradient.addColorStop(0, '#7B68EE');
+                        enzymeGradient.addColorStop(0.6, '#6A5ACD');
+                        enzymeGradient.addColorStop(1, '#483D8B');
+                        ctx.fillStyle = enzymeGradient;
+                        ctx.fill();
+                        ctx.strokeStyle = '#2E1A47';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                        
+                        // Sitio activo central
+                        ctx.beginPath();
+                        ctx.arc(0, 0, 18, 0, Math.PI * 2);
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                        ctx.fill();
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                        
+                        // Detalles de la estructura proteica
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                        ctx.lineWidth = 2;
+                        for (let i = 0; i < 5; i++) {
+                            ctx.beginPath();
+                            ctx.arc(0, 0, 25 + i * 8, 0, Math.PI * 1.5);
+                            ctx.stroke();
+                        }
+                        
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 14px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('FERROQUELATASA', 0, -2);
+                        ctx.font = '11px Arial';
+                        ctx.fillText('EC 4.99.1.1', 0, 14);
+                        
+                        ctx.restore();
+                        
+                        // Texto descriptivo
+                        if (animationFrame >= 150 && animationFrame < 250) {
+                            ctx.save();
+                            ctx.fillStyle = '#7B68EE';
+                            ctx.font = 'bold 14px Arial';
+                            ctx.textAlign = 'center';
+                            ctx.fillText('Enzima mitocondrial se aproxima', centerX, centerY + 200);
+                            ctx.restore();
+                        }
+                    }
+                    
+                    // Fase 3: Fe²⁺ emerge desde la enzima (200-380 frames)
+                    if (animationFrame >= 200 && animationFrame < 380) {
+                        // Mantener enzima visible
+                        ctx.save();
+                        ctx.globalAlpha = 1;
+                        ctx.translate(centerX + 180, centerY - 150);
+                        
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, 75, 55, Math.PI / 6, 0, Math.PI * 2);
+                        const enzymeGradient = ctx.createRadialGradient(-20, -15, 0, 0, 0, 75);
+                        enzymeGradient.addColorStop(0, '#7B68EE');
+                        enzymeGradient.addColorStop(0.6, '#6A5ACD');
+                        enzymeGradient.addColorStop(1, '#483D8B');
+                        ctx.fillStyle = enzymeGradient;
+                        ctx.fill();
+                        ctx.strokeStyle = '#2E1A47';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                        
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 14px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('FERROQUELATASA', 0, -2);
+                        
+                        ctx.restore();
+                        
+                        // Fe²⁺ viajando
+                        const ironProgress = easeInOutCubic((animationFrame - 200) / 180);
+                        const startX = centerX + 180;
+                        const startY = centerY - 150;
+                        const currentX = startX + (centerX - startX) * ironProgress;
+                        const currentY = startY + (centerY - startY) * ironProgress;
+                        
+                        ctx.save();
+                        
+                        // Trayectoria del hierro
+                        ctx.setLineDash([8, 4]);
+                        ctx.strokeStyle = 'rgba(255, 140, 0, 0.4)';
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.moveTo(startX, startY);
+                        ctx.lineTo(centerX, centerY);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                        
+                        // Ion de hierro en movimiento con pulsación
+                        const pulse = 1 + Math.sin(animationFrame * 0.15) * 0.1;
+                        ctx.save();
+                        ctx.translate(currentX, currentY);
+                        ctx.scale(pulse, pulse);
+                        
+                        // Halo brillante
+                        const haloGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 45);
+                        haloGradient.addColorStop(0, 'rgba(255, 140, 0, 0.5)');
+                        haloGradient.addColorStop(1, 'rgba(255, 140, 0, 0)');
+                        ctx.fillStyle = haloGradient;
+                        ctx.beginPath();
+                        ctx.arc(0, 0, 45, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        ctx.beginPath();
+                        ctx.arc(0, 0, 28, 0, Math.PI * 2);
+                        const ironGradient = ctx.createRadialGradient(-8, -8, 0, 0, 0, 28);
+                        ironGradient.addColorStop(0, '#FFB84D');
+                        ironGradient.addColorStop(0.5, '#FF8C00');
+                        ironGradient.addColorStop(1, '#D2691E');
+                        ctx.fillStyle = ironGradient;
+                        ctx.fill();
+                        ctx.strokeStyle = '#8B4513';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                        
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 18px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('Fe²⁺', 0, 0);
+                        
+                        ctx.restore();
+                        
+                        // Flecha direccional
+                        const angle = Math.atan2(centerY - currentY, centerX - currentX);
+                        ctx.save();
+                        ctx.translate(currentX, currentY);
+                        ctx.rotate(angle);
+                        ctx.strokeStyle = '#FF8C00';
+                        ctx.fillStyle = '#FF8C00';
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.moveTo(40, 0);
+                        ctx.lineTo(55, 0);
+                        ctx.lineTo(48, -7);
+                        ctx.moveTo(55, 0);
+                        ctx.lineTo(48, 7);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                        ctx.restore();
+                        
+                        ctx.restore();
+                        
+                        // Texto descriptivo
+                        ctx.save();
+                        ctx.fillStyle = '#FF8C00';
+                        ctx.font = 'bold 15px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('Transporte del ion ferroso Fe²⁺', centerX, centerY + 200);
+                        ctx.restore();
+                    }
+                    
+                    // Fase 4: Catálisis - inserción del hierro (380-580 frames)
+                    if (animationFrame >= 380 && animationFrame < 580) {
+                        // Enzima facilitando la reacción
+                        ctx.save();
+                        const enzymeGlow = Math.sin((animationFrame - 380) * 0.08) * 0.3 + 0.7;
+                        ctx.globalAlpha = enzymeGlow;
+                        ctx.translate(centerX + 180, centerY - 150);
+                        
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, 75, 55, Math.PI / 6, 0, Math.PI * 2);
+                        const enzymeGradient = ctx.createRadialGradient(-20, -15, 0, 0, 0, 75);
+                        enzymeGradient.addColorStop(0, '#9370DB');
+                        enzymeGradient.addColorStop(0.6, '#7B68EE');
+                        enzymeGradient.addColorStop(1, '#6A5ACD');
+                        ctx.fillStyle = enzymeGradient;
+                        ctx.fill();
+                        ctx.strokeStyle = '#2E1A47';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                        
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 14px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('FERROQUELATASA', 0, -2);
+                        
+                        ctx.restore();
+                        
+                        const catalysisProgress = easeInOutCubic((animationFrame - 380) / 200);
+                        heme.targetIronScale = catalysisProgress;
+                        
+                        // Efectos visuales de catálisis
+                        ctx.save();
+                        ctx.globalAlpha = 0.7 * (1 - catalysisProgress * 0.5);
+                        
+                        // Ondas de energía concéntricas
+                        for (let i = 0; i < 4; i++) {
+                            const waveRadius = (catalysisProgress * 180 + i * 35) % 180;
+                            ctx.beginPath();
+                            ctx.arc(centerX, centerY, waveRadius, 0, Math.PI * 2);
+                            ctx.strokeStyle = '#9370DB';
+                            ctx.lineWidth = 4;
+                            ctx.stroke();
+                        }
+                        
+                        // Partículas de energía
+                        for (let i = 0; i < 12; i++) {
+                            const angle = (i * Math.PI / 6) + catalysisProgress * Math.PI * 3;
+                            const radius = 90 + Math.sin(catalysisProgress * Math.PI * 2) * 35;
+                            const px = centerX + Math.cos(angle) * radius;
+                            const py = centerY + Math.sin(angle) * radius;
+                            const size = 3 + Math.sin(catalysisProgress * Math.PI * 2 + i) * 2;
+                            
+                            ctx.beginPath();
+                            ctx.arc(px, py, size, 0, Math.PI * 2);
+                            ctx.fillStyle = i % 2 === 0 ? '#FFD700' : '#FFA500';
+                            ctx.fill();
+                            
+                            // Estela de partículas
+                            ctx.globalAlpha = 0.3;
+                            ctx.beginPath();
+                            ctx.arc(px, py, size * 2, 0, Math.PI * 2);
+                            ctx.fillStyle = i % 2 === 0 ? '#FFD700' : '#FFA500';
+                            ctx.fill();
+                            ctx.globalAlpha = 0.7 * (1 - catalysisProgress * 0.5);
+                        }
+                        
+                        // Rayos de energía desde la enzima al centro
+                        ctx.globalAlpha = 0.4;
+                        ctx.strokeStyle = '#9370DB';
+                        ctx.lineWidth = 2;
+                        for (let i = 0; i < 6; i++) {
+                            if (Math.sin(animationFrame * 0.2 + i) > 0.3) {
+                                ctx.beginPath();
+                                ctx.moveTo(centerX + 180, centerY - 150);
+                                ctx.lineTo(centerX, centerY);
+                                ctx.stroke();
+                            }
+                        }
+                        
+                        ctx.restore();
+                        
+                        // Textos explicativos
+                        ctx.save();
+                        ctx.fillStyle = '#7B68EE';
+                        ctx.font = 'bold 17px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('⚡ CATÁLISIS ENZIMÁTICA ACTIVA', centerX, centerY - 200);
+                        ctx.font = '14px Arial';
+                        ctx.fillStyle = '#5C0000';
+                        ctx.fillText('Quelación: Fe²⁺ + 4 N(pirrol) → Complejo octaédrico', centerX, centerY + 200);
+                        ctx.restore();
+                    }
+                    
+                    // Fase 5: Enzima se libera (580-650 frames)
+                    if (animationFrame >= 580 && animationFrame < 650) {
+                        const releaseProgress = (animationFrame - 580) / 70;
+                        const enzymeAlpha = 1 - easeInOutCubic(releaseProgress);
+                        const moveDistance = releaseProgress * 80;
+                        
+                        ctx.save();
+                        ctx.globalAlpha = enzymeAlpha;
+                        ctx.translate(centerX + 180 + moveDistance, centerY - 150 - moveDistance * 0.6);
+                        
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, 75, 55, Math.PI / 6, 0, Math.PI * 2);
+                        const enzymeGradient = ctx.createRadialGradient(-20, -15, 0, 0, 0, 75);
+                        enzymeGradient.addColorStop(0, '#7B68EE');
+                        enzymeGradient.addColorStop(0.6, '#6A5ACD');
+                        enzymeGradient.addColorStop(1, '#483D8B');
+                        ctx.fillStyle = enzymeGradient;
+                        ctx.fill();
+                        ctx.strokeStyle = '#2E1A47';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                        
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 14px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('FERROQUELATASA', 0, -2);
+                        
+                        ctx.restore();
+                        
+                        // Texto
+                        ctx.save();
+                        ctx.fillStyle = '#7B68EE';
+                        ctx.font = 'bold 15px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('Enzima liberada - Producto formado', centerX, centerY + 200);
+                        ctx.restore();
+                    }
+                    
+                    if (animationFrame >= 580) {
+                        heme.targetIronScale = 1;
+                    }
+                }
+                
+                if (animationFrame > 650) {
+                    animationState = 4;
+                    animationFrame = 0;
+                    updateInfo();
+                }
+            }
+            
+            // Etapa 4: Grupo hemo formado
+            else if (animationState === 4) {
+                if (heme) {
+                    heme.update();
+                    heme.draw();
+                }
+                
+                if (animationFrame > 300) {
+                    animationState = 5;
+                    animationFrame = 0;
+                    transitionProgress = 0;
+                    updateInfo();
+                    
+                    // Crear 4 hemes y 4 globinas
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+                    
+                    const positions = [
+                        {x: centerX - 200, y: centerY - 100, label: 'α₁', color: '#4A90E2'},
+                        {x: centerX + 200, y: centerY - 100, label: 'α₂', color: '#4A90E2'},
+                        {x: centerX - 200, y: centerY + 100, label: 'β₁', color: '#5E72E4'},
+                        {x: centerX + 200, y: centerY + 100, label: 'β₂', color: '#5E72E4'}
+                    ];
+                    
+                    globins = positions.map(pos => new Globin(pos.x, pos.y, pos.label, pos.color));
+                    
+                    hemes = positions.map(pos => {
+                        const h = new Heme(centerX, centerY);
+                        h.targetX = pos.x;
+                        h.targetY = pos.y;
+                        h.targetScale = 0.3;
+                        h.opacity = 1;
+                        return h;
+                    });
+                    
+                    heme = null;
+                }
+            }
+            
+            // Etapa 5: Unión hemo-globina
+            else if (animationState === 5) {
+                // Fase 1: Aparecen globinas
+                if (animationFrame < 150) {
+                    globins.forEach(g => {
+                        g.targetOpacity = 1;
+                        g.targetScale = 1;
+                        g.update();
+                        g.draw();
+                    });
+                    
+                    hemes.forEach(h => {
+                        h.update();
+                        h.draw();
+                    });
+                }
+                // Fase 2: Hemes se mueven hacia globinas
+                else if (animationFrame >= 150 && animationFrame < 500) {
+                    globins.forEach(g => {
+                        g.update();
+                        g.draw();
+                    });
+                    
+                    hemes.forEach((h, i) => {
+                        h.update();
+                        h.draw();
+                        
+                        // Cuando el hemo llega, se adjunta
+                        const dx = h.x - h.targetX;
+                        const dy = h.y - h.targetY;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (dist < 5 && !globins[i].hemeAttached) {
+                            globins[i].attachHeme(h);
+                            h.targetOpacity = 0;
+                        }
+                    });
+                    
+                    // Dibujar líneas de trayectoria
+                    ctx.setLineDash([3, 3]);
+                    ctx.strokeStyle = 'rgba(220, 20, 60, 0.3)';
+                    ctx.lineWidth = 2;
+                    hemes.forEach(h => {
+                        if (h.opacity > 0.1) {
+                            ctx.beginPath();
+                            ctx.moveTo(h.x, h.y);
+                            ctx.lineTo(h.targetX, h.targetY);
+                            ctx.stroke();
+                        }
+                    });
+                    ctx.setLineDash([]);
+                }
+                // Fase 3: Mostrar texto explicativo
+                else {
+                    globins.forEach(g => {
+                        g.update();
+                        g.draw();
+                    });
+                    
+                    ctx.save();
+                    ctx.fillStyle = '#8B0000';
+                    ctx.font = 'bold 18px Arial';
+                    ctx.textAlign = 'center';
+                    const centerX = canvas.width / 2;
+                    ctx.fillText('Unión covalente: Fe²⁺ ← His F8 (Histidina proximal)', centerX, canvas.height - 50);
+                    ctx.restore();
+                }
+                
+                if (animationFrame > 600) {
+                    animationState = 6;
+                    animationFrame = 0;
+                    transitionProgress = 0;
+                    updateInfo();
+                    
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+                    
+                    globins.forEach(g => {
+                        g.targetOpacity = 0;
+                    });
+                }
+            }
+            
+            // Etapa 6: Hemoglobina completa
+            else if (animationState === 6) {
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                
+                // Fase 1: Desvanecer globinas individuales (0-100 frames)
+                if (animationFrame < 100) {
+                    globins.forEach(g => {
+                        g.update();
+                        g.draw();
+                    });
+                }
+                
+                // Fase 2: Crear hemoglobina tetramérica
+                if (animationFrame === 100) {
+                    hemoglobin = new Hemoglobin(centerX, centerY);
+                    globins = [];
+                }
+                
+                // Fase 3: Mostrar hemoglobina completa (100-350 frames)
+                if (hemoglobin && animationFrame >= 100 && animationFrame < 350) {
+                    hemoglobin.update();
+                    hemoglobin.draw();
+                    
+                    // Texto descriptivo durante la formación
+                    if (animationFrame > 150 && animationFrame < 250) {
+                        ctx.save();
+                        const textAlpha = animationFrame < 200 ? 
+                            (animationFrame - 150) / 50 : 
+                            (250 - animationFrame) / 50;
+                        ctx.globalAlpha = textAlpha;
+                        ctx.fillStyle = '#8B0000';
+                        ctx.font = 'bold 17px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('Ensamblaje cuaternario: 2α + 2β = α₂β₂', centerX, 80);
+                        ctx.restore();
+                    }
+                }
+                
+                // Fase 4: Mostrar capacidad de unión a O₂ (350+ frames)
+                if (hemoglobin && animationFrame >= 350) {
+                    hemoglobin.update();
+                    hemoglobin.draw();
+                    
+                    // Moléculas de O₂ acercándose
+                    const o2Data = [
+                        {x: centerX - 90, y: centerY - 60, phase: 0, startFrame: 350},
+                        {x: centerX + 90, y: centerY - 60, phase: Math.PI/2, startFrame: 380},
+                        {x: centerX - 90, y: centerY + 60, phase: Math.PI, startFrame: 410},
+                        {x: centerX + 90, y: centerY + 60, phase: 3*Math.PI/2, startFrame: 440}
+                    ];
+                    
+                    o2Data.forEach((data, idx) => {
+                        if (animationFrame >= data.startFrame) {
+                            const localFrame = animationFrame - data.startFrame;
+                            
+                            // Fase de acercamiento (0-60 frames)
+                            if (localFrame < 60) {
+                                const approachProgress = easeInOutCubic(localFrame / 60);
+                                const startY = data.y - 200;
+                                const currentY = startY + (data.y - 70 - startY) * approachProgress;
+                                
+                                ctx.save();
+                                ctx.globalAlpha = approachProgress;
+                                ctx.translate(data.x, currentY);
+                                
+                                // Dibujar O₂
+                                ctx.beginPath();
+                                ctx.arc(-6, 0, 9, 0, Math.PI * 2);
+                                const o2Gradient = ctx.createRadialGradient(-6, -3, 0, -6, 0, 9);
+                                o2Gradient.addColorStop(0, '#FF6B6B');
+                                o2Gradient.addColorStop(1, '#E74C3C');
+                                ctx.fillStyle = o2Gradient;
+                                ctx.fill();
+                                ctx.strokeStyle = '#C0392B';
+                                ctx.lineWidth = 2;
+                                ctx.stroke();
+                                
+                                ctx.beginPath();
+                                ctx.arc(6, 0, 9, 0, Math.PI * 2);
+                                ctx.fillStyle = o2Gradient;
+                                ctx.fill();
+                                ctx.strokeStyle = '#C0392B';
+                                ctx.stroke();
+                                
+                                // Línea de unión
+                                ctx.strokeStyle = '#C0392B';
+                                ctx.lineWidth = 3;
+                                ctx.beginPath();
+                                ctx.moveTo(-3, 0);
+                                ctx.lineTo(3, 0);
+                                ctx.stroke();
+                                
+                                ctx.fillStyle = 'white';
+                                ctx.font = 'bold 11px Arial';
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'middle';
+                                ctx.fillText('O₂', 0, 0);
+                                
+                                // Flecha hacia abajo
+                                ctx.strokeStyle = '#E74C3C';
+                                ctx.fillStyle = '#E74C3C';
+                                ctx.lineWidth = 2;
+                                ctx.beginPath();
+                                ctx.moveTo(0, 20);
+                                ctx.lineTo(0, 30);
+                                ctx.lineTo(-4, 26);
+                                ctx.moveTo(0, 30);
+                                ctx.lineTo(4, 26);
+                                ctx.stroke();
+                                
+                                ctx.restore();
+                            }
+                            // Fase estable (60+ frames) - O₂ unido
+                            else {
+                                const floatOffset = Math.sin((animationFrame - data.startFrame) * 0.08 + data.phase) * 3;
+                                
+                                ctx.save();
+                                ctx.globalAlpha = 1;
+                                ctx.translate(data.x, data.y - 70 + floatOffset);
+                                
+                                // Línea de unión al hemo (enlace coordinado)
+                                ctx.strokeStyle = 'rgba(255, 107, 107, 0.5)';
+                                ctx.lineWidth = 2;
+                                ctx.setLineDash([3, 3]);
+                                ctx.beginPath();
+                                ctx.moveTo(0, 10);
+                                ctx.lineTo(0, 25);
+                                ctx.stroke();
+                                ctx.setLineDash([]);
+                                
+                                // O₂ unido con brillo
+                                const glowIntensity = Math.sin((animationFrame - data.startFrame) * 0.1) * 0.2 + 0.6;
+                                ctx.shadowColor = '#FF6B6B';
+                                ctx.shadowBlur = 15 * glowIntensity;
+                                
+                                ctx.beginPath();
+                                ctx.arc(-6, 0, 9, 0, Math.PI * 2);
+                                const o2Gradient = ctx.createRadialGradient(-6, -3, 0, -6, 0, 9);
+                                o2Gradient.addColorStop(0, '#FF6B6B');
+                                o2Gradient.addColorStop(1, '#E74C3C');
+                                ctx.fillStyle = o2Gradient;
+                                ctx.fill();
+                                ctx.strokeStyle = '#C0392B';
+                                ctx.lineWidth = 2;
+                                ctx.stroke();
+                                
+                                ctx.beginPath();
+                                ctx.arc(6, 0, 9, 0, Math.PI * 2);
+                                ctx.fillStyle = o2Gradient;
+                                ctx.fill();
+                                ctx.strokeStyle = '#C0392B';
+                                ctx.stroke();
+                                
+                                ctx.strokeStyle = '#C0392B';
+                                ctx.lineWidth = 3;
+                                ctx.beginPath();
+                                ctx.moveTo(-3, 0);
+                                ctx.lineTo(3, 0);
+                                ctx.stroke();
+                                
+                                ctx.shadowBlur = 0;
+                                ctx.fillStyle = 'white';
+                                ctx.font = 'bold 11px Arial';
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'middle';
+                                ctx.fillText('O₂', 0, 0);
+                                
+                                ctx.restore();
+                            }
+                        }
+                    });
+                    
+                    // Texto final cuando todos los O₂ están unidos
+                    if (animationFrame > 520) {
+                        const finalTextAlpha = Math.min(1, (animationFrame - 520) / 50);
+                        ctx.save();
+                        ctx.globalAlpha = finalTextAlpha;
+                        ctx.fillStyle = '#8B0000';
+                        ctx.font = 'bold 19px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('🎯 HEMOGLOBINA FUNCIONAL', centerX, canvas.height - 80);
+                        ctx.font = '15px Arial';
+                        ctx.fillStyle = '#5C0000';
+                        ctx.fillText('Capacidad de transporte: 4 moléculas de O₂', centerX, canvas.height - 55);
+                        ctx.font = '13px Arial';
+                        ctx.fillText('Cooperatividad alostérica activa', centerX, canvas.height - 35);
+                        ctx.restore();
+                    }
+                }
+            }
+            
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        function startAnimation() {
+            if (animationState === 0 && animationFrame === 0) {
+                initAnimation();
+            }
+            isPaused = false;
+            animate();
+        }
+        
+        function pauseAnimation() {
+            isPaused = true;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        }
+        
+        function resetAnimation() {
+            isPaused = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            animationState = 0;
+            animationFrame = 0;
+            transitionProgress = 0;
+            pyrroles = [];
+            porphyrin = null;
+            heme = null;
+            hemes = [];
+            globins = [];
+            hemoglobin = null;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('stage-indicator').textContent = 'Sistema preparado para iniciar la biosíntesis';
+            document.getElementById('info-title').textContent = 'Introducción al Proceso';
+            document.getElementById('info-text').textContent = 'La hemoglobina es una metaloproteína que contiene hierro y es responsable del transporte de oxígeno en los eritrocitos. Su síntesis involucra la formación del grupo prostético hemo y su posterior unión a cadenas polipeptídicas de globina. Presione "Iniciar Síntesis" para observar el proceso molecular completo.';
+        }
+        
+        updateInfo();
+    </script>
+</body>
+</html>

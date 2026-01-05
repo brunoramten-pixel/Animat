@@ -1,0 +1,1420 @@
+<!DOCTYPE html><html lang="es"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkYmE3M2IxMjU1ZjVkYjU2ZDZhODNhYmE5YTA2Zjg5YzAwMDI1ZDciLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIxNTUzNjUzMjg4NTAyOTA3ODU4OSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjX2JmZGEzMzE5OGI0NzlkNTFfQmlvU2ltX1BhcmFuZW9wbGFzdGljX0x1bmcuaHRtbC0xMTEifSwiZXhwIjoxNzY2NzA0OTIzLCJpYXQiOjE3NjY3MDEzMjMsImFsZyI6IlJTMjU2In0.QtD1z7qB9xVqGcXDQOADjMqIgLvr7O7myqChCgzlNwDEf0Zng5HPGwghK3bPV_2vVYlh2dDnVI6dumNo4HdzyxNOQ6miRFbMZvccXmidw40nC1Gd0fv15V1Rqr7dF-TQF4BaZcmM65KSMkhPCDrIXTl6G1vb-R7ocFxIb2JSM8dYSNVbQIkihWObTHaAFXqSVvmPkbcZSVNvtnJR0m1WAJo_0tri3FllH0VaExH_yp_uiLMKF8KrPpfjkmm0V7TQMWkH7XSbZ88rbB0VlCDraL9p_dZxa4rtsUoNTiNj-fNDY5VRlzUeAaKFJW3ukMS84zwQ4Z9jPM8T0_7ILyksNQ","c_bfda33198b479d51_BioSim_Paraneoplastic_Lung.html-111")</script><script>'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script>((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-2.5-flash-preview-09-2025","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioSim: SCLC &amp; Mimetismo Molecular + IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        body { margin: 0; overflow: hidden; background-color: #020203; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        canvas { display: block; }
+        
+        .interface {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; display: flex; flex-direction: column; justify-content: space-between;
+            padding: 2rem; z-index: 10;
+        }
+
+        .glass-panel {
+            background: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            pointer-events: auto;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.8);
+        }
+
+        .btn-action {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .btn-action:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-2px); border-color: rgba(255,255,255,0.2); }
+        .btn-action:active { transform: scale(0.95); }
+        
+        .btn-treatment { border-left: 3px solid #22d3ee; }
+        .btn-treatment:hover { box-shadow: 0 0 15px rgba(34, 211, 238, 0.1); }
+        .btn-surgery { border-left: 3px solid #f43f5e; }
+        .btn-surgery:hover { box-shadow: 0 0 15px rgba(244, 63, 94, 0.1); }
+        .btn-ai { border-left: 3px solid #a855f7; background: rgba(168, 85, 247, 0.05); }
+        .btn-ai:hover { background: rgba(168, 85, 247, 0.15); box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
+        
+        .btn-disabled { opacity: 0.4; pointer-events: none; filter: grayscale(1); border-left-color: #475569; }
+
+        .stat-label { font-family: 'JetBrains Mono'; font-size: 0.6rem; color: #64748b; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.25rem; }
+        .stat-value { font-size: 1.8rem; font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+        
+        .log-entry { font-family: 'JetBrains Mono'; font-size: 0.7rem; margin-bottom: 0.5rem; padding-left: 0.5rem; border-left: 2px solid transparent; opacity: 0; animation: fadeIn 0.4s forwards; }
+        .log-info { border-color: #94a3b8; color: #cbd5e1; }
+        .log-warn { border-color: #fbbf24; color: #fcd34d; }
+        .log-crit { border-color: #f43f5e; color: #fda4af; font-weight: 600; }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateX(0); } from { opacity: 0; transform: translateX(-5px); } }
+
+        /* AI Modal Styles */
+        .ai-modal {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 450px; max-width: 90vw; height: 500px;
+            display: flex; flex-direction: column;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            z-index: 50; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .ai-modal.active { opacity: 1; pointer-events: auto; }
+        
+        .chat-content { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.8rem; }
+        .chat-msg { padding: 0.8rem; border-radius: 0.5rem; font-size: 0.8rem; line-height: 1.4; max-width: 85%; }
+        .chat-user { background: rgba(255,255,255,0.08); align-self: flex-end; border-bottom-right-radius: 0; border: 1px solid rgba(255,255,255,0.1); }
+        .chat-ai { background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2); align-self: flex-start; border-bottom-left-radius: 0; }
+        
+        .typing-dot { display: inline-block; width: 4px; height: 4px; background: #a855f7; border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite ease-in-out both; }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.bottom-0{bottom:0px}.left-0{left:0px}.top-0{top:0px}.mb-1{margin-bottom:0.25rem}.mb-3{margin-bottom:0.75rem}.mt-1{margin-top:0.25rem}.mr-2{margin-right:0.5rem}.block{display:block}.flex{display:flex}.h-1\.5{height:0.375rem}.h-12{height:3rem}.h-3{height:0.75rem}.h-40{height:10rem}.h-full{height:100%}.w-1\.5{width:0.375rem}.w-3{width:0.75rem}.w-72{width:18rem}.w-full{width:100%}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-10{gap:2.5rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-t-2{border-top-width:2px}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.border-t-rose-500\/50{border-top-color:rgb(244 63 94 / 0.5)}.bg-black\/20{background-color:rgb(0 0 0 / 0.2)}.bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234 / var(--tw-bg-opacity, 1))}.bg-rose-500{--tw-bg-opacity:1;background-color:rgb(244 63 94 / var(--tw-bg-opacity, 1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.bg-gradient-to-t{background-image:linear-gradient(to top, var(--tw-gradient-stops))}.from-\[\#050508\]{--tw-gradient-from:#050508 var(--tw-gradient-from-position);--tw-gradient-to:rgb(5 5 8 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-2{padding-bottom:0.5rem}.pb-6{padding-bottom:1.5rem}.pr-1{padding-right:0.25rem}.text-right{text-align:right}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-\[0\.6rem\]{font-size:0.6rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[0\.65rem\]{font-size:0.65rem}.font-bold{font-weight:700}.font-light{font-weight:300}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.text-cyan-300{--tw-text-opacity:1;color:rgb(103 232 249 / var(--tw-text-opacity, 1))}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.text-cyan-800{--tw-text-opacity:1;color:rgb(21 94 117 / var(--tw-text-opacity, 1))}.text-purple-100{--tw-text-opacity:1;color:rgb(243 232 255 / var(--tw-text-opacity, 1))}.text-purple-200{--tw-text-opacity:1;color:rgb(233 213 255 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-white\/50{color:rgb(255 255 255 / 0.5)}.opacity-70{opacity:0.7}.opacity-75{opacity:0.75}.opacity-40{opacity:0.4}.shadow-\[0_0_15px_\#f43f5e\]{--tw-shadow:0 0 15px #f43f5e;--tw-shadow-colored:0 0 15px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.drop-shadow-\[0_0_15px_rgba\(251\2c 113\2c 133\2c 0\.4\)\]{--tw-drop-shadow:drop-shadow(0 0 15px rgba(251,113,133,0.4));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-\[0_0_15px_rgba\(34\2c 211\2c 238\2c 0\.4\)\]{--tw-drop-shadow:drop-shadow(0 0 15px rgba(34,211,238,0.4));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-purple-500:hover{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:border-purple-400\/50:focus{border-color:rgb(192 132 252 / 0.5)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}</style></head>
+<body>
+    <canvas id="canvas" width="854" height="623"></canvas>
+
+    <div class="interface">
+        <!-- Header -->
+        <div class="flex justify-between items-start w-full">
+            <div class="glass-panel p-6 max-w-md border-t-2 border-t-rose-500/50">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="relative">
+                        <div class="w-3 h-3 rounded-full bg-rose-500 animate-pulse shadow-[0_0_15px_#f43f5e]"></div>
+                        <div class="absolute top-0 left-0 w-3 h-3 rounded-full bg-rose-500 animate-ping opacity-75"></div>
+                    </div>
+                    <h1 class="text-xl font-bold tracking-tight text-white">BioSim <span class="font-light text-slate-400">OncoNeural</span></h1>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed font-light">
+                    Visualización avanzada de <strong class="text-rose-400">SCLC Paraneoplásico</strong>.
+                    <br><br>
+                    Monitorea la liberación de antígenos onconeuronales, la ruptura de la <span class="text-cyan-300">Barrera Hematoencefálica</span> y la disfunción sináptica mediada por anticuerpos.
+                </p>
+            </div>
+
+            <div class="glass-panel p-5 flex gap-10">
+                <div class="text-right">
+                    <div class="stat-label">Integridad Neural</div>
+                    <div class="flex items-center justify-end gap-2">
+                        <span id="stat-integrity" class="stat-value text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">87</span>
+                        <span class="text-sm text-cyan-800 font-bold">%</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="stat-label">Títulos de Anticuerpos</div>
+                    <div class="flex items-center justify-end gap-2">
+                        <span id="stat-titer" class="stat-value drop-shadow-[0_0_15px_rgba(251,113,133,0.4)] text-rose-400">Elevada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Modal -->
+        <div id="ai-modal" class="glass-panel ai-modal">
+            <div class="flex justify-between items-center p-4 border-b border-white/10 bg-black/20">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-brain text-purple-400"></i>
+                    <span class="font-bold text-sm text-purple-100">Consultor Clínico IA</span>
+                </div>
+                <button onclick="toggleAI()" class="text-white/50 hover:text-white transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="chat-content" class="chat-content scrollbar-thin scrollbar-thumb-white/20">
+                <div class="chat-msg chat-ai">
+                    <span class="font-bold text-purple-300 text-xs block mb-1">SISTEMA:</span>
+                    Conectado a la simulación. Monitoreando niveles de antígenos Hu/NMDA y estado sináptico. ¿Qué deseas consultar?
+                </div>
+            </div>
+            <div class="p-3 border-t border-white/10 bg-black/20 flex gap-2">
+                <input id="chat-input" type="text" placeholder="Escribe tu consulta médica..." class="flex-1 bg-white/5 border border-white/10 rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-400/50 transition-colors">
+                <button onclick="sendChat()" class="bg-purple-600 hover:bg-purple-500 text-white px-3 rounded transition-colors"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex justify-center items-end gap-6 w-full pb-6">
+            <div class="glass-panel p-4 flex flex-col gap-2 w-72 h-40 overflow-hidden relative">
+                <div class="flex justify-between items-center border-b border-white/5 pb-2 mb-1">
+                    <span class="stat-label text-slate-500">Historial Clínico</span>
+                    <div class="flex gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+                    </div>
+                </div>
+                <div id="clinical-log" class="flex flex-col-reverse overflow-y-auto h-full pr-1 scrollbar-hide"><div class="log-entry log-warn"><span class="opacity-40 font-mono text-[0.65rem] mr-2">12s</span>Célula B Activada: Mimetismo iniciado</div><div class="log-entry log-warn"><span class="opacity-40 font-mono text-[0.65rem] mr-2">7s</span>Célula B Activada: Mimetismo iniciado</div><div class="log-entry log-warn"><span class="opacity-40 font-mono text-[0.65rem] mr-2">5s</span>Célula B Activada: Mimetismo iniciado</div><div class="log-entry log-info"><span class="opacity-40 font-mono text-[0.65rem] mr-2">0s</span>Simulación Lista. Signos vitales estables.</div><div class="log-entry log-info"><span class="opacity-40 font-mono text-[0.65rem] mr-2">0s</span>Simulación Lista. Signos vitales estables.</div>
+                    <!-- Logs injected via JS -->
+                </div>
+                <div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#050508] to-transparent pointer-events-none"></div>
+            </div>
+
+            <div class="glass-panel p-5 flex gap-4 items-center">
+                <button id="btn-immuno" class="btn-action btn-treatment" onclick="applyTreatment()">
+                    <i class="fa-solid fa-syringe text-cyan-400"></i>
+                    <div>
+                        <div class="leading-none font-bold">Inmunoterapia</div>
+                        <div class="text-[0.6rem] text-slate-400 mt-1 opacity-70">IVIG / Corticoides</div>
+                    </div>
+                </button>
+                <button id="btn-resect" class="btn-action btn-surgery" onclick="resectTumor()">
+                    <i class="fa-solid fa-scalpel text-rose-500"></i>
+                    <div>
+                        <div class="leading-none font-bold">Resección</div>
+                        <div class="text-[0.6rem] text-slate-400 mt-1 opacity-70">Lobectomía Pulmonar</div>
+                    </div>
+                </button>
+                <button class="btn-action btn-ai" onclick="toggleAI()">
+                    <i class="fa-solid fa-microscope text-purple-300"></i>
+                    <div>
+                        <div class="leading-none font-bold">Análisis IA</div>
+                        <div class="text-[0.6rem] text-purple-200 mt-1 opacity-70">Diagnóstico en Vivo</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * GEMINI API INTEGRATION
+         */
+        const apiKey = ""; 
+        let isChatOpen = false;
+
+        function toggleAI() {
+            const modal = document.getElementById('ai-modal');
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                modal.classList.add('active');
+                if (document.getElementById('chat-content').children.length <= 1) generateStatusReport();
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        async function generateStatusReport() {
+            const prompt = `Como oncólogo experto, genera un reporte médico ultrabreve (máximo 40 palabras) basado en:
+            - Integridad Neuronal: ${Math.floor(STATE.integrity)}%
+            - Anticuerpos: ${entities.antibodies.length}
+            - Tumor: ${STATE.tumorResected ? 'Resecado' : 'Activo'}
+            - Barrera Hematoencefálica: ${STATE.barrierIntegrity < 0.8 ? 'Permeable' : 'Estable'}.`;
+
+            addAIMessage("Analizando biomarcadores...", true);
+            const response = await callGemini(prompt);
+            removeTypingIndicator();
+            addAIMessage(response);
+        }
+
+        async function sendChat() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatContent = document.getElementById('chat-content');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg chat-user';
+            userMsg.innerText = text;
+            chatContent.appendChild(userMsg);
+            chatContent.scrollTop = chatContent.scrollHeight;
+            input.value = '';
+
+            const context = `Simulación Paraneoplásica SCLC. Datos:
+            Neuronas: ${Math.floor(STATE.integrity)}%, Anticuerpos: ${entities.antibodies.length}, 
+            Tumor: ${STATE.tumorResected ? 'Extirpado' : 'Presente'}, BHE: ${STATE.barrierIntegrity.toFixed(2)}.
+            Usuario pregunta: "${text}". Responde corto y científico.`;
+
+            addAIMessage("Consultando base de datos...", true);
+            const response = await callGemini(context);
+            removeTypingIndicator();
+            addAIMessage(response);
+        }
+
+        function addAIMessage(text, isTyping = false) {
+            const chatContent = document.getElementById('chat-content');
+            const msg = document.createElement('div');
+            msg.className = 'chat-msg chat-ai';
+            if (isTyping) {
+                msg.id = 'typing-indicator';
+                msg.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+            } else {
+                msg.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            }
+            chatContent.appendChild(msg);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        async function callGemini(prompt) {
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                if (!response.ok) throw new Error('API Error');
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error(error);
+                return "Error de conexión con el sistema de IA.";
+            }
+        }
+        
+        document.getElementById('chat-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') sendChat(); });
+
+        /**
+         * ENGINE & CONFIG
+         */
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        let width, height, time = 0;
+        
+        const STATE = {
+            integrity: 100,
+            antibodyLoad: 0,
+            tumorResected: false,
+            treatmentActive: 0,
+            barrierIntegrity: 1.0 
+        };
+
+        const LOG = document.getElementById('clinical-log');
+
+        function addLog(msg, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `log-entry log-${type}`;
+            div.innerHTML = `<span class="opacity-40 font-mono text-[0.65rem] mr-2">${time.toFixed(0)}s</span>${msg}`;
+            LOG.prepend(div);
+            if (LOG.children.length > 8) LOG.lastChild.remove();
+        }
+
+        function drawGlow(x, y, radius, colorStops) {
+            const g = ctx.createRadialGradient(x, y, 0, x, y, radius);
+            colorStops.forEach(stop => g.addColorStop(stop.pos, stop.color));
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
+        }
+
+        /**
+         * ENTIDADES DE ALTA CALIDAD VISUAL
+         */
+        
+        class RedBloodCell {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * height;
+            }
+            reset() {
+                this.x = Math.random() * width * 0.45;
+                this.y = height + 20;
+                this.z = Math.random() * 2 + 1; 
+                this.size = (4 + Math.random() * 5) * this.z;
+                this.speed = (0.3 + Math.random() * 0.6) * this.z;
+                this.angle = Math.random() * Math.PI;
+                this.spin = (Math.random()-0.5) * 0.03;
+                this.shade = Math.random();
+            }
+            update() {
+                this.y -= this.speed;
+                this.angle += this.spin;
+                if(this.y < -50) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.scale(1, 0.75); // Más aplastado para efecto discoidal 3D
+                
+                // Base
+                const alpha = this.z * 0.15;
+                ctx.fillStyle = `rgba(${160 + this.shade*40}, 20, 40, ${alpha})`;
+                ctx.beginPath(); ctx.arc(0, 0, this.size, 0, Math.PI*2); ctx.fill();
+                
+                // Dimple (Centro bicóncavo)
+                const grad = ctx.createRadialGradient(2, -2, 0, 0, 0, this.size);
+                grad.addColorStop(0, `rgba(255, 100, 100, ${alpha * 0.4})`); // Highlight offset
+                grad.addColorStop(0.5, `rgba(100, 10, 20, ${alpha * 0.1})`); // Sombra interior
+                grad.addColorStop(1, `rgba(0,0,0,0)`);
+                
+                ctx.fillStyle = grad;
+                ctx.beginPath(); ctx.arc(0, 0, this.size * 0.8, 0, Math.PI*2); ctx.fill();
+                
+                ctx.restore();
+            }
+        }
+
+        class Particle {
+            constructor(x, y, type) {
+                this.x = x; this.y = y; this.type = type;
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = Math.random() * 1.5 + 0.5;
+                this.life = 1.0;
+                this.vx = Math.cos(this.angle) * this.speed;
+                this.vy = Math.sin(this.angle) * this.speed;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                this.life -= 0.005;
+                if(this.x < width * 0.55) this.y -= 0.3; // Flujo sanguíneo
+                
+                if(this.type === 'antigen' && this.x > width * 0.54 && this.x < width * 0.56) {
+                    if(Math.random() > (1 - STATE.barrierIntegrity)) { this.vx *= -0.8; this.x -= 2; }
+                }
+            }
+            draw() {
+                ctx.globalAlpha = Math.max(0, this.life);
+                if(this.type === 'antigen') {
+                    // Proteína espinosa
+                    ctx.fillStyle = '#f43f5e';
+                    ctx.shadowColor = '#fb7185'; ctx.shadowBlur = 4;
+                    ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI*2); ctx.fill();
+                    // Spikes
+                    for(let i=0; i<3; i++) {
+                        const a = this.angle + i * (Math.PI*2/3);
+                        ctx.beginPath(); ctx.moveTo(this.x, this.y); 
+                        ctx.lineTo(this.x + Math.cos(a)*4, this.y + Math.sin(a)*4);
+                        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 1; ctx.stroke();
+                    }
+                    ctx.shadowBlur = 0;
+                } else if (this.type === 'treatment') {
+                    // Molécula brillante
+                    ctx.fillStyle = '#22d3ee';
+                    ctx.shadowColor = '#67e8f9'; ctx.shadowBlur = 8;
+                    ctx.beginPath(); ctx.arc(this.x, this.y, 2.5, 0, Math.PI*2); ctx.fill();
+                    ctx.fillStyle = '#fff';
+                    ctx.beginPath(); ctx.arc(this.x-1, this.y-1, 1, 0, Math.PI*2); ctx.fill();
+                    ctx.shadowBlur = 0;
+                } else if (this.type === 'smoke') {
+                    // Humo volumétrico
+                    const s = 10 + (1-this.life)*25;
+                    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, s);
+                    grad.addColorStop(0, `rgba(100, 20, 40, ${this.life * 0.2})`);
+                    grad.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath(); ctx.arc(this.x, this.y, s, 0, Math.PI*2); ctx.fill();
+                }
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        class Antibody {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.speed = 3 + Math.random();
+                this.target = null;
+                this.life = 1.0;
+                this.trail = [];
+                this.wobble = Math.random() * 100;
+            }
+            findTarget() {
+                const inBrain = this.x > width * 0.55;
+                let targets = inBrain ? entities.neurons : entities.tumors;
+                targets = targets.filter(t => t.health > 0);
+                if (Math.random() < 0.2) targets = entities.neurons.filter(t => t.health > 0);
+                if (targets.length > 0) {
+                    let minD = Infinity, closest = null;
+                    targets.forEach(t => { const d = Math.hypot(t.x-this.x, t.y-this.y); if(d<minD){minD=d; closest=t;} });
+                    this.target = closest;
+                } else { this.target = {x: width*0.9, y: Math.random()*height}; }
+            }
+            update() {
+                if(STATE.treatmentActive > 0) { this.life -= 0.1; if(this.life <= 0) return false; }
+                if (!this.target || (this.target.health !== undefined && this.target.health <= 0)) this.findTarget();
+
+                const dx = this.target.x - this.x; const dy = this.target.y - this.y;
+                const dist = Math.hypot(dx, dy);
+                
+                this.x += (dx/dist) * this.speed; this.y += (dy/dist) * this.speed;
+                this.x += Math.cos(time * 10 + this.wobble) * 0.5; // Movimiento browniano
+                this.trail.push({x:this.x, y:this.y}); if(this.trail.length > 8) this.trail.shift();
+
+                const barrierX = width * 0.55;
+                if (this.x < barrierX && (this.x + this.speed) >= barrierX) {
+                    if (Math.random() > (1 - STATE.barrierIntegrity + 0.05)) {
+                         this.x -= 8; drawGlow(this.x, this.y, 12, [{pos:0, color:'rgba(255,255,255,0.8)'}, {pos:1, color:'transparent'}]);
+                    }
+                }
+
+                if (dist < 25) {
+                    if (this.target instanceof Neuron) { this.target.hit(); return false; }
+                    else if (this.target instanceof Tumor) { 
+                        drawGlow(this.x, this.y, 25, [{pos:0, color:'rgba(255,150,150,0.6)'}, {pos:1, color:'transparent'}]);
+                        return false; 
+                    }
+                }
+                return true;
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                const angle = Math.atan2(this.target?.y - this.y || 0, this.target?.x - this.x || 1) + Math.PI/2;
+                ctx.rotate(angle);
+                
+                // Estructura de proteína Y (Cadenas pesadas y ligeras)
+                ctx.strokeStyle = `rgba(186, 230, 253, ${this.life})`;
+                ctx.lineCap = 'round';
+                
+                // Tallo (Fc region)
+                ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(0, 0); ctx.stroke();
+                
+                // Brazos (Fab region)
+                ctx.lineWidth = 2;
+                ctx.beginPath(); 
+                ctx.moveTo(0, 0); ctx.quadraticCurveTo(-2, -2, -4, -5);
+                ctx.moveTo(0, 0); ctx.quadraticCurveTo(2, -2, 4, -5);
+                ctx.stroke();
+
+                // Glow sutil
+                ctx.shadowColor = '#38bdf8'; ctx.shadowBlur = 6;
+                ctx.fillStyle = '#fff';
+                ctx.beginPath(); ctx.arc(0, 0, 1, 0, Math.PI*2); ctx.fill();
+                ctx.shadowBlur = 0;
+                
+                ctx.restore();
+            }
+        }
+
+        class Neuron {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.health = 100;
+                this.excitability = 0;
+                this.seed = Math.random() * 1000;
+                this.dendrites = [];
+                // Dendritas Fractales con ruido
+                for(let i=0; i<6; i++) {
+                    const angle = (i/6)*Math.PI*2 + (Math.random()-0.5)*0.5;
+                    const len = 40 + Math.random() * 50;
+                    this.dendrites.push({
+                        points: this.generateBranch(0, 0, angle, len, 2)
+                    });
+                }
+                this.pulses = [];
+            }
+            generateBranch(x, y, angle, len, depth) {
+                if (depth <= 0) return [];
+                const endX = x + Math.cos(angle) * len;
+                const endY = y + Math.sin(angle) * len;
+                // Puntos de control para curvatura natural
+                const cp1x = x + Math.cos(angle - 0.2) * len * 0.3;
+                const cp1y = y + Math.sin(angle - 0.2) * len * 0.3;
+                const cp2x = endX - Math.cos(angle + 0.2) * len * 0.3;
+                const cp2y = endY - Math.sin(angle + 0.2) * len * 0.3;
+                
+                let branch = [{ type: 'curve', x, y, cp1x, cp1y, cp2x, cp2y, endX, endY }];
+                
+                if (depth > 1) {
+                    const subLen = len * 0.6;
+                    branch = branch.concat(this.generateBranch(endX, endY, angle - 0.4, subLen, depth - 1));
+                    if(Math.random() > 0.3) branch = branch.concat(this.generateBranch(endX, endY, angle + 0.4, subLen, depth - 1));
+                }
+                return branch;
+            }
+            hit() {
+                this.health -= 6;
+                this.excitability = 100;
+                this.pulses.push({pos: 1.0, speed: -0.1});
+                STATE.integrity = Math.max(0, STATE.integrity - 0.9);
+                if(this.health < 94 && this.health > 88) addLog("Sinapsis crítica: Daño excitotóxico", "warn");
+            }
+            update() {
+                if(this.excitability > 0) this.excitability -= 0.8;
+                if(this.health > 0 && Math.random() < 0.02) this.pulses.push({pos: 0, speed: 0.04});
+                for(let i=this.pulses.length-1; i>=0; i--) {
+                    let p = this.pulses[i]; p.pos += p.speed; if(p.pos > 1 || p.pos < 0) this.pulses.splice(i,1);
+                }
+            }
+            draw() {
+                const dead = this.health <= 0;
+                const shake = this.excitability > 40 ? (Math.random()-0.5)*2 : 0;
+                ctx.save();
+                ctx.translate(this.x + shake, this.y + shake);
+
+                // Aura eléctrica
+                if(!dead) drawGlow(0,0, 80 + Math.sin(time*2+this.seed)*10, [{pos:0, color: this.excitability > 40 ? 'rgba(250, 204, 21, 0.15)' : 'rgba(34, 211, 238, 0.08)'}, {pos:1, color:'transparent'}]);
+
+                ctx.lineCap = 'round';
+                const baseColor = dead ? '#334155' : (this.excitability > 60 ? '#fde047' : '#0ea5e9');
+                ctx.strokeStyle = baseColor;
+                
+                // Dibujar Ramas Complejas
+                this.dendrites.forEach(d => {
+                    d.points.forEach(seg => {
+                        ctx.lineWidth = dead ? 1 : 1.5;
+                        ctx.beginPath(); ctx.moveTo(seg.x, seg.y);
+                        ctx.bezierCurveTo(seg.cp1x, seg.cp1y, seg.cp2x, seg.cp2y, seg.endX, seg.endY);
+                        ctx.stroke();
+
+                        // Impulsos
+                        this.pulses.forEach(p => {
+                            if(p.speed > 0) { // Simplificado para visualización
+                                const t = p.pos;
+                                const px = seg.x * (1-t)**3 + 3*seg.cp1x*(1-t)**2*t + 3*seg.cp2x*(1-t)*t**2 + seg.endX*t**3;
+                                const py = seg.y * (1-t)**3 + 3*seg.cp1y*(1-t)**2*t + 3*seg.cp2y*(1-t)*t**2 + seg.endY*t**3;
+                                if(Math.random()<0.1) { // Sparkle effect
+                                    ctx.fillStyle = '#fff'; ctx.shadowBlur = 6; ctx.shadowColor='#fff';
+                                    ctx.beginPath(); ctx.arc(px, py, 1.5, 0, Math.PI*2); ctx.fill(); ctx.shadowBlur=0;
+                                }
+                            }
+                        });
+                    });
+                });
+
+                // Soma (Cuerpo Celular Texturizado)
+                const grad = ctx.createRadialGradient(-3, -3, 0, 0, 0, 18);
+                grad.addColorStop(0, dead ? '#1e293b' : '#22d3ee');
+                grad.addColorStop(0.5, dead ? '#0f172a' : '#0891b2');
+                grad.addColorStop(1, dead ? '#020617' : '#164e63');
+                
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                // Forma irregular orgánica
+                for(let i=0; i<=Math.PI*2; i+=0.4) {
+                    const r = 16 + Math.sin(i*3 + this.seed)*1;
+                    ctx.lineTo(Math.cos(i)*r, Math.sin(i)*r);
+                }
+                ctx.fill();
+
+                // Núcleo brillante
+                if(!dead) {
+                    ctx.shadowColor = '#cffafe'; ctx.shadowBlur = 10;
+                    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(0,0, 4, 0, Math.PI*2); ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+                ctx.restore();
+            }
+        }
+
+        class Tumor {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.radius = 65;
+                this.health = 100;
+                this.nodes = [];
+                // Nódulos superpuestos para efecto "metaball" fake
+                for(let i=0; i<15; i++) {
+                    this.nodes.push({
+                        dx: (Math.random()-0.5) * 50,
+                        dy: (Math.random()-0.5) * 70,
+                        r: 15 + Math.random() * 25,
+                        phase: Math.random() * 10
+                    });
+                }
+                this.veins = []; // Vascularización
+                for(let i=0; i<10; i++) {
+                    this.veins.push({
+                        points: [ {x:0, y:0}, {x: (Math.random()-0.5)*80, y: (Math.random()-0.5)*90} ]
+                    });
+                }
+            }
+            update() {
+                if(STATE.tumorResected) { this.radius *= 0.92; if(this.radius < 1) this.health = 0; return; }
+                if(Math.random() < 0.2) entities.particles.push(new Particle(this.x + (Math.random()-0.5)*40, this.y + (Math.random()-0.5)*40, 'antigen'));
+                if(Math.random() < 0.1) entities.particles.push(new Particle(this.x, this.y - 40, 'smoke'));
+            }
+            draw() {
+                if(this.health <= 0) return;
+                ctx.save();
+                ctx.translate(this.x, this.y);
+
+                drawGlow(0,0, 140, [{pos:0, color:'rgba(159, 18, 57, 0.3)'}, {pos:1, color:'transparent'}]);
+
+                // Dibujar nodos fusionados
+                this.nodes.forEach(n => {
+                    const pulse = Math.sin(time * 2 + n.phase) * 1.5;
+                    const r = n.r + pulse;
+                    
+                    const grad = ctx.createRadialGradient(n.dx-5, n.dy-5, 0, n.dx, n.dy, r);
+                    grad.addColorStop(0, '#f43f5e'); 
+                    grad.addColorStop(0.6, '#9f1239'); 
+                    grad.addColorStop(1, '#4c0519'); 
+                    
+                    ctx.fillStyle = grad;
+                    ctx.beginPath(); ctx.arc(n.dx, n.dy, r, 0, Math.PI*2); ctx.fill();
+                });
+
+                // Vascularización (Venas superficiales)
+                ctx.strokeStyle = 'rgba(255, 200, 200, 0.15)';
+                ctx.lineWidth = 1;
+                this.veins.forEach(v => {
+                    ctx.beginPath(); ctx.moveTo(v.points[0].x, v.points[0].y);
+                    ctx.quadraticCurveTo(v.points[1].x*0.5 + Math.sin(time)*5, v.points[1].y*0.5, v.points[1].x, v.points[1].y);
+                    ctx.stroke();
+                });
+
+                if(!STATE.tumorResected) {
+                    ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.font='bold 10px Inter'; ctx.textAlign='center'; 
+                    ctx.fillText("SCLC (TUMOR)", 0, 95);
+                }
+                ctx.restore();
+            }
+        }
+
+        class BCell {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.active = false;
+                this.activation = 0;
+                this.cilia = []; // Filopodios
+                for(let i=0; i<24; i++) this.cilia.push({ phase: Math.random()*10, len: 18 + Math.random()*4 });
+            }
+            update() {
+                this.y += Math.sin(time*1.5 + this.x)*0.2;
+                if(STATE.treatmentActive > 0) { this.active = false; this.activation = 0; }
+                
+                if(!this.active) {
+                    for(let i=entities.particles.length-1; i>=0; i--) {
+                        let p = entities.particles[i];
+                        if(p.type === 'antigen' && Math.hypot(p.x-this.x, p.y-this.y) < 40) {
+                            entities.particles.splice(i,1);
+                            this.activation += 35;
+                            if(this.activation > 90) { this.active = true; STATE.barrierIntegrity -= 0.1; addLog("Célula B Activada: Mimetismo iniciado", "warn"); }
+                            break;
+                        }
+                    }
+                } else {
+                    if(Math.random() < 0.04) { entities.antibodies.push(new Antibody(this.x, this.y)); STATE.antibodyLoad++; this.x -= 3; }
+                }
+                if(this.activation > 0) this.activation -= 0.1;
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                if(this.active) drawGlow(0,0,50, [{pos:0, color:'rgba(96, 165, 250, 0.4)'}, {pos:1, color:'transparent'}]);
+                
+                // Cuerpo con gradiente 3D
+                const grad = ctx.createRadialGradient(-5, -5, 0, 0, 0, 20);
+                grad.addColorStop(0, this.active ? '#93c5fd' : '#94a3b8');
+                grad.addColorStop(1, this.active ? '#1d4ed8' : '#334155');
+                ctx.fillStyle = grad;
+                
+                // Forma irregular (wobble)
+                ctx.beginPath();
+                for(let i=0; i<=Math.PI*2; i+=0.3) {
+                    const r = 20 + Math.sin(i*4 + time*2)*1;
+                    ctx.lineTo(Math.cos(i)*r, Math.sin(i)*r);
+                }
+                ctx.fill();
+
+                // Cilios detallados
+                ctx.strokeStyle = this.active ? '#60a5fa' : '#64748b';
+                ctx.lineWidth = 1;
+                this.cilia.forEach((c, i) => {
+                    const angle = (i/24) * Math.PI * 2;
+                    const wave = Math.sin(time * 3 + c.phase) * 0.2;
+                    const l = c.len + (this.active ? 5 : 0);
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(Math.cos(angle)*19, Math.sin(angle)*19);
+                    ctx.quadraticCurveTo(
+                        Math.cos(angle + wave)*l*0.8, Math.sin(angle + wave)*l*0.8,
+                        Math.cos(angle + wave*2)*l, Math.sin(angle + wave*2)*l
+                    );
+                    ctx.stroke();
+
+                    // Receptores Y en las puntas (BCR)
+                    if(!this.active) {
+                        const ex = Math.cos(angle + wave*2)*l;
+                        const ey = Math.sin(angle + wave*2)*l;
+                        ctx.save(); ctx.translate(ex, ey); ctx.rotate(angle+Math.PI/2);
+                        ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth=1;
+                        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-2,-3); ctx.moveTo(0,0); ctx.lineTo(2,-3); ctx.stroke();
+                        ctx.restore();
+                    }
+                });
+                
+                // Núcleo grande
+                ctx.fillStyle = this.active ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)';
+                ctx.beginPath(); ctx.arc(-2, -2, 9, 0, Math.PI*2); ctx.fill();
+                
+                ctx.restore();
+            }
+        }
+
+        const entities = {
+            bg: [], tumors: [], neurons: [], bcells: [], antibodies: [], particles: []
+        };
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            
+            entities.bg = Array.from({length: 45}, () => new RedBloodCell());
+            entities.tumors = [new Tumor(width * 0.15, height * 0.6)];
+            entities.neurons = Array.from({length: 5}, (_, i) => new Neuron(width * 0.82, height * (0.15 + i * 0.19)));
+            entities.bcells = Array.from({length: 3}, (_, i) => new BCell(width * 0.35, height * (0.3 + i * 0.2)));
+            entities.antibodies = [];
+            entities.particles = [];
+            STATE.integrity = 100;
+            STATE.tumorResected = false;
+            addLog("Simulación Lista. Signos vitales estables.", "info");
+        }
+
+        function drawBarrier() {
+            const bx = width * 0.55;
+            const cellSize = 30;
+            const cellsCount = Math.ceil(height / cellSize);
+            const gap = (1 - STATE.barrierIntegrity) * 18;
+            
+            // Estilo celular de barrera
+            ctx.fillStyle = '#334155';
+            ctx.strokeStyle = '#475569';
+            ctx.lineWidth = 1;
+
+            for(let i=0; i<cellsCount; i++) {
+                const y = i * cellSize;
+                // Célula endotelial 1
+                const grad1 = ctx.createLinearGradient(bx - 15 - gap/2, y, bx - 2 - gap/2, y);
+                grad1.addColorStop(0, '#1e293b'); grad1.addColorStop(1, '#334155');
+                ctx.fillStyle = grad1;
+                ctx.beginPath(); ctx.roundRect(bx - 12 - gap/2, y + 2, 10, cellSize - 4, 3); ctx.fill(); ctx.stroke();
+                
+                // Célula endotelial 2
+                const grad2 = ctx.createLinearGradient(bx + 2 + gap/2, y, bx + 15 + gap/2, y);
+                grad2.addColorStop(0, '#334155'); grad2.addColorStop(1, '#1e293b');
+                ctx.fillStyle = grad2;
+                ctx.beginPath(); ctx.roundRect(bx + 2 + gap/2, y + 2, 10, cellSize - 4, 3); ctx.fill(); ctx.stroke();
+                
+                // Uniones estrechas (Tight Junctions) visualizadas como hilos si está intacta
+                if(STATE.barrierIntegrity > 0.9) {
+                    ctx.strokeStyle = 'rgba(100, 255, 200, 0.3)';
+                    ctx.beginPath(); ctx.moveTo(bx - 2, y + cellSize/2); ctx.lineTo(bx + 2, y + cellSize/2); ctx.stroke();
+                }
+            }
+            
+            ctx.save();
+            ctx.translate(bx, height - 30);
+            ctx.fillStyle = STATE.barrierIntegrity < 0.8 ? '#f43f5e' : '#94a3b8';
+            ctx.font = '10px JetBrains Mono';
+            ctx.textAlign = 'center';
+            ctx.fillText(STATE.barrierIntegrity < 0.8 ? "BARRERA: PERMEABLE" : "BARRERA: SELECTIVA", 0, 0);
+            ctx.restore();
+        }
+
+        function loop() {
+            time += 0.016;
+            
+            // Background Layer
+            ctx.fillStyle = '#020203'; ctx.fillRect(0,0,width,height);
+            const g = ctx.createLinearGradient(0,0,width,0);
+            g.addColorStop(0, '#100404'); g.addColorStop(0.5, '#020203'); g.addColorStop(1, '#020610');
+            ctx.fillStyle = g; ctx.fillRect(0,0,width,height);
+
+            entities.bg.forEach(b => { b.update(); b.draw(); });
+            drawBarrier();
+
+            if(STATE.treatmentActive > 0) {
+                STATE.treatmentActive -= 0.005;
+                if(Math.random()<0.3) entities.particles.push(new Particle(Math.random()*width, Math.random()*height, 'treatment'));
+                STATE.barrierIntegrity = Math.min(1.0, STATE.barrierIntegrity + 0.001);
+            }
+
+            entities.tumors.forEach(e => { e.update(); e.draw(); });
+            entities.neurons.forEach(e => { e.update(); e.draw(); });
+            entities.bcells.forEach(e => { e.update(); e.draw(); });
+
+            for (let i = entities.antibodies.length - 1; i >= 0; i--) {
+                const ab = entities.antibodies[i];
+                if (!ab.update()) entities.antibodies.splice(i, 1); else ab.draw();
+            }
+            for (let i = entities.particles.length - 1; i >= 0; i--) {
+                const p = entities.particles[i];
+                p.update(); p.draw(); if (p.life <= 0) entities.particles.splice(i, 1);
+            }
+
+            // Stats Update
+            document.getElementById('stat-integrity').innerText = Math.floor(STATE.integrity);
+            const abCount = entities.antibodies.length;
+            const abEl = document.getElementById('stat-titer');
+            abEl.innerText = abCount < 5 ? "Normal" : (abCount < 20 ? "Elevada" : "CRÍTICA");
+            abEl.className = `stat-value drop-shadow-[0_0_15px_rgba(251,113,133,0.4)] ${abCount > 20 ? 'text-rose-500 animate-pulse' : 'text-rose-400'}`;
+
+            requestAnimationFrame(loop);
+        }
+
+        window.applyTreatment = () => {
+            if(STATE.treatmentActive > 0) return;
+            STATE.treatmentActive = 2.0;
+            addLog("Inmunoterapia: Reduciendo inflamación.", "info");
+        };
+
+        window.resectTumor = () => {
+            if(STATE.tumorResected) return;
+            STATE.tumorResected = true;
+            document.getElementById('btn-resect').classList.add('btn-disabled');
+            addLog("Cirugía Exitosa: Fuente eliminada.", "info");
+        };
+
+        window.addEventListener('resize', init);
+        init();
+        requestAnimationFrame(loop);
+
+    </script>
+
+</body></html>

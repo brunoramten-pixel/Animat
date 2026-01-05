@@ -1,0 +1,1085 @@
+<!DOCTYPE html><html lang="es"><head>
+
+<script class="injected-ffc2e83d85">
+(function(){'use strict';function q(b){var c=0;return function(){return c<b.length?{done:!1,value:b[c++]}:{done:!0}}}function t(b){var c=typeof Symbol!="undefined"&&Symbol.iterator&&b[Symbol.iterator];if(c)return c.call(b);if(typeof b.length=="number")return{next:q(b)};throw Error(String(b)+" is not an iterable or ArrayLike");}var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,c,g){if(b==Array.prototype||b==Object.prototype)return b;b[c]=g.value;return b};
+function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var c=0;c<b.length;++c){var g=b[c];if(g&&g.Math==Math)return g}throw Error("Cannot find global object");}var w=v(this);function x(b,c){if(c)a:{var g=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var l=b[h];if(!(l in g))break a;g=g[l]}b=b[b.length-1];h=g[b];c=c(h);c!=h&&c!=null&&u(g,b,{configurable:!0,writable:!0,value:c})}}
+function y(){this.j=!1;this.g=null;this.u=void 0;this.h=1;this.v=this.l=0;this.i=null}function z(b){if(b.j)throw new TypeError("Generator is already running");b.j=!0}y.prototype.o=function(b){this.u=b};function A(b,c){b.i={I:c,J:!0};b.h=b.l||b.v}y.prototype.return=function(b){this.i={return:b};this.h=this.v};function B(b){this.g=new y;this.h=b}function E(b,c){z(b.g);var g=b.g.g;if(g)return F(b,"return"in g?g["return"]:function(h){return{value:h,done:!0}},c,b.g.return);b.g.return(c);return G(b)}
+function F(b,c,g,h){try{var l=c.call(b.g.g,g);if(!(l instanceof Object))throw new TypeError("Iterator result "+l+" is not an object");if(!l.done)return b.g.j=!1,l;var m=l.value}catch(f){return b.g.g=null,A(b.g,f),G(b)}b.g.g=null;h.call(b.g,m);return G(b)}function G(b){for(;b.g.h;)try{var c=b.h(b.g);if(c)return b.g.j=!1,{value:c.value,done:!1}}catch(g){b.g.u=void 0,A(b.g,g)}b.g.j=!1;if(b.g.i){c=b.g.i;b.g.i=null;if(c.J)throw c.I;return{value:c.return,done:!0}}return{value:void 0,done:!0}}
+function H(b){this.next=function(c){z(b.g);b.g.g?c=F(b,b.g.g.next,c,b.g.o):(b.g.o(c),c=G(b));return c};this.throw=function(c){z(b.g);b.g.g?c=F(b,b.g.g["throw"],c,b.g.o):(A(b.g,c),c=G(b));return c};this.return=function(c){return E(b,c)};this[Symbol.iterator]=function(){return this}}function I(b){function c(h){return b.next(h)}function g(h){return b.throw(h)}return new Promise(function(h,l){function m(f){f.done?h(f.value):Promise.resolve(f.value).then(c,g).then(m,l)}m(b.next())})}
+x("Symbol",function(b){function c(m){if(this instanceof c)throw new TypeError("Symbol is not a constructor");return new g(h+(m||"")+"_"+l++,m)}function g(m,f){this.g=m;u(this,"description",{configurable:!0,writable:!0,value:f})}if(b)return b;g.prototype.toString=function(){return this.g};var h="jscomp_symbol_"+(Math.random()*1E9>>>0)+"_",l=0;return c});
+x("Symbol.iterator",function(b){if(b)return b;b=Symbol("Symbol.iterator");u(Array.prototype,b,{configurable:!0,writable:!0,value:function(){return J(q(this))}});return b});function J(b){b={next:b};b[Symbol.iterator]=function(){return this};return b}
+x("Promise",function(b){function c(f){this.h=0;this.i=void 0;this.g=[];this.u=!1;var a=this.j();try{f(a.resolve,a.reject)}catch(d){a.reject(d)}}function g(){this.g=null}function h(f){return f instanceof c?f:new c(function(a){a(f)})}if(b)return b;g.prototype.h=function(f){if(this.g==null){this.g=[];var a=this;this.i(function(){a.l()})}this.g.push(f)};var l=w.setTimeout;g.prototype.i=function(f){l(f,0)};g.prototype.l=function(){for(;this.g&&this.g.length;){var f=this.g;this.g=[];for(var a=0;a<f.length;++a){var d=
+f[a];f[a]=null;try{d()}catch(e){this.j(e)}}}this.g=null};g.prototype.j=function(f){this.i(function(){throw f;})};c.prototype.j=function(){function f(e){return function(k){d||(d=!0,e.call(a,k))}}var a=this,d=!1;return{resolve:f(this.D),reject:f(this.l)}};c.prototype.D=function(f){if(f===this)this.l(new TypeError("A Promise cannot resolve to itself"));else if(f instanceof c)this.G(f);else{a:switch(typeof f){case "object":var a=f!=null;break a;case "function":a=!0;break a;default:a=!1}a?this.C(f):this.o(f)}};
+c.prototype.C=function(f){var a=void 0;try{a=f.then}catch(d){this.l(d);return}typeof a=="function"?this.H(a,f):this.o(f)};c.prototype.l=function(f){this.v(2,f)};c.prototype.o=function(f){this.v(1,f)};c.prototype.v=function(f,a){if(this.h!=0)throw Error("Cannot settle("+f+", "+a+"): Promise already settled in state"+this.h);this.h=f;this.i=a;this.h===2&&this.F();this.K()};c.prototype.F=function(){var f=this;l(function(){if(f.B()){var a=w.console;typeof a!=="undefined"&&a.error(f.i)}},1)};c.prototype.B=
+function(){if(this.u)return!1;var f=w.CustomEvent,a=w.Event,d=w.dispatchEvent;if(typeof d==="undefined")return!0;typeof f==="function"?f=new f("unhandledrejection",{cancelable:!0}):typeof a==="function"?f=new a("unhandledrejection",{cancelable:!0}):(f=w.document.createEvent("CustomEvent"),f.initCustomEvent("unhandledrejection",!1,!0,f));f.promise=this;f.reason=this.i;return d(f)};c.prototype.K=function(){if(this.g!=null){for(var f=0;f<this.g.length;++f)m.h(this.g[f]);this.g=null}};var m=new g;c.prototype.G=
+function(f){var a=this.j();f.A(a.resolve,a.reject)};c.prototype.H=function(f,a){var d=this.j();try{f.call(a,d.resolve,d.reject)}catch(e){d.reject(e)}};c.prototype.then=function(f,a){function d(n,r){return typeof n=="function"?function(C){try{e(n(C))}catch(D){k(D)}}:r}var e,k,p=new c(function(n,r){e=n;k=r});this.A(d(f,e),d(a,k));return p};c.prototype.catch=function(f){return this.then(void 0,f)};c.prototype.A=function(f,a){function d(){switch(e.h){case 1:f(e.i);break;case 2:a(e.i);break;default:throw Error("Unexpected state: "+
+e.h);}}var e=this;this.g==null?m.h(d):this.g.push(d);this.u=!0};c.resolve=h;c.reject=function(f){return new c(function(a,d){d(f)})};c.race=function(f){return new c(function(a,d){for(var e=t(f),k=e.next();!k.done;k=e.next())h(k.value).A(a,d)})};c.all=function(f){var a=t(f),d=a.next();return d.done?h([]):new c(function(e,k){function p(C){return function(D){n[C]=D;r--;r==0&&e(n)}}var n=[],r=0;do n.push(void 0),r++,h(d.value).A(p(n.length-1),k),d=a.next();while(!d.done)})};return c});
+function K(b,c){return Object.prototype.hasOwnProperty.call(b,c)}x("Object.is",function(b){return b?b:function(c,g){return c===g?c!==0||1/c===1/g:c!==c&&g!==g}});x("Array.prototype.includes",function(b){return b?b:function(c,g){var h=this;h instanceof String&&(h=String(h));var l=h.length;g=g||0;for(g<0&&(g=Math.max(g+l,0));g<l;g++){var m=h[g];if(m===c||Object.is(m,c))return!0}return!1}});
+x("String.prototype.includes",function(b){return b?b:function(c,g){if(this==null)throw new TypeError("The 'this' value for String.prototype.includes must not be null or undefined");if(c instanceof RegExp)throw new TypeError("First argument to String.prototype.includes must not be a regular expression");return this.indexOf(c,g||0)!==-1}});
+x("WeakMap",function(b){function c(d){this.g=(a+=Math.random()+1).toString();if(d){d=t(d);for(var e;!(e=d.next()).done;)e=e.value,this.set(e[0],e[1])}}function g(){}function h(d){var e=typeof d;return e==="object"&&d!==null||e==="function"}function l(d){if(!K(d,f)){var e=new g;u(d,f,{value:e})}}function m(d){var e=Object[d];e&&(Object[d]=function(k){if(k instanceof g)return k;Object.isExtensible(k)&&l(k);return e(k)})}if(function(){if(!b||!Object.seal)return!1;try{var d=Object.seal({}),e=Object.seal({}),
+k=new b([[d,2],[e,3]]);if(k.get(d)!=2||k.get(e)!=3)return!1;k.delete(d);k.set(e,4);return!k.has(d)&&k.get(e)==4}catch(p){return!1}}())return b;var f="$jscomp_hidden_"+Math.random();m("freeze");m("preventExtensions");m("seal");var a=0;c.prototype.set=function(d,e){if(!h(d))throw Error("Invalid WeakMap key");l(d);if(!K(d,f))throw Error("WeakMap key fail: "+d);d[f][this.g]=e;return this};c.prototype.get=function(d){return h(d)&&K(d,f)?d[f][this.g]:void 0};c.prototype.has=function(d){return h(d)&&K(d,
+f)&&K(d[f],this.g)};c.prototype.delete=function(d){return h(d)&&K(d,f)&&K(d[f],this.g)?delete d[f][this.g]:!1};return c});
+x("Map",function(b){function c(){var a={};return a.m=a.next=a.head=a}function g(a,d){var e=a[1];return J(function(){if(e){for(;e.head!=a[1];)e=e.m;for(;e.next!=e.head;)return e=e.next,{done:!1,value:d(e)};e=null}return{done:!0,value:void 0}})}function h(a,d){var e=d&&typeof d;e=="object"||e=="function"?m.has(d)?e=m.get(d):(e=""+ ++f,m.set(d,e)):e="p_"+d;var k=a[0][e];if(k&&K(a[0],e))for(a=0;a<k.length;a++){var p=k[a];if(d!==d&&p.key!==p.key||d===p.key)return{id:e,list:k,index:a,entry:p}}return{id:e,
+list:k,index:-1,entry:void 0}}function l(a){this[0]={};this[1]=c();this.size=0;if(a){a=t(a);for(var d;!(d=a.next()).done;)d=d.value,this.set(d[0],d[1])}}if(function(){if(!b||typeof b!="function"||!b.prototype.entries||typeof Object.seal!="function")return!1;try{var a=Object.seal({x:4}),d=new b(t([[a,"s"]]));if(d.get(a)!="s"||d.size!=1||d.get({x:4})||d.set({x:4},"t")!=d||d.size!=2)return!1;var e=d.entries(),k=e.next();if(k.done||k.value[0]!=a||k.value[1]!="s")return!1;k=e.next();return k.done||k.value[0].x!=
+4||k.value[1]!="t"||!e.next().done?!1:!0}catch(p){return!1}}())return b;var m=new WeakMap;l.prototype.set=function(a,d){a=a===0?0:a;var e=h(this,a);e.list||(e.list=this[0][e.id]=[]);e.entry?e.entry.value=d:(e.entry={next:this[1],m:this[1].m,head:this[1],key:a,value:d},e.list.push(e.entry),this[1].m.next=e.entry,this[1].m=e.entry,this.size++);return this};l.prototype.delete=function(a){a=h(this,a);return a.entry&&a.list?(a.list.splice(a.index,1),a.list.length||delete this[0][a.id],a.entry.m.next=a.entry.next,
+a.entry.next.m=a.entry.m,a.entry.head=null,this.size--,!0):!1};l.prototype.clear=function(){this[0]={};this[1]=this[1].m=c();this.size=0};l.prototype.has=function(a){return!!h(this,a).entry};l.prototype.get=function(a){return(a=h(this,a).entry)&&a.value};l.prototype.entries=function(){return g(this,function(a){return[a.key,a.value]})};l.prototype.keys=function(){return g(this,function(a){return a.key})};l.prototype.values=function(){return g(this,function(a){return a.value})};l.prototype.forEach=
+function(a,d){for(var e=this.entries(),k;!(k=e.next()).done;)k=k.value,a.call(d,k[1],k[0],this)};l.prototype[Symbol.iterator]=l.prototype.entries;var f=0;return l});
+x("Set",function(b){function c(g){this.g=new Map;if(g){g=t(g);for(var h;!(h=g.next()).done;)this.add(h.value)}this.size=this.g.size}if(function(){if(!b||typeof b!="function"||!b.prototype.entries||typeof Object.seal!="function")return!1;try{var g=Object.seal({x:4}),h=new b(t([g]));if(!h.has(g)||h.size!=1||h.add(g)!=h||h.size!=1||h.add({x:4})!=h||h.size!=2)return!1;var l=h.entries(),m=l.next();if(m.done||m.value[0]!=g||m.value[1]!=g)return!1;m=l.next();return m.done||m.value[0]==g||m.value[0].x!=4||
+m.value[1]!=m.value[0]?!1:l.next().done}catch(f){return!1}}())return b;c.prototype.add=function(g){g=g===0?0:g;this.g.set(g,g);this.size=this.g.size;return this};c.prototype.delete=function(g){g=this.g.delete(g);this.size=this.g.size;return g};c.prototype.clear=function(){this.g.clear();this.size=0};c.prototype.has=function(g){return this.g.has(g)};c.prototype.entries=function(){return this.g.entries()};c.prototype.values=function(){return this.g.values()};c.prototype.keys=c.prototype.values;c.prototype[Symbol.iterator]=
+c.prototype.values;c.prototype.forEach=function(g,h){var l=this;this.g.forEach(function(m){return g.call(h,m,m,l)})};return c});(function(){function b(){return m?Promise.resolve(m):f?f:f=fetch("https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json").then(function(a){if(!a.ok)throw Error("HTTP error! status: "+a.status+" fetching https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json");return a.json()}).then(function(a){if(!Array.isArray(a))throw new TypeError("Fetched icon names from https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json is not an array.");
+return m=a}).catch(function(a){console.error("IconChecker: Failed to load valid icon names from https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json.",a);f=null;throw a;})}function c(a){var d,e,k,p;return I(new H(new B(function(n){switch(n.h){case 1:d=(a.textContent||"").trim();if(!d||a.classList.contains("js-replaced-missing-icon")&&d==="radio_button_unchecked")return n.return();e=window.getComputedStyle(a);if(e.display==="none"||e.visibility==="hidden")return n.return();
+n.l=2;var r=b();n.h=4;return{value:r};case 4:k=n.u;n.h=3;n.l=0;break;case 2:return n.l=0,n.i=null,console.warn('IconChecker: Skipping check for icon "'+d+'" as valid names could not be loaded.'),n.return();case 3:(p=k.includes(d))?a.classList.contains("js-replaced-missing-icon")&&a.classList.remove("js-replaced-missing-icon"):d==="radio_button_unchecked"&&a.classList.contains("js-replaced-missing-icon")||(a.textContent="radio_button_unchecked",a.classList.add("js-replaced-missing-icon")),n.h=0}})))}
+function g(a){a=a===void 0?document.body:a;a.querySelectorAll(l).forEach(function(d){c(d)})}function h(){b().catch(function(){});document.fonts.ready.then(function(){requestAnimationFrame(function(){g(document.body);(new MutationObserver(function(a){var d=new Set;a=t(a);for(var e=a.next();!e.done;e=a.next())if(e=e.value,e.type==="childList")e.addedNodes.forEach(function(p){p.nodeType===Node.ELEMENT_NODE&&(p.matches(l)&&d.add(p),p.querySelectorAll(l).forEach(function(n){d.add(n)}))});else if(e.type===
+"attributes"&&e.attributeName==="class"){var k=e.target;e.target.nodeType===Node.ELEMENT_NODE&&k.matches(l)&&d.add(k)}else e.type==="characterData"&&e.target.parentNode&&(e=e.target.parentNode,e.nodeType===Node.ELEMENT_NODE&&e.matches(l)&&d.add(e));d.size>0&&setTimeout(function(){d.forEach(function(p){c(p)})},500)})).observe(document.body,{childList:!0,subtree:!0,attributes:!0,attributeFilter:["class"],characterData:!0})})}).catch(function(a){console.error("IconChecker: Font loading error. Scanning icons anyway.",
+a);requestAnimationFrame(function(){g(document.body)})})}var l=["material-icons","material-symbols-outlined","material-symbols-rounded","material-symbols-sharp"].map(function(a){return"."+a}).join(","),m=null,f=null;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){h()}):h()})();}).call(this);
+
+</script>
+
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CRISPR + IA: Bio-Simulación Avanzada</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;700;900&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+<link href="data:text/css;base64,LyogZmFsbGJhY2sgKi8KQGZvbnQtZmFjZSB7CiAgZm9udC1mYW1pbHk6ICdNYXRlcmlhbCBTeW1ib2xzIE91dGxpbmVkJzsKICBmb250LXN0eWxlOiBub3JtYWw7CiAgZm9udC13ZWlnaHQ6IDQwMDsKICBzcmM6IHVybChodHRwczovL2ZvbnRzLmdzdGF0aWMuY29tL2wvZm9udD9raXQ9a0pGMUJ2WVg3Qmdua1NyVXdUOE9ocmRRdzRvRUxkUEllZUlJOXY2b0RNekJ5SFg5ckE2UnphekhEX2RZNDN6ai1qQ3h2M2Z6dlJOVTIyWlhHSnBFcGpDXzF2LXBfNE1ySW1IQ0lKSVpyREN2SE9lbGJkNXpyREF0JnNrZXk9YjhkYzIwODg4NTRiMTIyZiZ2PXYzMDMpIGZvcm1hdCgnd29mZicpOwp9CgoubWF0ZXJpYWwtc3ltYm9scy1vdXRsaW5lZCB7CiAgZm9udC1mYW1pbHk6ICdNYXRlcmlhbCBTeW1ib2xzIE91dGxpbmVkJzsKICBmb250LXdlaWdodDogbm9ybWFsOwogIGZvbnQtc3R5bGU6IG5vcm1hbDsKICBmb250LXNpemU6IDI0cHg7CiAgbGluZS1oZWlnaHQ6IDE7CiAgbGV0dGVyLXNwYWNpbmc6IG5vcm1hbDsKICB0ZXh0LXRyYW5zZm9ybTogbm9uZTsKICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgd2hpdGUtc3BhY2U6IG5vd3JhcDsKICB3b3JkLXdyYXA6IG5vcm1hbDsKICBkaXJlY3Rpb246IGx0cjsKICB0ZXh0LXJlbmRlcmluZzogb3B0aW1pemVMZWdpYmlsaXR5OwogIC13ZWJraXQtZm9udC1zbW9vdGhpbmc6IGFudGlhbGlhc2VkOwp9Cg==" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: #020204;
+            color: #e2e8f0;
+            overflow: hidden;
+            margin: 0; padding: 0;
+        }
+        .mono-font { font-family: 'Share Tech Mono', monospace; }
+        
+        /* UI Elements */
+        .glass-panel {
+            background: rgba(8, 12, 24, 0.85);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 20px 0 60px rgba(0,0,0,0.95);
+        }
+        
+        /* Navigation */
+        .nav-item {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 3px; height: 100%;
+            background: #06b6d4;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        .nav-item:hover { background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, transparent 100%); }
+        .nav-item.active { background: linear-gradient(90deg, rgba(6, 182, 212, 0.15) 0%, transparent 100%); }
+        .nav-item.active::before { transform: scaleY(1); }
+        
+        /* Visual Effects */
+        .scanlines {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 3px;
+            position: absolute; inset: 0; pointer-events: none; z-index: 10; opacity: 0.3;
+        }
+        .vignette {
+            background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
+            position: absolute; inset: 0; pointer-events: none; z-index: 10;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-right-4{right:-1rem}.-top-4{top:-1rem}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-0{z-index:0}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-0\.5{margin-bottom:0.125rem}.block{display:block}.flex{display:flex}.hidden{display:none}.h-14{height:3.5rem}.h-2{height:0.5rem}.h-20{height:5rem}.h-32{height:8rem}.h-full{height:100%}.h-screen{height:100vh}.h-8{height:2rem}.w-14{width:3.5rem}.w-2{width:0.5rem}.w-20{width:5rem}.w-80{width:20rem}.w-full{width:100%}.w-8{width:2rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.-translate-x-full{--tw-translate-x:-100%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-8{--tw-translate-y:-2rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-12{--tw-rotate:12deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-crosshair{cursor:crosshair}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-3{gap:0.75rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-4{gap:1rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-r-2xl{border-top-right-radius:1rem;border-bottom-right-radius:1rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l-2{border-left-width:2px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-cyan-500{--tw-border-opacity:1;border-color:rgb(6 182 212 / var(--tw-border-opacity, 1))}.border-cyan-500\/20{border-color:rgb(6 182 212 / 0.2)}.border-cyan-500\/50{border-color:rgb(6 182 212 / 0.5)}.border-cyan-900\/50{border-color:rgb(22 78 99 / 0.5)}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.bg-\[\#020204\]{--tw-bg-opacity:1;background-color:rgb(2 2 4 / var(--tw-bg-opacity, 1))}.bg-black\/20{background-color:rgb(0 0 0 / 0.2)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-black\/80{background-color:rgb(0 0 0 / 0.8)}.bg-cyan-400{--tw-bg-opacity:1;background-color:rgb(34 211 238 / var(--tw-bg-opacity, 1))}.bg-cyan-500\/20{background-color:rgb(6 182 212 / 0.2)}.bg-cyan-900\/20{background-color:rgb(22 78 99 / 0.2)}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-cyan-400{--tw-gradient-from:#22d3ee var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 211 238 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.p-5{padding:1.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-4{padding-bottom:1rem}.pl-4{padding-left:1rem}.pr-4{padding-right:1rem}.text-right{text-align:right}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-9xl{font-size:8rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[120px\]{font-size:120px}.text-\[9px\]{font-size:9px}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-light{font-weight:300}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.text-cyan-300{--tw-text-opacity:1;color:rgb(103 232 249 / var(--tw-text-opacity, 1))}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.text-cyan-400\/80{color:rgb(34 211 238 / 0.8)}.text-cyan-500{--tw-text-opacity:1;color:rgb(6 182 212 / var(--tw-text-opacity, 1))}.text-cyan-500\/60{color:rgb(6 182 212 / 0.6)}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-white\/50{color:rgb(255 255 255 / 0.5)}.text-white\/\[0\.02\]{color:rgb(255 255 255 / 0.02)}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.opacity-10{opacity:0.1}.shadow-\[0_0_15px_\#22d3ee\]{--tw-shadow:0 0 15px #22d3ee;--tw-shadow-colored:0 0 15px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_0_15px_rgba\(6\2c 182\2c 212\2c 0\.1\)\]{--tw-shadow:0 0 15px rgba(6,182,212,0.1);--tw-shadow-colored:0 0 15px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_0_50px_rgba\(0\2c 0\2c 0\2c 0\.6\)\]{--tw-shadow:0 0 50px rgba(0,0,0,0.6);--tw-shadow-colored:0 0 50px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-1000{transition-duration:1000ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.selection\:bg-cyan-500\/30 *::selection{background-color:rgb(6 182 212 / 0.3)}.selection\:bg-cyan-500\/30::selection{background-color:rgb(6 182 212 / 0.3)}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-cyan-400:hover{--tw-border-opacity:1;border-color:rgb(34 211 238 / var(--tw-border-opacity, 1))}.hover\:bg-cyan-500:hover{--tw-bg-opacity:1;background-color:rgb(6 182 212 / var(--tw-bg-opacity, 1))}.hover\:bg-cyan-500\/20:hover{background-color:rgb(6 182 212 / 0.2)}.hover\:text-black:hover{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-\[0_0_25px_rgba\(6\2c 182\2c 212\2c 0\.4\)\]:hover{--tw-shadow:0 0 25px rgba(6,182,212,0.4);--tw-shadow-colored:0 0 25px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:shadow-\[0_0_40px_rgba\(6\2c 182\2c 212\2c 0\.5\)\]:hover{--tw-shadow:0 0 40px rgba(6,182,212,0.5);--tw-shadow-colored:0 0 40px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.group:hover .group-hover\:-translate-x-1{--tw-translate-x:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-cyan-500\/20{background-color:rgb(6 182 212 / 0.2)}.group:hover .group-hover\:text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:opacity-20{opacity:0.2}@media (min-width: 768px){.md\:relative{position:relative}.md\:flex{display:flex}.md\:hidden{display:none}.md\:translate-x-0{--tw-translate-x:0px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.md\:flex-row{flex-direction:row}.md\:p-12{padding:3rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-base{font-size:1rem;line-height:1.5rem}}</style></head>
+<body class="h-screen w-full flex text-slate-300 selection:bg-cyan-500/30">
+<!-- Sidebar -->
+<aside class="w-80 h-full glass-panel z-30 flex flex-col absolute md:relative transform -translate-x-full md:translate-x-0 transition-transform duration-300" id="sidebar">
+<div class="p-8 border-b border-white/10 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 p-4 opacity-10 group-hover:opacity-20 transition-opacity duration-1000">
+<span class="material-symbols-outlined text-9xl text-cyan-500 rotate-12">biotech</span>
+</div>
+<div class="flex items-center gap-3 mb-2 relative z-10">
+<div class="h-2 w-2 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_15px_#22d3ee]"></div>
+<span class="text-[10px] font-bold tracking-[0.3em] text-cyan-500 uppercase">BioSim Core v8.0</span>
+</div>
+<h1 class="text-3xl font-black text-white leading-none tracking-tight relative z-10">
+            CRISPR<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500">INTEL</span>
+</h1>
+</div>
+<nav class="flex-1 overflow-y-auto py-4 space-y-1" id="nav-container">
+            <div onclick="setStep(0)" id="nav-item-0" class="nav-item cursor-pointer p-5 border-b border-white/5 text-slate-400 group">
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                        <span class="material-symbols-outlined text-sm js-replaced-missing-icon">radio_button_unchecked</span>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Step 01</div>
+                        <div class="font-bold text-sm text-slate-200 group-hover:text-white transition-colors">WES / RNA-seq</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div onclick="setStep(1)" id="nav-item-1" class="nav-item cursor-pointer p-5 border-b border-white/5 text-slate-400 group">
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                        <span class="material-symbols-outlined text-sm">filter_list</span>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Step 02</div>
+                        <div class="font-bold text-sm text-slate-200 group-hover:text-white transition-colors">NetMHCpan</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div onclick="setStep(2)" id="nav-item-2" class="nav-item cursor-pointer p-5 border-b border-white/5 text-slate-400 group">
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                        <span class="material-symbols-outlined text-sm">neurology</span>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Step 03</div>
+                        <div class="font-bold text-sm text-slate-200 group-hover:text-white transition-colors">pMTnet (TCR)</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div onclick="setStep(3)" id="nav-item-3" class="nav-item cursor-pointer p-5 border-b border-white/5 text-slate-400 group active">
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                        <span class="material-symbols-outlined text-sm js-replaced-missing-icon">radio_button_unchecked</span>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Step 04</div>
+                        <div class="font-bold text-sm text-slate-200 group-hover:text-white transition-colors">DeepCRISPR</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div onclick="setStep(4)" id="nav-item-4" class="nav-item cursor-pointer p-5 border-b border-white/5 text-slate-400 group">
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                        <span class="material-symbols-outlined text-sm">science</span>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Step 05</div>
+                        <div class="font-bold text-sm text-slate-200 group-hover:text-white transition-colors">Ingeniería T</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div onclick="setStep(5)" id="nav-item-5" class="nav-item cursor-pointer p-5 border-b border-white/5 text-slate-400 group">
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                        <span class="material-symbols-outlined text-sm">coronavirus</span>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Step 06</div>
+                        <div class="font-bold text-sm text-slate-200 group-hover:text-white transition-colors">Lisis Tumoral</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+<div class="p-6 border-t border-white/10 bg-black/20">
+<div class="bg-black/80 rounded-lg p-4 border border-white/10 font-mono text-[10px] text-cyan-400/80 h-32 overflow-hidden relative shadow-inner">
+<div class="space-y-1" id="system-log">
+<div class="text-white/50">&gt; SYSTEM INIT...</div>
+<div class="text-green-400">&gt; PHYSICS ENGINE: MAX</div>
+<div class="text-green-400">&gt; RENDERING: ULTRA</div>
+<div class="text-cyan-400">&gt; LOAD_MODULE: WES_/_RNA-seq</div><div class="text-cyan-400">&gt; LOAD_MODULE: NetMHCpan</div><div class="text-cyan-400">&gt; LOAD_MODULE: pMTnet_(TCR)</div><div class="text-cyan-400">&gt; LOAD_MODULE: DeepCRISPR</div><div class="text-cyan-400">&gt; LOAD_MODULE: Ingeniería_T</div><div class="text-cyan-400">&gt; LOAD_MODULE: Lisis_Tumoral</div><div class="text-cyan-400">&gt; LOAD_MODULE: Ingeniería_T</div><div class="text-cyan-400">&gt; LOAD_MODULE: DeepCRISPR</div></div>
+</div>
+</div>
+</aside>
+<!-- Main Viewport -->
+<main class="flex-1 relative bg-[#020204] h-full w-full overflow-hidden cursor-crosshair">
+<!-- Canvas Layer -->
+<canvas class="absolute inset-0 z-0 block" id="main-canvas" width="1244" height="574"></canvas>
+<!-- FX Layers -->
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<!-- HUD -->
+<div class="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex flex-col justify-between p-6 md:p-12">
+<!-- Top Stats -->
+<div class="flex justify-between items-start">
+<button class="md:hidden p-2 bg-white/10 backdrop-blur rounded text-white pointer-events-auto hover:bg-cyan-500/20 transition" onclick="toggleSidebar()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex gap-12 font-mono text-xs tracking-widest text-cyan-500/60">
+<div class="flex flex-col border-l-2 border-cyan-900/50 pl-4">
+<span class="text-[9px] text-slate-500 mb-1">SIM_TIME</span>
+<span class="text-white text-xl leading-none" id="sim-time">00:17:30</span>
+</div>
+<div class="flex flex-col border-l-2 border-cyan-900/50 pl-4">
+<span class="text-[9px] text-slate-500 mb-1">ENTITIES</span>
+<span class="text-white text-xl leading-none" id="entity-counter">1</span>
+</div>
+<div class="flex flex-col border-l-2 border-cyan-900/50 pl-4">
+<span class="text-[9px] text-slate-500 mb-1">FPS</span>
+<span class="text-white text-xl leading-none" id="fps-counter">60</span>
+</div>
+</div>
+<div class="text-right relative">
+<div class="text-[120px] font-black text-white/[0.02] select-none absolute top-0 right-0 -translate-y-8 leading-none" id="bg-step-number">04</div>
+</div>
+</div>
+<!-- Bottom Controls -->
+<div class="flex flex-col md:flex-row items-end justify-between gap-8">
+<!-- Info Card -->
+<div class="max-w-xl backdrop-blur-xl bg-black/60 p-6 rounded-r-2xl border-l-4 border-cyan-500 shadow-[0_0_50px_rgba(0,0,0,0.6)] transform transition-all duration-500" id="info-panel">
+<div class="flex items-center gap-3 mb-3">
+<span class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 text-[10px] font-bold tracking-widest uppercase border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]" id="phase-badge">PHASE 4</span>
+</div>
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-3 leading-tight tracking-tight" id="phase-title">DeepCRISPR</h2>
+<p class="text-sm md:text-base text-slate-300 font-light leading-relaxed" id="phase-desc">El complejo Cas9 localiza la secuencia objetivo en el genoma, desenrolla la doble hélice y realiza un corte preciso guiado por ARN.</p>
+</div>
+<!-- Playback Controls -->
+<div class="flex items-center gap-6 pointer-events-auto pb-4 pr-4">
+<button class="w-14 h-14 rounded-full border border-white/10 bg-white/5 hover:bg-cyan-500 hover:text-white hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center group" onclick="changeStep(-1)">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</button>
+<button class="w-20 h-20 rounded-full border-2 border-cyan-500/50 bg-cyan-900/20 hover:bg-cyan-500 hover:text-black hover:scale-105 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] transition-all flex items-center justify-center text-cyan-400 backdrop-blur-sm group" id="play-btn" onclick="togglePlay()">
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform" id="play-icon">pause</span>
+</button>
+<button class="w-14 h-14 rounded-full border border-white/10 bg-white/5 hover:bg-cyan-500 hover:text-white hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center group" onclick="changeStep(1)">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+    /** SYSTEM CONFIGURATION **/
+    const CONFIG = {
+        colors: {
+            cyan: '#06b6d4',
+            violet: '#8b5cf6',
+            red: '#ef4444',
+            green: '#22c55e',
+            amber: '#f59e0b',
+            slate: '#64748b'
+        },
+        steps: [
+            {
+                title: "WES / RNA-seq",
+                subtitle: "Secuenciación",
+                desc: "Extracción y análisis de ADN tumoral. Se secuencian millones de fragmentos para identificar mutaciones somáticas únicas (neoantígenos).",
+                icon: "dna"
+            },
+            {
+                title: "NetMHCpan",
+                subtitle: "Afinidad Molecular",
+                desc: "Análisis físico-químico del acoplamiento MHC-Péptido. La IA simula la termodinámica de unión para filtrar los mejores candidatos a neoantígenos.",
+                icon: "filter_list"
+            },
+            {
+                title: "pMTnet (TCR)",
+                subtitle: "Reconocimiento IA",
+                desc: "Verificación estructural TCR-pMHC. Visualización molecular dinámica de la unión antígeno-anticuerpo con predicción neuronal de compatibilidad.",
+                icon: "neurology"
+            },
+            {
+                title: "DeepCRISPR",
+                subtitle: "Edición Genómica",
+                desc: "El complejo Cas9 localiza la secuencia objetivo en el genoma, desenrolla la doble hélice y realiza un corte preciso guiado por ARN.",
+                icon: "gps_fixed"
+            },
+            {
+                title: "Ingeniería T",
+                subtitle: "Transfección Viral",
+                desc: "Vectores virales entregan la nueva secuencia genética a los linfocitos T, reprogramándolos para expresar el receptor específico contra el cáncer.",
+                icon: "science"
+            },
+            {
+                title: "Lisis Tumoral",
+                subtitle: "Respuesta Citotóxica",
+                desc: "Ataque final. El linfocito T reprogramado se une a la célula cancerosa, libera granzimas y perforinas, induciendo la apoptosis y destrucción del tumor.",
+                icon: "coronavirus"
+            }
+        ]
+    };
+
+    let state = {
+        step: 0,
+        playing: true,
+        time: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        mouse: { x: 0, y: 0 }
+    };
+
+    const canvas = document.getElementById('main-canvas');
+    const ctx = canvas.getContext('2d', { alpha: false });
+    let activeScene = null;
+
+    /** HELPER: Draw organic atom/molecule blob **/
+    function drawAtom(ctx, x, y, r, colorBase, alpha = 1) {
+        const grad = ctx.createRadialGradient(x-r*0.3, y-r*0.3, r*0.1, x, y, r);
+        grad.addColorStop(0, `rgba(255,255,255,${alpha})`);
+        grad.addColorStop(0.3, colorBase.replace(')', `, ${alpha})`).replace('rgb', 'rgba'));
+        grad.addColorStop(1, `rgba(0,0,0,${alpha*0.5})`);
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+    }
+
+    /** SCENE 1: WES / RNA-seq (UNCHANGED) **/
+    class SceneSequencing {
+        constructor() { this.particles = []; }
+        update() {
+            if (state.time % 2 === 0) {
+                const y = state.height + 20;
+                for(let i=0; i<2; i++) {
+                     this.particles.push({
+                        y: y, offset: state.time * 0.05 + (i * Math.PI),
+                        char: ['A','T','C','G'][Math.floor(Math.random()*4)],
+                        isMutant: Math.random() > 0.95, type: 'base', z: 0 
+                     });
+                }
+            }
+            this.particles.forEach(p => {
+                p.y -= 3; const width = 150;
+                p.x = state.width/2 + Math.sin(p.offset + state.time * 0.02) * width;
+                p.z = Math.cos(p.offset + state.time * 0.02); 
+            });
+            this.particles = this.particles.filter(p => p.y > -50);
+        }
+        draw(ctx) {
+            ctx.font = "bold 16px monospace"; ctx.textAlign = "center";
+            this.particles.forEach(p => {
+                const scale = 1 + p.z * 0.5;
+                const alpha = (p.z + 1) / 2 * 0.8 + 0.2;
+                ctx.globalAlpha = alpha;
+                ctx.shadowBlur = 15 * scale;
+                ctx.shadowColor = p.isMutant ? CONFIG.colors.red : CONFIG.colors.cyan;
+                ctx.fillStyle = p.isMutant ? CONFIG.colors.red : CONFIG.colors.cyan;
+                if (p.isMutant) {
+                    ctx.font = `bold ${20*scale}px monospace`; ctx.fillText(p.char, p.x, p.y);
+                    if(scale > 1.2) {
+                        ctx.strokeStyle = CONFIG.colors.red; ctx.lineWidth = 1;
+                        ctx.beginPath(); ctx.moveTo(p.x + 20, p.y); ctx.lineTo(p.x + 100, p.y); ctx.stroke();
+                        ctx.font = "10px monospace"; ctx.fillText("MUTATION DETECTED", p.x + 160, p.y+3);
+                    }
+                } else { ctx.beginPath(); ctx.arc(p.x, p.y, 4 * scale, 0, Math.PI*2); ctx.fill(); }
+                ctx.shadowBlur = 0;
+            });
+            ctx.globalAlpha = 1;
+        }
+    }
+
+    /** SCENE 2: NetMHCpan (UNCHANGED) **/
+    class SceneFiltering {
+        constructor() { this.peptides = []; this.mhcY = state.height - 180; }
+        update() {
+            this.mhcY = state.height - 180;
+            if(state.time % 70 === 0) {
+                const isBinder = Math.random() > 0.6;
+                const residues = [];
+                for(let i=0; i<9; i++) {
+                    residues.push({
+                        color: isBinder ? (i===0||i===8 ? '#22c55e' : '#38bdf8') : (i===0||i===8 ? '#ef4444' : '#94a3b8'),
+                        offsetY: (Math.random()-0.5)*8
+                    });
+                }
+                this.peptides.push({
+                    x: Math.random()*(state.width-200)+100, y: -60, targetX: state.width/2, vx: 0, vy: 3+Math.random(),
+                    angle: (Math.random()-0.5), residues: residues, isBinder: isBinder, state: 'falling', scanProgress: 0
+                });
+            }
+            this.peptides.forEach(p => {
+                if(p.state === 'falling') {
+                    p.x += (p.targetX - p.x) * 0.02; p.y += p.vy; p.angle *= 0.95;
+                    if(p.y > this.mhcY - 40) { p.state = 'docking'; p.vy = 0; }
+                } else if (p.state === 'docking') {
+                    p.x += (state.width/2 - p.x) * 0.1; p.y += (this.mhcY - p.y) * 0.1; p.angle = 0;
+                    if(Math.abs(p.y - this.mhcY) < 1) p.state = 'scanning';
+                } else if (p.state === 'scanning') {
+                    p.scanProgress += 0.01;
+                    if(p.scanProgress >= 1) p.state = p.isBinder ? 'bound' : 'rejected';
+                } else if (p.state === 'rejected') {
+                    p.y -= 4; p.x += (Math.random()-0.5)*10; p.angle += 0.1; p.alpha = (p.alpha || 1) - 0.02;
+                    if(p.alpha <= 0) p.dead = true;
+                } else if (p.state === 'bound') {
+                    p.y -= 2; p.alpha = (p.alpha || 1) - 0.01;
+                    if(p.alpha <= 0) p.dead = true;
+                }
+            });
+            this.peptides = this.peptides.filter(p => !p.dead);
+        }
+        draw(ctx) {
+            const cx = state.width / 2; const cy = this.mhcY;
+            ctx.save(); ctx.translate(cx, cy);
+            const grad = ctx.createLinearGradient(0, 50, 0, -50);
+            grad.addColorStop(0, '#0f172a'); grad.addColorStop(1, '#1e293b');
+            ctx.fillStyle = grad; ctx.beginPath(); ctx.roundRect(-250, 0, 500, 100, 20); ctx.fill();
+            ctx.lineWidth = 15; ctx.lineCap = 'round';
+            ctx.strokeStyle = '#0ea5e9'; ctx.beginPath();
+            for(let i=0; i<10; i++) { const x = -220 + i*22; ctx.moveTo(x, -30); ctx.quadraticCurveTo(x+10, -60, x+22, -30); } ctx.stroke();
+            ctx.beginPath();
+            for(let i=0; i<10; i++) { const x = 20 + i*22; ctx.moveTo(x, -30); ctx.quadraticCurveTo(x+10, -60, x+22, -30); } ctx.stroke();
+            ctx.restore();
+            this.peptides.forEach(p => {
+                ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.angle); ctx.globalAlpha = p.alpha !== undefined ? p.alpha : 1;
+                p.residues.forEach((r, i) => {
+                    const rx = (i - 4) * 30; const ry = r.offsetY;
+                    if(i > 0) { ctx.strokeStyle = '#475569'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo((i-1-4)*30, p.residues[i-1].offsetY); ctx.lineTo(rx, ry); ctx.stroke(); }
+                    ctx.fillStyle = r.color; ctx.beginPath(); ctx.arc(rx, ry, 12, 0, Math.PI*2); ctx.fill();
+                    ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.beginPath(); ctx.arc(rx-4, ry-4, 4, 0, Math.PI*2); ctx.fill();
+                });
+                if(p.state === 'scanning') {
+                    const scanX = (p.scanProgress * 300) - 150;
+                    ctx.shadowBlur = 20; ctx.shadowColor = CONFIG.colors.cyan; ctx.fillStyle = '#22d3ee'; ctx.fillRect(scanX, -40, 4, 80);
+                    ctx.fillStyle = '#fff'; ctx.font = '12px monospace'; ctx.textAlign = 'center'; ctx.fillText(`ANALYZING BINDING ENERGY... ${(p.scanProgress*100).toFixed(0)}%`, 0, -60);
+                }
+                if(p.state === 'bound') {
+                    ctx.fillStyle = CONFIG.colors.green; ctx.font = 'bold 14px monospace'; ctx.textAlign = 'center'; ctx.fillText("HIGH AFFINITY MATCH", 0, -70);
+                    ctx.strokeStyle = CONFIG.colors.green; ctx.lineWidth = 2; ctx.strokeRect(-150, -30, 300, 60);
+                }
+                ctx.restore();
+            });
+        }
+    }
+
+    /** SCENE 3: pMTnet (DRASTICALLY IMPROVED REALISM & QUALITY) **/
+    class SceneNeural {
+        constructor() {
+            // Neural Network Nodes (Left) - Enhanced with depth perspective
+            this.layers = [5, 7, 7, 3].map((count, layerIdx) => 
+                Array(count).fill(0).map((_, nodeIdx) => ({
+                    val: 0,
+                    relX: 0.1 + layerIdx * 0.08,
+                    relY: 0.5 + (nodeIdx - count/2) * 0.12,
+                    z: Math.random() * 20 
+                }))
+            );
+            this.signals = [];
+            
+            // Interaction State (Right) - Full Bio-Realism
+            this.tcrY = 0;
+            this.pmhcY = 0;
+            this.state = 'idle';
+            this.matchProbability = 0;
+            this.bonds = [];
+            this.particles = [];
+            
+            // Generate detailed protein clouds (Atom Clusters)
+            // TCR (Y-shaped Antibody-like structure)
+            this.tcrAtoms = [];
+            // Left Arm
+            this.tcrAtoms = this.tcrAtoms.concat(this.generateProteinCluster(-25, -40, 20, 15, '#a855f7'));
+            // Right Arm
+            this.tcrAtoms = this.tcrAtoms.concat(this.generateProteinCluster(25, -40, 20, 15, '#a855f7'));
+            // Stem
+            this.tcrAtoms = this.tcrAtoms.concat(this.generateProteinCluster(0, -80, 20, 20, '#9333ea'));
+            
+            // MHC (Groove structure)
+            this.mhcAtoms = [];
+            // Alpha 1 Domain
+            this.mhcAtoms = this.mhcAtoms.concat(this.generateProteinCluster(-35, 20, 25, 18, '#0ea5e9'));
+            // Alpha 2 Domain
+            this.mhcAtoms = this.mhcAtoms.concat(this.generateProteinCluster(35, 20, 25, 18, '#0ea5e9'));
+            // Base
+            this.mhcAtoms = this.mhcAtoms.concat(this.generateProteinCluster(0, 50, 40, 25, '#0284c7'));
+            
+            // Peptide (Antigen)
+            this.peptideAtoms = [];
+            for(let i=-4; i<=4; i++) {
+                this.peptideAtoms.push({x: i*8, y: 10 + Math.sin(i)*5, r: 6, color: CONFIG.colors.amber});
+            }
+        }
+
+        generateProteinCluster(cx, cy, spread, count, color) {
+            let atoms = [];
+            for(let i=0; i<count; i++) {
+                const ang = Math.random() * Math.PI * 2;
+                const r = Math.random() * spread;
+                atoms.push({
+                    x: cx + Math.cos(ang) * r,
+                    y: cy + Math.sin(ang) * r,
+                    r: 5 + Math.random() * 8,
+                    color: color
+                });
+            }
+            return atoms;
+        }
+
+        update() {
+            const splitX = state.width * 0.45;
+            const centerX = splitX + (state.width - splitX)/2;
+            const centerY = state.height / 2;
+
+            if(state.time % 120 === 0 && this.state === 'idle') {
+                this.triggerNeuralPulse();
+                this.state = 'approaching';
+                this.tcrY = centerY - 200; 
+                this.pmhcY = centerY + 200;
+                this.matchProbability = Math.random(); 
+                this.bonds = [];
+            }
+
+            // Neural Signals
+            this.signals.forEach(s => {
+                s.progress += 0.05;
+                if(s.progress >= 1) {
+                    s.dead = true;
+                    if(s.lIdx < this.layers.length-1) this.layers[s.lIdx+1][s.tIdx].val = 1;
+                }
+            });
+            this.signals = this.signals.filter(s => !s.dead);
+            this.layers.forEach(l => l.forEach(n => n.val *= 0.94));
+
+            // Bio-Physics Interaction
+            const unionY = centerY; 
+            const tcrTargetY = unionY - 20;
+            const pmhcTargetY = unionY + 20;
+
+            if (this.state === 'approaching') {
+                // Easing functions for smooth arrival
+                this.pmhcY += (pmhcTargetY - this.pmhcY) * 0.04;
+                this.tcrY += (tcrTargetY - this.tcrY) * 0.04;
+                
+                // Molecular vibration
+                this.tcrY += Math.sin(state.time * 0.8) * 0.5;
+                this.pmhcY += Math.cos(state.time * 0.7) * 0.5;
+                
+                if (Math.abs(this.tcrY - tcrTargetY) < 5) {
+                    this.state = 'scanning';
+                    this.scanTimer = 0;
+                }
+            } 
+            else if (this.state === 'scanning') {
+                this.scanTimer++;
+                // Electrostatic scan effect
+                if (this.scanTimer % 4 === 0) {
+                     this.bonds.push({
+                        x1: (Math.random()-0.5)*80, y1: 0,
+                        x2: (Math.random()-0.5)*80, y2: 0,
+                        life: 15,
+                        type: 'weak'
+                    });
+                }
+                if (this.scanTimer > 60) this.state = this.matchProbability > 0.3 ? 'locking' : 'repelling';
+            }
+            else if (this.state === 'locking') {
+                // Snap together
+                this.tcrY = tcrTargetY + 5; 
+                this.pmhcY = pmhcTargetY - 5;
+                
+                if (Math.random() > 0.5) {
+                    this.particles.push({
+                        x: (Math.random()-0.5)*100, y: centerY + (Math.random()-0.5)*30,
+                        vx: (Math.random()-0.5)*3, vy: (Math.random()-0.5)*3,
+                        life: 50, color: '#22c55e', size: Math.random()*3
+                    });
+                }
+                if (state.time % 200 === 0) this.state = 'idle';
+            }
+            else if (this.state === 'repelling') {
+                this.tcrY -= 3;
+                this.pmhcY += 1;
+                if (this.tcrY < centerY - 250) this.state = 'idle';
+            }
+
+            this.particles.forEach(p => { p.x+=p.vx; p.y+=p.vy; p.life--; });
+            this.particles = this.particles.filter(p => p.life > 0);
+            this.bonds.forEach(b => b.life--);
+            this.bonds = this.bonds.filter(b => b.life > 0);
+        }
+
+        triggerNeuralPulse() {
+            this.layers[0].forEach((n, i) => { n.val = 1; this.layers[1].forEach((n2, j) => { if(Math.random()>0.6) this.signals.push({lIdx:0, sIdx:i, tIdx:j, progress:0}); }); });
+            setTimeout(() => { this.layers[1].forEach((n, i) => { this.layers[2].forEach((n2, j) => { if(Math.random()>0.6) this.signals.push({lIdx:1, sIdx:i, tIdx:j, progress:0}); }); }); }, 300);
+            setTimeout(() => { this.layers[2].forEach((n, i) => { this.layers[3].forEach((n2, j) => { this.signals.push({lIdx:2, sIdx:i, tIdx:j, progress:0}); }); }); }, 600);
+        }
+
+        draw(ctx) {
+            const splitX = state.width * 0.4;
+            const centerX = splitX + (state.width - splitX)/2;
+
+            // --- LEFT: NEURAL NET (Holographic Style) ---
+            this.layers.forEach((l, li) => {
+                l.forEach(n => {
+                    const x = n.relX * state.width; const y = n.relY * state.height;
+                    // Glow
+                    const glow = ctx.createRadialGradient(x,y,0,x,y,20);
+                    glow.addColorStop(0, `rgba(139, 92, 246, ${n.val})`);
+                    glow.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x,y,20,0,Math.PI*2); ctx.fill();
+                    
+                    // Core
+                    ctx.fillStyle = `rgba(167, 139, 250, ${0.4+n.val})`; 
+                    ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fill();
+                });
+            });
+            this.signals.forEach(s => {
+                const sn = this.layers[s.lIdx][s.sIdx]; const tn = this.layers[s.lIdx+1][s.tIdx];
+                const sx = sn.relX*state.width; const sy = sn.relY*state.height;
+                const tx = tn.relX*state.width; const ty = tn.relY*state.height;
+                const x = sx+(tx-sx)*s.progress; const y = sy+(ty-sy)*s.progress;
+                ctx.shadowBlur=10; ctx.shadowColor='#fff'; ctx.fillStyle='#fff';
+                ctx.beginPath(); ctx.arc(x,y,2,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=0;
+            });
+            
+            // Divider
+            ctx.strokeStyle = '#334155'; ctx.beginPath(); ctx.moveTo(splitX, 50); ctx.lineTo(splitX, state.height-50); ctx.stroke();
+
+            // --- RIGHT: BIO SIMULATION (CENTERED & HIGH RES) ---
+            if (this.state !== 'idle') {
+                if(this.pmhcY === 0) this.pmhcY = state.height * 0.75;
+                if(this.tcrY === 0) this.tcrY = state.height * 0.25;
+
+                // 1. CELL MEMBRANE (Bottom)
+                ctx.save();
+                ctx.translate(centerX, this.pmhcY + 80);
+                const memGrad = ctx.createLinearGradient(-150, 0, 150, 0);
+                memGrad.addColorStop(0, 'rgba(30, 41, 59, 0)');
+                memGrad.addColorStop(0.5, 'rgba(30, 41, 59, 1)');
+                memGrad.addColorStop(1, 'rgba(30, 41, 59, 0)');
+                ctx.fillStyle = memGrad;
+                ctx.beginPath(); ctx.ellipse(0, 0, 200, 20, 0, 0, Math.PI*2); ctx.fill();
+                // Lipid heads
+                for(let i=-6; i<=6; i++) {
+                    drawAtom(ctx, i*25, -10, 10, '#475569');
+                    ctx.strokeStyle = '#334155'; ctx.beginPath(); ctx.moveTo(i*25, -10); ctx.lineTo(i*25, 20); ctx.stroke();
+                }
+                ctx.restore();
+
+                // 2. PMHC COMPLEX (Bottom)
+                ctx.save();
+                ctx.translate(centerX, this.pmhcY);
+                // MHC Atoms
+                this.mhcAtoms.forEach(a => drawAtom(ctx, a.x, a.y, a.r, a.color));
+                // Peptide
+                this.peptideAtoms.forEach(a => drawAtom(ctx, a.x, a.y, a.r, a.color));
+                ctx.restore();
+
+                // 3. INTERACTION ZONE
+                const gapY = (this.tcrY + this.pmhcY) / 2;
+                if (this.state === 'scanning' || this.state === 'locking') {
+                    ctx.save();
+                    ctx.translate(centerX, gapY);
+                    this.bonds.forEach(b => {
+                        ctx.strokeStyle = `rgba(16, 185, 129, ${b.life/15})`;
+                        ctx.lineWidth = 2;
+                        ctx.beginPath(); ctx.moveTo(b.x1, -15); ctx.lineTo(b.x2, 15); ctx.stroke();
+                    });
+                    if (this.state === 'locking') {
+                        // Energy Burst
+                        const glow = ctx.createRadialGradient(0,0,10,0,0,80);
+                        glow.addColorStop(0, 'rgba(34, 197, 94, 0.8)');
+                        glow.addColorStop(1, 'rgba(34, 197, 94, 0)');
+                        ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(0,0,80,0,Math.PI*2); ctx.fill();
+                        
+                        ctx.fillStyle = '#fff'; ctx.font = 'bold 18px monospace'; ctx.textAlign = 'center'; 
+                        ctx.shadowBlur=10; ctx.shadowColor='#000';
+                        ctx.fillText("BINDING CONFIRMED", 0, -120);
+                        ctx.shadowBlur=0;
+                    }
+                    ctx.restore();
+                }
+
+                // 4. TCR COMPLEX (Top)
+                ctx.save();
+                ctx.translate(centerX, this.tcrY);
+                let tcrColor = '#a855f7';
+                if (this.state === 'locking') tcrColor = '#22c55e';
+                if (this.state === 'repelling') tcrColor = '#ef4444';
+                
+                // Draw TCR atoms inverted (Y facing down)
+                // Use the pre-generated cloud but override color based on state
+                this.tcrAtoms.forEach(a => drawAtom(ctx, a.x, a.y, a.r, tcrColor));
+                ctx.restore();
+
+                // 5. PARTICLES
+                this.particles.forEach(p => {
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.life/50;
+                    ctx.beginPath(); ctx.arc(centerX + p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                    ctx.globalAlpha = 1;
+                });
+
+            } else {
+                 ctx.fillStyle = '#475569'; ctx.font = '16px monospace'; ctx.textAlign = 'center';
+                 ctx.fillText("NEURAL PREDICTION PENDING...", centerX, state.height/2);
+            }
+        }
+    }
+
+    /** SCENE 4: DeepCRISPR (DRASTICALLY IMPROVED 3D DNA & CAS9) **/
+    class SceneCrispr {
+        constructor() {
+            this.cas9X = -200;
+            this.state = 'searching'; // searching, unwinding, cutting
+            this.progress = 0;
+            this.targetX = state.width / 2;
+            this.particles = [];
+            // Pre-calculate DNA segments for smooth wave
+            this.dnaSegments = 100;
+        }
+
+        update() {
+            if (this.state === 'searching') {
+                this.cas9X += 12;
+                if (this.cas9X > state.width + 300) { this.cas9X = -300; this.targetX = state.width/2 + (Math.random()-0.5)*200; }
+                if (Math.abs(this.cas9X - this.targetX) < 10) { this.state = 'unwinding'; this.progress = 0; }
+            } else if (this.state === 'unwinding') {
+                this.progress += 0.02;
+                if (this.progress >= 1) { this.state = 'cutting'; this.progress = 0; }
+            } else if (this.state === 'cutting') {
+                this.progress += 0.05;
+                if (this.progress < 0.2) { // Spawn particles once
+                     for(let i=0; i<20; i++) this.particles.push({x: this.cas9X, y: state.height/2, vx: (Math.random()-0.5)*10, vy: (Math.random()-0.5)*10, life: 30});
+                }
+                if (this.progress >= 1) { this.state = 'searching'; }
+            }
+            // Update particles
+            this.particles.forEach(p => { p.x+=p.vx; p.y+=p.vy; p.life--; });
+            this.particles = this.particles.filter(p => p.life > 0);
+        }
+
+        draw(ctx) {
+            const midY = state.height / 2;
+            const time = state.time * 0.05;
+
+            // 1. DRAW 3D DNA (Double Helix)
+            // We draw back strands, then Cas9 (if needed), then front strands
+            
+            // Function to draw a DNA segment
+            const drawHelix = (layer) => {
+                for(let i=0; i<state.width+50; i+=15) {
+                    const t = (i * 0.02) - time; // Phase
+                    
+                    // Strand 1
+                    const y1 = Math.sin(t) * 40;
+                    const z1 = Math.cos(t); // Depth -1 to 1
+                    const s1 = 1 + z1 * 0.3; // Scale
+                    
+                    // Strand 2 (Offset by PI)
+                    const y2 = Math.sin(t + Math.PI) * 40;
+                    const z2 = Math.cos(t + Math.PI);
+                    const s2 = 1 + z2 * 0.3;
+
+                    // Unwinding Effect
+                    let openY = 0;
+                    if(this.state !== 'searching') {
+                        const dist = Math.abs(i - this.cas9X);
+                        if(dist < 80) openY = (1 - dist/80) * 30 * (this.state==='unwinding' ? this.progress : 1);
+                    }
+                    
+                    // Draw connections (Base pairs) only when one is back and one is front
+                    if (layer === 'back' && z1 < 0 && z2 > 0) { /* handled by z-check */ }
+                    
+                    // Back Layer: Draw things with z < 0
+                    if (layer === 'back') {
+                        if (z1 < 0) drawAtom(ctx, i, midY + y1 - openY, 3*s1, '#64748b', 0.5);
+                        if (z2 < 0) drawAtom(ctx, i, midY + y2 + openY, 3*s2, '#94a3b8', 0.5);
+                        // Connections between them? Simplified: just draw rungs
+                        if (Math.abs(z1) < 0.2) { // Crossing point
+                             ctx.globalAlpha = 0.3; ctx.strokeStyle='#fff'; ctx.lineWidth=1; 
+                             ctx.beginPath(); ctx.moveTo(i, midY+y1-openY); ctx.lineTo(i, midY+y2+openY); ctx.stroke(); ctx.globalAlpha=1;
+                        }
+                    }
+                    
+                    // Front Layer: Draw things with z > 0
+                    if (layer === 'front') {
+                         if (z1 > 0) drawAtom(ctx, i, midY + y1 - openY, 4*s1, '#cbd5e1');
+                         if (z2 > 0) drawAtom(ctx, i, midY + y2 + openY, 4*s2, '#e2e8f0');
+                         if (openY > 10) { // Broken bonds
+                             ctx.fillStyle='#ef4444'; ctx.beginPath(); ctx.arc(i, midY, 2, 0, Math.PI*2); ctx.fill();
+                         } else if (Math.abs(z1) > 0.8) { // Rungs
+                             ctx.strokeStyle='#fff'; ctx.lineWidth=2; 
+                             ctx.beginPath(); ctx.moveTo(i, midY+y1-openY); ctx.lineTo(i, midY+y2+openY); ctx.stroke();
+                         }
+                    }
+                }
+            };
+
+            // Draw Back DNA
+            drawHelix('back');
+
+            // 2. DRAW CAS9 (Volumetric Blob)
+            ctx.save();
+            ctx.translate(this.cas9X, midY);
+            
+            // Main Body (Translucent Blue)
+            const casGrad = ctx.createRadialGradient(0,0,20,0,0,100);
+            casGrad.addColorStop(0, 'rgba(6, 182, 212, 0.8)');
+            casGrad.addColorStop(0.5, 'rgba(6, 182, 212, 0.2)');
+            casGrad.addColorStop(1, 'rgba(6, 182, 212, 0)');
+            ctx.fillStyle = casGrad;
+            ctx.beginPath();
+            // Organic blob shape
+            ctx.moveTo(-60, -40); ctx.bezierCurveTo(-20, -100, 20, -100, 60, -40);
+            ctx.bezierCurveTo(100, 0, 100, 60, 40, 80);
+            ctx.bezierCurveTo(0, 100, -40, 80, -60, 40);
+            ctx.bezierCurveTo(-100, 0, -80, -20, -60, -40);
+            ctx.fill();
+
+            // Internal Domains (HNH, RuvC)
+            drawAtom(ctx, -20, -20, 25, '#0891b2', 0.8);
+            drawAtom(ctx, 20, 10, 20, '#0891b2', 0.8);
+
+            // gRNA (Orange Ribbon)
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 4;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(-70, -70);
+            ctx.bezierCurveTo(-50, -20, -20, 0, 0, -10); // Winding in
+            ctx.bezierCurveTo(20, -20, 40, -10, 30, 0); // Binding site
+            ctx.stroke();
+
+            // Interaction Effects
+            if (this.state === 'cutting') {
+                // Flash
+                const cutFlash = ctx.createRadialGradient(0,0,0,0,0,50);
+                cutFlash.addColorStop(0, 'rgba(255,255,255,1)');
+                cutFlash.addColorStop(1, 'rgba(239, 68, 68, 0)');
+                ctx.fillStyle = cutFlash; ctx.beginPath(); ctx.arc(0,0,60,0,Math.PI*2); ctx.fill();
+            }
+            ctx.restore();
+
+            // Draw Front DNA
+            drawHelix('front');
+
+            // 3. PARTICLES
+            this.particles.forEach(p => {
+                ctx.fillStyle = '#ef4444';
+                ctx.globalAlpha = p.life/30;
+                ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI*2); ctx.fill();
+                ctx.globalAlpha = 1;
+            });
+        }
+    }
+
+    /** SCENE 5: Engineering (UNCHANGED) **/
+    class SceneEngineering {
+        constructor() { this.vectors = []; this.cellScale = 1; }
+        update() {
+            if(state.time % 10 === 0) {
+                const angle = Math.random() * Math.PI * 2;
+                this.vectors.push({x: state.width/2 + Math.cos(angle)*400, y: state.height/2 + Math.sin(angle)*400, tx: state.width/2, ty: state.height/2, angle: angle});
+            }
+            this.vectors.forEach(v => {
+                v.x += (v.tx - v.x) * 0.05; v.y += (v.ty - v.y) * 0.05;
+                if(Math.abs(v.x - v.tx) < 20) { v.dead = true; this.cellScale = 1.2; }
+            });
+            this.vectors = this.vectors.filter(v => !v.dead);
+            if(this.cellScale > 1) this.cellScale -= 0.02;
+        }
+        draw(ctx) {
+            const cx = state.width/2; const cy = state.height/2;
+            ctx.fillStyle = '#fbbf24';
+            this.vectors.forEach(v => {
+                ctx.beginPath(); ctx.moveTo(v.x, v.y); ctx.lineTo(v.x - Math.cos(v.angle)*15, v.y - Math.sin(v.angle)*15);
+                ctx.strokeStyle = '#fbbf24'; ctx.stroke(); ctx.beginPath(); ctx.arc(v.x, v.y, 3, 0, Math.PI*2); ctx.fill();
+            });
+            const r = 100 * this.cellScale;
+            ctx.shadowBlur = 30; ctx.shadowColor = '#3b82f6'; ctx.fillStyle = '#0f172a'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.fill(); ctx.stroke(); ctx.shadowBlur = 0;
+            const numReceptors = 8 + Math.floor(state.time / 10) % 20;
+            ctx.strokeStyle = CONFIG.colors.green; ctx.lineWidth = 3;
+            for(let i=0; i<numReceptors; i++) {
+                const angle = (i/numReceptors)*Math.PI*2 + (state.time*0.01);
+                const rx = cx + Math.cos(angle)*r; const ry = cy + Math.sin(angle)*r;
+                ctx.beginPath(); ctx.moveTo(rx, ry); ctx.lineTo(rx + Math.cos(angle)*20, ry + Math.sin(angle)*20); ctx.stroke();
+                ctx.fillStyle = CONFIG.colors.green; ctx.beginPath(); ctx.arc(rx + Math.cos(angle)*20, ry + Math.sin(angle)*20, 4, 0, Math.PI*2); ctx.fill();
+            }
+            ctx.fillStyle = 'white'; ctx.textAlign = 'center'; ctx.font = '16px monospace'; ctx.fillText("REPROGRAMMING T-CELL", cx, cy + 150);
+        }
+    }
+
+    /** SCENE 6: Lysis (REALISTIC NUCLEUS) **/
+    class SceneBattle {
+        constructor() {
+            this.tumor = {
+                x: state.width/2,
+                y: state.height/2,
+                r: 130, health: 100, noise: [], chromatin: []
+            };
+            for(let i=0; i<60; i++) this.tumor.noise.push(Math.random());
+            for(let i=0; i<25; i++) this.tumor.chromatin.push({x: (Math.random()-0.5)*40, y: (Math.random()-0.5)*40, r: 2+Math.random()*4});
+
+            this.tCells = [];
+            for(let i=0; i<5; i++) {
+                const ang = (i/5)*Math.PI*2;
+                this.tCells.push({ x: this.tumor.x + Math.cos(ang)*350, y: this.tumor.y + Math.sin(ang)*350, angle: ang + Math.PI, state: 'approach', hairOffset: Math.random()*10 });
+            }
+            this.particles = []; this.blebs = [];
+        }
+
+        update() {
+            if(this.tumor.health > 0) {
+                this.tumor.chromatin.forEach(c => { c.x += (Math.random()-0.5)*0.5; c.y += (Math.random()-0.5)*0.5; });
+            } else {
+                this.tumor.r *= 0.98;
+                if(this.tumor.r < 10) { 
+                    this.tumor.health = 100; this.tumor.r = 130;
+                    this.tCells.forEach((tc,i) => { const ang = (i/5)*Math.PI*2; tc.state = 'approach'; tc.x = this.tumor.x + Math.cos(ang)*350; tc.y = this.tumor.y + Math.sin(ang)*350; });
+                }
+            }
+            this.tCells.forEach(tc => {
+                tc.hairOffset += 0.1;
+                if(tc.state === 'approach') {
+                    const tx = this.tumor.x - Math.cos(tc.angle)*(this.tumor.r+15); const ty = this.tumor.y - Math.sin(tc.angle)*(this.tumor.r+15);
+                    tc.x += (tx - tc.x) * 0.04; tc.y += (ty - tc.y) * 0.04;
+                    if(Math.hypot(tx-tc.x, ty-tc.y) < 10) tc.state = 'attack';
+                } else if (tc.state === 'attack') {
+                    if(Math.random() > 0.8 && this.tumor.health > 0) {
+                        this.particles.push({ x: tc.x, y: tc.y, vx: Math.cos(tc.angle)*3 + (Math.random()-0.5), vy: Math.sin(tc.angle)*3 + (Math.random()-0.5), life: 1 });
+                    }
+                }
+            });
+            this.particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy; p.life -= 0.03;
+                if(Math.hypot(p.x - this.tumor.x, p.y - this.tumor.y) < this.tumor.r) {
+                    p.life = 0; this.tumor.health -= 0.5;
+                    this.blebs.push({ x: p.x, y: p.y, vx: p.vx * -0.5, vy: p.vy * -0.5, r: 4 + Math.random()*8, life: 1, color: '#991b1b' });
+                }
+            });
+            this.particles = this.particles.filter(p => p.life > 0);
+            this.blebs.forEach(b => { b.x += b.vx; b.y += b.vy; b.life -= 0.02; }); this.blebs = this.blebs.filter(b => b.life > 0);
+        }
+
+        draw(ctx) {
+            ctx.save(); ctx.translate(this.tumor.x, this.tumor.y);
+            // Membrane
+            const hRatio = this.tumor.health/100;
+            ctx.beginPath();
+            for(let i=0; i<=60; i++) {
+                const ang = (i/60)*Math.PI*2; const n = this.tumor.noise[i%60] * 8; const r = this.tumor.r + n + (1-hRatio)*Math.random()*8;
+                const x = Math.cos(ang)*r; const y = Math.sin(ang)*r; if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+            }
+            ctx.closePath();
+            const grad = ctx.createRadialGradient(-30, -30, 10, 0, 0, this.tumor.r);
+            grad.addColorStop(0, `rgb(${255}, ${50*hRatio}, ${50*hRatio})`); grad.addColorStop(1, `rgb(${100+(1-hRatio)*100}, 0, 0)`);
+            ctx.fillStyle = grad; ctx.fill();
+            // Nucleus
+            ctx.beginPath();
+            for(let i=0; i<=20; i++) {
+                const ang = (i/20)*Math.PI*2; const r = this.tumor.r * 0.45 + Math.sin(ang*4)*4;
+                const x = Math.cos(ang)*r; const y = Math.sin(ang)*r; if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+            }
+            ctx.fillStyle = 'rgba(60, 10, 30, 0.7)'; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(100, 20, 50, 0.5)'; ctx.stroke();
+            ctx.fillStyle = 'rgba(20, 0, 10, 0.6)';
+            this.tumor.chromatin.forEach(c => { ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, Math.PI*2); ctx.fill(); });
+            ctx.restore();
+
+            this.tCells.forEach(tc => {
+                ctx.save(); ctx.translate(tc.x, tc.y); ctx.rotate(tc.angle);
+                ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1;
+                for(let i=0; i<24; i++) {
+                    const a = (i/24)*Math.PI*2; const len = 24 + Math.sin(a*8 + tc.hairOffset)*4;
+                    ctx.beginPath(); ctx.moveTo(Math.cos(a)*18, Math.sin(a)*18); ctx.lineTo(Math.cos(a)*len, Math.sin(a)*len); ctx.stroke();
+                }
+                const tcG = ctx.createRadialGradient(-5,-5,2,0,0,20); tcG.addColorStop(0, '#7dd3fc'); tcG.addColorStop(1, '#0284c7');
+                ctx.fillStyle = tcG; ctx.beginPath(); ctx.arc(0, 0, 20, 0, Math.PI*2); ctx.fill();
+                ctx.shadowBlur=10; ctx.shadowColor='#bae6fd'; ctx.fillStyle='#f0f9ff'; ctx.beginPath(); ctx.arc(0,0,8,0,Math.PI*2); ctx.fill(); ctx.shadowBlur=0;
+                ctx.restore();
+            });
+            ctx.fillStyle = CONFIG.colors.amber;
+            this.particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI*2); ctx.fill(); });
+            this.blebs.forEach(b => {
+                ctx.globalAlpha = b.life; ctx.fillStyle = b.color; ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI*2); ctx.fill(); ctx.globalAlpha = 1;
+            });
+        }
+    }
+
+    /** CORE LOOP & INIT **/
+    function init() {
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            state.width = canvas.width;
+            state.height = canvas.height;
+        };
+        window.addEventListener('resize', resize);
+        resize(); // Call immediately
+        window.addEventListener('mousemove', e => { state.mouse.x = e.clientX; state.mouse.y = e.clientY; });
+        renderNav();
+        setStep(0);
+        loop();
+    }
+    
+    function renderNav() {
+        const container = document.getElementById('nav-container');
+        container.innerHTML = CONFIG.steps.map((s, i) => `
+            <div onclick="setStep(${i})" id="nav-item-${i}" class="nav-item cursor-pointer p-5 border-b border-white/5 text-slate-400 group">
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                        <span class="material-symbols-outlined text-sm">${s.icon}</span>
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Step 0${i+1}</div>
+                        <div class="font-bold text-sm text-slate-200 group-hover:text-white transition-colors">${s.title}</div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function setStep(index) {
+        if(index < 0) index = CONFIG.steps.length - 1;
+        if(index >= CONFIG.steps.length) index = 0;
+        state.step = index;
+
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        const active = document.getElementById(`nav-item-${index}`);
+        if(active) { active.classList.add('active'); active.scrollIntoView({behavior:'smooth', block:'center'}); }
+
+        const data = CONFIG.steps[index];
+        document.getElementById('phase-title').innerText = data.title;
+        document.getElementById('phase-desc').innerText = data.desc;
+        document.getElementById('phase-badge').innerText = `PHASE ${index+1}`;
+        document.getElementById('bg-step-number').innerText = `0${index+1}`;
+
+        const log = document.getElementById('system-log');
+        log.innerHTML += `<div class="text-cyan-400">> LOAD_MODULE: ${data.title.replace(/\s/g,'_')}</div>`;
+        log.scrollTop = log.scrollHeight;
+
+        state.time = 0;
+
+        switch(index) {
+            case 0: activeScene = new SceneSequencing(); break;
+            case 1: activeScene = new SceneFiltering(); break;
+            case 2: activeScene = new SceneNeural(); break;
+            case 3: activeScene = new SceneCrispr(); break;
+            case 4: activeScene = new SceneEngineering(); break;
+            case 5: activeScene = new SceneBattle(); break;
+        }
+    }
+
+    function changeStep(d) { setStep(state.step + d); }
+    function togglePlay() { 
+        state.playing = !state.playing;
+        document.getElementById('play-icon').innerText = state.playing ? 'pause' : 'play_arrow';
+    }
+    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('-translate-x-full'); }
+
+    function loop() {
+        requestAnimationFrame(loop);
+        if(!state.playing) return;
+
+        ctx.fillStyle = 'rgba(2, 2, 4, 0.3)';
+        ctx.fillRect(0, 0, state.width, state.height);
+
+        if(activeScene) {
+            activeScene.update();
+            activeScene.draw(ctx);
+        }
+
+        state.time++;
+        const d = new Date(state.time * 1000);
+        document.getElementById('sim-time').innerText = d.toISOString().substr(11, 8);
+        if(state.time % 30 === 0) {
+            let c = 0;
+            if(activeScene.particles) c+=activeScene.particles.length;
+            if(activeScene.peptides) c+=activeScene.peptides.length;
+            if(activeScene.signals) c+=activeScene.signals.length;
+            if(activeScene.tCells) c+=activeScene.tCells.length;
+            document.getElementById('entity-counter').innerText = c > 0 ? c : 1;
+        }
+    }
+
+    // Start
+    init();
+
+</script>
+
+</body></html>

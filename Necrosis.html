@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mecanismos de la Necrosis — Versión Animada (V2)</title>
+<style>
+:root{
+  --bg:#071029;
+  --card:#071129;
+  --accent:#34d399;
+  --danger:#fb7185;
+  --blue:#60a5fa;
+  --glass: rgba(255,255,255,0.03);
+  --mono: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--mono);
+  background: radial-gradient(circle at 10% 10%, #071129 0%, #08102a 30%);
+  color:#e6eef8;
+  padding:20px;
+}
+.container{max-width:1200px;margin:0 auto;border-radius:12px;overflow:hidden}
+.header{
+  display:flex;align-items:center;gap:18px;padding:18px 22px;border-radius:8px;
+}
+.header h1{font-size:1.3rem}
+.layout{display:grid;grid-template-columns:1fr 360px;gap:18px;padding:12px}
+.viewport-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border-radius:12px;padding:18px;min-height:680px;position:relative;
+  display:flex;flex-direction:column;gap:14px;
+}
+/* Cell */
+.stage-area{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+.cell{
+  width:440px;height:440px;border-radius:50%;position:relative;overflow:visible;
+  background:radial-gradient(circle at 30% 30%, rgba(52,211,153,0.06), rgba(56,189,248,0.03));
+  box-shadow:0 18px 60px rgba(2,6,23,0.6);
+  transition:all 600ms cubic-bezier(.2,.9,.3,1);
+  transform-origin:center;
+}
+/* membrane layers for texture and pulse */
+.membrane-layer{
+  position:absolute;inset:0;border-radius:50%;pointer-events:none;
+}
+.membrane-tex::before{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,#34d399, #10b981, #06b6d4, #34d399);
+  opacity:0.12;filter:blur(10px);transform:scale(1.03);animation:slow-rot 18s linear infinite;
+}
+.membrane-tex::after{
+  content:"";position:absolute;inset:12px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  box-shadow:inset 0 8px 30px rgba(0,0,0,0.2);
+}
+@keyframes slow-rot{0%{transform:rotate(0) scale(1.03)}100%{transform:rotate(360deg) scale(1.03)}}
+
+/* membrane pulse for swelling stage */
+@keyframes membrane-pulse {
+  0%{transform:scale(1);box-shadow:0 18px 60px rgba(2,6,23,0.6)}
+  50%{transform:scale(1.06);box-shadow:0 26px 80px rgba(2,6,23,0.75)}
+  100%{transform:scale(1);box-shadow:0 18px 60px rgba(2,6,23,0.6)}
+}
+
+/* nucleus */
+.nucleus{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #9ec5ff, #2563eb 70%);display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:800;z-index:4;box-shadow:inset 0 -8px 20px rgba(0,0,0,0.25),0 12px 30px rgba(37,99,235,0.12);
+  transition:all 400ms ease;
+  overflow:hidden;
+}
+/* pulse for normal 'vital' nucleus */
+@keyframes nucleus-pulse {0%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.03)}100%{transform:translate(-50%,-50%) scale(1)}}
+
+/* chromatin condensation visual */
+.chromatin{position:absolute;inset:12px;border-radius:50%;background:repeating-radial-gradient(circle at 35% 30%, rgba(255,255,255,0.02) 0 3px, rgba(0,0,0,0.02) 3px 6px);opacity:0.95;transition:all 500ms}
+
+/* organelles */
+.org{position:absolute;transform:translate(-50%,-50%);transition:all 500ms}
+.mito{width:46px;height:24px;border-radius:24px;background:linear-gradient(90deg,#ff7b72,#c53030);box-shadow:inset 0 -6px 12px rgba(0,0,0,0.22)}
+.mito::after{content:"";position:absolute;left:6px;top:4px;width:10px;height:10px;border-radius:2px;background:rgba(255,255,255,0.06)}
+.lys{width:28px;height:28px;border-radius:50%;background:linear-gradient(180deg,#f7b267,#f59e0b);box-shadow:0 8px 20px rgba(245,158,11,0.12)}
+.er{width:64px;height:10px;border-radius:6px;background:linear-gradient(90deg,#a78bfa,#7c3aed)}
+
+/* floating */
+@keyframes floatY{0%,100%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-10px)}}
+.float{animation:floatY 4.2s ease-in-out infinite;}
+
+/* ATP particle */
+.atp{position:absolute;width:8px;height:8px;border-radius:50%;background:#facc15;box-shadow:0 6px 18px rgba(250,204,21,0.25);opacity:0}
+
+/* enzyme particle */
+.enzyme{position:absolute;width:8px;height:8px;border-radius:50%;background:rgba(255,160,64,0.95);box-shadow:0 8px 22px rgba(255,160,64,0.12);opacity:0}
+
+/* inflammation particle */
+.inflam{position:absolute;width:14px;height:14px;border-radius:50%;background:rgba(239,68,68,0.95);box-shadow:0 12px 30px rgba(239,68,68,0.12);opacity:0}
+
+/* fragments */
+.fragment{position:absolute;width:16px;height:8px;border-radius:4px;background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(0,0,0,0.1));box-shadow:0 10px 30px rgba(0,0,0,0.4);opacity:0}
+
+/* educational annotation */
+.annotation{position:absolute;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,0.55);font-size:12px;border:1px solid rgba(255,255,255,0.03);opacity:0;transform:translate(-50%,-50%) scale(0.9);transition:all 300ms}
+
+/* panels */
+.panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:14px;border-radius:10px;height:fit-content}
+.btn{display:block;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:8px;cursor:pointer;text-align:left}
+.btn.active{background:linear-gradient(90deg,#06b6d4,#0ea5a6);color:#021124}
+.progress{height:12px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:linear-gradient(90deg,#34d399,#60a5fa);transition:width 600ms}
+
+/* states */
+.cell.swollen{animation:membrane-pulse 3.2s ease-in-out infinite}
+.cell.ruptured{filter:grayscale(20%) contrast(0.9) saturate(0.7)}
+.cell.necrotic{filter:grayscale(60%) contrast(0.85);}
+
+/* responsive */
+@media(max-width:1000px){.layout{grid-template-columns:1fr;}.panel{order:2}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Mecanismos de la Necrosis — Version Animada</h1>
+    <div style="opacity:0.8;font-size:13px">Animaciones por etapa — didáctico</div>
+  </div>
+
+  <div class="layout">
+    <div class="viewport-card">
+      <div class="stage-area">
+        <div id="cell" class="cell" aria-hidden="false">
+          <div class="membrane-layer membrane-tex" aria-hidden="true"></div>
+          <div id="nucleus" class="nucleus"><div class="chromatin"></div><span style="z-index:5;position:relative">NÚCLEO</span></div>
+          <!-- organelles will be injected here -->
+        </div>
+        <!-- container for animations outside cell (inflam particles) -->
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div style="font-size:13px">Estado: <strong id="stageName">Célula Normal</strong></div>
+        <div style="font-size:13px">ATP: <strong id="atpVal">8 mM</strong></div>
+        <div style="width:40%"><div class="progress" aria-hidden><div id="pfill" class="fill" style="width:0%"></div></div></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="panel">
+        <h3>Etapas</h3>
+        <div id="controls"></div>
+      </div>
+
+      <div class="panel" style="margin-top:12px">
+        <div id="desc"><strong>Célula Normal</strong><p style="margin-top:6px;font-size:13px">Membrana intacta, núcleo bien definido, mitocondrias produciendo ATP.</p></div>
+      </div>
+
+      <div class="panel" style="margin-top:12px">
+        <button id="autoBtn" class="btn">Demo automático</button>
+        <button id="resetBtn" class="btn">Reiniciar</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+/* Stage data (with original extended descriptions and molecular details) */
+const STAGES = [
+  {
+    id: 'normal',
+    title: 'Célula Normal',
+    progress: 0,
+    atp: '8 mM',
+    desc: 'La célula mantiene su integridad estructural con membranas intactas, núcleo bien definido y orgánulos funcionando normalmente. Las mitocondrias producen ATP constantemente para mantener los procesos vitales.',
+    molecular: 'Las bombas de Na+/K+ funcionan normalmente, manteniendo el equilibrio iónico. Los niveles de ATP son óptimos (5-10 mM). El calcio intracelular se mantiene bajo (<100 nM).'
+  },
+  {
+    id: 'insulto',
+    title: 'Insulto Inicial',
+    progress: 18,
+    atp: '5-6 mM',
+    desc: 'Un estímulo nocivo (hipoxia, toxinas, trauma) comienza a afectar la célula. Los primeros cambios son sutiles pero críticos: las mitocondrias comienzan a tener dificultades para producir ATP.',
+    molecular: 'La cadena de transporte de electrones se ve comprometida. La producción de ATP disminuye inicialmente del 90% al 60% de los niveles normales. Comienza el estrés oxidativo.'
+  },
+  {
+    id: 'deplecion',
+    title: 'Depleción Crítica de ATP',
+    progress: 36,
+    atp: '<2 mM',
+    desc: 'Los niveles de ATP caen dramáticamente. Las bombas de sodio-potasio fallan, permitiendo el influjo de sodio y agua. Este es el punto de no retorno en muchos casos de necrosis.',
+    molecular: 'ATP <2 mM (crítico). Fallo de las bombas Na+/K+. Entrada masiva de Na+ y Cl-. El gradiente de membrana se colapsa. Inicio de la cascada de calcio.'
+  },
+  {
+    id: 'hinchazon',
+    title: 'Hinchazón Celular',
+    progress: 58,
+    atp: '1–2 mM',
+    desc: 'La célula se hincha debido al influjo incontrolado de agua y sodio. Los orgánulos también se hinchan, especialmente las mitocondrias y el retículo endoplasmático. La arquitectura celular se distorsiona.',
+    molecular: 'Ca²⁺ intracelular aumenta >1 μM. Hinchazón mitocondrial severa. Los ribosomas se desprenden del RE. Activación inicial de fosfolipasas.'
+  },
+  {
+    id: 'ruptura',
+    title: 'Ruptura de Membranas',
+    progress: 80,
+    atp: '<1 mM',
+    desc: 'Las membranas lisosomales se rompen, liberando enzimas digestivas en el citoplasma. La membrana celular pierde su integridad. Los contenidos celulares comienzan a filtrarse al exterior.',
+    molecular: 'Liberación de catepsinas, DNAsas, RNAsas. Activación de calpaínas por Ca²⁺. Peroxidación lipídica masiva. Ruptura de la membrana plasmática.'
+  },
+  {
+    id: 'necrosis',
+    title: 'Necrosis Completa',
+    progress: 100,
+    atp: '0 mM',
+    desc: 'Muerte celular completa con lisis total. El núcleo se fragmenta (cariorexis) o se disuelve (cariólisis). Los contenidos celulares se derraman, activando la respuesta inflamatoria en tejidos vecinos.',
+    molecular: 'Liberación de HMGB1, ATP extracelular, ácido úrico. Activación del inflamasoma NLRP3. Secreción de IL-1β. Inicio de la cascada inflamatoria.'
+  }
+];
+
+const cell = document.getElementById('cell');
+const nucleus = document.getElementById('nucleus');
+const controls = document.getElementById('controls');
+const stageName = document.getElementById('stageName');
+const atpVal = document.getElementById('atpVal');
+const pfill = document.getElementById('pfill');
+const desc = document.getElementById('desc');
+
+let current = 0;
+let intervals = [];
+
+/* Create control buttons */
+STAGES.forEach((s,i)=>{
+  const btn = document.createElement('button');
+  btn.innerText = (i+1)+'. '+s.title;
+  btn.className='btn'+(i===0?' active':'');
+  btn.onclick = ()=> setStage(i);
+  controls.appendChild(btn);
+});
+
+/* Place organelles (mitochondria, lysosomes, ER) */
+function seedOrganelles(){
+  // remove existing
+  Array.from(cell.querySelectorAll('.org')).forEach(e=>e.remove());
+  const layout = [
+    {cls:'mito',top:24,left:72},
+    {cls:'mito',top:62,left:26},
+    {cls:'mito',top:46,left:74},
+    {cls:'mito',top:22,left:34},
+    {cls:'lys',top:36,left:18},
+    {cls:'lys',top:66,left:68},
+    {cls:'er',top:30,left:54}
+  ];
+  layout.forEach((p,idx)=>{
+    const o = document.createElement('div');
+    o.className = 'org '+p.cls;
+    o.style.top = p.top+'%';
+    o.style.left = p.left+'%';
+    // slight rotation and float
+    o.style.transform = 'translate(-50%,-50%) rotate('+ (Math.random()*20-10) +'deg)';
+    o.dataset.type = p.cls;
+    cell.appendChild(o);
+  });
+}
+seedOrganelles();
+
+/* Helpers: clear intervals and particles */
+function clearAll(){
+  intervals.forEach(t=>clearInterval(t));
+  intervals=[];
+  // remove transient particles / fragments / annotations
+  Array.from(document.querySelectorAll('.atp,.enzyme,.inflam,.fragment,.annotation')).forEach(n=>n.remove());
+  // reset classes
+  cell.classList.remove('swollen','ruptured','necrotic');
+  nucleus.style.opacity = 1;
+  nucleus.style.transform = 'translate(-50%,-50%) scale(1)';
+  Array.from(cell.querySelectorAll('.org')).forEach(o=>{ o.classList.remove('float'); o.style.transform = o.style.transform.replace(/scale\([0-9\.]+\)/,'');});
+}
+
+/* Particle creators */
+function spawnATP(){
+  const a = document.createElement('div'); a.className='atp';
+  // random position inside cell radius
+  const r = 130*Math.random()+20;
+  const theta = Math.random()*Math.PI*2;
+  const cx = 220 + r*Math.cos(theta);
+  const cy = 220 + r*Math.sin(theta);
+  a.style.left = cx+'px'; a.style.top = cy+'px';
+  cell.appendChild(a);
+  // animate: appear and float outward/up
+  requestAnimationFrame(()=>{ a.style.transition='all 1400ms ease-out'; a.style.opacity=1; a.style.transform='translateY(-24px) scale(1)';});
+  setTimeout(()=>{ a.style.transition='all 1200ms ease'; a.style.opacity=0; a.style.transform='translate('+ (Math.random()*120-60) +'px, -60px) scale(0.3)'; },900);
+  setTimeout(()=>a.remove(),2200);
+}
+
+function spawnEnzyme(){
+  const e = document.createElement('div'); e.className='enzyme';
+  const cx = 80 + Math.random()*300; const cy = 80 + Math.random()*300;
+  e.style.left = cx+'px'; e.style.top = cy+'px';
+  cell.appendChild(e);
+  requestAnimationFrame(()=>{ e.style.transition='all 900ms ease'; e.style.opacity=1; e.style.transform='translateY(-8px) scale(1)';});
+  setTimeout(()=>{ e.style.transition='all 1600ms ease'; e.style.opacity=0; e.style.transform='translate('+ (Math.random()*240-120) +'px,'+ (Math.random()*240-120) +'px) scale(0.3)';},900);
+  setTimeout(()=>e.remove(),2600);
+}
+
+function spawnInflam(){
+  const f = document.createElement('div'); f.className='inflam';
+  const cx = 40 + Math.random()*360; const cy = 40 + Math.random()*360;
+  f.style.left = cx+'px'; f.style.top = cy+'px';
+  document.body.appendChild(f); // outside cell for tissue-level signal
+  requestAnimationFrame(()=>{ f.style.transition='all 900ms ease'; f.style.opacity=1; f.style.transform='scale(1)';});
+  setTimeout(()=>{ f.style.transition='all 1200ms ease'; f.style.opacity=0; f.style.transform='scale(2)';},900);
+  setTimeout(()=>f.remove(),2000);
+}
+
+/* ripples on membrane to illustrate osmotic waves */
+function rippleOnce(){
+  const r = document.createElement('div');
+  r.className = 'fragment';
+  r.style.borderRadius = '50%';
+  r.style.width='20px'; r.style.height='20px';
+  r.style.left='220px'; r.style.top='220px';
+  r.style.background='rgba(52,211,153,0.18)';
+  cell.appendChild(r);
+  requestAnimationFrame(()=>{ r.style.transition='all 900ms ease'; r.style.opacity=0.5; r.style.transform='translate(-50%,-50%) scale(6)'; r.style.left='220px';});
+  setTimeout(()=>{ r.style.opacity=0; },700);
+  setTimeout(()=>r.remove(),1100);
+}
+
+/* membrane shredding */
+function shredMembrane(){
+  for(let i=0;i<12;i++){
+    const s = document.createElement('div'); s.className='fragment';
+    s.style.width = (8+Math.random()*24)+'px';
+    s.style.height = (6+Math.random()*12)+'px';
+    const ang = Math.random()*Math.PI*2; const r = 180 + Math.random()*60;
+    const cx = 220 + r*Math.cos(ang); const cy = 220 + r*Math.sin(ang);
+    s.style.left = cx+'px'; s.style.top = cy+'px'; s.style.opacity=0.95;
+    document.body.appendChild(s);
+    setTimeout(()=>{ s.style.transition='all 1200ms cubic-bezier(.2,.9,.3,1)'; s.style.transform = `translate(${(Math.random()*1000-500)}px, ${(Math.random()*1000-500)}px) rotate(${Math.random()*360}deg) scale(0.2)`; s.style.opacity=0; },60*i);
+    setTimeout(()=>s.remove(),1300+60*i);
+  }
+}
+
+/* show annotation (educational) near coordinates relative to cell */
+function showAnnotation(text,leftPct,topPct,ttl=2600){
+  const a = document.createElement('div'); a.className='annotation';
+  a.innerText = text;
+  // compute position inside cell absolute
+  const rect = cell.getBoundingClientRect();
+  a.style.left = (rect.left + rect.width*leftPct/100) + 'px';
+  a.style.top = (rect.top + rect.height*topPct/100) + 'px';
+  document.body.appendChild(a);
+  requestAnimationFrame(()=>{ a.style.opacity=1; a.style.transform='translate(-50%,-50%) scale(1)';});
+  setTimeout(()=>{ a.style.opacity=0; a.style.transform='translate(-50%,-50%) scale(0.9)'; }, ttl-400);
+  setTimeout(()=>a.remove(), ttl);
+}
+
+/* nucleus pulse for 'healthy' */
+function startNucleusPulse(){
+  nucleus.style.animation = 'nucleus-pulse 2.8s ease-in-out infinite';
+}
+
+/* stop pulse */
+function stopNucleusPulse(){ nucleus.style.animation = ''; }
+
+/* set stage */
+function setStage(idx){
+  clearAll();
+  current = idx;
+  // UI update
+  Array.from(document.querySelectorAll('#controls .btn')).forEach((b,i)=>b.classList.toggle('active', i===idx));
+  stageName.innerText = STAGES[idx].title;
+  atpVal.innerText = STAGES[idx].atp;
+  pfill.style.width = STAGES[idx].progress + '%';
+  // show description + molecular details (from original content)
+  desc.innerHTML = `<strong>${STAGES[idx].title}</strong>
+    <p style="margin-top:6px;font-size:13px">${STAGES[idx].desc}</p>
+    <div style="margin-top:8px;padding:8px;background:rgba(255,255,255,0.02);border-radius:6px">
+      <strong>Detalles Moleculares</strong>
+      <p style="margin-top:6px;font-size:13px;opacity:0.92">${STAGES[idx].molecular}</p>
+    </div>`;
+  // behaviors per stage
+  if(idx===0){
+    // normal: nucleus pulse + gentle organelle float + occasional ATP release
+    startNucleusPulse();
+    Array.from(cell.querySelectorAll('.org')).forEach(o=>o.classList.add('float'));
+    const t1 = setInterval(spawnATP, 900);
+    intervals.push(t1);
+    // small annotation
+    setTimeout(()=>showAnnotation('Mitocondrias producen ATP', 70, 28, 2600), 600);
+  }
+  if(idx===1){
+    // insult: ATP particles more sparse, mild chromatin stress
+    startNucleusPulse();
+    Array.from(cell.querySelectorAll('.org')).forEach(o=>o.classList.add('float'));
+    const t = setInterval(spawnATP, 1200);
+    intervals.push(t);
+    setTimeout(()=>showAnnotation('Estrés oxidativo inicia disfunción mitocondrial', 24, 72, 3200), 700);
+  }
+  if(idx===2){
+    // critical ATP loss: nucleus shrinks, organelles slow, ripples start
+    stopNucleusPulse();
+    nucleus.style.transform = 'translate(-50%,-50%) scale(0.9)';
+    Array.from(cell.querySelectorAll('.org')).forEach(o=>o.classList.remove('float'));
+    // ripples and fewer ATP
+    const r = setInterval(rippleOnce, 900);
+    intervals.push(r);
+    const at = setInterval(spawnATP, 1400);
+    intervals.push(at);
+    setTimeout(()=>showAnnotation('Colapso de gradiente iónico', 52, 60, 2800), 700);
+  }
+  if(idx===3){
+    // swelling: membrane pulse, organelles enlarge and wobble, enzyme vesicles form
+    cell.classList.add('swollen');
+    nucleus.style.transform = 'translate(-50%,-50%) scale(0.85)';
+    // organelle swell animation (scale up)
+    Array.from(cell.querySelectorAll('.org')).forEach((o,i)=>{ o.style.transition='all 700ms'; o.style.transform += ' scale(1.3)'; });
+    const r2 = setInterval(rippleOnce, 700);
+    intervals.push(r2);
+    const e = setInterval(spawnEnzyme, 800);
+    intervals.push(e);
+    setTimeout(()=>showAnnotation('Entrada masiva de agua y Na+', 58, 48, 3000), 400);
+  }
+  if(idx===4){
+    // rupture: enzymes burst, membrane destabilizes
+    cell.classList.add('ruptured');
+    nucleus.style.transform = 'translate(-50%,-50%) scale(0.8)';
+    const enz = setInterval(spawnEnzyme, 420);
+    intervals.push(enz);
+    const rib = setInterval(rippleOnce, 500);
+    intervals.push(rib);
+    setTimeout(()=>showAnnotation('Lisosomas liberan catepsinas', 18, 22, 3200), 600);
+  }
+  if(idx===5){
+    // necrosis complete: membrane shreds, nucleus fragments, inflammation particles
+    cell.classList.add('necrotic');
+    nucleus.style.opacity = 0.08;
+    shredMembrane();
+    fragmentNucleus();
+    const infl = setInterval(spawnInflam, 360);
+    intervals.push(infl);
+    setTimeout(()=>showAnnotation('DAMPs liberados → reclutamiento inflamatorio', 65, 18, 4200), 600);
+  }
+}
+
+/* nucleus fragmentation for necrosis */
+function fragmentNucleus(){
+  const rect = nucleus.getBoundingClientRect();
+  const parent = cell.getBoundingClientRect();
+  const ox = rect.left - parent.left; const oy = rect.top - parent.top;
+  const pieces = 10;
+  for(let i=0;i<pieces;i++){
+    const frag = document.createElement('div'); frag.className='fragment';
+    frag.style.width = (12+Math.random()*28)+'px';
+    frag.style.height = (6+Math.random()*18)+'px';
+    frag.style.left = (ox + rect.width/2 - 20 + (Math.random()*80-40))+'px';
+    frag.style.top = (oy + rect.height/2 - 10 + (Math.random()*80-40))+'px';
+    document.body.appendChild(frag);
+    setTimeout(()=>{ frag.style.transition='all 1200ms cubic-bezier(.2,.9,.3,1)'; frag.style.transform = `translate(${(Math.random()*1000-500)}px, ${(Math.random()*1000-500)}px) rotate(${Math.random()*360}deg) scale(0.2)`; frag.style.opacity=0; }, 80*i);
+    setTimeout(()=>frag.remove(), 1400+80*i);
+  }
+}
+
+/* Auto demo */
+let autoTimer = null;
+function startAuto(){
+  if(autoTimer) return;
+  let i=0;
+  autoTimer = setInterval(()=>{
+    setStage(i);
+    i++;
+    if(i>=STAGES.length){ clearInterval(autoTimer); autoTimer=null; }
+  }, 2400);
+}
+
+/* reset */
+function resetAll(){
+  if(autoTimer) { clearInterval(autoTimer); autoTimer=null; }
+  clearAll();
+  seedOrganelles();
+  setStage(0);
+}
+
+/* wire buttons */
+document.getElementById('autoBtn').addEventListener('click', startAuto);
+document.getElementById('resetBtn').addEventListener('click', resetAll);
+
+/* initialize */
+seedOrganelles();
+setStage(0);
+</script>
+</body>
+</html>

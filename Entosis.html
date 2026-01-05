@@ -1,0 +1,808 @@
+<!DOCTYPE html><html lang="es"><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Entosis: Hyper-Realism Engine v3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&amp;family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        /* Capas de Fondo Cinematográfico */
+        .bio-void {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, #1a0202 0%, #0a0101 50%, #000000 100%);
+            z-index: 0;
+        }
+        
+        .organic-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+
+        /* Viñeta y Lente */
+        .vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.95) 100%);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* Panel de Vidrio */
+        .glass-panel {
+            background: rgba(12, 4, 4, 0.6);
+            backdrop-filter: blur(24px) saturate(150%);
+            -webkit-backdrop-filter: blur(24px) saturate(150%);
+            border: 1px solid rgba(255, 60, 60, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95);
+        }
+
+        /* Estilo Botones */
+        .phase-btn {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            overflow: hidden;
+            border-left: 3px solid transparent;
+        }
+        .phase-btn:hover { background: rgba(255, 255, 255, 0.04); }
+        
+        .phase-btn.active {
+            background: linear-gradient(90deg, rgba(220, 38, 38, 0.2), transparent);
+            border-left-color: #ef4444;
+        }
+        .phase-btn.active .status-indicator {
+            background: #ef4444;
+            box-shadow: 0 0 15px #ef4444;
+            transform: scale(1.2);
+        }
+
+        canvas { display: block; position: relative; z-index: 10; }
+        .tech-font { font-family: 'Space Grotesk', monospace; }
+
+        @keyframes pulse-red {
+            0%, 100% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.3); opacity: 0.8; }
+            50% { box-shadow: 0 0 25px rgba(239, 68, 68, 0.7); opacity: 1; }
+        }
+        .live-dot { animation: pulse-red 2s infinite; }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-10{bottom:2.5rem}.left-10{left:2.5rem}.top-10{top:2.5rem}.z-30{z-index:30}.z-40{z-index:40}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.flex{display:flex}.h-1\.5{height:0.375rem}.h-2{height:0.5rem}.h-3{height:0.75rem}.h-full{height:100%}.h-screen{height:100vh}.w-0{width:0px}.w-1\.5{width:0.375rem}.w-1\/2{width:50%}.w-3{width:0.75rem}.w-80{width:20rem}.w-\[480px\]{width:480px}.w-full{width:100%}.w-screen{width:100vw}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}@keyframes spin{to{transform:rotate(360deg)}}.animate-\[spin_2\.5s_linear_infinite\]{animation:spin 2.5s linear infinite}.select-none{-webkit-user-select:none;user-select:none}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-3{gap:0.75rem}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-l{border-left-width:1px}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.bg-gray-700{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.bg-gray-900\/90{background-color:rgb(17 24 39 / 0.9)}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.bg-\[linear-gradient\(90deg\2c transparent\2c rgba\(255\2c 255\2c 255\2c 0\.2\)\2c transparent\)\]{background-image:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-red-900{--tw-gradient-from:#7f1d1d var(--tw-gradient-from-position);--tw-gradient-to:rgb(127 29 29 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-white\/5{--tw-gradient-from:rgb(255 255 255 / 0.05) var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 255 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-red-500{--tw-gradient-to:rgb(239 68 68 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #ef4444 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-amber-400{--tw-gradient-to:#fbbf24 var(--tw-gradient-to-position)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.text-left{text-align:left}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)}.leading-relaxed{line-height:1.625}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-widest{letter-spacing:0.1em}.text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-red-400\/80{color:rgb(248 113 113 / 0.8)}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-80{opacity:0.8}.shadow-\[0_0_25px_rgba\(245\2c 158\2c 11\2c 0\.8\)\]{--tw-shadow:0 0 25px rgba(245,158,11,0.8);--tw-shadow-colored:0 0 25px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.drop-shadow-2xl{--tw-drop-shadow:drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-700{transition-duration:700ms}.group:hover .group-hover\:text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}</style></head>
+<body class="flex h-screen w-screen overflow-hidden">
+    <!-- Capas visuales -->
+    <div class="bio-void"></div>
+    <div class="organic-noise"></div>
+    <div class="vignette"></div>
+
+    <!-- Canvas -->
+    <div class="relative flex-grow h-full" id="canvas-wrapper">
+        <canvas id="world" width="764" height="574"></canvas>
+        
+        <!-- HUD Izquierdo -->
+        <div class="absolute top-10 left-10 z-30 pointer-events-none select-none">
+            <h1 class="text-6xl font-black text-white tracking-tighter drop-shadow-2xl">
+                ENTOSIS <span class="text-red-500 font-light">X2</span>
+            </h1>
+            <div class="flex items-center gap-3 mt-3">
+                <div class="w-3 h-3 rounded-full bg-red-600 live-dot"></div>
+                <span class="text-xs font-bold text-red-400/80 tech-font tracking-[0.3em]" id="phase-display">SISTEMA: HIPERTROFIA</span>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="absolute bottom-10 left-10 z-30 pointer-events-none w-80">
+            <div class="flex justify-between items-end mb-2">
+                <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">ATP Celular</span>
+                <span class="text-3xl font-bold text-white tech-font tabular-nums" id="power-text">99%</span>
+            </div>
+            <div class="h-2 w-full bg-gray-900/90 rounded-full overflow-hidden border border-white/10 relative shadow-inner">
+                <div class="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)] w-1/2 animate-[spin_2.5s_linear_infinite]"></div>
+                <div class="h-full bg-gradient-to-r from-red-900 via-red-500 to-amber-400 w-0 transition-all duration-700 shadow-[0_0_25px_rgba(245,158,11,0.8)]" id="power-bar" style="width: 99.999994%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de Control -->
+    <div class="w-[480px] glass-panel z-40 flex flex-col h-full flex-shrink-0 border-l border-white/5">
+        <div class="p-8 border-b border-white/5 bg-gradient-to-b from-white/5 to-transparent">
+            <h2 class="text-2xl font-bold text-white tracking-tight">Secuencia Biológica</h2>
+            <p class="text-xs text-gray-400 mt-2 font-medium leading-relaxed">
+                Simulación Ultra-Realista. Mejorada con shaders procedurales para simular tejido orgánico, iluminación volumétrica en tentáculos y citoplasma complejo.
+            </p>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
+            <!-- Botones -->
+            <button class="phase-btn w-full text-left p-5 rounded-lg bg-black/40 border border-white/5 group" id="btn-0" onclick="setPhase(0)">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] font-bold text-gray-500 tech-font group-hover:text-red-400">FASE 00</span>
+                    <div class="status-indicator w-1.5 h-1.5 rounded-full bg-gray-700 transition-all"></div>
+                </div>
+                <h3 class="text-sm font-bold text-gray-200 group-hover:text-white">Escaneo Basal</h3>
+                <p class="text-[11px] text-gray-500 mt-2 leading-relaxed opacity-80">
+                    Movimiento orgánico de fluidos. Los tentáculos exhiben comportamiento de tejido blando.
+                </p>
+            </button>
+            <button class="phase-btn w-full text-left p-5 rounded-lg bg-black/40 border border-white/5 group" id="btn-1" onclick="setPhase(1)">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] font-bold text-gray-500 tech-font group-hover:text-red-400">FASE 01</span>
+                    <div class="status-indicator w-1.5 h-1.5 rounded-full bg-gray-700 transition-all"></div>
+                </div>
+                <h3 class="text-sm font-bold text-gray-200 group-hover:text-white">Ataque &amp; Envoltura</h3>
+                <p class="text-[11px] text-gray-500 mt-2 leading-relaxed opacity-80">
+                    Proyección de filopodios. Las puntas ejecutan una espiral de constricción.
+                </p>
+            </button>
+            <button class="phase-btn w-full text-left p-5 rounded-lg bg-black/40 border border-white/5 group" id="btn-2" onclick="setPhase(2)">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] font-bold text-gray-500 tech-font group-hover:text-red-400">FASE 02</span>
+                    <div class="status-indicator w-1.5 h-1.5 rounded-full bg-gray-700 transition-all"></div>
+                </div>
+                <h3 class="text-sm font-bold text-gray-200 group-hover:text-white">Tracción de Actomiosina</h3>
+                <p class="text-[11px] text-gray-500 mt-2 leading-relaxed opacity-80">
+                    Tensión muscular visible. Arrastre forzoso hacia el núcleo.
+                </p>
+            </button>
+            <button class="phase-btn w-full text-left p-5 rounded-lg bg-black/40 border border-white/5 group" id="btn-3" onclick="setPhase(3)">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] font-bold text-gray-500 tech-font group-hover:text-red-400">FASE 03</span>
+                    <div class="status-indicator w-1.5 h-1.5 rounded-full bg-gray-700 transition-all"></div>
+                </div>
+                <h3 class="text-sm font-bold text-gray-200 group-hover:text-white">Entosis</h3>
+                <p class="text-[11px] text-gray-500 mt-2 leading-relaxed opacity-80">
+                    Internalización en vacuola.
+                </p>
+            </button>
+            <button class="phase-btn w-full text-left p-5 rounded-lg bg-black/40 border border-white/5 group active" id="btn-4" onclick="setPhase(4)">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] font-bold text-gray-500 tech-font group-hover:text-red-400">FASE 04</span>
+                    <div class="status-indicator w-1.5 h-1.5 rounded-full bg-gray-700 transition-all"></div>
+                </div>
+                <h3 class="text-sm font-bold text-gray-200 group-hover:text-white">Hipertrofia</h3>
+                <p class="text-[11px] text-gray-500 mt-2 leading-relaxed opacity-80">
+                    Crecimiento masivo y resplandor de energía post-digestión.
+                </p>
+            </button>
+        </div>
+    </div>
+
+<script>
+/**
+ * ENTOSIS ENGINE V11 (Organic Aesthetics)
+ * Improvements:
+ * - Multi-layered Cell Rendering (Nucleus, Cytoplasm, Membrane)
+ * - Volumetric Tube Tentacles (Simulated 3D shading)
+ * - Improved Texture Noise
+ */
+
+const canvas = document.getElementById('world');
+const ctx = canvas.getContext('2d');
+const container = document.getElementById('canvas-wrapper');
+
+let W, H;
+let tick = 0;
+let phase = 0;
+let power = 0;
+const LYMPH_COUNT = 5;
+
+// Paleta Orgánica
+const C = {
+    cancer: { 
+        core: '#100000', 
+        cytoDark: '#4a0404', 
+        cytoLight: '#8a1c1c', 
+        membrane: '#ef4444', 
+        highlight: '#ffaaaa',
+        super: '#fbbf24'
+    },
+    tentacle: { 
+        baseDark: '#220505', 
+        baseLight: '#551010', 
+        tipActive: '#ff5555' 
+    },
+    lymph: { 
+        core: '#020410', 
+        cyto: '#0369a1', 
+        membrane: '#38bdf8',
+        highlight: '#bae6fd'
+    },
+    particle: '#fbbf24'
+};
+
+const rand = (min, max) => Math.random() * (max - min) + min;
+const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+const lerp = (a, b, t) => a + (b - a) * t;
+
+/* -------------------------------------------------------------------------- */
+/*                               PHYSICS                                      */
+/* -------------------------------------------------------------------------- */
+
+class Particle {
+    constructor(x, y, type) {
+        this.x = x; this.y = y;
+        this.type = type; 
+        this.vx = rand(-0.5, 0.5);
+        this.vy = rand(-0.5, 0.5);
+        this.life = 1.0;
+        this.size = type === 'food' ? rand(1.5, 3.5) : rand(0.5, 1.5);
+    }
+    update(center) {
+        if (this.type === 'food') {
+            this.x += (center.x - this.x) * 0.1;
+            this.y += (center.y - this.y) * 0.1;
+            this.life -= 0.015;
+            if(dist(this, center) < 30) this.life = 0;
+        } else {
+            this.x += this.vx; this.y += this.vy;
+            this.life -= 0.002;
+        }
+    }
+    draw(ctx) {
+        ctx.globalAlpha = this.life;
+        ctx.fillStyle = this.type === 'food' ? C.particle : '#fff';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        if(this.type === 'food') {
+            ctx.shadowBlur = 8; ctx.shadowColor = C.particle;
+        }
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+    }
+}
+
+class Lymphocyte {
+    constructor(id, x, y) {
+        this.id = id;
+        this.x = x; this.y = y;
+        this.homeX = x; this.homeY = y;
+        this.r = 28;
+        
+        this.captured = false;
+        this.engulfed = false;
+        this.digested = false;
+        
+        this.noiseOff = rand(0, 100);
+        this.points = new Float32Array(60);
+    }
+
+    update(center) {
+        if (this.digested) return;
+
+        // Complex Membrane Noise
+        const agitation = this.captured ? 3.0 : 0.5;
+        const freq = this.captured ? 0.3 : 0.05;
+        for(let i=0; i<60; i++) {
+            let n = Math.sin(i * 0.6 + tick * freq + this.noiseOff) * 1.5;
+            n += Math.cos(i * 1.5 - tick * (freq*0.8)) * 0.8;
+            this.points[i] = n * agitation;
+        }
+
+        if (phase === 0) {
+            this.x = this.homeX + Math.sin(tick*0.01 + this.id)*4;
+            this.y = this.homeY + Math.cos(tick*0.015 + this.id)*4;
+        }
+        else if (phase === 3 && this.captured) {
+            this.x += (center.x - this.x) * 0.05;
+            this.y += (center.y - this.y) * 0.05;
+            if (dist(this, center) < center.r * 0.55) this.engulfed = true;
+        }
+        else if (phase === 4 && this.engulfed) {
+            this.r = Math.max(0, this.r - 0.15);
+            if (this.r < 1) this.digested = true;
+            if (Math.random() < 0.3) particles.push(new Particle(this.x, this.y, 'food'));
+        }
+    }
+
+    draw(ctx) {
+        if (this.digested) return;
+
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        if(this.captured && phase === 2) ctx.translate(rand(-2,2), rand(-2,2));
+
+        // Create Path
+        ctx.beginPath();
+        for(let i=0; i<=60; i++) {
+            const angle = (i/60)*Math.PI*2;
+            const r = this.r + this.points[i%60];
+            const px = Math.cos(angle)*r;
+            const py = Math.sin(angle)*r;
+            if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+        }
+        ctx.closePath();
+
+        if (this.engulfed) {
+            // Shadowed State
+            ctx.fillStyle = '#0f172a';
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 1;
+            ctx.fill();
+            ctx.stroke();
+        } else {
+            // Realistic Cell Shader
+            
+            // 1. Cytoplasm Base
+            const grad = ctx.createRadialGradient(-5, -5, 0, 0, 0, this.r);
+            grad.addColorStop(0, '#0ea5e9');
+            grad.addColorStop(1, '#020617');
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            // 2. Inner Texture (Organelles)
+            ctx.globalCompositeOperation = 'overlay';
+            ctx.fillStyle = 'rgba(255,255,255,0.1)';
+            for(let k=0; k<5; k++) {
+                const ox = Math.sin(k*2 + tick*0.02)*10;
+                const oy = Math.cos(k*1.5 + tick*0.01)*10;
+                ctx.beginPath();
+                ctx.arc(ox, oy, 6, 0, Math.PI*2);
+                ctx.fill();
+            }
+            ctx.globalCompositeOperation = 'source-over';
+
+            // 3. Membrane Highlight (Rim Light)
+            ctx.strokeStyle = C.lymph.membrane;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 4. Glow
+            ctx.shadowColor = C.lymph.skin;
+            ctx.shadowBlur = this.captured ? 20 : 10;
+            ctx.stroke(); 
+            ctx.shadowBlur = 0;
+        }
+
+        if (phase === 4) {
+             ctx.fillStyle = '#3f0a0a';
+             ctx.fill();
+        }
+
+        ctx.restore();
+    }
+}
+
+class Tentacle {
+    constructor(parent, angleBase, len) {
+        this.parent = parent;
+        this.angleBase = angleBase;
+        this.len = len;
+        this.segments = 90; 
+        this.points = [];
+        
+        for(let i=0; i<this.segments; i++) {
+            const t = i / this.segments;
+            this.points.push({
+                x: parent.x + Math.cos(angleBase) * (t * 50),
+                y: parent.y + Math.sin(angleBase) * (t * 50)
+            });
+        }
+
+        this.target = null;
+        this.grip = 0; 
+        this.coilTimer = rand(0, 100); 
+    }
+
+    update(lymphs) {
+        // --- ANCHORING LOGIC ---
+        // Deep anchor to ensure visual continuity
+        const deepAnchor = this.parent.r - 30; 
+        const rootX = this.parent.x + Math.cos(this.angleBase) * deepAnchor;
+        const rootY = this.parent.y + Math.sin(this.angleBase) * deepAnchor;
+        this.points[0].x = rootX;
+        this.points[0].y = rootY;
+
+        // Target Finding
+        if (phase === 0) {
+            this.target = null;
+            this.grip = 0;
+        } else if (phase >= 1 && !this.target) {
+            let best = null; 
+            let minD = 9999;
+            lymphs.forEach(l => {
+                const ang = Math.atan2(l.y - this.parent.y, l.x - this.parent.x);
+                let diff = ang - this.angleBase;
+                while(diff < -Math.PI) diff += Math.PI*2;
+                while(diff > Math.PI) diff -= Math.PI*2;
+                if (Math.abs(diff) < 0.9 && !l.engulfed && !l.digested) {
+                    const d = dist(this.parent, l);
+                    if (d < minD) { minD = d; best = l; }
+                }
+            });
+            this.target = best;
+        }
+
+        // Head Logic
+        let hx, hy;
+        
+        if (this.target) {
+            const tx = this.target.x;
+            const ty = this.target.y;
+            const dTip = dist(this.points[this.segments-1], this.target);
+
+            if (phase >= 1) {
+                if (dTip < this.target.r + 30) {
+                    this.grip = Math.min(1, this.grip + 0.08);
+                    this.target.captured = true;
+                }
+                
+                if (this.grip > 0.4) {
+                    // Coiling
+                    this.coilTimer += 0.15;
+                    const wrapR = this.target.r + 2;
+                    // Orbit
+                    const wrapAng = Math.atan2(ty - this.parent.y, tx - this.parent.x) + Math.cos(this.coilTimer)*2.8;
+                    hx = tx + Math.cos(wrapAng) * wrapR;
+                    hy = ty + Math.sin(wrapAng) * wrapR;
+
+                    if (phase >= 2) {
+                        this.target.x += (this.parent.x - this.target.x) * 0.035;
+                        this.target.y += (this.parent.y - this.target.y) * 0.035;
+                    }
+                } else {
+                    hx = tx; hy = ty;
+                }
+            }
+        } else {
+            // Organic Drift (Complex Wave)
+            const t = tick * 0.02;
+            const w1 = Math.sin(t + this.angleBase * 4) * 35;
+            const w2 = Math.cos(t * 2 + this.angleBase * 8) * 12;
+            const reach = this.len * 0.85 + Math.sin(t * 0.5) * 20;
+            const px = -Math.sin(this.angleBase);
+            const py = Math.cos(this.angleBase);
+            
+            hx = rootX + Math.cos(this.angleBase) * reach + px * (w1 + w2);
+            hy = rootY + Math.sin(this.angleBase) * reach + py * (w1 + w2);
+        }
+
+        // IK Solver
+        let tip = this.points[this.segments - 1];
+        tip.x += (hx - tip.x) * 0.2;
+        tip.y += (hy - tip.y) * 0.2;
+
+        for (let i = this.segments - 2; i >= 0; i--) {
+            const curr = this.points[i];
+            const next = this.points[i+1];
+            const dx = next.x - curr.x;
+            const dy = next.y - curr.y;
+            const d = Math.hypot(dx, dy);
+            
+            const tension = (this.grip > 0) ? 0.6 : 0.25;
+            
+            if (d > 0) {
+                curr.x += dx * tension * 0.85;
+                curr.y += dy * tension * 0.85;
+            }
+        }
+    }
+
+    draw(ctx) {
+        if (this.points.length < 2) return;
+        const active = this.grip > 0;
+
+        // --- Volumetric Tube Generation ---
+        const left = [];
+        const right = [];
+
+        for (let i = 0; i < this.segments; i++) {
+            const curr = this.points[i];
+            let next = (i < this.segments-1) ? this.points[i+1] : curr;
+            let prev = (i > 0) ? this.points[i-1] : curr;
+            
+            let dx = next.x - prev.x;
+            let dy = next.y - prev.y;
+            if (i===0) { dx = next.x - curr.x; dy = next.y - curr.y; }
+            
+            const ang = Math.atan2(dy, dx);
+            const perp = ang + Math.PI/2;
+            
+            const t = i / this.segments;
+            // Organic Tapering: Thick base, thinner tip, bulbous end?
+            let thick = (1 - t) * 8 + 2.0; 
+            if (active) thick += Math.sin(tick*0.4 - i*0.2) * 2; // Pulsing
+
+            left.push({ x: curr.x + Math.cos(perp)*thick, y: curr.y + Math.sin(perp)*thick });
+            right.push({ x: curr.x - Math.cos(perp)*thick, y: curr.y - Math.sin(perp)*thick });
+        }
+
+        // Draw Shape
+        ctx.beginPath();
+        ctx.moveTo(left[0].x, left[0].y);
+        for(let p of left) ctx.lineTo(p.x, p.y);
+        for(let j=right.length-1; j>=0; j--) ctx.lineTo(right[j].x, right[j].y);
+        ctx.closePath();
+
+        // --- Fleshy Gradient Shader ---
+        // Simulates a 3D tube with subsurface scattering look
+        const grad = ctx.createLinearGradient(
+            this.points[0].x, this.points[0].y, 
+            this.points[this.segments-1].x, this.points[this.segments-1].y
+        );
+        grad.addColorStop(0, C.tentacle.baseDark);
+        grad.addColorStop(0.3, C.tentacle.baseLight);
+        grad.addColorStop(0.7, active ? '#b91c1c' : '#551010');
+        grad.addColorStop(1, active ? '#ffaaaa' : '#992222');
+
+        ctx.fillStyle = grad;
+        ctx.fill();
+        
+        // --- Vein/Detail Line (Center) ---
+        ctx.beginPath();
+        ctx.moveTo(this.points[0].x, this.points[0].y);
+        for(let p of this.points) ctx.lineTo(p.x, p.y);
+        ctx.strokeStyle = active ? 'rgba(255, 50, 50, 0.4)' : 'rgba(0,0,0,0.3)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // --- Outer Skin Definition ---
+        ctx.strokeStyle = active ? 'rgba(255,150,150,0.5)' : 'rgba(80,20,20,0.5)';
+        ctx.lineWidth = 1;
+        ctx.stroke(); // Stroke the boundary
+
+        if (active) {
+            // Glow
+            if (phase < 4) {
+                ctx.shadowColor = '#ef4444';
+                ctx.shadowBlur = 20;
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+            }
+            // Suckers
+            ctx.fillStyle = 'rgba(255,255,255,0.15)';
+            for(let k=10; k<this.segments; k+=6) {
+                const pt = this.points[k];
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, 1.5, 0, Math.PI*2);
+                ctx.fill();
+            }
+        }
+    }
+}
+
+class CancerCell {
+    constructor(x, y) {
+        this.x = x; this.y = y;
+        this.baseR = 90;
+        this.r = 90;
+        
+        this.tentacles = [];
+        for(let i=0; i<12; i++) {
+            const ang = (i / 12) * Math.PI * 2 + rand(-0.2, 0.2);
+            const len = 350 + rand(-50, 50);
+            this.tentacles.push(new Tentacle(this, ang, len));
+        }
+        this.points = new Float32Array(80);
+    }
+
+    update(lymphs) {
+        if (phase === 4) {
+            const growTarget = 90 + (power * 1.0);
+            this.baseR = lerp(this.baseR, growTarget, 0.05);
+        } else {
+            this.baseR = 90;
+        }
+
+        const pulseSpeed = phase === 4 ? 0.3 : 0.05;
+        this.r = this.baseR + Math.sin(tick * pulseSpeed) * (3 + power/10);
+
+        // Membrane Noise
+        for(let i=0; i<80; i++) {
+            this.points[i] = Math.sin(i * 0.4 + tick * 0.07) * 4;
+        }
+
+        this.tentacles.forEach(t => t.update(lymphs));
+    }
+
+    draw(ctx) {
+        // Draw Tentacles First
+        this.tentacles.forEach(t => t.draw(ctx));
+
+        ctx.save();
+        ctx.translate(this.x, this.y);
+
+        // --- Cell Membrane Path ---
+        ctx.beginPath();
+        for(let i=0; i<=80; i++) {
+            const ang = (i / 80) * Math.PI * 2;
+            const r = this.r + this.points[i%80];
+            const px = Math.cos(ang) * r;
+            const py = Math.sin(ang) * r;
+            if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+        }
+        ctx.closePath();
+
+        // --- Layered Cell Shading ---
+        
+        // 1. Core Background
+        ctx.fillStyle = '#100000';
+        ctx.fill();
+
+        // 2. Cytoplasm Gradient
+        const grad = ctx.createRadialGradient(0,0, 10, 0,0, this.r);
+        if (phase === 4 && power > 50) {
+            grad.addColorStop(0, '#ffffff'); 
+            grad.addColorStop(0.2, '#fbbf24');
+            grad.addColorStop(0.6, '#ef4444');
+            grad.addColorStop(1, 'rgba(127, 29, 29, 0.8)');
+            ctx.shadowColor = 'rgba(255, 100, 0, 0.9)';
+            ctx.shadowBlur = 80 + Math.sin(tick*0.5)*20;
+        } else {
+            grad.addColorStop(0, '#7f1d1d');
+            grad.addColorStop(0.7, '#450a0a');
+            grad.addColorStop(1, 'rgba(0,0,0,0.8)');
+            ctx.shadowColor = 'rgba(220, 38, 38, 0.4)';
+            ctx.shadowBlur = 30;
+        }
+        ctx.fillStyle = grad;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // 3. Organelle Texture (Noise)
+        ctx.globalCompositeOperation = 'overlay';
+        ctx.fillStyle = 'rgba(255,200,200,0.15)';
+        for(let k=0; k<10; k++) {
+            const r = rand(0, this.r*0.7);
+            const a = rand(0, Math.PI*2) + tick*0.01;
+            ctx.beginPath();
+            ctx.arc(Math.cos(a)*r, Math.sin(a)*r, rand(2,6), 0, Math.PI*2);
+            ctx.fill();
+        }
+        
+        // 4. Nucleus
+        ctx.beginPath();
+        ctx.arc(0, 0, this.r * 0.35, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(0,0,0,0.6)';
+        ctx.fill();
+        
+        ctx.globalCompositeOperation = 'source-over';
+
+        // 5. Membrane Stroke
+        ctx.strokeStyle = (phase===4) ? '#fca5a5' : '#7f1d1d';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.restore();
+    }
+}
+
+// --- Init & Loop ---
+let cancer;
+let lymphs = [];
+let debris = [];
+let particles = [];
+
+function init() {
+    onResize();
+    window.addEventListener('resize', onResize);
+    
+    cancer = new CancerCell(W/2, H/2);
+    createLymphs();
+    for(let i=0; i<60; i++) debris.push(new Particle(rand(0,W), rand(0,H), 'dust'));
+    loop();
+}
+
+function createLymphs() {
+    lymphs = [];
+    const rad = Math.min(W, H) * 0.35;
+    for(let i=0; i<LYMPH_COUNT; i++) {
+        const ang = (i / LYMPH_COUNT) * Math.PI * 2 - Math.PI/2;
+        const x = W/2 + Math.cos(ang) * rad;
+        const y = H/2 + Math.sin(ang) * rad;
+        lymphs.push(new Lymphocyte(i, x, y));
+    }
+}
+
+function onResize() {
+    W = canvas.width = container.clientWidth;
+    H = canvas.height = container.clientHeight;
+    if (cancer) { cancer.x = W/2; cancer.y = H/2; }
+}
+
+function setPhase(p) {
+    phase = p;
+    document.querySelectorAll('.phase-btn').forEach((b, i) => {
+        if(i===p) b.classList.add('active'); else b.classList.remove('active');
+    });
+    const labels = ["NEUTRAL", "ATAQUE", "TRACCIÓN", "ENTOSIS", "HIPERTROFIA"];
+    document.getElementById('phase-display').innerText = `SISTEMA: ${labels[p]}`;
+
+    if (p === 0) {
+        power = 0;
+        cancer.baseR = 90;
+        createLymphs();
+    }
+}
+
+function loop() {
+    tick++;
+    ctx.clearRect(0,0,W,H);
+
+    cancer.update(lymphs);
+    let eaten = 0;
+    lymphs.forEach(l => {
+        l.update(cancer);
+        if(l.digested) eaten++;
+    });
+
+    if (phase === 4) {
+        const targetP = (eaten / LYMPH_COUNT) * 100;
+        power = lerp(power, targetP, 0.04);
+        document.getElementById('power-bar').style.width = `${power}%`;
+        document.getElementById('power-text').innerText = `${Math.floor(power)}%`;
+    }
+
+    debris.forEach(p => {
+        p.x += Math.sin(tick*0.01 + p.y)*0.3;
+        if(p.x > W) p.x = 0;
+        p.draw(ctx);
+    });
+
+    cancer.draw(ctx);
+    lymphs.forEach(l => { if (!l.engulfed) l.draw(ctx); });
+
+    ctx.save();
+    lymphs.forEach(l => {
+        if (l.engulfed && !l.digested) {
+            l.draw(ctx);
+            // Membrane Overlay (Inside Vacuole)
+            ctx.beginPath();
+            ctx.arc(l.x, l.y, l.r + 3, 0, Math.PI*2);
+            ctx.fillStyle = 'rgba(100, 20, 20, 0.5)';
+            ctx.fill();
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+    });
+    ctx.restore();
+
+    // Foreground Tentacle Tips (Wrapping Effect)
+    cancer.tentacles.forEach(t => {
+        if (t.target && t.grip > 0.3) {
+            const start = Math.floor(t.segments * 0.85);
+            if (start < t.points.length - 1) {
+                ctx.beginPath();
+                ctx.moveTo(t.points[start].x, t.points[start].y);
+                for(let i=start+1; i<t.points.length; i++){
+                    ctx.lineTo(t.points[i].x, t.points[i].y);
+                }
+                ctx.lineCap = 'round';
+                ctx.lineWidth = 7 + Math.sin(tick*0.6)*2; 
+                ctx.strokeStyle = '#fca5a5'; 
+                ctx.shadowColor = '#dc2626';
+                ctx.shadowBlur = 25;
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+            }
+        }
+    });
+
+    particles.forEach(p => { p.update(cancer); p.draw(ctx); });
+    particles = particles.filter(p => p.life > 0);
+
+    if (phase === 4 && power > 90) {
+        ctx.beginPath();
+        const r = cancer.r + (tick % 60) * 8;
+        ctx.arc(cancer.x, cancer.y, r, 0, Math.PI*2);
+        ctx.strokeStyle = `rgba(255, 200, 100, ${1 - (tick%60)/60})`;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+    }
+
+    requestAnimationFrame(loop);
+}
+
+init();
+
+</script>
+
+</body></html>
