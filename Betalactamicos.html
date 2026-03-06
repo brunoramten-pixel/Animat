@@ -1,0 +1,1771 @@
+<!DOCTYPE html><html lang="es"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNWFlNDg4ZGU5NDlkNmY0OGJhYzU1ZmMwYTE1NzJlZTJmNjExMzciLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwOTEwNDc3NDU5NTYzMzk0NDcxMSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzdkOTMwZDZjMGVlMTdiMGRfQmV0YWxhY3RhbWljb3MuaHRtbC03MDgifSwiZXhwIjoxNzcyMjU1NDk5LCJpYXQiOjE3NzIyNTE4OTksImFsZyI6IlJTMjU2In0.S6K0vyHxGetjgdiFLscaIkCJ2Gf7ZArAJRRU8nQvgXwsGF17U87riHk0Go5Phmi7BsX8UmYShYj6zx3ybZfQzvAZu2yUPZPmEswAl8JDlBVaXBRRQ_2SaaCs-EUqEZZf19anZBeiJtsWmYZBRbfO9WzDRxeWemNNQpVprr68ES2AcKbVvhWldQ1AxRxPw3C31bV7S6c9FhJgEtcEEioJwVnQVTRJAGX0MptWxeLqJTcGmYlJZoMXQD-J0nR40OWpvYy5gXNs2mTYDsoqJ4eCz8eC3eLcvpQrLfdyjlm9BcxBxD_FBXGv3Q9V_-kt8Q3KFmPQ0gXyno7wYGvYr_9IvQ","c_7d930d6c0ee17b0d_Betalactamicos.html-708")</script><script>(function(){'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+})();</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script>((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-2.5-flash","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Multiescala: Betalactámicos (Alta Calidad)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;800&display=swap');
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #020617; 
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ----- NAV STYLES ----- */
+        .nav-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            opacity: 0.6;
+        }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.1); opacity: 0.8; }
+        
+        .nav-btn-mol.active-tab { opacity: 1; background: rgba(16, 185, 129, 0.1); border-color: #10b981; color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+        .nav-btn-bac.active-tab { opacity: 1; background: rgba(168, 85, 247, 0.1); border-color: #a855f7; color: #a855f7; box-shadow: 0 0 15px rgba(168, 85, 247, 0.3); }
+        .nav-btn-pul.active-tab { opacity: 1; background: rgba(56, 189, 248, 0.1); border-color: #38bdf8; color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+
+        /* ----- COMMON STYLES ----- */
+        .telemetry {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .step-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.3;
+            transform: translateX(15px);
+            border-right: 4px solid transparent;
+        }
+        .step-card.completed { opacity: 0.6; transform: translateX(0); }
+        .step-card.active { opacity: 1; transform: translateX(0); border-left: 2px solid rgba(255,255,255,0.8); }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
+
+        /* ----- MOLECULAR SPECIFIC ----- */
+        #view-molecular .grid-bg { background-image: linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(circle at center, black 40%, transparent 90%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%); }
+        #view-molecular .panel-ui { background: linear-gradient(180deg, #0f172a 0%, #020617 100%); border-left: 1px solid rgba(16, 185, 129, 0.2); }
+        #view-molecular .step-card.completed { border-right-color: #0ea5e9; }
+        #view-molecular .step-card.active { border-right-color: #10b981; background: linear-gradient(270deg, rgba(16, 185, 129, 0.15) 0%, transparent 100%); }
+        #view-molecular .step-card.active h3 span { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8); background-color: #10b981; color: #000; }
+        #view-molecular .telemetry { color: rgba(16, 185, 129, 0.8); text-shadow: 0 0 8px rgba(16, 185, 129, 0.5); }
+        #view-molecular .btn-action { background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); border: 1px solid #10b981; }
+        #view-molecular .btn-action:hover { background: linear-gradient(135deg, #10b981, #059669); }
+        #damageOverlayMol { background: radial-gradient(circle, transparent 20%, rgba(239, 68, 68, 0.3) 100%); mix-blend-mode: screen; opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+        #damageOverlayMol.active { animation: siren 1s infinite alternate; }
+
+        /* ----- BACTERIANA SPECIFIC ----- */
+        #view-bacteria .grid-bg { background-image: linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(circle at center, black 40%, transparent 90%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%); }
+        #view-bacteria .panel-ui { background: linear-gradient(180deg, #110818 0%, #08030a 100%); border-left: 1px solid rgba(168, 85, 247, 0.2); }
+        #view-bacteria .step-card.completed { border-right-color: #d8b4fe; }
+        #view-bacteria .step-card.active { border-right-color: #a855f7; background: linear-gradient(270deg, rgba(168, 85, 247, 0.15) 0%, transparent 100%); }
+        #view-bacteria .step-card.active h3 span { box-shadow: 0 0 20px rgba(168, 85, 247, 0.8); background-color: #a855f7; color: #000; }
+        #view-bacteria .telemetry { color: rgba(168, 85, 247, 0.8); text-shadow: 0 0 8px rgba(168, 85, 247, 0.5); }
+        #view-bacteria .btn-action { background: linear-gradient(135deg, #7e22ce, #6b21a8); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3); border: 1px solid #a855f7; }
+        #view-bacteria .btn-action:hover { background: linear-gradient(135deg, #9333ea, #7e22ce); }
+        #damageOverlayBac { background: radial-gradient(circle, transparent 10%, rgba(220, 38, 38, 0.5) 100%); mix-blend-mode: screen; opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+        #damageOverlayBac.active { animation: siren 1s infinite alternate; }
+
+        /* ----- PULMONAR SPECIFIC ----- */
+        #view-pulmonar .grid-bg { background-image: linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%); }
+        #view-pulmonar .panel-ui { background: linear-gradient(180deg, #040914 0%, #010205 100%); border-left: 1px solid rgba(56, 189, 248, 0.25); }
+        #view-pulmonar .step-card.completed { border-right-color: #10b981; }
+        #view-pulmonar .step-card.active { border-right-color: #38bdf8; background: linear-gradient(270deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%); }
+        #view-pulmonar .step-card.active h3 span { box-shadow: 0 0 20px rgba(56, 189, 248, 0.9); background-color: #38bdf8; color: #000; }
+        #view-pulmonar .telemetry { color: rgba(56, 189, 248, 0.9); text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); background: rgba(1, 2, 5, 0.6); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2); backdrop-filter: blur(4px); }
+        #view-pulmonar .btn-action { background: linear-gradient(135deg, #0284c7, #0369a1); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3); border: 1px solid #38bdf8;}
+        #view-pulmonar .btn-action:hover { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+        #damageOverlayPul { background: radial-gradient(circle, transparent 15%, rgba(220, 38, 38, 0.4) 100%); mix-blend-mode: screen; opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+        #damageOverlayPul.active { animation: cough-pulse 1.2s infinite alternate; }
+
+        @keyframes siren { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+        @keyframes cough-pulse { 0% { opacity: 0.1; } 100% { opacity: 0.6; } }
+
+        /* Canvas Elements */
+        #microCanvas, #bacteriaCanvas { display: block; width: 100%; height: 100%; filter: contrast(1.15) brightness(1.1); }
+        #pulmonaryCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; filter: contrast(1.2) brightness(1.2) drop-shadow(0 0 25px rgba(56, 189, 248, 0.15)); }
+        
+        .btn-action { letter-spacing: 2px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.z-0{z-index:0}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.h-1\.5{height:0.375rem}.h-16{height:4rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-\[45\%\]{height:45%}.h-\[55\%\]{height:55%}.h-full{height:100%}.h-screen{height:100vh}.w-1\.5{width:0.375rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-full{width:100%}.w-screen{width:100vw}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-cyan-400\/50{border-color:rgb(34 211 238 / 0.5)}.border-emerald-400\/30{border-color:rgb(52 211 153 / 0.3)}.border-emerald-400\/50{border-color:rgb(52 211 153 / 0.5)}.border-emerald-500\/20{border-color:rgb(16 185 129 / 0.2)}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.border-orange-400\/50{border-color:rgb(251 146 60 / 0.5)}.border-purple-400\/30{border-color:rgb(192 132 252 / 0.3)}.border-purple-400\/50{border-color:rgb(192 132 252 / 0.5)}.border-purple-500\/20{border-color:rgb(168 85 247 / 0.2)}.border-red-400\/50{border-color:rgb(248 113 113 / 0.5)}.border-sky-400\/30{border-color:rgb(56 189 248 / 0.3)}.border-sky-400\/50{border-color:rgb(56 189 248 / 0.5)}.border-sky-500\/20{border-color:rgb(14 165 233 / 0.2)}.border-slate-600{--tw-border-opacity:1;border-color:rgb(71 85 105 / var(--tw-border-opacity, 1))}.border-yellow-400\/50{border-color:rgb(250 204 21 / 0.5)}.bg-\[\#010205\]{--tw-bg-opacity:1;background-color:rgb(1 2 5 / var(--tw-bg-opacity, 1))}.bg-\[\#020617\]{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-\[\#030712\]{--tw-bg-opacity:1;background-color:rgb(3 7 18 / var(--tw-bg-opacity, 1))}.bg-\[\#070303\]{--tw-bg-opacity:1;background-color:rgb(7 3 3 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-cyan-900\/60{background-color:rgb(22 78 99 / 0.6)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/10{background-color:rgb(16 185 129 / 0.1)}.bg-emerald-900\/60{background-color:rgb(6 78 59 / 0.6)}.bg-orange-900\/60{background-color:rgb(124 45 18 / 0.6)}.bg-purple-400{--tw-bg-opacity:1;background-color:rgb(192 132 252 / var(--tw-bg-opacity, 1))}.bg-purple-500\/10{background-color:rgb(168 85 247 / 0.1)}.bg-purple-900\/60{background-color:rgb(88 28 135 / 0.6)}.bg-red-900\/60{background-color:rgb(127 29 29 / 0.6)}.bg-sky-400{--tw-bg-opacity:1;background-color:rgb(56 189 248 / var(--tw-bg-opacity, 1))}.bg-sky-500\/10{background-color:rgb(14 165 233 / 0.1)}.bg-sky-900\/60{background-color:rgb(12 74 110 / 0.6)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-yellow-900\/60{background-color:rgb(113 63 18 / 0.6)}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-3{padding-bottom:0.75rem}.pb-4{padding-bottom:1rem}.pr-2{padding-right:0.5rem}.text-right{text-align:right}.font-\[\'JetBrains_Mono\'\]{font-family:'JetBrains Mono'}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-widest{letter-spacing:0.1em}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-orange-400{--tw-text-opacity:1;color:rgb(251 146 60 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-sky-400{--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.opacity-50{opacity:0.5}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 768px){.md\:block{display:block}.md\:h-full{height:100%}.md\:w-\[320px\]{width:320px}.md\:w-\[340px\]{width:340px}.md\:w-\[380px\]{width:380px}.md\:w-auto{width:auto}.md\:flex-row{flex-direction:row}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}}@media (min-width: 1024px){.lg\:w-\[380px\]{width:380px}.lg\:w-\[400px\]{width:400px}.lg\:w-\[440px\]{width:440px}}</style></head>
+<body class="flex flex-col h-screen w-screen overflow-hidden">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <div class="h-16 flex-shrink-0 bg-[#020617] border-b border-gray-800 flex items-center justify-between px-6 z-50 shadow-xl relative">
+        <div class="text-white font-['JetBrains_Mono'] font-bold text-lg hidden md:block tracking-widest">
+            <span class="text-sky-400">BIO-EXPLORER</span>
+        </div>
+        <div class="flex gap-3 w-full md:w-auto justify-center">
+            <button class="nav-btn nav-btn-mol text-emerald-400 active-tab" data-target="molecular">
+                <span class="mr-2 opacity-50">1</span>Molecular
+            </button>
+            <button class="nav-btn nav-btn-bac text-purple-400" data-target="bacteria">
+                <span class="mr-2 opacity-50">2</span>Bacteria
+            </button>
+            <button class="nav-btn nav-btn-pul text-sky-400" data-target="pulmonar">
+                <span class="mr-2 opacity-50">3</span>Pulmonar
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="flex-grow relative overflow-hidden bg-black">
+        
+        <!-- ========================================== -->
+        <!-- VISTA 1: MOLECULAR                         -->
+        <!-- ========================================== -->
+        <div id="view-molecular" class="view-container absolute inset-0 flex flex-col md:flex-row">
+            <div id="canvasContainerMol" class="flex-grow h-[55%] md:h-full relative z-10 bg-[#030712] overflow-hidden">
+                <div class="grid-bg absolute inset-0 z-0"></div>
+                <div id="damageOverlayMol" class="absolute inset-0 z-20"></div>
+                
+                <div class="telemetry" style="top: 20px; left: 20px;">
+                    <div>SISTEMA: <span id="hud-status" class="text-cyan-400 font-bold">ENTRECRUZANDO MALLA</span></div>
+                    <div>ESTRÉS OSMÓTICO: <span id="hud-tension" class="text-emerald-400">ESTABLE</span></div>
+                </div>
+                <div class="telemetry" style="bottom: 20px; right: 20px; text-align: right;">
+                    <div>OBJETIVO: TRANSPEPTIDASAS (PBP)</div>
+                    <div>DROGA: <span id="hud-conc" class="text-slate-400">0.0 µg/mL</span></div>
+                </div>
+
+                <canvas id="microCanvas" class="relative z-10" width="1084" height="1142"></canvas>
+            </div>
+
+            <div class="panel-ui w-full md:w-[320px] lg:w-[380px] h-[45%] md:h-full flex flex-col flex-shrink-0 z-30 relative shadow-2xl">
+                <div class="p-5 md:p-6 flex flex-col h-full">
+                    <div class="mb-4 flex-shrink-0 border-b border-emerald-500/20 pb-3">
+                        <div class="inline-flex items-center gap-2 px-2 py-1 mb-2 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-400 text-[9px] font-black uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Síntesis de Pared Celular
+                        </div>
+                        <h1 class="text-xl md:text-2xl font-black text-white leading-tight font-['JetBrains_Mono']">
+                            INHIBICIÓN <br><span class="text-emerald-400">DE LAS PBP</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-y-3 overflow-y-auto flex-grow pr-2 pb-4">
+                        <div id="mol-step-0" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-emerald-300 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                CRECIMIENTO (NAM-NAG)<span class="w-5 h-5 rounded-full bg-emerald-900/60 border border-emerald-400/50 flex items-center justify-center text-[10px]">1</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La bacteria sintetiza su pared formando polímeros lineales de azúcares (NAM y NAG) que le otorgan estructura basal.</p>
+                        </div>
+                        <div id="mol-step-1" class="step-card p-3 rounded-xl active">
+                            <h3 class="font-bold text-cyan-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                ENTRECRUZAMIENTO (PBP)<span class="w-5 h-5 rounded-full bg-cyan-900/60 border border-cyan-400/50 flex items-center justify-center text-[10px]">2</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La enzima <strong>Transpeptidasa (PBP)</strong> une las cadenas peptídicas adyacentes, creando una malla tridimensional rígida de peptidoglucano.</p>
+                        </div>
+                        <div id="mol-step-2" class="step-card p-3 rounded-xl">
+                            <h3 class="font-bold text-yellow-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                ATAQUE BETALACTÁMICO<span class="w-5 h-5 rounded-full bg-yellow-900/60 border border-yellow-400/50 flex items-center justify-center text-[10px]">3</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La penicilina se introduce. Su <strong>anillo betalactámico</strong> imita estructuralmente a los péptidos terminales naturales (D-Ala-D-Ala).</p>
+                        </div>
+                        <div id="mol-step-3" class="step-card p-3 rounded-xl">
+                            <h3 class="font-bold text-orange-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                INHIBICIÓN IRREVERSIBLE<span class="w-5 h-5 rounded-full bg-orange-900/60 border border-orange-400/50 flex items-center justify-center text-[10px]">4</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">El fármaco se une covalentemente al sitio activo de la PBP. La enzima queda inutilizada y el entrecruzamiento se detiene súbitamente.</p>
+                        </div>
+                        <div id="mol-step-4" class="step-card p-3 rounded-xl">
+                            <h3 class="font-bold text-red-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                DEBILIDAD ESTRUCTURAL<span class="w-5 h-5 rounded-full bg-red-900/60 border border-red-400/50 flex items-center justify-center text-[10px]">5</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Sin malla rígida, las autolisinas degradan la pared. La <strong>presión osmótica</strong> interna fragmenta violentamente las cadenas desprotegidas.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 flex flex-col gap-2 flex-shrink-0">
+                        <button id="nextBtnMol" class="w-full py-3 text-white font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 btn-action text-sm">
+                            AVANZAR PROCESO <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                        </button>
+                        <button id="resetBtnMol" class="w-full py-3 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-emerald-400 font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 font-['JetBrains_Mono'] tracking-wide text-xs hidden">
+                            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> RESTAURAR SISTEMA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VISTA 2: BACTERIANA                        -->
+        <!-- ========================================== -->
+        <div id="view-bacteria" class="view-container absolute inset-0 flex flex-col md:flex-row hidden">
+            <div id="canvasContainerBac" class="flex-grow h-[55%] md:h-full relative z-10 bg-[#070303] overflow-hidden">
+                <div class="grid-bg absolute inset-0 z-0"></div>
+                <div id="damageOverlayBac" class="absolute inset-0 z-20"></div>
+                
+                <div class="telemetry" style="top: 20px; left: 20px;">
+                    <div>CEPA: <span class="text-purple-400 font-bold">STREPTOCOCCUS PNEUMONIAE</span></div>
+                    <div>PARED CELULAR: <span id="hud-wall" class="text-purple-400 font-bold">INTEGRA, DIVISIÓN ACTIVA</span></div>
+                </div>
+                <div class="telemetry" style="bottom: 20px; right: 20px; text-align: right;">
+                    <div>TRATAMIENTO: <span id="hud-tx-bac" class="text-slate-400">NINGUNO</span></div>
+                    <div>ESTADO OSMÓTICO: <span id="hud-dna" class="text-emerald-400 font-bold">EQUILIBRIO 1.0 ATM</span></div>
+                </div>
+
+                <canvas id="bacteriaCanvas" class="relative z-10" width="1044" height="1142"></canvas>
+            </div>
+
+            <div class="panel-ui w-full md:w-[340px] lg:w-[400px] h-[45%] md:h-full flex flex-col flex-shrink-0 z-30 relative shadow-2xl">
+                <div class="p-5 md:p-6 flex flex-col h-full">
+                    <div class="mb-4 flex-shrink-0 border-b border-purple-500/20 pb-3">
+                        <div class="inline-flex items-center gap-2 px-2 py-1 mb-2 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-400 text-[9px] font-black uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>Nivel Celular Bacteriano
+                        </div>
+                        <h1 class="text-xl md:text-2xl font-black text-white leading-tight font-['JetBrains_Mono']">
+                            LISIS POR <br><span class="text-purple-400">PRESIÓN OSMÓTICA</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-y-3 overflow-y-auto flex-grow pr-2 pb-4">
+                        <div id="bac-step-0" class="step-card p-3 rounded-xl active">
+                            <h3 class="font-bold text-purple-300 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                COCO GRAM POSITIVO<span class="w-5 h-5 rounded-full bg-purple-900/60 border border-purple-400/50 flex items-center justify-center text-[10px]">1</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La bacteria (ej. Neumococo) posee una <strong>gruesa capa de peptidoglucano</strong> (morado) que soporta sin problemas su altísima presión interna.</p>
+                        </div>
+                        <div id="bac-step-1" class="step-card p-3 rounded-xl">
+                            <h3 class="font-bold text-yellow-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                LLEGADA DEL FÁRMACO<span class="w-5 h-5 rounded-full bg-yellow-900/60 border border-yellow-400/50 flex items-center justify-center text-[10px]">2</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Los betalactámicos saturan el entorno. Penetran la pared celular y se anclan masivamente a las <strong>PBPs</strong> responsables del crecimiento.</p>
+                        </div>
+                        <div id="bac-step-2" class="step-card p-3 rounded-xl">
+                            <h3 class="font-bold text-orange-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                ADELGAZAMIENTO DE PARED<span class="w-5 h-5 rounded-full bg-orange-900/60 border border-orange-400/50 flex items-center justify-center text-[10px]">3</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La síntesis se detiene, pero las <strong>autolisinas</strong> naturales de la bacteria siguen funcionando, creando huecos mortales en la pared celular rígida.</p>
+                        </div>
+                        <div id="bac-step-3" class="step-card p-3 rounded-xl">
+                            <h3 class="font-bold text-red-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                FORMACIÓN DE ESFEROPLASTO<span class="w-5 h-5 rounded-full bg-red-900/60 border border-red-400/50 flex items-center justify-center text-[10px]">4</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La frágil membrana citoplasmática pierde su exoesqueleto y comienza a <strong>herniarse (protrusión)</strong> debido a la implacable presión osmótica.</p>
+                        </div>
+                        <div id="bac-step-4" class="step-card p-3 rounded-xl">
+                            <h3 class="font-bold text-red-600 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                LISIS CATASTRÓFICA<span class="w-5 h-5 rounded-full bg-red-900/60 border border-red-400/50 flex items-center justify-center text-[10px]">5</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La membrana no resiste. Ocurre un espectacular <strong>estallido osmótico</strong>; el citoplasma se derrama violentamente y la bacteria muere.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 flex flex-col gap-2 flex-shrink-0">
+                        <button id="nextBtnBac" class="w-full py-3 text-white font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 btn-action text-sm">
+                            AVANZAR SIMULACIÓN <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                        </button>
+                        <button id="resetBtnBac" class="w-full py-3 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-purple-400 font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 font-['JetBrains_Mono'] tracking-wide text-xs hidden">
+                            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> REINICIAR CEPA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VISTA 3: PULMONAR                          -->
+        <!-- ========================================== -->
+        <div id="view-pulmonar" class="view-container absolute inset-0 flex flex-col md:flex-row hidden">
+            <div id="canvasContainerPul" class="flex-grow h-[45%] md:h-full relative z-10 bg-[#010205] overflow-hidden">
+                <div class="grid-bg absolute inset-0 z-0"></div>
+                <div id="damageOverlayPul" class="absolute inset-0 z-20"></div>
+                
+                <div class="telemetry" style="top: 25px; left: 25px;">
+                    <div>ID PACIENTE: <span class="text-slate-200 font-bold">INGRESO-URG-09</span></div>
+                    <div>ESTADO CLÍNICO: <span id="hud-symptoms" class="text-red-400 font-bold">FIEBRE ALTA, TOS PURULENTA</span></div>
+                    <div>Saturación SpO2: <span id="hud-spo2" class="text-orange-400 font-bold animate-pulse">85% (HIPOXEMIA)</span></div>
+                </div>
+                <div class="telemetry" style="bottom: 25px; right: 25px; text-align: right;">
+                    <div>MODO: <span class="text-sky-400 font-bold">TOMOGRAFÍA LOBAR</span></div>
+                    <div>DIAGNÓSTICO: <span id="hud-path" class="text-red-400 font-bold">NEUMONÍA LOBAR AGUDA</span></div>
+                    <div>TERAPIA: <span id="hud-tx-pul" class="text-slate-400 font-bold">NINGUNA</span></div>
+                </div>
+
+                <canvas id="pulmonaryCanvas" class="relative" width="964" height="1142"></canvas>
+            </div>
+
+            <div class="panel-ui w-full md:w-[380px] lg:w-[440px] h-[55%] md:h-full flex flex-col flex-shrink-0 relative shadow-2xl">
+                <div class="p-6 md:p-8 flex flex-col h-full">
+                    <div class="mb-4 flex-shrink-0 border-b border-sky-500/20 pb-4">
+                        <div class="inline-flex items-center gap-2 px-2 py-1 mb-2 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-400 text-[9px] font-black uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>Clínica Macroscópica
+                        </div>
+                        <h1 class="text-3xl font-black text-white leading-tight font-['JetBrains_Mono'] tracking-tight">
+                            RESOLUCIÓN DE <br><span class="text-sky-400">NEUMONÍA LOBAR</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-y-4 overflow-y-auto flex-grow pr-2 pb-4">
+                        <div id="pul-step-0" class="step-card p-4 rounded-xl active">
+                            <h3 class="font-bold text-red-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                CONSOLIDACIÓN ALVEOLAR<span class="w-6 h-6 rounded-full bg-red-900/60 border border-red-400/50 flex items-center justify-center text-[11px]">1</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Los sacos alveolares del lóbulo inferior están llenos de pus, bacterias y líquido. El intercambio de gases es nulo (Neumonía Lobar).</p>
+                        </div>
+                        <div id="pul-step-1" class="step-card p-4 rounded-xl">
+                            <h3 class="font-bold text-orange-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                RIEGO SANGUÍNEO INFECTADO<span class="w-6 h-6 rounded-full bg-orange-900/60 border border-orange-400/50 flex items-center justify-center text-[11px]">2</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La inflamación causa vasodilatación masiva. Los pulmones se ven congestivos y rojos mientras el Neumococo se multiplica agresivamente.</p>
+                        </div>
+                        <div id="pul-step-2" class="step-card p-4 rounded-xl">
+                            <h3 class="font-bold text-yellow-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                INFUSIÓN DE BETALACTÁMICOS<span class="w-6 h-6 rounded-full bg-yellow-900/60 border border-yellow-400/50 flex items-center justify-center text-[11px]">3</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Administración IV de <strong>Ceftriaxona (Cefalosporina 3ª Gen)</strong>. Las moléculas viajan por la red vascular e inundan el espacio alveolar infectado.</p>
+                        </div>
+                        <div id="pul-step-3" class="step-card p-4 rounded-xl">
+                            <h3 class="font-bold text-emerald-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                DEPURACIÓN Y LISIS<span class="w-6 h-6 rounded-full bg-emerald-900/60 border border-emerald-400/50 flex items-center justify-center text-[11px]">4</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">El antibiótico causa la lisis explosiva de los neumococos. Los macrófagos alveolares limpian velozmente los restos bacterianos y celulares del exudado.</p>
+                        </div>
+                        <div id="pul-step-4" class="step-card p-4 rounded-xl">
+                            <h3 class="font-bold text-sky-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                RESTAURACIÓN TISULAR<span class="w-6 h-6 rounded-full bg-sky-900/60 border border-sky-400/50 flex items-center justify-center text-[11px]">5</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">El líquido drena y el lóbulo se re-expande. El paciente recobra la capacidad pulmonar normal. Radiografía limpia, sin cavernas ni secuelas fibróticas graves.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 flex flex-col gap-3 flex-shrink-0">
+                        <button id="nextBtnPul" class="w-full py-4 text-white font-bold rounded-xl transition-all focus:outline-none flex justify-center items-center gap-2 btn-action text-sm">
+                            AVANZAR TRATAMIENTO <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7"></path></svg>
+                        </button>
+                        <button id="resetBtnPul" class="w-full py-4 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-sky-400 font-bold rounded-xl transition-all focus:outline-none flex justify-center items-center gap-2 font-['JetBrains_Mono'] tracking-wide text-xs shadow-xl hidden">
+                            <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> NUEVO PACIENTE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ==========================================
+        // FUNCIONES DE UTILIDAD (Globales)
+        // ==========================================
+        function drawHexagon(ctx, x, y, size) {
+            ctx.beginPath();
+            for (let i = 0; i < 6; i++) {
+                let angle = (i * Math.PI) / 3;
+                let hx = x + size * Math.cos(angle);
+                let hy = y + size * Math.sin(angle);
+                if (i === 0) ctx.moveTo(hx, hy);
+                else ctx.lineTo(hx, hy);
+            }
+            ctx.closePath();
+        }
+
+        // ==========================================
+        // APP 1: MOLECULAR (Betalactámicos Alta Calidad)
+        // ==========================================
+        window.appMolecular = (function() {
+            const container = document.getElementById('canvasContainerMol');
+            const canvas = document.getElementById('microCanvas');
+            const ctx = canvas.getContext('2d');
+            const nextBtn = document.getElementById('nextBtnMol');
+            const resetBtn = document.getElementById('resetBtnMol');
+            const damageOverlay = document.getElementById('damageOverlayMol');
+            
+            const hudStatus = document.getElementById('hud-status');
+            const hudTension = document.getElementById('hud-tension');
+            const hudConc = document.getElementById('hud-conc');
+
+            let width, height, dpr, cx, cy;
+            let time = 0; let state = 0; let animId = null;
+
+            let cam = { x: 0, y: 0, tx: 0, ty: 0, zoom: 1, tZoom: 1, shake: 0 };
+            
+            // Pared Celular
+            let chains = [];
+            let pbp = { x: 0, y: 0, targetX: 0, active: false, color: '#38bdf8', state: 'hidden', pulse: 0 };
+            let drugs = []; let particles = []; let texts = []; let bgParticles = [];
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                width = container.clientWidth; height = container.clientHeight;
+                if(width === 0 || height === 0) return;
+                canvas.width = width * dpr; canvas.height = height * dpr;
+                ctx.scale(dpr, dpr);
+                cx = width / 2; cy = height / 2;
+                if(cam.tx === 0) { cam.tx = cam.x = cx; cam.ty = cam.y = cy; initSimulation(); }
+            }
+            window.addEventListener('resize', () => { if(!document.getElementById('view-molecular').classList.contains('hidden')) resize(); });
+
+            function initSimulation() {
+                chains = [];
+                for(let row=0; row<2; row++) {
+                    let yPos = cy - 60 + row*120;
+                    let chain = { y: yPos, sugars: [], broken: false };
+                    for(let i=0; i<30; i++) {
+                        chain.sugars.push({
+                            x: cx - width*0.8 + i*70,
+                            type: i%2===0 ? 'NAM' : 'NAG',
+                            peptide: i%2===0 ? true : false,
+                            linked: false,
+                            yOffset: 0, vy: 0, rot: 0, vRot: 0
+                        });
+                    }
+                    chains.push(chain);
+                }
+                
+                pbp.x = cx - width*0.5; pbp.y = cy; pbp.targetX = cx - width*0.5; pbp.state = 'hidden'; pbp.active = false; pbp.color = '#0ea5e9';
+                drugs = []; particles = []; texts = []; bgParticles = [];
+                for(let i=0; i<50; i++) bgParticles.push({x: Math.random()*2000 - 1000, y: Math.random()*2000 - 1000, s: Math.random()*3+1, speed: Math.random()*0.02, a: Math.random()*Math.PI*2});
+
+                cam.shake = 0; cam.tx = cx; cam.tZoom = 1;
+                hudStatus.innerText = "SÍNTESIS ACTIVA"; hudStatus.className = "text-emerald-400 font-bold";
+                hudTension.innerText = "ESTABLE"; hudTension.className = "text-emerald-400";
+                hudConc.innerText = "0.0 µg/mL"; hudConc.className = "text-slate-400";
+                damageOverlay.classList.remove('active');
+            }
+
+            function spawnText(x, y, txt, color, size=24) { texts.push({ x: x, y: y, text: txt, color: color, size: size, life: 1.5, vy: -1.5 }); }
+
+            function triggerState(s) {
+                if(s === 0) { initSimulation(); } 
+                else if(s === 1) {
+                    cam.tZoom = 1.15; pbp.state = 'working'; pbp.active = true;
+                    hudStatus.innerText = "ENTRECRUZANDO MALLA"; hudStatus.className = "text-cyan-400 font-bold";
+                } 
+                else if(s === 2) {
+                    cam.tZoom = 1.25; pbp.targetX = cx; 
+                    for(let i=0; i<12; i++) {
+                        drugs.push({
+                            x: cx + (Math.random()-0.5)*500, y: cy + (Math.random()>0.5?1:-1)*(180 + Math.random()*200),
+                            targetX: cx + (Math.random()-0.5)*150, targetY: cy + (Math.random()-0.5)*50,
+                            speed: 0.02 + Math.random()*0.02, attached: false, rot: Math.random()*Math.PI*2
+                        });
+                    }
+                    hudConc.innerText = "ALERTA: BETALACTÁMICO"; hudConc.className = "text-yellow-400 font-bold animate-pulse";
+                } 
+                else if(s === 3) {
+                    cam.tZoom = 1.35; pbp.state = 'blocked'; pbp.active = false; pbp.color = '#ea580c';
+                    spawnText(cx, cy - 100, "PBP INHIBIDA", "#fcd34d", 22); cam.shake = 4; 
+                    hudStatus.innerText = "SÍNTESIS BLOQUEADA"; hudStatus.className = "text-orange-500 animate-pulse font-bold";
+                    hudTension.innerText = "AUMENTANDO PRESIÓN OSMÓTICA"; hudTension.className = "text-orange-400";
+                    drugs.forEach(d => { d.targetX = pbp.x + (Math.random()-0.5)*15; d.targetY = pbp.y + (Math.random()-0.5)*15; d.speed = 0.08; });
+                } 
+                else if(s === 4) {
+                    cam.tZoom = 0.95; cam.shake = 18; pbp.state = 'broken'; damageOverlay.classList.add('active');
+                    spawnText(cx, cy - 30, "DEGRADACIÓN DE PARED", "#ef4444", 30);
+                    hudStatus.innerText = "RUPTURA ESTRUCTURAL CATASTRÓFICA"; hudStatus.className = "text-red-600 font-bold";
+                    hudTension.innerText = "ESTALLIDO INMINENTE"; hudTension.className = "text-red-500 animate-pulse font-bold";
+                    chains.forEach(c => {
+                        c.broken = true;
+                        c.sugars.forEach(s => { s.vy = (Math.random()-0.5)*10; if(c.y > cy) s.vy += 3; else s.vy -= 3; s.vRot = (Math.random()-0.5)*0.2; });
+                    });
+                    for(let i=0; i<80; i++) particles.push({ x: cx + (Math.random()-0.5)*400, y: cy + (Math.random()-0.5)*200, vx: (Math.random()-0.5)*25, vy: (Math.random()-0.5)*25, c: Math.random() > 0.5 ? '#10b981' : '#a855f7', size: Math.random()*7+2, life: 1.5 });
+                }
+            }
+
+            function drawPeptidoglycan(ctx) {
+                ctx.save();
+                
+                if (pbp.state === 'working') { pbp.x += 1.8; if(pbp.x > cx + width*0.6) pbp.x = cx - width*0.6; }
+                
+                // Draw backbone bonds
+                chains.forEach((chain, cIdx) => {
+                    ctx.beginPath();
+                    for(let i=1; i<chain.sugars.length; i++) {
+                        let s = chain.sugars[i]; let prev = chain.sugars[i-1];
+                        if(!chain.broken) { ctx.moveTo(prev.x, chain.y + prev.yOffset); ctx.lineTo(s.x, chain.y + s.yOffset); }
+                    }
+                    ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.lineWidth = 6; ctx.stroke();
+                });
+
+                // Draw inter-chain peptides (only if we have 2 chains correctly initialized)
+                if (chains.length >= 2) {
+                    let chain0 = chains[0]; let chain1 = chains[1];
+                    for(let i=0; i<chain0.sugars.length; i++) {
+                        if(chain0.sugars[i] && chain1.sugars[i]) {
+                            let s0 = chain0.sugars[i]; let s1 = chain1.sugars[i];
+                            if(s0.peptide) {
+                                let x0 = s0.x; let y0 = chain0.y + s0.yOffset;
+                                let x1 = s1.x; let y1 = chain1.y + s1.yOffset;
+                                
+                                if(pbp.state === 'working' && pbp.x > x0) s0.linked = true;
+                                
+                                if(!chain0.broken && !chain1.broken) {
+                                    if(s0.linked) {
+                                        ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0, y1);
+                                        ctx.strokeStyle = '#10b981'; ctx.lineWidth = 6; ctx.shadowBlur = 10; ctx.shadowColor = '#10b981'; ctx.stroke(); ctx.shadowBlur = 0;
+                                    } else {
+                                        ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0, y0 + 35); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.stroke();
+                                        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1, y1 - 35); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.stroke();
+                                    }
+                                } else if(chain0.broken) {
+                                    // Glow broken bonds
+                                    if(Math.random()<0.1) {
+                                        ctx.beginPath(); ctx.moveTo(x0-10, y0+20); ctx.lineTo(x0+10, y0+30);
+                                        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3; ctx.shadowBlur = 15; ctx.shadowColor = '#ef4444'; ctx.stroke(); ctx.shadowBlur = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // Draw sugars
+                chains.forEach((chain, cIdx) => {
+                    chain.sugars.forEach(s => {
+                        let sX = s.x; let sY = chain.y + s.yOffset;
+                        if(chain.broken) { s.yOffset += s.vy; s.x += (Math.random()-0.5)*3; s.rot += s.vRot; }
+                        
+                        ctx.save(); ctx.translate(sX, sY); ctx.rotate(s.rot);
+                        
+                        drawHexagon(ctx, 0, 0, 18);
+                        ctx.fillStyle = s.type === 'NAM' ? '#9333ea' : '#0ea5e9'; 
+                        ctx.shadowBlur = 15; ctx.shadowColor = ctx.fillStyle; ctx.fill();
+                        
+                        ctx.beginPath(); drawHexagon(ctx, 0, 0, 16);
+                        let grad = ctx.createLinearGradient(-10,-10, 10,10);
+                        grad.addColorStop(0, 'rgba(255,255,255,0.4)'); grad.addColorStop(1, 'transparent');
+                        ctx.fillStyle = grad; ctx.fill();
+                        ctx.strokeStyle = s.type === 'NAM' ? '#d8b4fe' : '#7dd3fc'; ctx.lineWidth = 2; ctx.stroke();
+
+                        if(s.peptide && !s.linked && !chain.broken) {
+                            let dir = cIdx === 0 ? 1 : -1;
+                            ctx.shadowBlur = 5; ctx.shadowColor = '#f43f5e';
+                            ctx.fillStyle = '#f43f5e'; ctx.beginPath(); ctx.arc(0, dir*35, 6, 0, Math.PI*2); ctx.fill();
+                            ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(0, dir*26, 6, 0, Math.PI*2); ctx.fill();
+                        }
+                        ctx.restore();
+                    });
+                });
+                ctx.restore();
+            }
+
+            function drawPBP(ctx) {
+                if (pbp.state !== 'hidden') {
+                    ctx.save(); ctx.translate(pbp.x, pbp.y);
+                    if(pbp.state === 'blocked' || pbp.state === 'broken') { ctx.translate((Math.random()-0.5)*cam.shake, (Math.random()-0.5)*cam.shake); }
+                    if(pbp.state === 'broken') pbp.y += 4;
+                    
+                    pbp.pulse += 0.1;
+                    let pSize = 55 + (pbp.state === 'working' ? Math.sin(pbp.pulse)*3 : 0);
+                    
+                    let pbpGrad = ctx.createRadialGradient(-15,-15, 10, 0,0, pSize);
+                    pbpGrad.addColorStop(0, '#7dd3fc'); pbpGrad.addColorStop(0.5, pbp.color); pbpGrad.addColorStop(1, '#0369a1');
+                    if(pbp.state === 'blocked') {
+                        pbpGrad = ctx.createRadialGradient(-15,-15, 10, 0,0, pSize);
+                        pbpGrad.addColorStop(0, '#fcd34d'); pbpGrad.addColorStop(0.5, '#ea580c'); pbpGrad.addColorStop(1, '#7c2d12');
+                    }
+                    
+                    ctx.fillStyle = pbpGrad; ctx.shadowBlur = 25; ctx.shadowColor = pbp.color;
+                    
+                    ctx.beginPath();
+                    ctx.arc(0, 0, pSize, Math.PI*0.15, Math.PI*1.85);
+                    ctx.quadraticCurveTo(-20, 0, pSize*Math.cos(Math.PI*0.15), pSize*Math.sin(Math.PI*0.15));
+                    ctx.fill();
+                    
+                    ctx.beginPath(); ctx.arc(-10, -10, pSize*0.4, 0, Math.PI*2);
+                    ctx.fillStyle = 'rgba(255,255,255,0.15)'; ctx.fill();
+                    
+                    if(pbp.state === 'blocked') {
+                        ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 4; ctx.shadowBlur = 15; ctx.shadowColor = '#fef08a';
+                        ctx.beginPath(); ctx.moveTo(-15, -15); ctx.lineTo(15, 15); ctx.stroke();
+                        ctx.beginPath(); ctx.moveTo(15, -15); ctx.lineTo(-15, 15); ctx.stroke();
+                    }
+                    ctx.restore();
+                }
+            }
+
+            function drawDrugs(ctx) {
+                drugs.forEach(d => {
+                    ctx.save();
+                    if(!d.attached) {
+                        d.x += (d.targetX - d.x) * d.speed; d.y += (d.targetY - d.y) * d.speed; d.rot += 0.05;
+                        if(Math.hypot(d.targetX - d.x, d.targetY - d.y) < 10 && state >= 3) d.attached = true;
+                    } else {
+                        d.x = pbp.x - 10 + (Math.random()-0.5)*cam.shake*0.5; d.y = pbp.y + (Math.random()-0.5)*cam.shake*0.5;
+                        d.rot = 0;
+                        if(pbp.state === 'broken') d.y += 4;
+                    }
+                    
+                    ctx.translate(d.x, d.y); ctx.rotate(d.rot);
+                    
+                    ctx.shadowBlur = 15; ctx.shadowColor = '#eab308';
+                    ctx.fillStyle = '#fde047'; ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 2;
+                    ctx.beginPath(); ctx.rect(-10, -10, 14, 14); ctx.fill(); ctx.stroke();
+                    
+                    ctx.fillStyle = '#38bdf8'; ctx.strokeStyle = '#bae6fd';
+                    ctx.beginPath(); ctx.moveTo(4, -10); ctx.lineTo(16, -6); ctx.lineTo(16, 8); ctx.lineTo(4, 4); ctx.closePath(); ctx.fill(); ctx.stroke();
+                    
+                    ctx.strokeStyle = '#fca5a5'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(-10, 4); ctx.lineTo(-18, 12); ctx.stroke();
+
+                    ctx.restore();
+                });
+            }
+
+            function update() {
+                time++; if(cam.shake > 0 && state !== 3) cam.shake *= 0.85; if(cam.shake < 0.1) cam.shake = 0;
+                particles = particles.filter(p => { p.x += p.vx; p.y += p.vy; p.life -= 0.02; return p.life > 0; });
+                texts = texts.filter(t => { t.y += t.vy; t.life -= 0.015; return t.life > 0; });
+                bgParticles.forEach(p => { p.x += Math.cos(p.a)*p.speed; p.y += Math.sin(p.a)*p.speed; p.a += 0.01; });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                cam.x += (cam.tx - cam.x) * 0.08; cam.y += (cam.ty - cam.y) * 0.08; cam.zoom += (cam.tZoom - cam.zoom) * 0.08;
+                ctx.save(); let bScale = cam.zoom;
+                ctx.translate(width/2, height/2); ctx.scale(bScale, bScale); ctx.translate(-cam.x, -cam.y);
+                
+                ctx.fillStyle = 'rgba(255,255,255,0.1)';
+                bgParticles.forEach(p => { ctx.beginPath(); ctx.arc(cx+p.x, cy+p.y, p.s, 0, Math.PI*2); ctx.fill(); });
+
+                drawPeptidoglycan(ctx); drawPBP(ctx); drawDrugs(ctx);
+                
+                particles.forEach(p => { ctx.globalAlpha = Math.max(0, Math.min(1, p.life)); ctx.fillStyle = p.c; ctx.shadowBlur = 15; ctx.shadowColor = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); });
+                ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+                texts.forEach(t => { ctx.globalAlpha = Math.max(0, Math.min(1, t.life*2)); ctx.fillStyle = t.color; ctx.font = `bold ${t.size}px 'JetBrains Mono'`; ctx.textAlign = 'center'; ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 12; ctx.fillText(t.text, t.x, t.y); });
+                ctx.restore();
+            }
+
+            function loop() { update(); draw(); animId = requestAnimationFrame(loop); }
+
+            function updateUI() {
+                document.querySelectorAll('#view-molecular .step-card').forEach((card, index) => {
+                    card.classList.remove('active', 'completed');
+                    if (index < state) card.classList.add('completed');
+                    else if (index === state) { card.classList.add('active'); if(window.innerWidth <= 768) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                });
+                if(state === 4) { nextBtn.classList.add('hidden'); resetBtn.classList.remove('hidden'); }
+            }
+
+            nextBtn.addEventListener('click', () => { if (state < 4) { state++; triggerState(state); updateUI(); } });
+            resetBtn.addEventListener('click', () => { state = 0; triggerState(0); nextBtn.classList.remove('hidden'); resetBtn.classList.add('hidden'); updateUI(); });
+
+            return { start: () => { resize(); if(!animId) loop(); }, stop: () => { if(animId){ cancelAnimationFrame(animId); animId = null; } } };
+        })();
+
+
+        // ==========================================
+        // APP 2: BACTERIANA (Lisis Osmótica Alta Calidad)
+        // ==========================================
+        window.appBacteria = (function() {
+            const container = document.getElementById('canvasContainerBac');
+            const canvas = document.getElementById('bacteriaCanvas');
+            const ctx = canvas.getContext('2d');
+            const nextBtn = document.getElementById('nextBtnBac');
+            const resetBtn = document.getElementById('resetBtnBac');
+            const damageOverlay = document.getElementById('damageOverlayBac');
+            
+            const hudWall = document.getElementById('hud-wall');
+            const hudTx = document.getElementById('hud-tx-bac');
+            const hudDNA = document.getElementById('hud-dna');
+
+            let width, height, dpr, cx, cy;
+            let time = 0; let state = 0; let animId = null;
+            let cam = { x: 0, y: 0, tx: 0, ty: 0, zoom: 1, tZoom: 1, shake: 0 };
+            
+            let bacillus = { r: 180, integrity: 1, bulge: 0 };
+            let cytosol = []; let drugs = []; let particles = []; let texts = []; let shockwaves = [];
+            let fragments = []; let explosionFlash = 0;
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                width = container.clientWidth; height = container.clientHeight;
+                if(width===0||height===0) return;
+                canvas.width = width * dpr; canvas.height = height * dpr;
+                ctx.scale(dpr, dpr); cx = width / 2; cy = height / 2;
+                if(width < 600) bacillus.r = 120; else bacillus.r = 180;
+                if(cam.tx === 0) { cam.tx = cam.x = cx; cam.ty = cam.y = cy; initSimulation(); }
+            }
+            window.addEventListener('resize', () => { if(!document.getElementById('view-bacteria').classList.contains('hidden')) resize(); });
+
+            function initSimulation() {
+                bacillus.integrity = 1; bacillus.bulge = 0;
+                cytosol = [];
+                for(let i=0; i<200; i++) {
+                    let angle = Math.random() * Math.PI*2;
+                    let dist = Math.random() * (bacillus.r - 20);
+                    cytosol.push({
+                        x: Math.cos(angle)*dist, y: Math.sin(angle)*dist,
+                        size: Math.random() * 4 + 1.5, speed: Math.random() * 0.02 + 0.01, driftAngle: Math.random() * Math.PI * 2, spilled: false, vx: 0, vy: 0
+                    });
+                }
+                drugs = []; particles = []; texts = []; shockwaves = []; fragments = []; explosionFlash = 0;
+                cam.shake = 0; cam.tx = cx; cam.tZoom = 1;
+                hudWall.innerText = "ÍNTEGRA, DIVISIÓN ACTIVA"; hudWall.className = "text-purple-400 font-bold";
+                hudTx.innerText = "NINGUNO"; hudTx.className = "text-slate-400";
+                hudDNA.innerText = "EQUILIBRIO 1.0 ATM"; hudDNA.className = "text-emerald-400 font-bold";
+                damageOverlay.classList.remove('active');
+            }
+
+            function spawnText(x, y, txt, color, size=20) { texts.push({ x: x, y: y, text: txt, color: color, size: size, life: 1.5, vy: -1.5 }); }
+
+            function triggerState(s) {
+                if(s === 0) { initSimulation(); } 
+                else if(s === 1) { 
+                    cam.tZoom = 1.1; hudTx.innerText = "BETALACTÁMICOS"; hudTx.className = "text-yellow-400 font-bold";
+                    for(let i=0; i<100; i++) {
+                        let a = Math.random()*Math.PI*2; let d = Math.max(width, height)*0.6;
+                        drugs.push({
+                            x: cx + Math.cos(a)*d, y: cy + Math.sin(a)*d,
+                            tx: cx + Math.cos(a)*(bacillus.r+15), ty: cy + Math.sin(a)*(bacillus.r+15),
+                            state: 'attacking', speed: 0.02 + Math.random()*0.02, rot: Math.random()*Math.PI*2
+                        });
+                    }
+                } 
+                else if(s === 2) { 
+                    cam.tZoom = 1.25; hudWall.innerText = "DEGRADACIÓN POR AUTOLISINAS"; hudWall.className = "text-orange-500 animate-pulse font-bold";
+                    spawnText(cx, cy - bacillus.r - 50, "MALLA ROTA", "#fcd34d", 24);
+                } 
+                else if(s === 3) { 
+                    cam.tZoom = 1.35; cam.shake = 4; hudDNA.innerText = "SOBRECARGA OSMÓTICA CRÍTICA"; hudDNA.className = "text-red-500 animate-pulse font-bold";
+                    spawnText(cx + bacillus.r + 30, cy, "PROTRUSIÓN MEMBRANOSA", "#ef4444", 24); 
+                } 
+                else if(s === 4) { 
+                    cam.tZoom = 0.95; bacillus.integrity = 0; damageOverlay.classList.add('active'); cam.shake = 40; explosionFlash = 1.8; 
+                    hudWall.innerText = "LISIS CATASTRÓFICA"; hudWall.className = "text-red-600 font-bold"; hudDNA.innerText = "DERRAME CITOPLÁSMICO"; hudDNA.className = "text-red-600 font-bold"; 
+                    spawnText(cx, cy, "ESTALLIDO OSMÓTICO", "#ef4444", 36); 
+                    
+                    cytosol.forEach(c => { c.spilled = true; let a = Math.atan2(c.y, c.x); c.vx = Math.cos(a)* (25 + Math.random()*40); c.vy = Math.sin(a)* (25 + Math.random()*40); }); 
+                    
+                    for(let i=0; i<30; i++) {
+                        let a = Math.random() * Math.PI*2;
+                        fragments.push({ x: cx + Math.cos(a)*bacillus.r, y: cy + Math.sin(a)*bacillus.r, vx: Math.cos(a)*20, vy: Math.sin(a)*20, rot: Math.random()*Math.PI, vRot: (Math.random()-0.5)*0.5, size: Math.random()*20+10 });
+                    }
+
+                    shockwaves.push({x: cx + bacillus.r, y: cy, r: 10, max: 1000, speed: 30, lw: 40, c: '239, 68, 68'}); 
+                    for(let i=0; i<200; i++) particles.push({ x: cx + bacillus.r, y: cy + (Math.random()-0.5)*150, vx: (Math.random()-0.5)*55 + 15, vy: (Math.random()-0.5)*55, c: Math.random() > 0.6 ? '#38bdf8' : (Math.random()>0.5?'#10b981':'#ef4444'), size: Math.random()*8+2, life: 2 }); 
+                }
+            }
+
+            function drawOrganicCircle(ctx, radius, seed, noiseAmt) {
+                ctx.beginPath();
+                for (let a = 0; a <= Math.PI * 2; a += 0.1) {
+                    let noise = Math.sin(a * 5 + time * 0.05 + seed) * Math.cos(a * 3 - time * 0.03) * noiseAmt;
+                    let x = Math.cos(a) * (radius + noise);
+                    let y = Math.sin(a) * (radius + noise);
+                    if (a === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+            }
+
+            function drawCoccus(ctx) {
+                ctx.save(); ctx.translate(cx, cy);
+                
+                if(bacillus.integrity === 0) {
+                    ctx.fillStyle = 'rgba(16, 185, 129, 0.7)';
+                    cytosol.forEach(c => { ctx.beginPath(); ctx.arc(c.x, c.y, c.size*1.5, 0, Math.PI*2); ctx.fill(); });
+                    
+                    ctx.strokeStyle = '#9333ea'; ctx.lineWidth = 15; ctx.lineCap = 'round';
+                    fragments.forEach(f => {
+                        ctx.save(); ctx.translate(f.x - cx, f.y - cy); ctx.rotate(f.rot);
+                        ctx.beginPath(); ctx.moveTo(-f.size, 0); ctx.lineTo(f.size, 0); ctx.stroke();
+                        ctx.restore();
+                    });
+                    ctx.restore(); return;
+                }
+
+                let wobble = Math.sin(time*0.05) * 5;
+                let r = bacillus.r + wobble;
+                
+                if(state === 3) bacillus.bulge += (80 - bacillus.bulge) * 0.03;
+
+                let auraGrad = ctx.createRadialGradient(0,0, r*0.5, 0,0, r*1.3);
+                auraGrad.addColorStop(0, 'rgba(168, 85, 247, 0.4)'); auraGrad.addColorStop(1, 'transparent');
+                ctx.fillStyle = auraGrad; ctx.beginPath(); ctx.arc(0, 0, r*1.5, 0, Math.PI*2); ctx.fill();
+
+                ctx.beginPath();
+                if(state >= 3) {
+                    ctx.arc(0, 0, r-12, Math.PI*0.15, Math.PI*1.85);
+                    ctx.bezierCurveTo(r + bacillus.bulge, r*0.5, r + bacillus.bulge, -r*0.5, (r-12)*Math.cos(Math.PI*0.15), (r-12)*Math.sin(Math.PI*0.15));
+                } else {
+                    drawOrganicCircle(ctx, r-12, 1, 3);
+                }
+                let cytoGrad = ctx.createRadialGradient(0,0, 0, 0,0, r);
+                cytoGrad.addColorStop(0, '#022c22'); cytoGrad.addColorStop(0.8, '#064e3b'); cytoGrad.addColorStop(1, '#0f766e');
+                ctx.fillStyle = cytoGrad; ctx.fill();
+                
+                ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 4; ctx.shadowBlur = 15; ctx.shadowColor = '#06b6d4';
+                if(state >= 3) {
+                    let tGrad = ctx.createLinearGradient(r-20, 0, r+bacillus.bulge, 0);
+                    tGrad.addColorStop(0, '#22d3ee'); tGrad.addColorStop(1, '#fecaca');
+                    ctx.strokeStyle = tGrad; ctx.shadowColor = '#f87171';
+                }
+                ctx.stroke(); ctx.shadowBlur = 0;
+
+                ctx.lineWidth = 24;
+                if(state < 2) {
+                    ctx.strokeStyle = '#9333ea'; ctx.shadowBlur = 20; ctx.shadowColor = '#a855f7';
+                    drawOrganicCircle(ctx, r, 2, 4); ctx.stroke();
+                } else {
+                    ctx.strokeStyle = 'rgba(147, 51, 234, 0.6)'; ctx.lineCap = 'round';
+                    let dash1 = state === 3 ? 30 : 60; let dash2 = state === 3 ? 60 : 20;
+                    ctx.setLineDash([dash1, dash2]);
+                    
+                    ctx.beginPath();
+                    if(state === 3) {
+                        ctx.arc(0, 0, r, Math.PI*0.2, Math.PI*1.8);
+                    } else {
+                        drawOrganicCircle(ctx, r, 2, 4);
+                    }
+                    ctx.stroke(); ctx.setLineDash([]);
+                }
+
+                ctx.fillStyle = 'rgba(52, 211, 153, 0.6)';
+                cytosol.forEach(c => {
+                    c.driftAngle += c.speed;
+                    let targetX = Math.cos(c.driftAngle)*(bacillus.r-40) * Math.sin(time*0.01 + c.driftAngle);
+                    let targetY = Math.sin(c.driftAngle)*(bacillus.r-40);
+                    c.x += (targetX - c.x) * 0.05; c.y += (targetY - c.y) * 0.05;
+                    
+                    if(state === 3 && c.x > 0) { c.x += (bacillus.bulge * Math.random() * 0.1); c.y *= 0.95; }
+                    
+                    ctx.beginPath(); ctx.arc(c.x, c.y, c.size, 0, Math.PI*2); ctx.fill();
+                });
+                ctx.restore();
+            }
+
+            function drawDrugs(ctx) {
+                drugs.forEach(d => {
+                    ctx.save();
+                    if (d.state === 'attacking') {
+                        d.x += (d.tx - d.x) * d.speed; d.y += (d.ty - d.y) * d.speed;
+                        if(Math.hypot(d.tx - d.x, d.ty - d.y) < 5) d.state = 'bound';
+                    } else if (d.state === 'bound') {
+                        let angle = Math.atan2(d.ty - cy, d.tx - cx);
+                        let curR = bacillus.r + 15 + Math.sin(time*0.05)*5;
+                        d.x = cx + Math.cos(angle)*curR; d.y = cy + Math.sin(angle)*curR;
+                        if(bacillus.integrity === 0) d.state = 'repelled'; 
+                    } else if (d.state === 'repelled') {
+                        let angle = Math.atan2(d.y - cy, d.x - cx);
+                        d.x += Math.cos(angle)*25; d.y += Math.sin(angle)*25;
+                    }
+                    
+                    ctx.translate(d.x, d.y); d.rot += 0.1; ctx.rotate(d.rot);
+                    
+                    ctx.fillStyle = '#fde047'; ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 1; ctx.shadowBlur = 10; ctx.shadowColor = '#eab308';
+                    ctx.beginPath(); ctx.rect(-5, -5, 10, 10); ctx.fill(); ctx.stroke();
+                    ctx.fillStyle = '#38bdf8'; ctx.beginPath(); ctx.arc(5, 5, 5, 0, Math.PI*2); ctx.fill();
+                    ctx.restore();
+                });
+            }
+
+            function update() {
+                time++; if(cam.shake > 0 && state !== 3) cam.shake *= 0.85; if(cam.shake < 0.1) cam.shake = 0; if(explosionFlash > 0) explosionFlash -= 0.03;
+                particles = particles.filter(p => { p.x += p.vx; p.y += p.vy; p.life -= 0.02; return p.life > 0; });
+                texts = texts.filter(t => { t.y += t.vy; t.life -= 0.015; return t.life > 0; });
+                shockwaves = shockwaves.filter(sw => { sw.r += (sw.speed || 15); sw.max -= 20; return sw.max > 0; });
+                
+                if (bacillus.integrity === 0) { 
+                    cytosol.forEach(c => { if(c.spilled){ c.x += c.vx; c.y += c.vy; c.vx *= 0.95; c.vy *= 0.95; } }); 
+                    fragments.forEach(f => { f.x += f.vx; f.y += f.vy; f.rot += f.vRot; });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                cam.x += (cam.tx - cam.x) * 0.08; cam.y += (cam.ty - cam.y) * 0.08; cam.zoom += (cam.tZoom - cam.zoom) * 0.08;
+                ctx.save(); let bScale = cam.zoom + Math.sin(time*0.01)*0.01; ctx.translate(width/2, height/2); ctx.scale(bScale, bScale); ctx.translate(-cam.x + (Math.random()-0.5)*cam.shake, -cam.y + (Math.random()-0.5)*cam.shake);
+                
+                drawCoccus(ctx); drawDrugs(ctx);
+                
+                particles.forEach(p => { ctx.globalAlpha = Math.max(0, Math.min(1, p.life)); ctx.fillStyle = p.c; ctx.shadowBlur = 15; ctx.shadowColor = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); });
+                shockwaves.forEach(sw => { let col = sw.c || '239, 68, 68'; let lw = sw.lw || 15; ctx.strokeStyle = `rgba(${col}, ${sw.max/1000})`; ctx.lineWidth = lw * (sw.max/1000); ctx.beginPath(); ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI*2); ctx.stroke(); });
+                texts.forEach(t => { ctx.globalAlpha = Math.max(0, Math.min(1, t.life*2)); ctx.fillStyle = t.color; ctx.font = `bold ${t.size}px 'JetBrains Mono', monospace`; ctx.textAlign = 'center'; ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 15; ctx.fillText(t.text, t.x, t.y); });
+                ctx.restore();
+                
+                if (explosionFlash > 0) { ctx.save(); ctx.globalAlpha = Math.max(0, Math.min(1, explosionFlash)); let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, width); grad.addColorStop(0, 'rgba(255, 255, 255, 1)'); grad.addColorStop(0.2, 'rgba(239, 68, 68, 0.9)'); grad.addColorStop(1, 'transparent'); ctx.fillStyle = grad; ctx.fillRect(0, 0, width, height); ctx.restore(); }
+            }
+
+            function loop() { update(); draw(); animId = requestAnimationFrame(loop); }
+
+            function updateUI() {
+                document.querySelectorAll('#view-bacteria .step-card').forEach((card, index) => {
+                    card.classList.remove('active', 'completed');
+                    if (index < state) card.classList.add('completed');
+                    else if (index === state) { card.classList.add('active'); if(window.innerWidth <= 768) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                });
+                if(state === 4) { nextBtn.classList.add('hidden'); resetBtn.classList.remove('hidden'); }
+            }
+
+            nextBtn.addEventListener('click', () => { if (state < 4) { state++; triggerState(state); updateUI(); } });
+            resetBtn.addEventListener('click', () => { state = 0; damageOverlay.classList.remove('active'); triggerState(0); nextBtn.classList.remove('hidden'); resetBtn.classList.add('hidden'); updateUI(); });
+
+            return { start: () => { resize(); if(!animId) loop(); }, stop: () => { if(animId) { cancelAnimationFrame(animId); animId = null; } } };
+        })();
+
+
+        // ==========================================
+        // APP 3: PULMONAR (Neumonía Lobar Alta Calidad)
+        // ==========================================
+        window.appPulmonar = (function() {
+            const container = document.getElementById('canvasContainerPul');
+            const canvas = document.getElementById('pulmonaryCanvas');
+            const ctx = canvas.getContext('2d');
+            const nextBtn = document.getElementById('nextBtnPul');
+            const resetBtn = document.getElementById('resetBtnPul');
+            const damageOverlay = document.getElementById('damageOverlayPul');
+            
+            const hudSymptoms = document.getElementById('hud-symptoms');
+            const hudSpo2 = document.getElementById('hud-spo2');
+            const hudPath = document.getElementById('hud-path');
+            const hudTx = document.getElementById('hud-tx-pul');
+
+            let width, height, dpr, cx, cy;
+            let time = 0; let state = 0; let animId = null;
+            let cam = { x: 0, y: 0, tx: 0, ty: 0, zoom: 1, tZoom: 1, shake: 0 };
+            let breathRate = 0.05; let breathDepth = 15; let coughTimer = 0; let lungScale = 1.3; 
+            
+            let consolidation = { intensity: 1, radius: 100, bacs: [] };
+            let drugs = []; let particles = []; let networkPaths = [];
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                width = container.clientWidth; height = container.clientHeight;
+                if(width===0||height===0) return;
+                canvas.width = width * dpr; canvas.height = height * dpr;
+                ctx.scale(dpr, dpr); cx = width / 2; cy = height / 2;
+                lungScale = Math.min(width, height) / 450;
+                if(lungScale > 1.8) lungScale = 1.8; if(lungScale < 0.7) lungScale = 0.7;
+                if(cam.tx === 0 && cam.ty === 0) { cam.tx = 0; cam.ty = 40; cam.x = 0; cam.y = 40; initSimulation(); }
+            }
+            window.addEventListener('resize', () => { if(!document.getElementById('view-pulmonar').classList.contains('hidden')) resize(); });
+
+            function createNetwork() {
+                networkPaths = [];
+                for(let i=0; i<30; i++) {
+                    let path = [{x: 5, y: -40}];
+                    let currX = 5; let currY = -40;
+                    for(let j=0; j<4; j++) {
+                        currX += 20 + Math.random()*30;
+                        currY += 30 + Math.random()*50;
+                        path.push({x: currX, y: currY});
+                    }
+                    networkPaths.push(path);
+                }
+            }
+
+            function initSimulation() {
+                state = 0; breathRate = 0.08; breathDepth = 8; coughTimer = 40;
+                consolidation.intensity = 1.2;
+                consolidation.bacs = [];
+                for(let i=0; i<120; i++) { consolidation.bacs.push({ rx: (Math.random()-0.5)*110, ry: (Math.random()-0.5)*110, speed: Math.random()*0.05+0.02, alive: true, size: Math.random()*2+1.5 }); }
+                
+                createNetwork();
+                drugs = []; particles = []; cam.shake = 0; cam.tx = 0; cam.ty = 40; cam.tZoom = 1;
+                hudSymptoms.innerText = "FIEBRE ALTA, TOS PURULENTA"; hudSymptoms.className = "text-red-400 font-bold"; 
+                hudSpo2.innerText = "85% (HIPOXEMIA)"; hudSpo2.className = "text-orange-400 font-bold animate-pulse"; 
+                hudPath.innerText = "NEUMONÍA LOBAR AGUDA"; hudPath.className = "text-red-400 font-bold"; 
+                hudTx.innerText = "NINGUNA"; hudTx.className = "text-slate-400"; damageOverlay.classList.add('active');
+            }
+
+            function triggerState(s) {
+                if(s === 0) { initSimulation(); } 
+                else if(s === 1) { 
+                    cam.tZoom = 1.2; cam.ty = 80; cam.tx = 60;
+                    hudPath.innerText = "VASODILATACIÓN Y EXUDADO (CONGESTIÓN)"; hudPath.className = "text-orange-400 font-bold animate-pulse"; 
+                    consolidation.intensity = 1.8; 
+                } 
+                else if(s === 2) { 
+                    cam.tZoom = 1.35; cam.ty = 80; cam.tx = 60;
+                    hudTx.innerText = "CEFTRIAXONA IV (Betalactámico)"; hudTx.className = "text-yellow-400 font-bold"; 
+                    drugs = []; 
+                    for(let i=0; i<120; i++) { 
+                        setTimeout(() => { 
+                            let p = networkPaths[Math.floor(Math.random()*networkPaths.length)];
+                            drugs.push({ path: p, pIdx: 0, x: p[0].x, y: p[0].y, color: '#fef08a', life: 1, speed: 0.1 + Math.random()*0.05, trail: [] }); 
+                        }, i * 20); 
+                    } 
+                } 
+                else if(s === 3) { 
+                    cam.tZoom = 1.45; cam.shake = 6; 
+                    hudPath.innerText = "LISIS BACTERIANA MASIVA"; hudPath.className = "text-emerald-400 font-bold animate-pulse"; 
+                    consolidation.bacs.forEach(b => b.alive = false); 
+                    for(let i=0; i<150; i++) { particles.push({ x: 100 + (Math.random()-0.5)*120, y: 140 + (Math.random()-0.5)*120, vx: (Math.random()-0.5)*18, vy: (Math.random()-0.5)*18, c: Math.random() > 0.4 ? '#fde047' : '#10b981', size: Math.random()*6+1.5, life: 1.5 }); } 
+                    consolidation.intensity = 0.6;
+                } 
+                else if(s === 4) { 
+                    cam.tZoom = 1; cam.ty = 30; cam.tx = 0; damageOverlay.classList.remove('active'); 
+                    breathRate = 0.035; breathDepth = 15; coughTimer = -1; 
+                    hudSymptoms.innerText = "ASINTOMÁTICO, RECUPERACIÓN TISULAR"; hudSymptoms.className = "text-sky-400 font-bold"; 
+                    hudSpo2.innerText = "98% (NORMAL)"; hudSpo2.className = "text-sky-400"; 
+                    hudPath.innerText = "RESOLUCIÓN COMPLETA"; hudPath.className = "text-sky-400 font-bold"; 
+                    consolidation.intensity = 0; drugs = []; 
+                }
+            }
+
+            function drawFractalTree(ctx, startX, startY, angle, length, width, depth, isVascular) { 
+                if(depth === 0) return; 
+                ctx.lineWidth = width; let endX = startX + Math.cos(angle) * length; let endY = startY + Math.sin(angle) * length; 
+                
+                if(isVascular) {
+                    let grad = ctx.createLinearGradient(startX, startY, endX, endY);
+                    grad.addColorStop(0, state >= 4 ? '#0ea5e9' : '#dc2626'); grad.addColorStop(1, state >= 4 ? '#38bdf8' : '#ef4444');
+                    ctx.strokeStyle = grad; ctx.shadowBlur = 10; ctx.shadowColor = state >= 4 ? '#38bdf8' : '#ef4444';
+                } else {
+                    ctx.strokeStyle = state >= 4 ? '#7dd3fc' : '#94a3b8'; ctx.shadowBlur = 0;
+                }
+                
+                ctx.beginPath(); ctx.moveTo(startX, startY); ctx.lineTo(endX, endY); ctx.stroke(); 
+                
+                let p1 = Math.sin(depth * 12.9) * 0.4; let p2 = Math.sin(depth * 78.2) * 0.5 + 0.2; 
+                drawFractalTree(ctx, endX, endY, angle + p1, length * 0.8, width * 0.75, depth - 1, isVascular); 
+                drawFractalTree(ctx, endX, endY, angle + ((depth % 2 === 0) ? 1 : -1) * p2, length * 0.65, width * 0.6, depth - 1, isVascular); 
+            }
+
+            function drawAnatomy(ctx, breath) {
+                ctx.save(); ctx.scale(lungScale, lungScale);
+                let isHealthy = state >= 4; let lungColor = isHealthy ? '#0284c7' : '#334155'; let lungEdge = isHealthy ? '#0c4a6e' : '#1e293b'; let glowColor = isHealthy ? '#38bdf8' : '#64748b';
+                
+                ctx.strokeStyle = '#020617'; ctx.lineWidth = 32; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(0, -280); ctx.lineTo(0, -140); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(35, -95); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(-50, -105); ctx.stroke(); 
+                ctx.strokeStyle = isHealthy ? '#0f172a' : '#1e293b'; ctx.lineWidth = 28; ctx.beginPath(); ctx.moveTo(0, -280); ctx.lineTo(0, -140); ctx.stroke(); ctx.lineWidth = 22; ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(35, -95); ctx.stroke(); ctx.lineWidth = 18; ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(-50, -105); ctx.stroke();
+                for(let y=-270; y<-140; y+=12) { ctx.strokeStyle = '#475569'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(-12, y); ctx.lineTo(12, y); ctx.stroke(); ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(-12, y+3); ctx.lineTo(12, y+3); ctx.stroke(); }
+
+                function drawLung(isLeft) {
+                    let sign = isLeft ? -1 : 1; ctx.save();
+                    ctx.translate(sign * 40, -90); let expX = 1 + breath * 0.006; let expY = 1 + breath * 0.01; ctx.scale(expX, expY); ctx.translate(-sign * 40, 90);
+                    
+                    let lungGrad = ctx.createRadialGradient(sign * 80, 50, 10, sign * 80, 50, 260); 
+                    lungGrad.addColorStop(0, lungColor); lungGrad.addColorStop(0.9, lungEdge); 
+                    ctx.beginPath();
+                    if (isLeft) { ctx.moveTo(-35, -130); ctx.bezierCurveTo(-80, -140, -150, -70, -165, 20); ctx.bezierCurveTo(-180, 100, -170, 210, -155, 250); ctx.bezierCurveTo(-120, 230, -60, 210, -30, 230); ctx.bezierCurveTo(-20, 180, -95, 120, -75, 45); ctx.bezierCurveTo(-60, -10, -20, -100, -35, -130); } 
+                    else { ctx.moveTo(35, -130); ctx.bezierCurveTo(80, -140, 150, -70, 165, 20); ctx.bezierCurveTo(180, 100, 170, 200, 155, 240); ctx.bezierCurveTo(120, 220, 60, 200, 30, 220); ctx.bezierCurveTo(20, 160, 55, 100, 45, 0); ctx.bezierCurveTo(35, -60, 20, -100, 35, -130); }
+                    ctx.fillStyle = lungGrad; ctx.shadowColor = glowColor; ctx.shadowBlur = isHealthy ? 25 : 15; ctx.fill();
+                    ctx.strokeStyle = glowColor; ctx.lineWidth = 4; ctx.globalAlpha = isHealthy ? 0.7 : 0.5; ctx.stroke();
+                    ctx.save(); ctx.clip(); 
+
+                    if (!isLeft && consolidation.intensity > 0) {
+                        ctx.globalAlpha = Math.min(1, consolidation.intensity * 0.8);
+                        
+                        for(let i=0; i<30; i++) {
+                            ctx.beginPath(); ctx.arc(100 + (Math.random()-0.5)*150, 140 + (Math.random()-0.5)*150, Math.random()*20+10, 0, Math.PI*2);
+                            ctx.fillStyle = `rgba(${state===1?220:180}, ${Math.random()*50}, 0, 0.4)`; ctx.shadowBlur = 20; ctx.shadowColor = '#dc2626'; ctx.fill();
+                        }
+
+                        let consGrad = ctx.createRadialGradient(100, 140, 0, 100, 140, 140);
+                        consGrad.addColorStop(0, state===1 ? 'rgba(239, 68, 68, 0.95)' : 'rgba(239, 68, 68, 0.8)');
+                        consGrad.addColorStop(0.5, 'rgba(245, 158, 11, 0.6)');
+                        consGrad.addColorStop(1, 'transparent');
+                        ctx.fillStyle = consGrad;
+                        ctx.beginPath(); ctx.arc(100, 140, 160, 0, Math.PI*2); ctx.fill();
+                        
+                        ctx.globalAlpha = 1; ctx.fillStyle = '#fca5a5'; ctx.shadowBlur = 10; ctx.shadowColor = '#fca5a5';
+                        consolidation.bacs.forEach(b => {
+                            if(!b.alive) return;
+                            let bx = 100 + b.rx + Math.sin(time*b.speed)*12;
+                            let by = 140 + b.ry + Math.cos(time*b.speed)*12;
+                            ctx.beginPath(); ctx.arc(bx, by, b.size, 0, Math.PI*2); ctx.fill();
+                        });
+                        ctx.shadowBlur = 0;
+                    }
+                    
+                    ctx.strokeStyle = isHealthy ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.08)'; ctx.lineWidth = 3; ctx.shadowBlur = 0;
+                    if(isLeft) { ctx.beginPath(); ctx.moveTo(-165, 10); ctx.quadraticCurveTo(-120, 100, -40, 190); ctx.stroke(); } 
+                    else { ctx.beginPath(); ctx.moveTo(165, 0); ctx.quadraticCurveTo(120, 80, 35, 160); ctx.stroke(); ctx.beginPath(); ctx.moveTo(135, 70); ctx.quadraticCurveTo(100, 65, 45, 75); ctx.stroke(); }
+                    
+                    ctx.globalAlpha = isHealthy ? 0.6 : 0.2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+                    if (isLeft) { 
+                        drawFractalTree(ctx, -50, -105, 2.8, 45, 9, 5, false); 
+                        drawFractalTree(ctx, -50, -105, 2.0, 55, 10, 6, false); 
+                    } else { 
+                        drawFractalTree(ctx, 35, -95, 0.3, 40, 9, 5, false); 
+                        drawFractalTree(ctx, 35, -95, 0.9, 35, 8, 4, false); 
+                        drawFractalTree(ctx, 35, -95, 1.4, 50, 10, 6, state >= 1 ? true : false); 
+                    }
+                    ctx.restore(); ctx.restore();
+                }
+                drawLung(false); drawLung(true);  
+
+                ctx.save(); let heartPulse = 1 + Math.sin(time * 0.15) * 0.04; let systole = Math.sin(time * 0.15 - 0.5) * 0.04; 
+                ctx.translate(5, 80); ctx.scale(heartPulse, heartPulse + systole);
+                let heartGrad = ctx.createRadialGradient(-10, -10, 5, 0, 0, 75); heartGrad.addColorStop(0, '#ef4444'); heartGrad.addColorStop(0.6, '#be123c'); heartGrad.addColorStop(1, '#4c0519'); 
+                ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1e3a8a'; ctx.beginPath(); ctx.moveTo(-20, -30); ctx.lineTo(-20, -75); ctx.stroke();
+                ctx.strokeStyle = '#0284c7'; ctx.beginPath(); ctx.moveTo(10, -30); ctx.quadraticCurveTo(20, -50, 45, -60); ctx.stroke(); ctx.beginPath(); ctx.moveTo(10, -30); ctx.quadraticCurveTo(0, -50, -25, -55); ctx.stroke();
+                ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(0, -30); ctx.bezierCurveTo(5, -90, 45, -90, 45, -45); ctx.stroke();
+                ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(15, -72); ctx.lineTo(10, -95); ctx.stroke(); ctx.beginPath(); ctx.moveTo(25, -75); ctx.lineTo(25, -100); ctx.stroke(); ctx.beginPath(); ctx.moveTo(35, -70); ctx.lineTo(40, -95); ctx.stroke();
+                ctx.fillStyle = heartGrad; ctx.shadowColor = '#dc2626'; ctx.shadowBlur = 15; ctx.beginPath(); ctx.moveTo(10, -40); ctx.bezierCurveTo(55, -30, 65, 15, 45, 55); ctx.bezierCurveTo(20, 90, -35, 75, -50, 40); ctx.bezierCurveTo(-65, 0, -35, -30, 10, -40); ctx.fill();
+                ctx.restore();
+                ctx.restore();
+            }
+
+            function drawDrugs(ctx) {
+                ctx.save(); ctx.scale(lungScale, lungScale); 
+                drugs.forEach(d => {
+                    ctx.save();
+                    
+                    if (d.pIdx < d.path.length - 1) {
+                        let target = d.path[d.pIdx + 1];
+                        let dx = target.x - d.x; let dy = target.y - d.y;
+                        let dist = Math.hypot(dx, dy);
+                        
+                        if (dist < 5) {
+                            d.pIdx++;
+                        } else if (dist > 0.01) {
+                            d.x += (dx/dist) * d.speed * 30; 
+                            d.y += (dy/dist) * d.speed * 30; 
+                        }
+                    } else {
+                        d.x += (Math.random()-0.5)*3; d.y += (Math.random()-0.5)*3;
+                        d.life -= 0.02;
+                    }
+                    
+                    d.trail.push({x: d.x, y: d.y}); if(d.trail.length > 8) d.trail.shift();
+
+                    ctx.globalAlpha = Math.max(0, d.life);
+                    
+                    if(d.trail.length > 1) {
+                        ctx.beginPath(); ctx.moveTo(d.trail[0].x, d.trail[0].y);
+                        for(let i=1; i<d.trail.length; i++) ctx.lineTo(d.trail[i].x, d.trail[i].y);
+                        ctx.strokeStyle = 'rgba(253, 224, 71, 0.6)'; ctx.lineWidth = 4; ctx.shadowBlur = 10; ctx.shadowColor = '#fef08a'; ctx.stroke(); ctx.shadowBlur = 0;
+                    }
+
+                    ctx.translate(d.x, d.y);
+                    ctx.fillStyle = '#ffffff'; ctx.shadowBlur = 20; ctx.shadowColor = '#eab308';
+                    ctx.beginPath(); ctx.arc(0,0,3,0,Math.PI*2); ctx.fill();
+                    ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(0,0,1.5,0,Math.PI*2); ctx.fill();
+                    ctx.restore();
+                });
+                ctx.restore();
+            }
+
+            function update() {
+                time++; if(cam.shake > 0) cam.shake *= 0.85; if(cam.shake < 0.1) cam.shake = 0;
+                if (coughTimer > 0 && state < 4) {
+                    coughTimer--;
+                    if (coughTimer === 0) { cam.shake = 22; coughTimer = 40 + Math.random() * 80; for(let i=0; i<30; i++) { particles.push({ x: (Math.random()-0.5)*45, y: -200, vx: (Math.random()-0.5)*8, vy: -15 - Math.random()*30, c: Math.random() > 0.6 ? '#ef4444' : (Math.random()>0.5 ? '#fcd34d' : '#991b1b'), size: Math.random()*8+2, life: 1.2 }); } }
+                }
+                particles = particles.filter(p => { p.x += p.vx; p.y += p.vy; p.life -= 0.02; return p.life > 0; });
+                drugs = drugs.filter(d => d.life > 0);
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                cam.x += (cam.tx - cam.x) * 0.08; cam.y += (cam.ty - cam.y) * 0.08; cam.zoom += (cam.tZoom - cam.zoom) * 0.08;
+                ctx.save(); ctx.translate(cx, cy); ctx.scale(cam.zoom, cam.zoom); ctx.translate(-cam.x + (Math.random()-0.5)*cam.shake, -cam.y + (Math.random()-0.5)*cam.shake);
+                let breath = Math.sin(time * breathRate) * breathDepth; if (cam.shake > 5) breath += (Math.random()-0.5)*15; 
+                drawAnatomy(ctx, breath); drawDrugs(ctx);
+                ctx.save(); ctx.scale(lungScale, lungScale); particles.forEach(p => { ctx.globalAlpha = Math.max(0, Math.min(1, p.life)); ctx.fillStyle = p.c; ctx.shadowBlur = 20; ctx.shadowColor = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); }); ctx.restore();
+                ctx.restore();
+                
+                let scanlineY = (time * 6) % height; let scanGrad = ctx.createLinearGradient(0, scanlineY - 80, 0, scanlineY); scanGrad.addColorStop(0, 'transparent'); scanGrad.addColorStop(1, 'rgba(56, 189, 248, 0.15)');
+                ctx.fillStyle = scanGrad; ctx.fillRect(0, scanlineY - 80, width, 80); ctx.fillStyle = 'rgba(56, 189, 248, 0.9)'; ctx.fillRect(0, scanlineY, width, 2); ctx.fillStyle = '#fff'; ctx.fillRect(0, scanlineY, 20, 2); ctx.fillRect(width-20, scanlineY, 20, 2);
+            }
+
+            function loop() { update(); draw(); animId = requestAnimationFrame(loop); }
+
+            function updateUI() {
+                document.querySelectorAll('#view-pulmonar .step-card').forEach((card, index) => {
+                    card.classList.remove('active', 'completed');
+                    if (index < state) card.classList.add('completed');
+                    else if (index === state) { card.classList.add('active'); if(window.innerWidth <= 768) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                });
+                if(state === 4) { nextBtn.classList.add('hidden'); resetBtn.classList.remove('hidden'); }
+            }
+
+            nextBtn.addEventListener('click', () => { if (state < 4) { state++; triggerState(state); updateUI(); } });
+            resetBtn.addEventListener('click', () => { state = 0; damageOverlay.classList.remove('active'); triggerState(0); nextBtn.classList.remove('hidden'); resetBtn.classList.add('hidden'); updateUI(); });
+
+            return { start: () => { resize(); if(!animId) loop(); }, stop: () => { if(animId) { cancelAnimationFrame(animId); animId = null; } } };
+        })();
+
+
+        // ==========================================
+        // CONTROLADOR GLOBAL (TABS)
+        // ==========================================
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const target = e.currentTarget.getAttribute('data-target');
+                switchTab(target);
+            });
+        });
+
+        function switchTab(tabId) {
+            if(window.appMolecular) window.appMolecular.stop();
+            if(window.appBacteria) window.appBacteria.stop();
+            if(window.appPulmonar) window.appPulmonar.stop();
+
+            document.querySelectorAll('.view-container').forEach(v => v.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-tab'));
+
+            const activeBtn = document.querySelector(`[data-target="${tabId}"]`);
+            if (activeBtn) activeBtn.classList.add('active-tab');
+            
+            document.getElementById('view-' + tabId).classList.remove('hidden');
+
+            if(tabId === 'molecular' && window.appMolecular) window.appMolecular.start();
+            if(tabId === 'bacteria' && window.appBacteria) window.appBacteria.start();
+            if(tabId === 'pulmonar' && window.appPulmonar) window.appPulmonar.start();
+        }
+
+        // Iniciar la pestaña predeterminada
+        setTimeout(() => switchTab('molecular'), 150);
+        
+    </script>
+
+</body></html>

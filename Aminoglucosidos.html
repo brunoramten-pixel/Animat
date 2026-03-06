@@ -1,0 +1,2076 @@
+<!DOCTYPE html><html lang="es"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6ImJlMDcyNWEwZmIxZWZmN2I5N2MyNDEwY2U0Nzc1YmM5MGY1MWFiYTUiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwOTEwNDc3NDU5NTYzMzk0NDcxMSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzgyZjBkYzBkYTM0ZDE5ZDNfYW1pbm9nbHVjb3NpZG9zX3NpbXVsYWRvci5odG1sLTY4NCJ9LCJleHAiOjE3NzI2ODczODQsImlhdCI6MTc3MjY4Mzc4NCwiYWxnIjoiUlMyNTYifQ.Sxk7EOMSdtp_thHTn243iyQyAt6bx5h0JrhF22vaQYJqESds26bwfoK_xBnqOWMeRCCP7gSaRUYlDCJG7jqi_OYYkc8KnfZHY6Jh74T42uz79Bu2vOLQRDTrE8LCe8hA_8x30HaEBIl1P2XUfO_CajbwEZ0vyNfVPETRVkauz-kJP1GNxc8xAH-sFdS5J4JExgTtLTqfIfrmjuTougVABC6RGAOlArZOIMVQEPob2vmi3AzHVCjr7Z2xfi7ZcHlvTBZSmiV3xMmmKAYxzUI4gGx98eqexADuXxRMFKLyEsq9X1oCGVnKeuEBxt5Cc9ywbhMIntQ_CTRfpIQQQP9KwQ","c_82f0dc0da34d19d3_aminoglucosidos_simulador.html-684")</script><script>(function(){'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+})();</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script>((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-2.5-flash","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-2.5-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"]})</script><script>(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Multiescala: Aminoglucósidos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;800&display=swap');
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #020617; 
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ----- NAV STYLES ----- */
+        .nav-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            opacity: 0.6;
+        }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.1); opacity: 0.8; }
+        
+        .nav-btn-mol.active-tab { opacity: 1; background: rgba(139, 92, 246, 0.1); border-color: #8b5cf6; color: #8b5cf6; box-shadow: 0 0 15px rgba(139, 92, 246, 0.3); }
+        .nav-btn-bac.active-tab { opacity: 1; background: rgba(16, 185, 129, 0.1); border-color: #10b981; color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+        .nav-btn-pul.active-tab { opacity: 1; background: rgba(56, 189, 248, 0.1); border-color: #38bdf8; color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+
+        /* ----- COMMON STYLES ----- */
+        .telemetry {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .step-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.3;
+            transform: translateX(15px);
+            border-right: 4px solid transparent;
+        }
+        .step-card.completed { opacity: 0.6; transform: translateX(0); }
+        .step-card.active { opacity: 1; transform: translateX(0); }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
+
+        /* ----- MOLECULAR SPECIFIC ----- */
+        #view-molecular .grid-bg { background-image: linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 40%, transparent 90%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%); }
+        #view-molecular .panel-ui { background: linear-gradient(180deg, #1e1b4b 0%, #020617 100%); border-left: 1px solid rgba(139, 92, 246, 0.3); }
+        #view-molecular .step-card.completed { border-right-color: #a78bfa; }
+        #view-molecular .step-card.active { border-right-color: #8b5cf6; background: linear-gradient(270deg, rgba(139, 92, 246, 0.15) 0%, transparent 100%); }
+        #view-molecular .step-card.active h3 span { box-shadow: 0 0 15px rgba(139, 92, 246, 0.8); background-color: #8b5cf6; color: #fff; }
+        #view-molecular .telemetry { color: rgba(167, 139, 250, 0.9); text-shadow: 0 0 8px rgba(167, 139, 250, 0.5); }
+        #view-molecular .btn-action { background: linear-gradient(135deg, #7c3aed, #5b21b6); box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4); }
+        #view-molecular .btn-action:hover { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        #damageOverlayMol { background: radial-gradient(circle, transparent 20%, rgba(239, 68, 68, 0.5) 100%); mix-blend-mode: screen; opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+        #damageOverlayMol.active { animation: siren-pulse 1.5s infinite alternate ease-in-out; }
+
+        /* ----- BACTERIANA SPECIFIC ----- */
+        #view-bacteria .grid-bg { background-image: linear-gradient(rgba(16, 185, 129, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.06) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 40%, transparent 90%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%); }
+        #view-bacteria .panel-ui { background: linear-gradient(180deg, #064e3b 0%, #022c22 100%); border-left: 1px solid rgba(16, 185, 129, 0.3); }
+        #view-bacteria .step-card.completed { border-right-color: #10b981; }
+        #view-bacteria .step-card.active { border-right-color: #34d399; background: linear-gradient(270deg, rgba(16, 185, 129, 0.15) 0%, transparent 100%); }
+        #view-bacteria .step-card.active h3 span { box-shadow: 0 0 15px rgba(52, 211, 153, 0.8); background-color: #34d399; color: #000; }
+        #view-bacteria .telemetry { color: rgba(52, 211, 153, 0.9); text-shadow: 0 0 8px rgba(52, 211, 153, 0.5); }
+        #view-bacteria .btn-action { background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); }
+        #view-bacteria .btn-action:hover { background: linear-gradient(135deg, #10b981, #059669); }
+        #damageOverlayBac { background: radial-gradient(circle, transparent 20%, rgba(220, 38, 38, 0.8) 100%); mix-blend-mode: screen; opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+        #damageOverlayBac.active { animation: siren-pulse 1.2s infinite alternate ease-in-out; }
+
+        /* ----- PULMONAR SPECIFIC ----- */
+        #view-pulmonar .grid-bg { background-image: linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px); background-size: 30px 30px; mask-image: radial-gradient(circle at center, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%); }
+        #view-pulmonar .panel-ui { background: linear-gradient(180deg, #040914 0%, #010205 100%); border-left: 1px solid rgba(56, 189, 248, 0.3); }
+        #view-pulmonar .step-card.completed { border-right-color: #10b981; }
+        #view-pulmonar .step-card.active { border-right-color: #38bdf8; background: linear-gradient(270deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%); }
+        #view-pulmonar .step-card.active h3 span { box-shadow: 0 0 20px rgba(56, 189, 248, 1); background-color: #38bdf8; color: #000; }
+        #view-pulmonar .telemetry { color: rgba(56, 189, 248, 1); text-shadow: 0 0 10px rgba(56, 189, 248, 0.6); background: rgba(1, 2, 5, 0.7); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.3); backdrop-filter: blur(4px); }
+        #view-pulmonar .btn-action { background: linear-gradient(135deg, #0284c7, #0369a1); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4); }
+        #view-pulmonar .btn-action:hover { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+        #damageOverlayPul { background: radial-gradient(circle, transparent 20%, rgba(220, 38, 38, 0.5) 100%); mix-blend-mode: screen; opacity: 0; transition: opacity 0.5s; pointer-events: none; }
+        #damageOverlayPul.active { animation: cough-pulse 1.2s infinite alternate ease-in-out; }
+
+        @keyframes siren-pulse { 0% { opacity: 0.2; } 100% { opacity: 0.8; } }
+        @keyframes cough-pulse { 0% { opacity: 0.1; } 100% { opacity: 0.6; } }
+
+        /* Canvas Elements */
+        canvas { display: block; width: 100%; height: 100%; }
+        #microCanvas { filter: contrast(1.25) brightness(1.2); }
+        #bacteriaCanvas { filter: contrast(1.2) brightness(1.15); }
+        #pulmonaryCanvas { position: absolute; top: 0; left: 0; z-index: 0; filter: contrast(1.3) brightness(1.2); }
+        
+        .btn-action { letter-spacing: 2px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.z-0{z-index:0}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.h-1\.5{height:0.375rem}.h-16{height:4rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-\[45\%\]{height:45%}.h-\[55\%\]{height:55%}.h-full{height:100%}.h-screen{height:100vh}.w-1\.5{width:0.375rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-full{width:100%}.w-screen{width:100vw}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-cyan-400\/50{border-color:rgb(34 211 238 / 0.5)}.border-emerald-400\/30{border-color:rgb(52 211 153 / 0.3)}.border-emerald-400\/50{border-color:rgb(52 211 153 / 0.5)}.border-emerald-500\/20{border-color:rgb(16 185 129 / 0.2)}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.border-orange-400\/50{border-color:rgb(251 146 60 / 0.5)}.border-purple-400\/30{border-color:rgb(192 132 252 / 0.3)}.border-purple-400\/50{border-color:rgb(192 132 252 / 0.5)}.border-purple-500\/20{border-color:rgb(168 85 247 / 0.2)}.border-red-400\/50{border-color:rgb(248 113 113 / 0.5)}.border-sky-400\/30{border-color:rgb(56 189 248 / 0.3)}.border-sky-400\/50{border-color:rgb(56 189 248 / 0.5)}.border-sky-500\/20{border-color:rgb(14 165 233 / 0.2)}.border-slate-600{--tw-border-opacity:1;border-color:rgb(71 85 105 / var(--tw-border-opacity, 1))}.border-yellow-400\/50{border-color:rgb(250 204 21 / 0.5)}.bg-\[\#010205\]{--tw-bg-opacity:1;background-color:rgb(1 2 5 / var(--tw-bg-opacity, 1))}.bg-\[\#020617\]{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-\[\#022c22\]{--tw-bg-opacity:1;background-color:rgb(2 44 34 / var(--tw-bg-opacity, 1))}.bg-\[\#030712\]{--tw-bg-opacity:1;background-color:rgb(3 7 18 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-cyan-900\/60{background-color:rgb(22 78 99 / 0.6)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/10{background-color:rgb(16 185 129 / 0.1)}.bg-emerald-900\/60{background-color:rgb(6 78 59 / 0.6)}.bg-orange-900\/60{background-color:rgb(124 45 18 / 0.6)}.bg-purple-400{--tw-bg-opacity:1;background-color:rgb(192 132 252 / var(--tw-bg-opacity, 1))}.bg-purple-500\/10{background-color:rgb(168 85 247 / 0.1)}.bg-purple-900\/60{background-color:rgb(88 28 135 / 0.6)}.bg-red-900\/60{background-color:rgb(127 29 29 / 0.6)}.bg-sky-400{--tw-bg-opacity:1;background-color:rgb(56 189 248 / var(--tw-bg-opacity, 1))}.bg-sky-500\/10{background-color:rgb(14 165 233 / 0.1)}.bg-sky-900\/60{background-color:rgb(12 74 110 / 0.6)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-yellow-900\/60{background-color:rgb(113 63 18 / 0.6)}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-3{padding-bottom:0.75rem}.pb-4{padding-bottom:1rem}.pr-2{padding-right:0.5rem}.text-right{text-align:right}.font-\[\'JetBrains_Mono\'\]{font-family:'JetBrains Mono'}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-widest{letter-spacing:0.1em}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-emerald-500{--tw-text-opacity:1;color:rgb(16 185 129 / var(--tw-text-opacity, 1))}.text-orange-400{--tw-text-opacity:1;color:rgb(251 146 60 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-sky-400{--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.text-orange-500{--tw-text-opacity:1;color:rgb(249 115 22 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.opacity-50{opacity:0.5}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 768px){.md\:block{display:block}.md\:h-full{height:100%}.md\:w-\[320px\]{width:320px}.md\:w-\[340px\]{width:340px}.md\:w-\[380px\]{width:380px}.md\:w-auto{width:auto}.md\:flex-row{flex-direction:row}.md\:p-6{padding:1.5rem}.md\:p-8{padding:2rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}}@media (min-width: 1024px){.lg\:w-\[380px\]{width:380px}.lg\:w-\[400px\]{width:400px}.lg\:w-\[440px\]{width:440px}}</style></head>
+<body class="flex flex-col h-screen w-screen overflow-hidden">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <div class="h-16 flex-shrink-0 bg-[#020617] border-b border-gray-800 flex items-center justify-between px-6 z-50 shadow-xl relative">
+        <div class="text-white font-['JetBrains_Mono'] font-bold text-lg hidden md:block tracking-widest">
+            <span class="text-sky-400">BIO-EXPLORER</span>
+        </div>
+        <div class="flex gap-3 w-full md:w-auto justify-center">
+            <button class="nav-btn nav-btn-mol text-purple-400" data-target="molecular">
+                <span class="mr-2 opacity-50">1</span>Ribosoma
+            </button>
+            <button class="nav-btn nav-btn-bac text-emerald-400" data-target="bacteria">
+                <span class="mr-2 opacity-50">2</span>Bacteria
+            </button>
+            <button class="nav-btn nav-btn-pul text-sky-400 active-tab" data-target="pulmonar">
+                <span class="mr-2 opacity-50">3</span>Pulmonar
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="flex-grow relative overflow-hidden bg-black">
+        
+        <!-- ========================================== -->
+        <!-- VISTA 1: MOLECULAR (Ribosoma 30S)          -->
+        <!-- ========================================== -->
+        <div id="view-molecular" class="view-container absolute inset-0 flex flex-col md:flex-row hidden">
+            <div id="canvasContainerMol" class="flex-grow h-[55%] md:h-full relative z-10 bg-[#030712] overflow-hidden">
+                <div class="grid-bg absolute inset-0 z-0"></div>
+                <div id="damageOverlayMol" class="absolute inset-0 z-20 active"></div>
+                
+                <div class="telemetry" style="top: 20px; left: 20px;">
+                    <div>SISTEMA: <span id="hud-status" class="text-red-600 font-bold shadow-lg">PRODUCCIÓN DE BASURA LETAL</span></div>
+                    <div>FIDELIDAD DE CODONES: <span id="hud-tension" class="text-red-500 font-bold animate-pulse">0% - COLAPSO</span></div>
+                </div>
+                <div class="telemetry" style="bottom: 20px; right: 20px; text-align: right;">
+                    <div>OBJETIVO: SUBUNIDAD 30S</div>
+                    <div>CONCENTRACIÓN (TOBRAMICINA): <span id="hud-conc" class="text-red-400 font-bold animate-pulse">NIVEL TÓXICO CRÍTICO</span></div>
+                </div>
+
+                <canvas id="microCanvas" class="relative z-10" width="1084" height="1142"></canvas>
+            </div>
+
+            <div class="panel-ui w-full md:w-[320px] lg:w-[380px] h-[45%] md:h-full flex flex-col flex-shrink-0 z-30 relative shadow-2xl">
+                <div class="p-5 md:p-6 flex flex-col h-full">
+                    <div class="mb-4 flex-shrink-0 border-b border-purple-500/20 pb-3">
+                        <div class="inline-flex items-center gap-2 px-2 py-1 mb-2 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-400 text-[9px] font-black uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>Dinámica de Traducción
+                        </div>
+                        <h1 class="text-xl md:text-2xl font-black text-white leading-tight font-['JetBrains_Mono']">
+                            INHIBICIÓN <br><span class="text-purple-400">RIBOSOMAL</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-y-3 overflow-y-auto flex-grow pr-2 pb-4">
+                        <div id="mol-step-0" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-emerald-300 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                SÍNTESIS SALUDABLE<span class="w-5 h-5 rounded-full bg-emerald-900/60 border border-emerald-400/50 flex items-center justify-center text-[10px]">1</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">El ribosoma decodifica fluidamente el <strong>ARNm</strong>. Los ARNt acoplan sus anticodones con precisión, tejiendo una cadena polipeptídica funcional y sana.</p>
+                        </div>
+                        <div id="mol-step-1" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-cyan-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                INGRESO DEL FÁRMACO<span class="w-5 h-5 rounded-full bg-cyan-900/60 border border-cyan-400/50 flex items-center justify-center text-[10px]">2</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Se introduce <strong>Tobramicina</strong> (Aminoglucósido). Las moléculas ingresan al citosol y rastrean electromagnéticamente la maquinaria ribosomal.</p>
+                        </div>
+                        <div id="mol-step-2" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-purple-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                ANCLAJE EN SITIO A (30S)<span class="w-5 h-5 rounded-full bg-purple-900/60 border border-purple-400/50 flex items-center justify-center text-[10px]">3</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">El fármaco se fusiona fuertemente con el <strong>ARNr 16S</strong> de la subunidad menor, distorsionando físicamente la estructura del centro de decodificación.</p>
+                        </div>
+                        <div id="mol-step-3" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-orange-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                LECTURA ERRÓNEA CRÍTICA<span class="w-5 h-5 rounded-full bg-orange-900/60 border border-orange-400/50 flex items-center justify-center text-[10px]">4</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Ocurre un <em>misreading</em> agudo. El ribosoma es engañado para aceptar ARNt incompatibles, alterando la estructura de la proteína.</p>
+                        </div>
+                        <div id="mol-step-4" class="step-card p-3 rounded-xl active">
+                            <h3 class="font-bold text-red-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                PROTEÍNAS INVIABLES Y MUERTE<span class="w-5 h-5 rounded-full bg-red-900/60 border border-red-400/50 flex items-center justify-center text-[10px]">5</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La maquinaria escupe una larga <strong>cadena de proteínas aberrantes, enredadas y deformes</strong> (basura biológica) que asfixiará y matará a la célula.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 flex flex-col gap-2 flex-shrink-0">
+                        <button id="nextBtnMol" class="w-full py-3 text-white font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 btn-action text-sm hidden">
+                            AVANZAR PROCESO <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                        </button>
+                        <button id="resetBtnMol" class="w-full py-3 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-purple-400 font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 font-['JetBrains_Mono'] tracking-wide text-xs">
+                            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> RESTAURAR SISTEMA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VISTA 2: BACTERIANA (Gram Negativa)        -->
+        <!-- ========================================== -->
+        <div id="view-bacteria" class="view-container absolute inset-0 flex flex-col md:flex-row hidden">
+            <div id="canvasContainerBac" class="flex-grow h-[55%] md:h-full relative z-10 bg-[#022c22] overflow-hidden">
+                <div class="grid-bg absolute inset-0 z-0"></div>
+                <div id="damageOverlayBac" class="absolute inset-0 z-20 active"></div>
+                
+                <div class="telemetry" style="top: 20px; left: 20px;">
+                    <div>CEPA: <span class="text-emerald-400 font-bold">PSEUDOMONAS AERUGINOSA</span></div>
+                    <div>ESTADO MEMBRANAL: <span id="hud-wall" class="text-red-600 font-bold shadow-lg">HINCHAMIENTO OSMÓTICO Y LISIS</span></div>
+                </div>
+                <div class="telemetry" style="bottom: 20px; right: 20px; text-align: right;">
+                    <div>TRATAMIENTO: <span id="hud-tx-bac" class="text-yellow-400 font-bold">TOBRAMICINA EXTRACELULAR</span></div>
+                    <div>RIBOSOMAS: <span id="hud-dna" class="text-red-600">MAQUINARIA ERRADICADA</span></div>
+                </div>
+
+                <canvas id="bacteriaCanvas" class="relative z-10" width="1044" height="1142"></canvas>
+            </div>
+
+            <div class="panel-ui w-full md:w-[340px] lg:w-[400px] h-[45%] md:h-full flex flex-col flex-shrink-0 z-30 relative shadow-2xl">
+                <div class="p-5 md:p-6 flex flex-col h-full">
+                    <div class="mb-4 flex-shrink-0 border-b border-emerald-500/20 pb-3">
+                        <div class="inline-flex items-center gap-2 px-2 py-1 mb-2 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-400 text-[9px] font-black uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Nivel Celular Bacteriano
+                        </div>
+                        <h1 class="text-xl md:text-2xl font-black text-white leading-tight font-['JetBrains_Mono']">
+                            ACCIÓN CONTRA <br><span class="text-emerald-500">GRAM NEGATIVAS</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-y-3 overflow-y-auto flex-grow pr-2 pb-4">
+                        <div id="bac-step-0" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-emerald-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                DOBLE MEMBRANA Y LPS<span class="w-5 h-5 rounded-full bg-emerald-900/60 border border-emerald-400/50 flex items-center justify-center text-[10px]">1</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La compleja envoltura de <em>Pseudomonas</em> posee una red de lipopolisacáridos (LPS) y una doble bicapa lipídica altamente defensiva.</p>
+                        </div>
+                        <div id="bac-step-1" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-cyan-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                INVASIÓN POR PORINAS<span class="w-5 h-5 rounded-full bg-cyan-900/60 border border-cyan-400/50 flex items-center justify-center text-[10px]">2</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">El aminoglucósido se infiltra a través de los canales de porinas externos, aprovechando el potencial eléctrico para inundar el citoplasma.</p>
+                        </div>
+                        <div id="bac-step-2" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-purple-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                PARÁLISIS RIBOSOMAL<span class="w-5 h-5 rounded-full bg-purple-900/60 border border-purple-400/50 flex items-center justify-center text-[10px]">3</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">El enjambre inactiva los ribosomas. La bacteria intenta compensar acelerando la síntesis, lo que empeora masivamente su envenenamiento.</p>
+                        </div>
+                        <div id="bac-step-3" class="step-card p-3 rounded-xl completed">
+                            <h3 class="font-bold text-orange-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                LESIONES Y BLEBBING<span class="w-5 h-5 rounded-full bg-orange-900/60 border border-orange-400/50 flex items-center justify-center text-[10px]">4</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Las proteínas aberrantes se incrustan en la membrana interna formando poros y quemaduras. Entra agua masivamente (blebbing) destruyendo la integridad osmótica.</p>
+                        </div>
+                        <div id="bac-step-4" class="step-card p-3 rounded-xl active">
+                            <h3 class="font-bold text-red-500 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                ESTALLIDO CELULAR<span class="w-5 h-5 rounded-full bg-red-900/60 border border-red-400/50 flex items-center justify-center text-[10px]">5</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">La presión supera el límite crítico. Las envolturas se desgarran y el citoplasma se derrama. La bacteria mutante es aniquilada.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 flex flex-col gap-2 flex-shrink-0">
+                        <button id="nextBtnBac" class="w-full py-3 text-white font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 btn-action text-sm hidden">
+                            AVANZAR SIMULACIÓN <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                        </button>
+                        <button id="resetBtnBac" class="w-full py-3 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-emerald-400 font-bold rounded-lg transition-all focus:outline-none flex justify-center items-center gap-2 font-['JetBrains_Mono'] tracking-wide text-xs">
+                            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> REINICIAR CEPA
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VISTA 3: PULMONAR (Neumonía Nosocomial)    -->
+        <!-- ========================================== -->
+        <div id="view-pulmonar" class="view-container absolute inset-0 flex flex-col md:flex-row">
+            <div id="canvasContainerPul" class="flex-grow h-[45%] md:h-full relative z-10 bg-[#010205] overflow-hidden">
+                <div class="grid-bg absolute inset-0 z-0"></div>
+                <div id="damageOverlayPul" class="absolute inset-0 z-20"></div>
+                
+                <div class="telemetry" style="top: 25px; left: 25px;">
+                    <div>ID PACIENTE: <span class="text-slate-200 font-bold">UCI-CAMA-04</span></div>
+                    <div>ESTADO CLÍNICO: <span id="hud-symptoms" class="text-sky-400 font-bold">EXTUBADO, RECUPERACIÓN TISULAR</span></div>
+                    <div>Saturación SpO2: <span id="hud-spo2" class="text-sky-400">98% (ÓPTIMA)</span></div>
+                </div>
+                <div class="telemetry" style="bottom: 25px; right: 25px; text-align: right;">
+                    <div>MODO: <span class="text-sky-400 font-bold">TOMOGRAFÍA + ANGIOGRAFÍA (CT-A)</span></div>
+                    <div>DIAGNÓSTICO: <span id="hud-path" class="text-sky-400 font-bold">RESOLUCIÓN COMPLETA DE INFILTRADOS</span></div>
+                    <div>TERAPIA: <span id="hud-tx-pul" class="text-yellow-400 font-bold">TOBRAMICINA IV (AMINOGLUCÓSIDOS)</span></div>
+                </div>
+
+                <canvas id="pulmonaryCanvas" class="relative" width="964" height="1142"></canvas>
+            </div>
+
+            <div class="panel-ui w-full md:w-[380px] lg:w-[440px] h-[55%] md:h-full flex flex-col flex-shrink-0 relative shadow-2xl">
+                <div class="p-6 md:p-8 flex flex-col h-full">
+                    <div class="mb-4 flex-shrink-0 border-b border-sky-500/20 pb-4">
+                        <div class="inline-flex items-center gap-2 px-2 py-1 mb-2 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-400 text-[9px] font-black uppercase tracking-widest">
+                            <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>Clínica Macroscópica
+                        </div>
+                        <h1 class="text-3xl font-black text-white leading-tight font-['JetBrains_Mono'] tracking-tight">
+                            RESOLUCIÓN DE <br><span class="text-sky-400">NEUMONÍA SEVERA</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-y-4 overflow-y-auto flex-grow pr-2 pb-4">
+                        <div id="pul-step-0" class="step-card p-4 rounded-xl completed">
+                            <h3 class="font-bold text-red-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                INFECCIÓN ACTIVA (VAP)<span class="w-6 h-6 rounded-full bg-red-900/60 border border-red-400/50 flex items-center justify-center text-[11px]">1</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Neumonía Asociada a Ventilación. Infiltrados orgánicos necróticos y nubes de consolidación llenas de <strong>Pseudomonas</strong> bloquean el intercambio alveolar.</p>
+                        </div>
+                        <div id="pul-step-1" class="step-card p-4 rounded-xl completed">
+                            <h3 class="font-bold text-orange-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                FALLA EMPÍRICA<span class="w-6 h-6 rounded-full bg-orange-900/60 border border-orange-400/50 flex items-center justify-center text-[11px]">2</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Fracaso con Beta-lactámicos. La bacteria destruye los antibióticos y <strong>la infección se expande</strong> agudizando el cuadro de hipoxia severa.</p>
+                        </div>
+                        <div id="pul-step-2" class="step-card p-4 rounded-xl completed">
+                            <h3 class="font-bold text-yellow-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                PERFUSIÓN DE TOBRAMICINA<span class="w-6 h-6 rounded-full bg-yellow-900/60 border border-yellow-400/50 flex items-center justify-center text-[11px]">3</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Terapia IV de rescate. Enjambres de Aminoglucósidos fluyen por el <strong>torrente sanguíneo</strong> penetrando directamente las densas nubes de tejido necrótico.</p>
+                        </div>
+                        <div id="pul-step-3" class="step-card p-4 rounded-xl completed">
+                            <h3 class="font-bold text-emerald-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                LISIS Y DEPURACIÓN<span class="w-6 h-6 rounded-full bg-emerald-900/60 border border-emerald-400/50 flex items-center justify-center text-[11px]">4</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Destrucción bacteriana masiva. Las masas purulentas colapsan físicamente y se desintegran en fluidos que son depurados por el sistema.</p>
+                        </div>
+                        <div id="pul-step-4" class="step-card p-4 rounded-xl active">
+                            <h3 class="font-bold text-sky-400 flex items-center justify-between gap-2 text-[12px] font-['JetBrains_Mono']">
+                                RESTAURACIÓN RESPIRATORIA<span class="w-6 h-6 rounded-full bg-sky-900/60 border border-sky-400/50 flex items-center justify-center text-[11px]">5</span>
+                            </h3>
+                            <p class="text-[11px] mt-2 text-slate-400 leading-relaxed text-right">Los pulmones recuperan su elasticidad y arquitectura natural limpia. El paciente respira sin esfuerzo mecánico. <strong>SpO2 estable al 98%</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2 flex flex-col gap-3 flex-shrink-0">
+                        <button id="nextBtnPul" class="w-full py-4 text-white font-bold rounded-xl transition-all focus:outline-none flex justify-center items-center gap-2 btn-action text-sm hidden">
+                            AVANZAR TRATAMIENTO <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7"></path></svg>
+                        </button>
+                        <button id="resetBtnPul" class="w-full py-4 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-sky-400 font-bold rounded-xl transition-all focus:outline-none flex justify-center items-center gap-2 font-['JetBrains_Mono'] tracking-wide text-xs shadow-xl">
+                            <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> NUEVO PACIENTE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ==========================================
+        // Funciones Matemáticas para Suavidad
+        // ==========================================
+        function getSmoothShake(time, intensity) {
+            let sx = Math.sin(time * 0.73) * intensity + Math.cos(time * 0.41) * (intensity * 0.5);
+            let sy = Math.cos(time * 0.65) * intensity + Math.sin(time * 0.55) * (intensity * 0.5);
+            return { x: sx, y: sy };
+        }
+
+        const drawOrganicBlob = (ctx, x, y, radius, seed, time, roughness, isSpiky = false) => {
+            ctx.beginPath();
+            // OPTIMIZACIÓN: Saltos de 0.25 (menos cálculos de trigonométria, aumenta FPS)
+            for (let a = 0; a < Math.PI * 2; a += 0.25) {
+                let noise1 = Math.sin(a * (3 + seed % 4) + time * 0.05);
+                let noise2 = Math.cos(a * (5 + seed % 3) - time * 0.03);
+                // SUAVIZADO: Los picos "spiky" ahora son sutiles, fluidos y mucho más lentos
+                let extraSpike = isSpiky ? Math.sin(a * 8 + time * 0.1) * 0.12 : 0; 
+                let r = radius + (noise1 + noise2 + extraSpike) * (radius * roughness);
+                let px = x + Math.cos(a) * r;
+                let py = y + Math.sin(a) * r;
+                if (a === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+        };
+
+        // ==========================================
+        // APP 1: MOLECULAR (Ribosoma 30S Avanzado)
+        // ==========================================
+        window.appMolecular = (function() {
+            const container = document.getElementById('canvasContainerMol');
+            const canvas = document.getElementById('microCanvas');
+            const ctx = canvas.getContext('2d');
+            const nextBtn = document.getElementById('nextBtnMol');
+            const resetBtn = document.getElementById('resetBtnMol');
+            const damageOverlay = document.getElementById('damageOverlayMol');
+            
+            const hudStatus = document.getElementById('hud-status');
+            const hudTension = document.getElementById('hud-tension');
+            const hudConc = document.getElementById('hud-conc');
+
+            let width, height, dpr, cx, cy;
+            let time = 0; let state = 0; let animId = null;
+
+            let cam = { x: 0, y: 0, tx: 0, ty: 0, zoom: 1, tZoom: 1, shake: 0 };
+            
+            let ribo = { x: 0, y: 0, speed: 1.5, active: true, color30S: '#6b21a8', color50S: '#4c1d95', wobble: 0 };
+            let polypeptide = [];
+            let toxicClump = []; 
+            let tRNAs = [];
+            let drugs = [];
+            let particles = [];
+            let shockwaves = [];
+            let texts = [];
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                width = container.clientWidth; height = container.clientHeight;
+                if(width===0 || height===0) return;
+                canvas.width = width * dpr; canvas.height = height * dpr;
+                ctx.scale(dpr, dpr);
+                cx = width / 2; cy = height / 2;
+                if(cam.tx === 0) { cam.tx = cam.x = cx; cam.ty = cam.y = cy; initSimulation(); }
+            }
+            window.addEventListener('resize', () => { if(!document.getElementById('view-molecular').classList.contains('hidden')) resize(); });
+
+            function initSimulation() {
+                ribo.x = cx - width * 0.4; ribo.y = cy; ribo.speed = 1.8; ribo.active = true; ribo.wobble = 0;
+                ribo.color30S = '#6b21a8'; ribo.color50S = '#4c1d95';
+                polypeptide = []; toxicClump = []; tRNAs = []; drugs = []; particles = []; shockwaves = []; texts = [];
+                cam.shake = 0; cam.tx = cx; cam.tZoom = 1.1;
+                hudStatus.innerText = "TRADUCCIÓN ACTIVA"; hudStatus.className = "text-purple-400 font-bold";
+                hudTension.innerText = "100% - ÓPTIMA"; hudTension.className = "text-emerald-400";
+                hudConc.innerText = "0.0 µg/mL"; hudConc.className = "text-slate-400";
+                damageOverlay.classList.remove('active');
+            }
+
+            function spawnText(x, y, txt, color, size=24) { texts.push({ x: x, y: y, text: txt, color: color, size: size, life: 1.5, vy: -1.5 }); }
+
+            function triggerState(s) {
+                if(s === 0) { initSimulation(); } 
+                else if(s === 1) {
+                    hudConc.innerText = "SUBIENDO DOSIS (TOBRAMICINA)"; hudConc.className = "text-yellow-400 animate-pulse";
+                    for(let i=0; i<15; i++) {
+                        drugs.push({
+                            x: cx + (Math.random()>0.5?1:-1)*(150 + Math.random()*250), y: cy + 180 + Math.random()*200,
+                            targetX: ribo.x, targetY: cy + 30,
+                            speed: 0.015 + Math.random()*0.02, bound: false, rot: Math.random()*Math.PI*2
+                        });
+                    }
+                } 
+                else if(s === 2) {
+                    cam.tZoom = 1.35;
+                    hudConc.innerText = "NIVEL TÓXICO CRÍTICO"; hudConc.className = "text-red-400 font-bold animate-pulse";
+                    hudStatus.innerText = "INTERFERENCIA DETECTADA"; hudStatus.className = "text-orange-500 font-bold";
+                    drugs.forEach(d => d.speed = 0.08); 
+                    ribo.color30S = '#ea580c'; 
+                    spawnText(ribo.x, cy + 130, "ANCLAJE EN SITIO A (16S)", "#fef08a", 18);
+                } 
+                else if(s === 3) {
+                    cam.tZoom = 1.45; cam.shake = 3; 
+                    hudStatus.innerText = "MISREADING (LECTURA FALSA)"; hudStatus.className = "text-red-500 font-bold animate-pulse";
+                    hudTension.innerText = "DESPLOME FIDELIDAD... 12%"; hudTension.className = "text-red-500 font-bold animate-pulse";
+                    ribo.speed = 0.8;
+                    spawnText(ribo.x, cy - 160, "¡SÍNTESIS ABERRANTE!", "#fcd34d", 22);
+                } 
+                else if(s === 4) {
+                    cam.tZoom = 1.1; cam.tx = cx; 
+                    ribo.speed = 1.2; 
+                    ribo.color50S = '#b91c1c'; ribo.color30S = '#991b1b'; 
+                    damageOverlay.classList.add('active'); 
+                    cam.shake = 2; 
+                    spawnText(ribo.x, cy, "SÍNTESIS DE PROTEÍNAS INVIABLES", "#ef4444", 28); 
+                    hudStatus.innerText = "PRODUCCIÓN DE BASURA LETAL"; hudStatus.className = "text-red-600 font-bold shadow-lg";
+                    hudTension.innerText = "0% - COLAPSO";
+                    shockwaves.push({x: ribo.x, y: cy, r: 10, max: 600, c: '239,68,68'});
+                }
+            }
+
+            function drawMRNA(ctx) {
+                ctx.save();
+                let startX = cx - width*1.2; let endX = cx + width*1.2;
+                
+                // Aura de fondo
+                ctx.strokeStyle = state >= 3 ? 'rgba(239, 68, 68, 0.3)' : 'rgba(56, 189, 248, 0.3)'; 
+                ctx.lineWidth = 16; ctx.lineCap = 'round'; ctx.shadowBlur = 25; ctx.shadowColor = state >= 3 ? '#dc2626' : '#0ea5e9';
+                ctx.beginPath(); ctx.moveTo(startX, cy + 65); ctx.lineTo(endX, cy + 65); ctx.stroke();
+                
+                // Eje central de azúcar-fosfato
+                ctx.strokeStyle = state >= 3 ? '#fca5a5' : '#bae6fd'; ctx.lineWidth = 6; ctx.shadowBlur = 0;
+                ctx.beginPath(); ctx.moveTo(startX, cy + 65); ctx.lineTo(endX, cy + 65); ctx.stroke();
+                
+                // Nucleótidos (Bloques 3D detallados)
+                let colors = ['#f472b6', '#38bdf8', '#a78bfa', '#34d399']; // Normales
+                if(state >= 3) colors = ['#ef4444', '#f97316', '#dc2626', '#b91c1c']; // Mutados/Tóxicos
+                
+                for(let x = startX; x < endX; x += 22) {
+                    let offset = (time*ribo.speed) % 22;
+                    let drawX = x - offset;
+                    let cIdx = Math.abs(Math.floor(x/22)) % 4;
+                    
+                    ctx.fillStyle = colors[cIdx];
+                    
+                    // Bloque principal del nucleótido
+                    ctx.beginPath();
+                    if (ctx.roundRect) {
+                        ctx.roundRect(drawX - 6, cy + 65, 12, 18, 4);
+                    } else {
+                        ctx.rect(drawX - 6, cy + 65, 12, 18);
+                    }
+                    ctx.fill();
+
+                    // Reflejo/Brillo para darle volumen 3D
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                    ctx.beginPath();
+                    if (ctx.roundRect) {
+                        ctx.roundRect(drawX - 3, cy + 67, 4, 12, 2);
+                    } else {
+                        ctx.rect(drawX - 3, cy + 67, 4, 12);
+                    }
+                    ctx.fill();
+
+                    // Conector al eje
+                    ctx.fillStyle = state >= 3 ? '#991b1b' : '#0369a1';
+                    ctx.fillRect(drawX - 3, cy + 62, 6, 4);
+                }
+                ctx.restore();
+            }
+
+            function drawComplexRibosome(ctx) {
+                ctx.save();
+                ctx.translate(ribo.x, ribo.y);
+                
+                let s = getSmoothShake(time, cam.shake);
+                ctx.translate(s.x, s.y);
+                if(ribo.active) { ribo.wobble += 0.15; ctx.translate(0, Math.sin(ribo.wobble)*2); }
+                if(state === 4) ctx.rotate((Math.random()-0.5)*0.02);
+
+                // --- SUBUNIDAD 50S (Estructura Orgánica Compleja) ---
+                ctx.fillStyle = ribo.color50S; ctx.shadowBlur = 25; ctx.shadowColor = ribo.color50S;
+                
+                // Cuerpo Principal 50S
+                drawOrganicBlob(ctx, 0, -40, 55, 1, time * 0.15, 0.15); ctx.fill();
+                // Tallo L1 (L1 stalk)
+                ctx.fillStyle = state >= 4 ? '#7f1d1d' : '#4c1d95';
+                drawOrganicBlob(ctx, -35, -20, 25, 2, time * 0.1, 0.1); ctx.fill();
+                // Tallo L7/L12 (L7/L12 stalk)
+                ctx.fillStyle = state >= 4 ? '#450a0a' : '#312e81';
+                drawOrganicBlob(ctx, 35, -30, 30, 3, time * 0.2, 0.1); ctx.fill();
+
+                // --- SUBUNIDAD 30S (Base Orgánica) ---
+                ctx.fillStyle = ribo.color30S; ctx.shadowBlur = 15; ctx.shadowColor = ribo.color30S;
+                
+                // Cuerpo 30S
+                drawOrganicBlob(ctx, 0, 45, 40, 4, time * 0.15, 0.12); ctx.fill();
+                // Plataforma
+                ctx.fillStyle = state >= 2 ? '#9a3412' : '#5b21b6';
+                drawOrganicBlob(ctx, -20, 35, 20, 5, time * 0.1, 0.1); ctx.fill();
+                // Cabeza
+                ctx.fillStyle = state >= 2 ? '#7c2d12' : '#4c1d95';
+                drawOrganicBlob(ctx, 25, 35, 22, 6, time * 0.1, 0.1); ctx.fill();
+                
+                // --- SITIOS DE DECODIFICACIÓN (A, P, E) ---
+                ctx.shadowBlur = 0;
+                ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+                
+                // Sitio E (Exit)
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+                ctx.strokeRect(-30, -5, 16, 30);
+                // Sitio P (Peptidyl)
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                ctx.strokeRect(-8, -5, 16, 30);
+                // Sitio A (Aminoacyl) - Brilla en rojo cuando entra el fármaco
+                ctx.strokeStyle = state >= 2 ? 'rgba(239, 68, 68, 0.8)' : 'rgba(56, 189, 248, 0.5)';
+                ctx.strokeRect(14, -5, 16, 30);
+                ctx.setLineDash([]);
+
+                // Brillo central de decodificación
+                ctx.globalCompositeOperation = 'lighter';
+                ctx.fillStyle = state >= 2 ? 'rgba(239, 68, 68, 0.25)' : 'rgba(56, 189, 248, 0.15)';
+                ctx.beginPath(); ctx.ellipse(0, 12, 45, 15, 0, 0, Math.PI*2); ctx.fill();
+                ctx.globalCompositeOperation = 'source-over';
+
+                ctx.restore();
+            }
+            
+            function drawTRNA(ctx, type, color) {
+                ctx.fillStyle = state >= 4 ? '#7f1d1d' : '#0f766e'; ctx.strokeStyle = state >= 4 ? '#ef4444' : '#34d399'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+                ctx.beginPath();
+                ctx.moveTo(0, 20); ctx.quadraticCurveTo(15, 10, 10, -5); ctx.quadraticCurveTo(25, -15, 10, -20);
+                ctx.quadraticCurveTo(0, -35, -10, -20); ctx.quadraticCurveTo(-25, -15, -10, -5); ctx.quadraticCurveTo(-15, 10, 0, 20);
+                ctx.fill(); ctx.stroke();
+                
+                ctx.fillStyle = state >= 4 ? '#fca5a5' : '#6ee7b7'; 
+                ctx.beginPath(); ctx.arc(-4, 20, 2, 0, Math.PI*2); ctx.arc(0, 22, 2, 0, Math.PI*2); ctx.arc(4, 20, 2, 0, Math.PI*2); ctx.fill();
+                
+                ctx.fillStyle = color; 
+                ctx.beginPath(); 
+                if(type === 'aberrant') {
+                    ctx.moveTo(0, -28); ctx.lineTo(10, -18); ctx.lineTo(4, -8); ctx.lineTo(-4, -8); ctx.lineTo(-10, -18);
+                } else {
+                    ctx.arc(0, -20, 8, 0, Math.PI*2); 
+                }
+                ctx.fill(); 
+            }
+
+            function drawChainAndClump(ctx) {
+                // Cadena normal sana
+                if(polypeptide.length > 0) {
+                    ctx.save();
+                    ctx.lineWidth = 5; ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+                    ctx.beginPath(); ctx.moveTo(ribo.x, ribo.y - 80);
+                    polypeptide.forEach((p) => { ctx.lineTo(p.x, p.y); });
+                    ctx.stroke(); 
+                    
+                    polypeptide.forEach(p => {
+                        p.x += Math.sin(time*0.05 + p.y)*0.6;
+                        ctx.fillStyle = p.c; 
+                        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+                    });
+                    ctx.restore();
+                }
+
+                // NUEVO: Cadena de proteínas inviables (Cúmulo Tóxico Enredado)
+                if(toxicClump.length > 0) {
+                    ctx.save();
+                    // Aura tóxica letal
+                    let auraGrad = ctx.createRadialGradient(ribo.x, ribo.y - 120, 10, ribo.x, ribo.y - 120, 200);
+                    auraGrad.addColorStop(0, 'rgba(220, 38, 38, 0.4)'); auraGrad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = auraGrad; ctx.beginPath(); ctx.arc(ribo.x, ribo.y - 120, 200, 0, Math.PI*2); ctx.fill();
+
+                    // Conexiones de la cadena deforme
+                    ctx.lineWidth = 3; ctx.strokeStyle = '#f87171';
+                    ctx.beginPath();
+                    ctx.moveTo(ribo.x, ribo.y - 80);
+                    toxicClump.forEach((p) => { ctx.lineTo(p.x, p.y); });
+                    ctx.stroke();
+
+                    // Renderizado de las proteínas rotas
+                    toxicClump.forEach(p => {
+                        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+                        ctx.fillStyle = p.c; 
+                        ctx.beginPath(); 
+                        // Polígono irregular y feo (Misfolded protein)
+                        ctx.moveTo(0, -p.r); ctx.lineTo(p.r, -p.r*0.2); ctx.lineTo(p.r*0.6, p.r); ctx.lineTo(-p.r*0.8, p.r*0.8); ctx.lineTo(-p.r, 0); 
+                        ctx.closePath(); ctx.fill();
+                        // Núcleo "muerto"
+                        ctx.fillStyle = '#450a0a'; ctx.beginPath(); ctx.arc(0,0, p.r*0.4, 0, Math.PI*2); ctx.fill();
+                        ctx.restore();
+                    });
+                    ctx.restore();
+                }
+
+                tRNAs.forEach(t => {
+                    ctx.save(); ctx.translate(t.x, t.y);
+                    if(t.state === 'approaching') {
+                        t.y += (t.targetY - t.y) * 0.15; t.x += (t.targetX - t.x) * 0.15;
+                        if(Math.hypot(t.targetX - t.x, t.targetY - t.y) < 5) {
+                            t.state = 'leaving'; t.targetY = cy - 350; t.targetX = ribo.x - 250; t.rot = -1;
+                            
+                            if(state === 4) {
+                                // Pila de la cadena tóxica al ribosoma
+                                toxicClump.unshift({x: ribo.x, y: ribo.y - 80, r: 8 + Math.random()*5, c: Math.random()>0.5?'#ef4444':'#991b1b', rot: Math.random()*Math.PI});
+                            } else {
+                                let newAA = { x: ribo.x, y: ribo.y - 80, c: t.c, r: 10, type: t.type };
+                                polypeptide.unshift(newAA);
+                                polypeptide.forEach((p, i) => { if(i>0) { p.y -= 24; p.x -= 12 + (Math.random()-0.5)*18; } });
+                            }
+                        }
+                    } else {
+                        t.y += (t.targetY - t.y) * 0.08; t.x += (t.targetX - t.x) * 0.08; t.rot -= 0.1; ctx.rotate(t.rot);
+                    }
+                    drawTRNA(ctx, t.state==='approaching' ? t.type : 'empty', t.state==='approaching' ? t.c : 'transparent');
+                    ctx.restore();
+                });
+            }
+
+            function drawDrugs(ctx) {
+                drugs.forEach(d => {
+                    ctx.save();
+                    if(!d.bound) { 
+                        d.targetX = ribo.x + 25; d.targetY = ribo.y + 40; 
+                        d.x += (d.targetX - d.x) * d.speed; d.y += (d.targetY - d.y) * d.speed; 
+                        d.rot += 0.2; 
+                        if(Math.hypot(d.targetX - d.x, d.targetY - d.y) < 15) { d.bound = true; shockwaves.push({x: d.x, y: d.y, r: 5, max: 100, c: '250,204,21'}); } 
+                    } else { 
+                        let s = getSmoothShake(time, cam.shake*1.5);
+                        d.x = ribo.x + 25 + s.x; d.y = ribo.y + 40 + s.y; 
+                    }
+                    
+                    ctx.translate(d.x, d.y); ctx.rotate(d.rot); 
+                    ctx.fillStyle = '#fef08a'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; 
+                    let s = 5;
+                    ctx.beginPath(); for(let i=0; i<6; i++) { let a=i*Math.PI/3; if(i===0) ctx.moveTo(-s*1.8+Math.cos(a)*s, Math.sin(a)*s); else ctx.lineTo(-s*1.8+Math.cos(a)*s, Math.sin(a)*s); } ctx.closePath(); ctx.fill(); ctx.stroke();
+                    ctx.beginPath(); for(let i=0; i<6; i++) { let a=i*Math.PI/3; if(i===0) ctx.moveTo(s*1.8+Math.cos(a)*s, Math.sin(a)*s); else ctx.lineTo(s*1.8+Math.cos(a)*s, Math.sin(a)*s); } ctx.closePath(); ctx.fill(); ctx.stroke();
+                    ctx.fillStyle = '#22d3ee'; ctx.beginPath(); ctx.arc(0, -s*1.5, 3, 0, Math.PI*2); ctx.fill(); 
+                    ctx.restore();
+                });
+            }
+
+            function update() {
+                time++; if(cam.shake > 0 && state !== 3) cam.shake *= 0.85; if(cam.shake < 0.1) cam.shake = 0;
+                
+                if(ribo.active && ribo.x < cx + 120) ribo.x += ribo.speed;
+                
+                let spawnRate = state === 4 ? 18 : (state === 3 ? 30 : 55);
+                if(ribo.active && time % spawnRate === 0) {
+                    let isAberrant = state >= 3;
+                    let c = isAberrant ? (Math.random()>0.5?'#ef4444':'#f97316') : (Math.random()>0.5?'#a78bfa':'#34d399');
+                    if(state === 4) c = Math.random()>0.5?'#dc2626':'#b91c1c';
+                    tRNAs.push({ x: ribo.x + 180, y: cy - 250, targetX: ribo.x + 10, targetY: ribo.y + 15, state: 'approaching', c: c, type: isAberrant ? 'aberrant' : 'normal', rot: 0 });
+                }
+
+                // Dinámica de apilamiento de la cadena tóxica
+                toxicClump.forEach((p, i) => {
+                    let targetX, targetY;
+                    if (i === 0) {
+                        targetX = ribo.x + Math.sin(time*0.1)*5; targetY = ribo.y - 80;
+                    } else {
+                        let prev = toxicClump[i-1];
+                        // Se apilan hacia arriba y serpentean
+                        targetX = prev.x + Math.sin(time*0.05 + i)*12; targetY = prev.y - 18; 
+                    }
+                    p.x += (targetX - p.x) * 0.15; p.y += (targetY - p.y) * 0.15; p.rot += 0.05;
+                });
+                if(toxicClump.length > 40) toxicClump.pop();
+                
+                tRNAs = tRNAs.filter(t => t.y > cy - 400); 
+                if(polypeptide.length > 25) polypeptide.pop();
+
+                particles = particles.filter(p => { p.x += p.vx; p.y += p.vy; p.life -= 0.02; return p.life > 0; });
+                shockwaves = shockwaves.filter(sw => { sw.r += 15; sw.max -= 20; return sw.max > 0; });
+                texts = texts.filter(t => { t.y += t.vy; t.life -= 0.015; return t.life > 0; });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                cam.x += (cam.tx - cam.x) * 0.08; cam.y += (cam.ty - cam.y) * 0.08; cam.zoom += (cam.tZoom - cam.zoom) * 0.08;
+                ctx.save(); let bScale = cam.zoom; 
+                ctx.translate(width/2, height/2); ctx.scale(bScale, bScale); ctx.translate(-cam.x, -cam.y);
+                
+                drawMRNA(ctx); 
+                drawChainAndClump(ctx); 
+                drawComplexRibosome(ctx); 
+                drawDrugs(ctx);
+
+                particles.forEach(p => { ctx.globalAlpha = Math.max(0, Math.min(1, p.life)); ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); });
+                ctx.globalAlpha = 1; 
+                shockwaves.forEach(sw => { ctx.strokeStyle = `rgba(${sw.c}, ${sw.max/600})`; ctx.lineWidth = 15 * (sw.max/600); ctx.beginPath(); ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI*2); ctx.stroke(); });
+                texts.forEach(t => { ctx.globalAlpha = Math.max(0, Math.min(1, t.life*2)); ctx.fillStyle = t.color; ctx.font = `900 ${t.size}px 'JetBrains Mono'`; ctx.textAlign = 'center'; ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 10; ctx.fillText(t.text, t.x, t.y); ctx.shadowBlur = 0; });
+                ctx.restore();
+            }
+
+            function loop() { update(); draw(); animId = requestAnimationFrame(loop); }
+
+            function updateUI() {
+                document.querySelectorAll('#view-molecular .step-card').forEach((card, index) => {
+                    card.classList.remove('active', 'completed');
+                    if (index < state) card.classList.add('completed');
+                    else if (index === state) { card.classList.add('active'); if(window.innerWidth <= 768) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                });
+                if(state === 4) { nextBtn.classList.add('hidden'); resetBtn.classList.remove('hidden'); }
+            }
+
+            nextBtn.addEventListener('click', () => { if (state < 4) { state++; triggerState(state); updateUI(); } });
+            resetBtn.addEventListener('click', () => { state = 0; triggerState(0); nextBtn.classList.remove('hidden'); resetBtn.classList.add('hidden'); updateUI(); });
+
+            return { start: () => { resize(); if(!animId) loop(); }, stop: () => { if(animId){ cancelAnimationFrame(animId); animId = null; } } };
+        })();
+
+
+        // ==========================================
+        // APP 2: BACTERIANA (Gram Negativa Dinámica y Optimizada)
+        // ==========================================
+        window.appBacteria = (function() {
+            const container = document.getElementById('canvasContainerBac');
+            const canvas = document.getElementById('bacteriaCanvas');
+            const ctx = canvas.getContext('2d');
+            const nextBtn = document.getElementById('nextBtnBac');
+            const resetBtn = document.getElementById('resetBtnBac');
+            const damageOverlay = document.getElementById('damageOverlayBac');
+            
+            const hudWall = document.getElementById('hud-wall');
+            const hudTx = document.getElementById('hud-tx-bac');
+            const hudDNA = document.getElementById('hud-dna');
+
+            let width, height, dpr, cx, cy;
+            let time = 0; let state = 0; let explosionFlash = 0; let animId = null;
+            let cam = { x: 0, y: 0, tx: 0, ty: 0, zoom: 1, tZoom: 1, shake: 0 };
+            let bacillus = { baseW: 480, baseH: 220, swell: 0, integrity: 1 };
+            
+            let ribosomes = []; let drugs = []; let particles = []; let texts = []; let shockwaves = []; let wallFragments = []; 
+            let porins = []; let aberrantProteins = []; let osmoticParticles = [];
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                width = container.clientWidth; height = container.clientHeight;
+                if(width===0||height===0) return;
+                canvas.width = width * dpr; canvas.height = height * dpr;
+                ctx.scale(dpr, dpr); cx = width / 2; cy = height / 2;
+                if(width < 600) { bacillus.baseW = 320; bacillus.baseH = 150; } else { bacillus.baseW = 480; bacillus.baseH = 220; }
+                if(cam.tx === 0) { cam.tx = cam.x = cx; cam.ty = cam.y = cy; initSimulation(); }
+            }
+            window.addEventListener('resize', () => { if(!document.getElementById('view-bacteria').classList.contains('hidden')) resize(); });
+
+            function initSimulation() {
+                bacillus.integrity = 1; bacillus.swell = 0;
+                ribosomes = []; drugs = []; particles = []; texts = []; shockwaves = []; wallFragments = []; aberrantProteins = []; osmoticParticles = [];
+                
+                for(let i=0; i<45; i++) {
+                    ribosomes.push({
+                        ox: (Math.random()-0.5) * (bacillus.baseW - 80), oy: (Math.random()-0.5) * (bacillus.baseH - 80),
+                        x: 0, y: 0, driftAngle: Math.random() * Math.PI * 2, state: 'normal', scale: 1
+                    });
+                }
+                
+                porins = [ {angle: -Math.PI*0.6}, {angle: -Math.PI*0.3}, {angle: Math.PI*0.2}, {angle: Math.PI*0.7}, {angle: Math.PI}, {angle: 0} ];
+
+                explosionFlash = 0; cam.shake = 0; cam.tx = cx; cam.tZoom = 1;
+                hudWall.innerText = "DOBLE MEMBRANA INTACTA"; hudWall.className = "text-emerald-500 font-bold"; 
+                hudTx.innerText = "NINGUNO"; hudTx.className = "text-slate-400"; 
+                hudDNA.innerText = "TRADUCCIÓN FLUIDA"; hudDNA.className = "text-emerald-400"; 
+                damageOverlay.classList.remove('active');
+            }
+
+            function spawnText(x, y, txt, color, size=20) { texts.push({ x: x, y: y, text: txt, color: color, size: size, life: 1.5, vy: -1.5 }); }
+
+            function triggerState(s) {
+                if(s === 0) { initSimulation(); } 
+                else if(s === 1) { 
+                    cam.tZoom = 1.15; hudTx.innerText = "TOBRAMICINA EXTRACELULAR"; hudTx.className = "text-yellow-400 font-bold";
+                    spawnText(cx, cy - bacillus.baseH - 60, "INGRESO ACTIVO POR PORINAS", "#fef08a");
+                    for(let i=0; i<40; i++) {
+                        let p = porins[Math.floor(Math.random()*porins.length)];
+                        let startAngle = p.angle + (Math.random()-0.5)*0.8;
+                        let dist = bacillus.baseW + 200 + Math.random()*200;
+                        drugs.push({
+                            x: cx + Math.cos(startAngle)*dist, y: cy + Math.sin(startAngle)*dist,
+                            tx: cx + Math.cos(p.angle)*bacillus.baseH, ty: cy + Math.sin(p.angle)*bacillus.baseH, 
+                            state: 'entering', speed: 0.015 + Math.random()*0.01, rot: Math.random()*Math.PI*2
+                        });
+                    }
+                } 
+                else if(s === 2) { 
+                    cam.tZoom = 1.35; hudDNA.innerText = "PARÁLISIS SISTÉMICA"; hudDNA.className = "text-orange-500 font-bold animate-pulse"; 
+                    drugs.forEach(d => {
+                        let targetRibo = ribosomes[Math.floor(Math.random()*ribosomes.length)];
+                        d.targetRibo = targetRibo; d.state = 'targeting'; d.speed = 0.06;
+                    });
+                } 
+                else if(s === 3) { 
+                    cam.tZoom = 1.45; cam.shake = 3; hudWall.innerText = "BLEBBING / PERMEABLE"; hudWall.className = "text-orange-500 font-bold animate-pulse";
+                    spawnText(cx, cy - 80, "CRISTALES TÓXICOS EN MEMBRANA", "#ef4444", 24); 
+                    ribosomes.forEach(r => { if(r.state === 'blocked') {
+                        let angleOut = Math.atan2(r.y, r.x);
+                        aberrantProteins.push({ angle: angleOut, r: 0, speed: 2 + Math.random()*2, embedded: false });
+                    }});
+                } 
+                else if(s === 4) { 
+                    cam.tZoom = 0.9; damageOverlay.classList.add('active'); cam.shake = 10; 
+                    hudWall.innerText = "HINCHAMIENTO OSMÓTICO Y LISIS"; hudWall.className = "text-red-600 font-bold shadow-lg"; 
+                    hudDNA.innerText = "MAQUINARIA ERRADICADA"; hudDNA.className = "text-red-600"; 
+                    spawnText(cx, cy, "Ruptura Total", "#ef4444", 36); 
+                }
+            }
+
+            function drawDetailedBacillus(ctx) {
+                ctx.save(); ctx.translate(cx, cy); 
+                
+                let curW = bacillus.baseW + bacillus.swell; 
+                let curH = bacillus.baseH + bacillus.swell;
+                let wobble = Math.sin(time*0.04) * 8; 
+                let h = curH/2 + wobble; let w = curW/2 - wobble*0.5;
+
+                if (bacillus.integrity === 0) { 
+                    wallFragments.forEach(f => { ctx.save(); ctx.translate(f.x, f.y); ctx.rotate(f.angle); ctx.globalAlpha = Math.max(0, Math.min(1, f.life)); ctx.fillStyle = f.color; ctx.beginPath(); ctx.moveTo(-f.size/2, -f.size/2); ctx.lineTo(f.size/2, -f.size/3); ctx.lineTo(f.size/3, f.size/2); ctx.lineTo(-f.size/2, f.size/3); ctx.closePath(); ctx.fill(); ctx.restore(); }); 
+                    ctx.restore(); return; 
+                }
+                
+                // LPS Layer
+                ctx.strokeStyle = state >= 3 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(16, 185, 129, 0.4)'; ctx.lineWidth = 1.5; ctx.lineCap = 'round';
+                for(let a=0; a<Math.PI*2; a+=0.05) {
+                    let rx = Math.cos(a)*w; let ry = Math.sin(a)*h;
+                    let wave = Math.sin(a*15 + time*0.15)*20; // fluido
+                    ctx.beginPath(); ctx.moveTo(rx, ry); ctx.quadraticCurveTo(rx + Math.cos(a)*10 + wave, ry + Math.sin(a)*10 + wave, rx + Math.cos(a)*25, ry + Math.sin(a)*25); ctx.stroke();
+                }
+
+                // Outer Membrane
+                ctx.strokeStyle = state >= 3 ? '#ef4444' : '#059669'; ctx.lineWidth = 8; 
+                ctx.beginPath(); ctx.ellipse(0, 0, w, h, 0, 0, Math.PI*2); ctx.stroke();
+                
+                porins.forEach(p => {
+                    let px = Math.cos(p.angle)*w; let py = Math.sin(p.angle)*h;
+                    ctx.save(); ctx.translate(px, py); ctx.rotate(p.angle);
+                    ctx.fillStyle = state >= 3 ? '#ef4444' : '#10b981'; ctx.beginPath(); ctx.rect(-12, -8, 24, 16); ctx.fill();
+                    ctx.fillStyle = '#022c22'; ctx.beginPath(); ctx.rect(-6, -6, 12, 12); ctx.fill();
+                    ctx.restore();
+                });
+
+                // Periplasm
+                ctx.strokeStyle = 'rgba(52, 211, 153, 0.3)'; ctx.lineWidth = 3; ctx.setLineDash([8, 8]);
+                ctx.beginPath(); ctx.ellipse(0, 0, w-10, h-10, 0, 0, Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+
+                // Inner Membrane (Blebbing Claro)
+                ctx.fillStyle = '#064e3b'; ctx.strokeStyle = state >= 3 ? '#f87171' : '#34d399'; ctx.lineWidth = 4;
+                ctx.beginPath();
+                for (let a = 0; a < Math.PI * 2; a += 0.05) {
+                    let irW = w - 20; let irH = h - 20;
+                    let distortion = 0;
+                    if(state >= 3) {
+                        aberrantProteins.forEach(ap => {
+                            if(ap.embedded) {
+                                let diff = Math.abs(a - ap.angle);
+                                if(diff > Math.PI) diff = Math.PI*2 - diff;
+                                if(diff < 0.4) {
+                                    let bulge = Math.cos((diff / 0.4) * (Math.PI / 2));
+                                    distortion += bulge * 16; 
+                                }
+                            }
+                        });
+                        distortion += Math.sin(a*10 + time*0.05)*2; // Latido base
+                    }
+                    let px = Math.cos(a) * (irW + distortion); let py = Math.sin(a) * (irH + distortion);
+                    if (a === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+                }
+                ctx.closePath(); ctx.fill(); ctx.stroke();
+
+                // Cytosol
+                let cytoGrad = ctx.createRadialGradient(0,0, 0, 0,0, w-20); 
+                cytoGrad.addColorStop(0, state >= 4 ? '#450a0a' : '#022c22'); cytoGrad.addColorStop(1, state >= 4 ? '#7f1d1d' : '#064e3b'); 
+                ctx.fillStyle = cytoGrad; ctx.beginPath(); ctx.ellipse(0, 0, w-24, h-24, 0, 0, Math.PI*2); ctx.fill();
+
+                // Partículas Osmóticas (Agua/Iones) - Optimizadas sin ShadowBlur
+                osmoticParticles.forEach(op => {
+                    ctx.fillStyle = op.c; 
+                    ctx.beginPath(); ctx.arc(op.x, op.y, op.size, 0, Math.PI*2); ctx.fill();
+                });
+
+                // Proteínas Aberrantes (Cristales incrustándose)
+                if(state >= 3) {
+                    aberrantProteins.forEach(ap => {
+                        let rx = Math.cos(ap.angle)*(ap.r); let ry = Math.sin(ap.angle)*(ap.r);
+                        ctx.save(); ctx.translate(rx, ry); ctx.rotate(ap.angle);
+                        
+                        if(ap.embedded) {
+                            // Lesión necrótica en la membrana
+                            let pulse = Math.sin(time * 0.15 + ap.angle) * 2;
+                            ctx.fillStyle = 'rgba(239, 68, 68, 0.6)';
+                            ctx.beginPath(); ctx.ellipse(0, 0, 10 + pulse, 4 + pulse*0.5, 0, 0, Math.PI*2); ctx.fill();
+
+                            ctx.fillStyle = '#ef4444';
+                            ctx.beginPath(); ctx.ellipse(0, 0, 6, 2.5, 0, 0, Math.PI*2); ctx.fill();
+
+                            // Cristal tóxico incrustado
+                            ctx.fillStyle = '#991b1b'; ctx.strokeStyle = '#f87171'; ctx.lineWidth = 1;
+                            ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(-6, 4); ctx.lineTo(-2, 0); ctx.lineTo(-6, -4); ctx.closePath();
+                            ctx.fill(); ctx.stroke();
+
+                            // Chispa tóxica
+                            ctx.fillStyle = '#fef08a';
+                            ctx.beginPath(); ctx.arc(6, 0, 1.5, 0, Math.PI*2); ctx.fill();
+                        } else {
+                            // Cristal viajando
+                            ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#fca5a5'; ctx.lineWidth = 1.5;
+                            ctx.beginPath(); ctx.moveTo(8, 0); ctx.lineTo(-6, 4); ctx.lineTo(-2, 0); ctx.lineTo(-6, -4); ctx.closePath();
+                            ctx.fill(); ctx.stroke();
+                        }
+                        ctx.restore();
+                    });
+                }
+
+                // Ribosomes
+                ribosomes.forEach(r => { 
+                    r.driftAngle += 0.015; 
+                    let targetX = r.ox + Math.sin(r.driftAngle)*20; let targetY = r.oy + Math.cos(r.driftAngle*0.8)*20; 
+                    if ((targetX*targetX)/((w-30)*(w-30)) + (targetY*targetY)/((h-30)*(h-30)) > 1) { r.driftAngle += Math.PI; } else { r.x = targetX; r.y = targetY; } 
+                    
+                    ctx.save(); ctx.translate(r.x, r.y);
+                    if(r.state === 'blocked') { r.scale = 1 + Math.sin(time*0.2)*0.3; ctx.scale(r.scale, r.scale); }
+                    
+                    ctx.fillStyle = r.state === 'blocked' ? '#ea580c' : '#8b5cf6'; 
+                    ctx.beginPath(); ctx.arc(-2, -3, 4, 0, Math.PI*2); ctx.arc(2, -3, 3, 0, Math.PI*2); ctx.fill(); 
+                    ctx.fillStyle = r.state === 'blocked' ? '#f97316' : '#a78bfa';
+                    ctx.beginPath(); ctx.arc(0, 3, 3, 0, Math.PI*2); ctx.fill(); 
+                    ctx.restore();
+                });
+
+                ctx.restore();
+            }
+
+            function drawDrugs(ctx) {
+                drugs.forEach(d => {
+                    ctx.save();
+                    if (d.state === 'entering') { 
+                        d.x += (d.tx - d.x) * d.speed; d.y += (d.ty - d.y) * d.speed; 
+                        if(Math.hypot(d.tx - d.x, d.ty - d.y) < 20) {
+                            if(state >= 2) { d.state = 'targeting'; d.targetRibo = ribosomes[Math.floor(Math.random()*ribosomes.length)]; d.speed = 0.05; }
+                            else { d.tx = cx + (Math.random()-0.5)*180; d.ty = cy + (Math.random()-0.5)*90; }
+                        }
+                    } 
+                    else if (d.state === 'targeting' && d.targetRibo) { 
+                        let rX = cx + d.targetRibo.x; let rY = cy + d.targetRibo.y; 
+                        d.x += (rX - d.x) * d.speed; d.y += (rY - d.y) * d.speed; 
+                        if(Math.hypot(rX - d.x, rY - d.y) < 8) { d.state = 'bound'; d.targetRibo.state = 'blocked'; shockwaves.push({x: d.x, y: d.y, r: 2, max: 40, c: '250,204,21'}); } 
+                    }
+                    else if (d.state === 'bound' && d.targetRibo) { 
+                        d.x = cx + d.targetRibo.x + (Math.random()-0.5)*4; d.y = cy + d.targetRibo.y + (Math.random()-0.5)*4; 
+                    }
+                    
+                    ctx.translate(d.x, d.y);
+                    d.rot = (d.rot || 0) + 0.2; ctx.rotate(d.rot); ctx.fillStyle = '#fef08a'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; 
+                    let s = 3; 
+                    ctx.beginPath(); for(let i=0; i<6; i++) { let a=i*Math.PI/3; if(i===0) ctx.moveTo(-s*1.2+Math.cos(a)*s, Math.sin(a)*s); else ctx.lineTo(-s*1.2+Math.cos(a)*s, Math.sin(a)*s); } ctx.fill(); 
+                    ctx.beginPath(); for(let i=0; i<6; i++) { let a=i*Math.PI/3; if(i===0) ctx.moveTo(s*1.2+Math.cos(a)*s, Math.sin(a)*s); else ctx.lineTo(s*1.2+Math.cos(a)*s, Math.sin(a)*s); } ctx.fill(); 
+                    ctx.fillStyle = '#22d3ee'; ctx.beginPath(); ctx.arc(-s*2, -s, 1.5, 0, Math.PI*2); ctx.fill();
+                    ctx.restore();
+                });
+            }
+
+            function update() {
+                time++; if(cam.shake > 0 && state !== 3) cam.shake *= 0.85; if(cam.shake < 0.1) cam.shake = 0; if(explosionFlash > 0) explosionFlash -= 0.02;
+                
+                if(state >= 3) {
+                    aberrantProteins.forEach(ap => {
+                        if(!ap.embedded) {
+                            ap.r += ap.speed;
+                            let maxR = bacillus.w/2 - 20; 
+                            if(ap.r >= maxR) { ap.r = maxR; ap.embedded = true; }
+                        } else {
+                            if(Math.random() < 0.15) {
+                                let c = Math.random()>0.5 ? '#38bdf8' : '#e0f2fe';
+                                let vx = Math.cos(ap.angle)*(Math.random() > 0.5 ? 3 : -3) + (Math.random()-0.5); 
+                                let vy = Math.sin(ap.angle)*(Math.random() > 0.5 ? 3 : -3) + (Math.random()-0.5);
+                                osmoticParticles.push({
+                                    x: Math.cos(ap.angle)*(bacillus.w/2 - 20), 
+                                    y: Math.sin(ap.angle)*(bacillus.h/2 - 20), 
+                                    vx: vx, vy: vy, life: 1, c: c, size: Math.random()*2+1
+                                });
+                            }
+                        }
+                    });
+                }
+
+                if(state === 4 && bacillus.integrity === 1) {
+                    bacillus.swell += 2.5; 
+                    cam.shake = bacillus.swell * 0.2; 
+                    if(bacillus.swell > 80) { 
+                        bacillus.integrity = 0; cam.shake = 30; explosionFlash = 1.8;
+                        shockwaves.push({x: cx, y: cy, r: 20, max: 1200, speed: 45, lw: 50, c: '239, 68, 68'}); 
+                        for(let i=0; i<60; i++) wallFragments.push({ x: (Math.random()-0.5)*bacillus.baseW, y: (Math.random()-0.5)*bacillus.baseH, vx: (Math.random()-0.5)*60, vy: (Math.random()-0.5)*60, va: (Math.random()-0.5)*1, angle: Math.random()*Math.PI*2, size: Math.random()*60 + 20, color: Math.random() > 0.5 ? '#065f46' : '#047857', life: 2.5 }); 
+                        for(let i=0; i<120; i++) particles.push({ x: cx + (Math.random()-0.5)*bacillus.baseW, y: cy + (Math.random()-0.5)*bacillus.baseH, vx: (Math.random()-0.5)*50, vy: (Math.random()-0.5)*50, c: Math.random() > 0.6 ? '#10b981' : (Math.random()>0.5?'#fef08a':'#ef4444'), size: Math.random()*8+2, life: 2.5 }); 
+                    }
+                }
+
+                particles = particles.filter(p => { p.x += p.vx; p.y += p.vy; p.life -= 0.02; return p.life > 0; });
+                osmoticParticles = osmoticParticles.filter(p => { p.x += p.vx; p.y += p.vy; p.life -= 0.03; return p.life > 0; });
+                texts = texts.filter(t => { t.y += t.vy; t.life -= 0.015; return t.life > 0; });
+                shockwaves = shockwaves.filter(sw => { sw.r += (sw.speed || 15); sw.max -= 15; return sw.max > 0; });
+                wallFragments = wallFragments.filter(f => { f.x += f.vx; f.y += f.vy; f.angle += f.va; f.life -= 0.015; return f.life > 0; });
+                
+                if ((state === 1 || state === 2) && time % 8 === 0 && drugs.length < 100) {
+                    let p = porins[Math.floor(Math.random()*porins.length)]; let r = bacillus.baseH;
+                    let startAngle = p.angle + (Math.random()-0.5)*0.8;
+                    drugs.push({
+                        x: cx + Math.cos(startAngle)*(r+400), y: cy + Math.sin(startAngle)*(r+400),
+                        tx: cx + Math.cos(p.angle)*r, ty: cy + Math.sin(p.angle)*r, state: 'entering', speed: 0.02, rot: Math.random()*Math.PI*2
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                cam.x += (cam.tx - cam.x) * 0.08; cam.y += (cam.ty - cam.y) * 0.08; cam.zoom += (cam.tZoom - cam.zoom) * 0.08;
+                
+                let s = getSmoothShake(time, cam.shake);
+                ctx.save(); let bScale = cam.zoom; ctx.translate(width/2, height/2); ctx.scale(bScale, bScale); ctx.translate(-cam.x + s.x, -cam.y + s.y);
+                
+                drawDetailedBacillus(ctx); drawDrugs(ctx);
+                
+                particles.forEach(p => { ctx.globalAlpha = Math.max(0, Math.min(1, p.life)); ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); });
+                ctx.globalAlpha = 1;
+                shockwaves.forEach(sw => { let col = sw.c || '239, 68, 68'; let lw = sw.lw || 15; ctx.strokeStyle = `rgba(${col}, ${sw.max/400})`; ctx.lineWidth = lw * (sw.max/400); ctx.beginPath(); ctx.arc(sw.x, sw.y, sw.r, 0, Math.PI*2); ctx.stroke(); });
+                texts.forEach(t => { ctx.globalAlpha = Math.max(0, Math.min(1, t.life*2)); ctx.fillStyle = t.color; ctx.font = `900 ${t.size}px 'JetBrains Mono', monospace`; ctx.textAlign = 'center'; ctx.shadowColor = 'rgba(0,0,0,0.9)'; ctx.shadowBlur = 10; ctx.fillText(t.text, t.x, t.y); ctx.shadowBlur=0;});
+                ctx.restore();
+                
+                if (explosionFlash > 0) { ctx.save(); ctx.globalAlpha = Math.max(0, Math.min(1, explosionFlash)); let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, width); grad.addColorStop(0, 'rgba(255, 255, 255, 1)'); grad.addColorStop(0.2, 'rgba(239, 68, 68, 0.9)'); grad.addColorStop(1, 'transparent'); ctx.fillStyle = grad; ctx.fillRect(0, 0, width, height); ctx.restore(); }
+            }
+
+            function loop() { update(); draw(); animId = requestAnimationFrame(loop); }
+
+            function updateUI() {
+                document.querySelectorAll('#view-bacteria .step-card').forEach((card, index) => {
+                    card.classList.remove('active', 'completed');
+                    if (index < state) card.classList.add('completed');
+                    else if (index === state) { card.classList.add('active'); if(window.innerWidth <= 768) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                });
+                if(state === 4) { nextBtn.classList.add('hidden'); resetBtn.classList.remove('hidden'); }
+            }
+
+            nextBtn.addEventListener('click', () => { if (state < 4) { state++; triggerState(state); updateUI(); } });
+            resetBtn.addEventListener('click', () => { state = 0; damageOverlay.classList.remove('active'); triggerState(0); nextBtn.classList.remove('hidden'); resetBtn.classList.add('hidden'); updateUI(); });
+
+            return { start: () => { resize(); if(!animId) loop(); }, stop: () => { if(animId) { cancelAnimationFrame(animId); animId = null; } } };
+        })();
+
+
+        // ==========================================
+        // APP 3: PULMONAR (Neumonía Ultra-Fluida Optimizada)
+        // ==========================================
+        window.appPulmonar = (function() {
+            const container = document.getElementById('canvasContainerPul');
+            const canvas = document.getElementById('pulmonaryCanvas');
+            const ctx = canvas.getContext('2d');
+            const nextBtn = document.getElementById('nextBtnPul');
+            const resetBtn = document.getElementById('resetBtnPul');
+            const damageOverlay = document.getElementById('damageOverlayPul');
+            
+            const hudSymptoms = document.getElementById('hud-symptoms');
+            const hudSpo2 = document.getElementById('hud-spo2');
+            const hudPath = document.getElementById('hud-path');
+            const hudTx = document.getElementById('hud-tx-pul');
+
+            let width, height, dpr, cx, cy;
+            let time = 0; let state = 0; let animId = null;
+            let cam = { x: 0, y: 0, tx: 0, ty: 0, zoom: 1, tZoom: 1, shake: 0 };
+            
+            let breathRate = 0.05; let breathDepth = 10; let coughTimer = 0; let lungScale = 1.3; 
+            
+            let infiltrates = []; let drugs = []; let betaLactams = []; let particles = []; let macrophages = [];
+
+            function resize() {
+                dpr = window.devicePixelRatio || 1;
+                width = container.clientWidth; height = container.clientHeight;
+                if(width===0||height===0) return;
+                canvas.width = width * dpr; canvas.height = height * dpr;
+                ctx.scale(dpr, dpr); cx = width / 2; cy = height / 2;
+                lungScale = Math.min(width, height) / 450;
+                if(lungScale > 1.8) lungScale = 1.8; if(lungScale < 0.7) lungScale = 0.7;
+                if(cam.tx === 0 && cam.ty === 0) { cam.tx = 0; cam.ty = 40; cam.x = 0; cam.y = 40; initSimulation(); }
+            }
+            window.addEventListener('resize', () => { if(!document.getElementById('view-pulmonar').classList.contains('hidden')) resize(); });
+
+            function initSimulation() {
+                state = 0; breathRate = 0.06; breathDepth = 10; coughTimer = 40;
+                infiltrates = [ 
+                    { x: -95, y: 70, radius: 45, targetR: 45, seed: Math.random()*10, isLeft: true }, 
+                    { x: 105, y: 80, radius: 55, targetR: 55, seed: Math.random()*10, isLeft: false },
+                    { x: -130, y: 120, radius: 35, targetR: 35, seed: Math.random()*10, isLeft: true },
+                    { x: 140, y: 150, radius: 45, targetR: 45, seed: Math.random()*10, isLeft: false }
+                ];
+                drugs = []; betaLactams = []; particles = []; macrophages = []; cam.shake = 0; cam.tx = 0; cam.ty = 40; cam.tZoom = 1;
+                hudSymptoms.innerText = "VENTILACIÓN MECÁNICA, FIEBRE ALTA"; hudSymptoms.className = "text-red-400 font-bold"; 
+                hudSpo2.innerText = "85% (HIPOXIA SEVERA)"; hudSpo2.className = "text-orange-400 font-bold animate-pulse"; 
+                hudPath.innerText = "NEUMONÍA BILATERAL (CONSOLIDACIÓN PURULENTA)"; hudPath.className = "text-red-400 font-bold"; 
+                hudTx.innerText = "NINGUNA"; hudTx.className = "text-slate-400 font-bold"; 
+                damageOverlay.classList.add('active');
+            }
+
+            function triggerState(s) {
+                if(s === 0) { initSimulation(); } 
+                else if(s === 1) { 
+                    cam.tZoom = 1.15; cam.ty = 10; breathRate = 0.08; // Taquipnea
+                    hudTx.innerText = "BETA-LACTÁMICOS (Destruidos por enzimas)"; hudTx.className = "text-red-500 font-bold animate-pulse"; 
+                    hudSpo2.innerText = "80% (DETERIORO RÁPIDO)"; 
+                    infiltrates.forEach(g => g.targetR += 15); 
+                } 
+                else if(s === 2) { 
+                    cam.tZoom = 1.35; cam.ty = -40; 
+                    hudTx.innerText = "TOBRAMICINA IV (AMINOGLUCÓSIDOS)"; hudTx.className = "text-yellow-400 font-bold"; 
+                    betaLactams = []; // Limpiar fallos
+                    drugs = []; 
+                    for(let i=0; i<45; i++) { 
+                        setTimeout(() => { 
+                            let targetG = infiltrates[Math.floor(Math.random() * infiltrates.length)]; 
+                            let startX = targetG.isLeft ? -20 : 20; 
+                            drugs.push({ type: 'FQ', x: startX, y: -20, targetArea: targetG, color: '#fef08a', life: 1, speed: 0.04 + Math.random()*0.02 }); 
+                        }, i * 40); 
+                    } 
+                } 
+                else if(s === 3) { 
+                    cam.tZoom = 1.45; cam.shake = 3; 
+                    hudPath.innerText = "LISIS BACTERIANA Y DEPURACIÓN MACROFÁGICA"; hudPath.className = "text-emerald-400 font-bold animate-pulse"; 
+                    infiltrates.forEach(g => { 
+                        g.targetR -= 25; // La masa colapsa físicamente
+                        
+                        // Spawn Macrófagos fagocitando
+                        for(let i=0; i<8; i++) {
+                            macrophages.push({
+                                x: (g.isLeft?-40:40) + g.x + (Math.random()-0.5)*g.radius*1.5,
+                                y: 90 + g.y + (Math.random()-0.5)*g.radius*1.5,
+                                vx: (Math.random()-0.5)*1.5, vy: (Math.random()-0.5)*1.5,
+                                r: 10 + Math.random()*6, life: 4, seed: Math.random()*10
+                            });
+                        }
+                        
+                        // Debris / Escombros celulares
+                        for(let i=0; i<50; i++) { particles.push({ x: (g.isLeft?-40:40) + g.x + (Math.random()-0.5)*g.radius, y: 90 + g.y + (Math.random()-0.5)*g.radius, vx: (Math.random()-0.5)*12, vy: (Math.random()-0.5)*12, c: Math.random() > 0.4 ? 'rgba(254, 240, 138, 0.6)' : 'rgba(16, 185, 129, 0.4)', size: Math.random()*6+3, life: 2.5, isDebris: true }); } 
+                    }); 
+                } 
+                else if(s === 4) { 
+                    cam.tZoom = 1; cam.ty = 30; cam.tx = 0; damageOverlay.classList.remove('active'); 
+                    breathRate = 0.04; breathDepth = 12; coughTimer = -1; 
+                    hudSymptoms.innerText = "EXTUBADO, RECUPERACIÓN TISULAR"; hudSymptoms.className = "text-sky-400 font-bold"; 
+                    hudSpo2.innerText = "98% (ÓPTIMA)"; hudSpo2.className = "text-sky-400"; 
+                    hudPath.innerText = "RESOLUCIÓN COMPLETA DE INFILTRADOS"; hudPath.className = "text-sky-400 font-bold"; 
+                    infiltrates.forEach(g => { g.targetR *= 0.1; }); drugs = []; macrophages = [];
+                }
+            }
+
+            function drawDetailedBronchi(ctx, startX, startY, angle, length, width, depth, seed) { 
+                if(depth === 0) return; 
+                ctx.lineWidth = width; ctx.lineCap = 'round';
+                let endX = startX + Math.cos(angle) * length; let endY = startY + Math.sin(angle) * length; 
+                ctx.beginPath(); ctx.moveTo(startX, startY); ctx.lineTo(endX, endY); ctx.stroke(); 
+                
+                let p1 = Math.abs(Math.sin(seed * 12.9898)) * 0.4 - 0.2; let p2 = Math.abs(Math.sin(seed * 78.233)) * 0.4 + 0.3; 
+                let trunkAngle = angle + p1; drawDetailedBronchi(ctx, endX, endY, trunkAngle, length * 0.8, width * 0.75, depth - 1, seed + 1); 
+                let sideDir = (depth % 2 === 0) ? 1 : -1; let sideAngle = angle + sideDir * p2; drawDetailedBronchi(ctx, endX, endY, sideAngle, length * 0.65, width * 0.6, depth - 1, seed + 2); 
+            }
+
+            function drawVessels(ctx, isLeft) {
+                ctx.save();
+                let pulse = Math.sin(time*0.1)*1.2; // Pulso vascular lento
+                ctx.strokeStyle = `rgba(239, 68, 68, ${0.3 + pulse*0.1})`; 
+                drawDetailedBronchi(ctx, isLeft ? -45 : 30, -90, isLeft ? 2.5 : 0.5, 55, 6 + pulse, 4, isLeft?100:200);
+                ctx.strokeStyle = `rgba(56, 189, 248, ${0.3 - pulse*0.1})`; 
+                drawDetailedBronchi(ctx, isLeft ? -55 : 40, -95, isLeft ? 2.2 : 0.8, 50, 5 - pulse, 4, isLeft?300:400);
+                ctx.restore();
+            }
+
+            function drawLungsAngiography(ctx, breath) {
+                ctx.save(); ctx.scale(lungScale, lungScale);
+                let isHealthy = state >= 4; let lungColor = isHealthy ? '#0284c7' : '#1e293b'; let lungEdge = isHealthy ? '#082f49' : '#0f172a'; let glowColor = isHealthy ? '#38bdf8' : '#475569';
+                
+                // Trachea
+                ctx.strokeStyle = '#020617'; ctx.lineWidth = 32; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(0, -280); ctx.lineTo(0, -140); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(35, -95); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(-50, -105); ctx.stroke(); 
+                ctx.strokeStyle = isHealthy ? '#0f172a' : '#1e293b'; ctx.lineWidth = 28; ctx.beginPath(); ctx.moveTo(0, -280); ctx.lineTo(0, -140); ctx.stroke(); ctx.lineWidth = 22; ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(35, -95); ctx.stroke(); ctx.lineWidth = 18; ctx.beginPath(); ctx.moveTo(0, -140); ctx.lineTo(-50, -105); ctx.stroke();
+                for(let y=-270; y<-140; y+=12) { ctx.strokeStyle = '#475569'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(-12, y); ctx.lineTo(12, y); ctx.stroke(); ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(-12, y+3); ctx.lineTo(12, y+3); ctx.stroke(); }
+
+                function drawSingleLung(isLeft) {
+                    let sign = isLeft ? -1 : 1; ctx.save();
+                    ctx.translate(sign * 40, -90); let expX = 1 + breath * 0.006; let expY = 1 + breath * 0.012; ctx.scale(expX, expY); ctx.translate(-sign * 40, 90);
+                    let lungGrad = ctx.createRadialGradient(sign * 80, 50, 10, sign * 80, 50, 260); lungGrad.addColorStop(0, lungColor); lungGrad.addColorStop(0.9, lungEdge); 
+                    ctx.beginPath();
+                    if (isLeft) { ctx.moveTo(-35, -130); ctx.bezierCurveTo(-80, -140, -150, -70, -165, 20); ctx.bezierCurveTo(-180, 100, -170, 210, -155, 250); ctx.bezierCurveTo(-120, 230, -60, 210, -30, 230); ctx.bezierCurveTo(-20, 180, -95, 120, -75, 45); ctx.bezierCurveTo(-60, -10, -20, -100, -35, -130); } 
+                    else { ctx.moveTo(35, -130); ctx.bezierCurveTo(80, -140, 150, -70, 165, 20); ctx.bezierCurveTo(180, 100, 170, 200, 155, 240); ctx.bezierCurveTo(120, 220, 60, 200, 30, 220); ctx.bezierCurveTo(20, 160, 55, 100, 45, 0); ctx.bezierCurveTo(35, -60, 20, -100, 35, -130); }
+                    ctx.fillStyle = lungGrad; ctx.fill();
+                    ctx.strokeStyle = glowColor; ctx.lineWidth = 4; ctx.globalAlpha = isHealthy ? 0.7 : 0.5; ctx.stroke();
+                    ctx.save(); ctx.clip(); 
+                    
+                    ctx.globalAlpha = isHealthy ? 0.5 : 0.2; ctx.strokeStyle = isHealthy ? '#7dd3fc' : '#94a3b8'; 
+                    if (isLeft) { drawDetailedBronchi(ctx, -50, -105, 2.8, 45, 9, 4, 10); drawDetailedBronchi(ctx, -50, -105, 2.0, 55, 10, 4, 20); } 
+                    else { drawDetailedBronchi(ctx, 35, -95, 0.3, 40, 9, 4, 30); drawDetailedBronchi(ctx, 35, -95, 0.9, 35, 8, 4, 40); drawDetailedBronchi(ctx, 35, -95, 1.4, 50, 10, 4, 50); }
+                    
+                    drawVessels(ctx, isLeft);
+
+                    ctx.restore(); ctx.restore();
+                }
+                drawSingleLung(false); drawSingleLung(true);  
+
+                // Heart (Latido más pausado)
+                ctx.save(); let heartPulse = 1 + Math.sin(time * 0.1) * 0.04; let systole = Math.sin(time * 0.1 - 0.5) * 0.04; 
+                ctx.translate(5, 80); ctx.scale(heartPulse, heartPulse + systole);
+                let heartGrad = ctx.createRadialGradient(-10, -10, 5, 0, 0, 80); heartGrad.addColorStop(0, '#ef4444'); heartGrad.addColorStop(0.5, '#b91c1c'); heartGrad.addColorStop(1, '#4c0519'); 
+                ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1e3a8a'; ctx.beginPath(); ctx.moveTo(-20, -30); ctx.lineTo(-20, -75); ctx.stroke();
+                ctx.strokeStyle = '#0284c7'; ctx.beginPath(); ctx.moveTo(10, -30); ctx.quadraticCurveTo(20, -50, 45, -60); ctx.stroke(); ctx.beginPath(); ctx.moveTo(10, -30); ctx.quadraticCurveTo(0, -50, -25, -55); ctx.stroke();
+                ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(0, -30); ctx.bezierCurveTo(5, -90, 45, -90, 45, -45); ctx.stroke();
+                ctx.fillStyle = heartGrad; ctx.beginPath(); ctx.moveTo(10, -40); ctx.bezierCurveTo(55, -30, 65, 15, 45, 55); ctx.bezierCurveTo(20, 90, -35, 75, -50, 40); ctx.bezierCurveTo(-65, 0, -35, -30, 10, -40); ctx.fill();
+                ctx.strokeStyle = 'rgba(239, 68, 68, 0.9)'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(0, -20); ctx.quadraticCurveTo(-15, 20, -30, 50); ctx.stroke(); ctx.beginPath(); ctx.moveTo(15, -25); ctx.quadraticCurveTo(40, -5, 40, 35); ctx.stroke(); 
+                ctx.restore();
+
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)'; ctx.lineWidth = 18; ctx.lineCap = 'round'; ctx.fillStyle = 'rgba(255, 255, 255, 0.03)'; ctx.beginPath(); ctx.moveTo(-15, -120); ctx.lineTo(15, -120); ctx.lineTo(10, 80); ctx.lineTo(-10, 80); ctx.fill();
+
+                // INFILTRADOS ORGÁNICOS (Volumétricos y realistas)
+                infiltrates.forEach(g => {
+                    g.radius += (g.targetR - g.radius) * 0.03; ctx.save(); 
+                    let sign = g.isLeft ? -1 : 1; let expX = 1 + breath * 0.006; let expY = 1 + breath * 0.012;
+                    ctx.translate(sign * 40, -90); ctx.scale(expX, expY); ctx.translate(-sign * 40 + g.x, 90 + g.y); 
+                    
+                    if (state < 4) {
+                        // Halo inflamatorio
+                        let halo = ctx.createRadialGradient(0,0, g.radius*0.4, 0,0, g.radius*2.2);
+                        halo.addColorStop(0, 'rgba(220, 38, 38, 0.5)'); halo.addColorStop(0.5, 'rgba(185, 28, 28, 0.2)'); halo.addColorStop(1, 'transparent'); 
+                        ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(0,0, g.radius*2.2, 0, Math.PI*2); ctx.fill();
+                        
+                        // Nube necrótica/purulenta (superposición volumétrica en lugar de polígono raro)
+                        ctx.save();
+                        ctx.rotate(time * 0.005 * (g.seed%2==0?1:-1));
+                        for(let c=0; c<6; c++) {
+                            let cRad = (g.radius * 0.55) + Math.sin(time*0.03 + c + g.seed)*4;
+                            let cDist = g.radius * 0.35;
+                            let cAngle = (c / 6) * Math.PI * 2 + g.seed;
+                            let cx = Math.cos(cAngle) * cDist;
+                            let cy = Math.sin(cAngle) * cDist;
+
+                            let cloudGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, cRad);
+                            cloudGrad.addColorStop(0, 'rgba(234, 179, 8, 0.9)'); // Amarillo pus
+                            cloudGrad.addColorStop(0.5, 'rgba(133, 77, 14, 0.8)'); // Marrón necrótico
+                            cloudGrad.addColorStop(0.9, 'rgba(20, 83, 45, 0.6)'); // Verde oscuro borde
+                            cloudGrad.addColorStop(1, 'transparent');
+
+                            ctx.fillStyle = cloudGrad;
+                            ctx.beginPath(); ctx.arc(cx, cy, cRad, 0, Math.PI*2); ctx.fill();
+                        }
+                        ctx.restore();
+                        
+                        // Núcleo denso
+                        let coreGrad = ctx.createRadialGradient(0,0, 0, 0,0, g.radius*0.5);
+                        coreGrad.addColorStop(0, '#fef08a');
+                        coreGrad.addColorStop(0.6, '#ca8a04');
+                        coreGrad.addColorStop(1, 'transparent');
+                        ctx.fillStyle = coreGrad;
+                        ctx.beginPath(); ctx.arc(0,0, g.radius*0.5, 0, Math.PI*2); ctx.fill();
+                        
+                        // Bacterias nadando (forma de bacilo)
+                        ctx.fillStyle = '#022c22';
+                        for(let i=0; i<10; i++) {
+                            let bAngle = time*0.03 + i*g.seed;
+                            let bX = Math.sin(bAngle) * (g.radius*0.6);
+                            let bY = Math.cos(bAngle * 0.8) * (g.radius*0.6);
+                            ctx.beginPath(); ctx.ellipse(bX, bY, 3, 1.5, Math.atan2(bY, bX), 0, Math.PI*2); ctx.fill();
+                        }
+                    } else {
+                        // Cicatriz residual
+                        ctx.fillStyle = 'rgba(226, 232, 240, 0.15)'; 
+                        ctx.beginPath(); ctx.ellipse(0, 0, g.radius, g.radius*0.8, g.seed, 0, Math.PI*2); ctx.fill();
+                    }
+                    ctx.restore();
+                });
+                ctx.restore();
+            }
+
+            function drawBetaLactams(ctx) {
+                ctx.save(); ctx.scale(lungScale, lungScale);
+                betaLactams.forEach(b => {
+                    ctx.save(); ctx.translate(b.x, b.y);
+                    ctx.rotate(time * 0.1);
+                    // Estructura molecular Penicilina-like (Anillo Betalactámico + Tiazolidina)
+                    ctx.fillStyle = 'rgba(56, 189, 248, 0.9)'; 
+                    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5;
+                    ctx.beginPath(); 
+                    ctx.moveTo(-5, -5); ctx.lineTo(3, -5); ctx.lineTo(3, 3); ctx.lineTo(-5, 3); ctx.closePath(); // Cuadrado betalactámico
+                    ctx.moveTo(3, 3); ctx.lineTo(9, 0); ctx.lineTo(3, -5); // Estructura adyacente
+                    ctx.fill(); ctx.stroke();
+                    // Núcleo activo
+                    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(-1, -1, 1.5, 0, Math.PI*2); ctx.fill();
+                    ctx.restore();
+                });
+                ctx.restore();
+            }
+
+            function drawDrugs(ctx) {
+                ctx.save(); ctx.scale(lungScale, lungScale); 
+                drugs.forEach(d => {
+                    ctx.save();
+                    let destX = (d.targetArea.isLeft ? -40 : 40) + d.targetArea.x;
+                    let destY = 90 + d.targetArea.y;
+                    let dx = destX - d.x; let dy = destY - d.y; 
+                    d.x += dx * d.speed; d.y += dy * d.speed;
+                    
+                    if (Math.hypot(dx, dy) < 20) { d.life -= 0.05; } 
+                    ctx.translate(d.x, d.y); ctx.globalAlpha = Math.max(0, d.life); let rot = Math.atan2(dy, dx); ctx.rotate(rot); 
+                    
+                    // Estructura Tobramicina (3 anillos glucósidos enlazados)
+                    ctx.fillStyle = '#fef08a'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5;
+                    // Anillo 1
+                    ctx.beginPath(); ctx.arc(-8, 0, 3.5, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+                    // Enlace 1-2
+                    ctx.beginPath(); ctx.moveTo(-4.5, 0); ctx.lineTo(1.5, 0); ctx.stroke();
+                    // Anillo 2
+                    ctx.beginPath(); ctx.arc(5, 0, 3.5, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+                    // Enlace 2-3
+                    ctx.beginPath(); ctx.moveTo(8.5, 0); ctx.lineTo(12.5, -4); ctx.stroke();
+                    // Anillo 3
+                    ctx.beginPath(); ctx.arc(15, -6, 3.5, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+                    
+                    // Grupos Aminos activos (Puntos cian)
+                    ctx.fillStyle = '#22d3ee'; 
+                    ctx.beginPath(); ctx.arc(-8, -3.5, 1.5, 0, Math.PI*2); ctx.arc(5, 3.5, 1.5, 0, Math.PI*2); ctx.arc(15, -2.5, 1.5, 0, Math.PI*2); ctx.fill();
+                    
+                    ctx.restore();
+                });
+                ctx.restore();
+            }
+
+            function update() {
+                time++; if(cam.shake > 0) cam.shake *= 0.9; if(cam.shake < 0.1) cam.shake = 0;
+                if (coughTimer > 0 && state < 4) {
+                    coughTimer--;
+                    if (coughTimer === 0) { cam.shake = 12; coughTimer = 80 + Math.random() * 100; for(let i=0; i<15; i++) { particles.push({ x: (Math.random()-0.5)*40, y: -200, vx: (Math.random()-0.5)*6, vy: -10 - Math.random()*20, c: Math.random() > 0.6 ? '#10b981' : (Math.random()>0.5 ? '#fef08a' : '#047857'), size: Math.random()*6+2, life: 1.5 }); } } 
+                }
+
+                // Lógica de Falla de Beta-lactámicos (Estado 1)
+                if(state === 1 && time % 12 === 0) {
+                    let targetG = infiltrates[Math.floor(Math.random() * infiltrates.length)];
+                    let startX = targetG.isLeft ? -20 : 20;
+                    betaLactams.push({ x: startX, y: -20, targetArea: targetG, speed: 0.05, life: 1 });
+                }
+                betaLactams.forEach(b => {
+                    let destX = (b.targetArea.isLeft ? -40 : 40) + b.targetArea.x;
+                    let destY = 90 + b.targetArea.y;
+                    b.x += (destX - b.x) * b.speed;
+                    b.y += (destY - b.y) * b.speed;
+                    
+                    if(Math.hypot(destX - b.x, destY - b.y) < b.targetArea.radius) {
+                        b.life = 0; // El beta-lactámico es destruido
+                        // Fragmentos grises (fármaco inactivo/destruido)
+                        for(let i=0;i<6;i++) particles.push({x: b.x, y: b.y, vx:(Math.random()-0.5)*8, vy:(Math.random()-0.5)*8, c:'#94a3b8', size: 2.5, life: 1.2});
+                        // La infección se alimenta y expande
+                        b.targetArea.targetR += 1.5; 
+                    }
+                });
+                betaLactams = betaLactams.filter(b => b.life > 0);
+
+                // Dinámica de Macrófagos
+                macrophages.forEach(m => {
+                    m.x += m.vx; m.y += m.vy;
+                    if(Math.random()<0.05) { m.vx += (Math.random()-0.5)*2; m.vy += (Math.random()-0.5)*2; } // Nado orgánico
+                    m.life -= 0.008;
+                });
+                macrophages = macrophages.filter(m => m.life > 0);
+
+                particles = particles.filter(p => { p.x += p.vx; p.y += p.vy; p.life -= 0.02; return p.life > 0; });
+                drugs = drugs.filter(d => d.life > 0);
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                cam.x += (cam.tx - cam.x) * 0.08; cam.y += (cam.ty - cam.y) * 0.08; cam.zoom += (cam.tZoom - cam.zoom) * 0.08;
+                
+                let s = getSmoothShake(time, cam.shake);
+                ctx.save(); ctx.translate(cx, cy); ctx.scale(cam.zoom, cam.zoom); ctx.translate(-cam.x + s.x, -cam.y + s.y);
+                
+                let breath = Math.sin(time * breathRate) * breathDepth; if (cam.shake > 5) breath += (Math.random()-0.5)*8; 
+                drawLungsAngiography(ctx, breath); 
+                drawBetaLactams(ctx);
+                drawDrugs(ctx);
+                
+                ctx.save(); ctx.scale(lungScale, lungScale); 
+                
+                // Dibujar Partículas / Escombros
+                particles.forEach(p => { 
+                    ctx.globalAlpha = Math.max(0, Math.min(1, p.life)); ctx.fillStyle = p.c; 
+                    if(p.isDebris) {
+                        ctx.beginPath(); ctx.ellipse(p.x, p.y, p.size*1.5, p.size*0.6, p.vx + time*0.1, 0, Math.PI*2); ctx.fill();
+                    } else {
+                        ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill(); 
+                    }
+                }); 
+                
+                // Dibujar Macrófagos depurando la zona
+                macrophages.forEach(m => {
+                    ctx.globalAlpha = Math.max(0, Math.min(1, m.life));
+                    ctx.fillStyle = 'rgba(241, 245, 249, 0.6)'; // Cuerpo translúcido
+                    ctx.strokeStyle = 'rgba(186, 230, 253, 0.8)'; // Borde celular
+                    ctx.lineWidth = 1.5;
+                    drawOrganicBlob(ctx, m.x, m.y, m.r, m.seed, time*1.5, 0.25); // Ameboide
+                    ctx.fill(); ctx.stroke();
+                    // Núcleo fagocítico engullendo
+                    ctx.fillStyle = 'rgba(56, 189, 248, 0.6)';
+                    ctx.beginPath(); ctx.arc(m.x, m.y, m.r*0.4, 0, Math.PI*2); ctx.fill(); 
+                });
+                
+                ctx.restore();
+                ctx.restore();
+                
+                let scanlineY = (time * 6) % height; let scanGrad = ctx.createLinearGradient(0, scanlineY - 80, 0, scanlineY); scanGrad.addColorStop(0, 'transparent'); scanGrad.addColorStop(1, 'rgba(56, 189, 248, 0.3)');
+                ctx.fillStyle = scanGrad; ctx.fillRect(0, scanlineY - 80, width, 80); ctx.fillStyle = 'rgba(56, 189, 248, 0.9)'; ctx.fillRect(0, scanlineY, width, 3); ctx.fillStyle = '#fff'; ctx.fillRect(0, scanlineY, 20, 3); ctx.fillRect(width-20, scanlineY, 20, 3);
+            }
+
+            function loop() { update(); draw(); animId = requestAnimationFrame(loop); }
+
+            function updateUI() {
+                document.querySelectorAll('#view-pulmonar .step-card').forEach((card, index) => {
+                    card.classList.remove('active', 'completed');
+                    if (index < state) card.classList.add('completed');
+                    else if (index === state) { card.classList.add('active'); if(window.innerWidth <= 768) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                });
+                if(state === 4) { nextBtn.classList.add('hidden'); resetBtn.classList.remove('hidden'); }
+            }
+
+            nextBtn.addEventListener('click', () => { if (state < 4) { state++; triggerState(state); updateUI(); } });
+            resetBtn.addEventListener('click', () => { state = 0; damageOverlay.classList.remove('active'); triggerState(0); nextBtn.classList.remove('hidden'); resetBtn.classList.add('hidden'); updateUI(); });
+
+            return { start: () => { resize(); if(!animId) loop(); }, stop: () => { if(animId) { cancelAnimationFrame(animId); animId = null; } } };
+        })();
+
+        // ==========================================
+        // CONTROLADOR GLOBAL (TABS)
+        // ==========================================
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const target = e.currentTarget.getAttribute('data-target');
+                switchTab(target);
+            });
+        });
+
+        function switchTab(tabId) {
+            if(window.appMolecular) window.appMolecular.stop();
+            if(window.appBacteria) window.appBacteria.stop();
+            if(window.appPulmonar) window.appPulmonar.stop();
+
+            document.querySelectorAll('.view-container').forEach(v => v.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-tab'));
+
+            const activeBtn = document.querySelector(`[data-target="${tabId}"]`);
+            if (activeBtn) activeBtn.classList.add('active-tab');
+            
+            document.getElementById('view-' + tabId).classList.remove('hidden');
+
+            if(tabId === 'molecular' && window.appMolecular) window.appMolecular.start();
+            if(tabId === 'bacteria' && window.appBacteria) window.appBacteria.start();
+            if(tabId === 'pulmonar' && window.appPulmonar) window.appPulmonar.start();
+        }
+
+        setTimeout(() => switchTab('molecular'), 150);
+        
+    </script>
+
+</body></html>
